@@ -179,7 +179,7 @@
 	..()
 
 /obj/structure/fluff/walldeco/customflag
-	name = "Azure Peak flag"
+	name = "Caustic Cove flag"
 	desc = ""
 	icon_state = "wallflag"
 
