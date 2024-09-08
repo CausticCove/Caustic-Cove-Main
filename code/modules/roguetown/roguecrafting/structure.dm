@@ -194,7 +194,7 @@
 				/obj/item/natural/stone = 4,
 				/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/misc/alchemy
-	craftdiff = 0
+	craftdiff = 1
 	verbage_simple = "assemble"
 	verbage = "assembles"
 
