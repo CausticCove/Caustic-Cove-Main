@@ -99,7 +99,7 @@
 	tastes = list("pie" = 1, "mushroom" = 1)
 	foodtype = GRAIN | VEGETABLES | TOXIC | GROSS
 
-/obj/item/reagent_containers/food/snacks/pie/plump_pie
+/*/obj/item/reagent_containers/food/snacks/pie/plump_pie
 	name = "plump pie"
 	desc = ""
 	icon_state = "plump_pie"
@@ -115,7 +115,7 @@
 		desc = ""
 		bonus_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/medicine/omnizine = 5, /datum/reagent/consumable/nutriment/vitamin = 4)
 	if(fey)
-		reagents.add_reagent(/datum/reagent/medicine/omnizine, 5)
+		reagents.add_reagent(/datum/reagent/medicine/omnizine, 5)*/
 
 /obj/item/reagent_containers/food/snacks/pie/xemeatpie
 	name = "xeno-pie"
@@ -126,7 +126,7 @@
 	tastes = list("pie" = 1, "meat" = 1, "acid" = 1)
 	foodtype = GRAIN | MEAT
 
-/obj/item/reagent_containers/food/snacks/pie/applepie
+/*/obj/item/reagent_containers/food/snacks/pie/applepie
 	name = "apple pie"
 	desc = ""
 	icon_state = "applepie"
@@ -140,7 +140,7 @@
 	icon_state = "cherrypie"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("pie" = 7, "Nicole Paige Brooks" = 2)
-	foodtype = GRAIN | FRUIT | SUGAR
+	foodtype = GRAIN | FRUIT | SUGAR*/
 
 
 /obj/item/reagent_containers/food/snacks/pie/pumpkinpie

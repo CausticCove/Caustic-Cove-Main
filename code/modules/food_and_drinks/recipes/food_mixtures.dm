@@ -8,7 +8,7 @@
 
 //////////////////////////////////////////FOOD MIXTURES////////////////////////////////////
 
-/datum/chemical_reaction/tofu
+/*/datum/chemical_reaction/tofu
 	name = "Tofu"
 	id = "tofu"
 	required_reagents = list(/datum/reagent/consumable/soymilk = 10)
@@ -43,19 +43,21 @@
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/chocolatebar(location)
-	return
+	return*/
 
 /datum/chemical_reaction/hot_coco
 	name = "Hot Coco"
 	id = /datum/reagent/consumable/hot_coco
 	results = list(/datum/reagent/consumable/hot_coco = 5)
 	required_reagents = list(/datum/reagent/water = 5, /datum/reagent/consumable/coco = 1)
+	required_temp = 374
 
 /datum/chemical_reaction/coffee
 	name = "Coffee"
 	id = /datum/reagent/consumable/coffee
 	results = list(/datum/reagent/consumable/coffee = 5)
 	required_reagents = list(/datum/reagent/toxin/coffeepowder = 1, /datum/reagent/water = 5)
+	required_temp = 374
 
 /datum/chemical_reaction/tea
 	name = "Tea"
@@ -63,7 +65,7 @@
 	results = list(/datum/reagent/consumable/tea = 5)
 	required_reagents = list(/datum/reagent/toxin/teapowder = 1, /datum/reagent/water = 5)
 
-/datum/chemical_reaction/soysauce
+/*/datum/chemical_reaction/soysauce
 	name = "Soy Sauce"
 	id = /datum/reagent/consumable/soysauce
 	results = list(/datum/reagent/consumable/soysauce = 5)
@@ -74,7 +76,7 @@
 	id = /datum/reagent/consumable/corn_syrup
 	results = list(/datum/reagent/consumable/corn_syrup = 5)
 	required_reagents = list(/datum/reagent/consumable/corn_starch = 1, /datum/reagent/toxin/acid = 1)
-	required_temp = 374
+	required_temp = 374*/
 
 /datum/chemical_reaction/caramel
 	name = "Caramel"
@@ -84,7 +86,7 @@
 	required_temp = 413.15
 	mob_react = FALSE
 
-/datum/chemical_reaction/caramel_burned
+/*/datum/chemical_reaction/caramel_burned
 	name = "Caramel burned"
 	id = "caramel_burned"
 	results = list(/datum/reagent/carbon = 1)
@@ -176,7 +178,7 @@
 	var/location = get_turf(holder.my_atom)
 	new /obj/item/reagent_containers/food/snacks/salad/ricebowl(location)
 	if(holder && holder.my_atom)
-		qdel(holder.my_atom)
+		qdel(holder.my_atom)*/
 
 /datum/chemical_reaction/nutriconversion
 	name = "Nutriment Conversion"
@@ -185,8 +187,9 @@
 	required_reagents = list(/datum/reagent/consumable/nutriment/ = 0.5)
 	required_catalysts = list(/datum/reagent/medicine/metafactor = 0.5)
 
-/datum/chemical_reaction/bbqsauce
+/*/datum/chemical_reaction/bbqsauce
 	name = "BBQ Sauce"
 	id = /datum/reagent/consumable/bbqsauce
 	results = list(/datum/reagent/consumable/bbqsauce = 5)
 	required_reagents = list(/datum/reagent/ash = 1, /datum/reagent/consumable/tomatojuice = 1, /datum/reagent/medicine/salglu_solution = 3, /datum/reagent/consumable/blackpepper = 1)
+*/

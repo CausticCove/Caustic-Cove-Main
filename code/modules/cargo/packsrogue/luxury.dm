@@ -80,3 +80,14 @@
 	name = "Polishing Kit"
 	cost = 100
 	contains = list(/obj/item/polishing_cream, /obj/item/armor_brush)
+// Ratwood Port Start
+/datum/supply_pack/rogue/luxury/westspice
+	name = "Western Herbs"
+	cost = 50
+	contains = list(/obj/item/reagent_containers/food/snacks/grown/westspice)
+
+/datum/supply_pack/rogue/luxury/eastspice
+	name = "Eastern Spices"
+	cost = 200
+	contains = list(/obj/item/reagent_containers/food/snacks/grown/eastspice)
+// Ratwood Port End

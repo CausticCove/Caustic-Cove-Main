@@ -1,13 +1,9 @@
-// Wole file is essentialy obsolete and should be deleted I guess. TO DO
-/*
-/datum/crafting_recipe/roguetown/cooking/raisins
-	name = "raisins"
-	reqs = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1)
-	parts = list(
-		/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1)
-	result = /obj/item/reagent_containers/food/snacks/rogue/raisins
-	structurecraft = /obj/structure/fluff/dryingrack
-	req_table = FALSE
-	craftdiff = 0
-	subtype_reqs = TRUE
-*/
+/datum/crafting_recipe/roguetown/cooking/cucumberjar
+	name = "jar cucumbers"
+	reqs = list(
+		/obj/item/reagent_containers/powder/salt = 1,
+		/datum/reagent/water = 10,
+		/obj/item/reagent_containers/food/snacks/grown/cucumber = 4,
+		/obj/item/reagent_containers/glass/bottle = 1)
+	result = /obj/item/reagent_containers/food/snacks/grown/cucumberjar
+	craftdiff = 1

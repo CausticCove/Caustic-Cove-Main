@@ -81,7 +81,7 @@
 	tastes = list("cobwebs" = 1)
 	foodtype = MEAT | TOXIC
 
-/obj/item/reagent_containers/food/snacks/cornedbeef
+/*/obj/item/reagent_containers/food/snacks/cornedbeef
 	name = "corned beef and cabbage"
 	desc = ""
 	icon_state = "cornedbeef"
@@ -89,7 +89,7 @@
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 4)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5)
 	tastes = list("meat" = 1, "cabbage" = 1)
-	foodtype = MEAT | VEGETABLES
+	foodtype = MEAT | VEGETABLES*/
 
 /obj/item/reagent_containers/food/snacks/bearsteak
 	name = "Filet migrawr"

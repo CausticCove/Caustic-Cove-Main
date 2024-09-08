@@ -584,7 +584,7 @@
 	tastes = list("cake" = 3, "blue cherry" = 1)
 	foodtype = GRAIN | FRUIT | SUGAR
 
-/obj/item/reagent_containers/food/snacks/honeybun
+/*/obj/item/reagent_containers/food/snacks/honeybun
 	name = "honey bun"
 	desc = ""
 	icon_state = "honeybun"
@@ -592,7 +592,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/honey = 5)
 	filling_color = "#F2CE91"
 	tastes = list("pastry" = 1, "sweetness" = 1)
-	foodtype = GRAIN | SUGAR
+	foodtype = GRAIN | SUGAR*/
 
 #define PANCAKE_MAX_STACK 10
 

@@ -189,10 +189,7 @@
 		else
 			say("Not enough!")
 			return
-		var/shoplength = PA.contains.len
-		var/l
-		for(l=1,l<=shoplength,l++)
-			var/pathi = pick(PA.contains)
+		for(var/pathi in PA.contains)
 			var/obj/item/I = new pathi(get_turf(M))
 			if(shoplength == 1)
 				M.put_in_hands(I)
