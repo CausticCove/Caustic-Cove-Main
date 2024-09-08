@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		else
 			GLOB.lordsurname = "of [L.real_name]"
 		SSticker.rulermob = L
-		to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Monarch of Azure Peak.</span></span></b>")
+		to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Monarch of Caustic Cove.</span></span></b>")
 		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 
 /datum/outfit/job/roguetown/lord/pre_equip(mob/living/carbon/human/H)
