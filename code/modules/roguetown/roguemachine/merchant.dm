@@ -191,8 +191,7 @@
 			return
 		for(var/pathi in PA.contains)
 			var/obj/item/I = new pathi(get_turf(M))
-			if(shoplength == 1)
-				M.put_in_hands(I)
+			M.put_in_hands(I)
 		qdel(PA)
 	if(href_list["change"])
 		if(budget > 0)

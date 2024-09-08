@@ -127,7 +127,7 @@
 
 /obj/item/organ/testicles
 	name = "testicles"
-	icon_state = "testicles
+	icon_state = "testicles"
 	visible_organ = TRUE
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_TESTICLES

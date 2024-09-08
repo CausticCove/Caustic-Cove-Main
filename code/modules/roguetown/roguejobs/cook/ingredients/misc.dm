@@ -87,7 +87,8 @@
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
 	become_rot_type = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged
-	baitchance = 100
+	isbait = TRUE
+	baitpenalty = 10 
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 10,
 					/obj/item/reagent_containers/food/snacks/fish/eel = 5,
 					/obj/item/reagent_containers/food/snacks/fish/angler = 1)
@@ -115,7 +116,8 @@
 	slices_num = null
 	slice_path = null
 	become_rot_type = null
-	baitchance = 100
+	isbait = TRUE
+	baitpenalty = 10
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 10,
 					/obj/item/reagent_containers/food/snacks/fish/eel = 5)
 
@@ -135,7 +137,8 @@
 	icon_state = "honey"
 	bitesize = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/honey = 5)
-	grind_results = list(/datum/reagent/consumable/honey = 10)	w_class = WEIGHT_CLASS_TINY
+	grind_results = list(/datum/reagent/consumable/honey = 10)
+	w_class = WEIGHT_CLASS_TINY
 	tastes = list("sweetness and light" = 1)
 	eat_effect = null
 	rotprocess = null
@@ -192,6 +195,7 @@
 	name = "jar of pickling cucumbers"
 	desc = "A jar of cucumbers that is currently pickling. Don't eat them until they're ready!"
 	bitesize = 0 
+	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "cucumberjar"
 	rotprocess = 20 MINUTES
 	become_rot_type = /obj/item/storage/belt/rogue/pickles
