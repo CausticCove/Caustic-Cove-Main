@@ -11,7 +11,6 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked
 	slices_num = 0
 	bitesize = 5
-	var/stunning = FALSE
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked
@@ -28,25 +27,6 @@
 	. = ..()
 	if(!.) //if we're not being caught
 		splat(hit_atom)
-
-/obj/item/reagent_containers/food/snacks/rogue/pie/proc/splat(atom/movable/hit_atom)
-	if(isliving(loc)) //someone caught us!
-		return
-	var/turf/T = get_turf(hit_atom)
-	new/obj/effect/decal/cleanable/food/pie_smudge(T)
-	if(reagents && reagents.total_volume)
-		reagents.reaction(hit_atom, TOUCH)
-	if(isliving(hit_atom))
-		var/mob/living/L = hit_atom
-		if(stunning)
-			L.Paralyze(20) //splat!
-		L.adjust_blurriness(1)
-		L.visible_message(span_warning("[L] is hit by [src]!"), span_danger("I'm hit by [src]!"))
-	if(is_type_in_typecache(hit_atom, GLOB.creamable))
-		hit_atom.AddComponent(/datum/component/creamed, src)
-	qdel(src)
-
-
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/CheckParts(list/parts_list)
 	..()

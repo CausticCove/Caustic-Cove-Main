@@ -232,7 +232,7 @@
 	grind_results = list(/datum/reagent/drug/space_drugs = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
 
-/obj/item/reagent_containers/food/snacks/grown/onion/rogue
+/obj/item/reagent_containers/food/snacks/grown/onion
 	name = "onion"
 	desc = ""
 	icon_state = "onion"
@@ -245,7 +245,7 @@
 	rotprocess = null
 	seed = /obj/item/seeds/onion
 
-/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
+/obj/item/reagent_containers/food/snacks/grown/cabbage
 	name = "cabbage"
 	desc = ""
 	icon_state = "cabbage"
@@ -257,7 +257,7 @@
 	rotprocess = SHELFLIFE_LONG
 	seed = /obj/item/seeds/cabbage
 
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue
+/obj/item/reagent_containers/food/snacks/grown/potato
 	name = "potato"
 	desc = ""
 	icon_state = "potato"

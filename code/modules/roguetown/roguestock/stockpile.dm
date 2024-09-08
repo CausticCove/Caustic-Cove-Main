@@ -227,7 +227,7 @@
 /datum/roguestock/stockpile/onion
 	name = "Onion"
 	desc = "A bulb vegetable."
-	item_type = /obj/item/reagent_containers/food/snacks/grown/onion/rogue
+	item_type = /obj/item/reagent_containers/food/snacks/grown/onion
 	held_items = list(0, 0)
 	payout_price = 2
 	withdraw_price = 3
@@ -239,7 +239,7 @@
 /datum/roguestock/stockpile/cabbage
 	name = "Cabbage"
 	desc = "A leafy vegetable."
-	item_type = /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
+	item_type = /obj/item/reagent_containers/food/snacks/grown/cabbage
 	held_items = list(0, 0)
 	payout_price = 2
 	withdraw_price = 3
@@ -251,7 +251,7 @@
 /datum/roguestock/stockpile/potato
 	name = "Potato"
 	desc = "An interesting tuber."
-	item_type = /obj/item/reagent_containers/food/snacks/grown/potato/rogue
+	item_type = /obj/item/reagent_containers/food/snacks/grown/potato
 	held_items = list(0, 0)
 	payout_price = 2
 	withdraw_price = 3

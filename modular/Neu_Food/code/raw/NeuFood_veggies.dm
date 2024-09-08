@@ -7,7 +7,7 @@
 
 
 /*	..................   Onions   ................... */
-/obj/item/reagent_containers/food/snacks/grown/onion/rogue
+/obj/item/reagent_containers/food/snacks/grown/onion
 	desc = "A wonderful vegetable with many layers and broad flavor profile."
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced
 	tastes = list("onion" = 1)
@@ -22,7 +22,7 @@
 
 
 /*	..................   Cabbage   ................... */
-/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
+/obj/item/reagent_containers/food/snacks/grown/cabbage
 	desc = "A dense leafed vegetable, crunchy and ripe. A symbol of prosperity for elves."
 	slices_num = 3
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced
@@ -37,7 +37,7 @@
 
 
 /*	..................   Potato   ................... */
-/obj/item/reagent_containers/food/snacks/grown/potato/rogue
+/obj/item/reagent_containers/food/snacks/grown/potato
 	desc = "A spud, dwarven icon of growth."
 	eat_effect = null
 	slices_num = 1
