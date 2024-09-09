@@ -4,6 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/necromancer
+	maximum_possible_slots = 3
 	pickprob = 30
 	traits_applied = list(TRAIT_ZOMBIE_IMMUNE)
 	category_tags = list(CTAG_DISABLED)
