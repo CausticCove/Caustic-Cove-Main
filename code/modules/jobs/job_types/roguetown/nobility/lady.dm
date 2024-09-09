@@ -62,6 +62,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		belt = /obj/item/storage/belt/rogue/leather
+		beltl = /obj/item/keyring/royal
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 		backr = /obj/item/storage/backpack/rogue/satchel
 		id = /obj/item/clothing/ring/silver
@@ -74,6 +75,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.change_stat("intelligence", 3)
 		H.change_stat("endurance", 3)
 		H.change_stat("speed", 2)

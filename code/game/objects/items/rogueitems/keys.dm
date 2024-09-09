@@ -47,7 +47,7 @@
 	name = "Royal Key"
 	desc = "The Key to the royal chambers. It even feels pretentious."
 	icon_state = "ekey"
-	lockid = "royal"
+	lockid = "lord"
 
 /obj/item/roguekey/manor
 	name = "manor key"
