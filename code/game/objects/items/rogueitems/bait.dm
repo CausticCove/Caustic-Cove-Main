@@ -104,4 +104,6 @@
 	desc = "Imagine if vampires got attracted to those!"
 	icon_state = "baitb"
 	attracted_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 20,
-						/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 10)
+						/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 10,
+						/mob/living/simple_animal/hostile/retaliate/rogue/spider = 10,
+						/mob/living/simple_animal/hostile/retaliate/rogue/bogtroll = 5)

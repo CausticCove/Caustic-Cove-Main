@@ -141,6 +141,11 @@
 		fertilize_amount = 150
 	else if (istype(attacking_item, /obj/item/compost))
 		fertilize_amount = 150
+	else if (istype(attacking_item, /obj/item/fertilizer)) // Hearthstone Port
+		to_chat(user, span_notice("Something about this mixture..."))
+		fertilize_soil()
+		qdel(attacking_item)
+		return TRUE
 	if(fertilize_amount > 0)
 		if(nutrition >= MAX_PLANT_NUTRITION * 0.8)
 			to_chat(user, span_warning("The soil is already fertilized!"))
@@ -272,6 +277,16 @@
 	if(plant)
 		add_growth(2 MINUTES)
 
+/obj/structure/soil/proc/fertilize_soil()
+	blessed_time = 60 MINUTES //Meant to outlast the effects of dendor's blessing
+	
+	// Similar effects on nutrition
+	if(nutrition < 100)
+		adjust_nutrition(max(100 - nutrition, 0))
+	// Similar effects on water
+	if(water < 100)
+		adjust_water(max(100 - water, 0))
+	//No growth bonus nor plant revival.
 /obj/structure/soil/proc/adjust_water(adjust_amount)
 	water = clamp(water + adjust_amount, 0, MAX_PLANT_WATER)
 	update_icon()

@@ -41,6 +41,8 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 1)
 
+	beltl = /obj/item/roguekey/farm
+
 	if(H.pronouns == SHE_HER)
 		head = /obj/item/clothing/head/roguetown/armingcap
 //		pants = /obj/item/clothing/under/roguetown/trou
