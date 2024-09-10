@@ -5,6 +5,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/barbarian
+	maximum_possible_slots = 3
 	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STEELHEARTED)
 	cmode_music = 'sound/music/combat_gronn.ogg'
 	category_tags = list(CTAG_ADVENTURER)

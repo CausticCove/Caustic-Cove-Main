@@ -122,6 +122,30 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/reagent_containers/glass/bucket/pot
 
+/datum/anvil_recipe/tools/iron_arm_left
+	name = "Iron arm (L) (+1 Cog)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/bodypart/l_arm/rprosthetic/iron
+	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
+/datum/anvil_recipe/tools/iron_arm_right
+	name = "Iron arm (R) (+1 Cog)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/bodypart/r_arm/rprosthetic/iron
+	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
+/datum/anvil_recipe/tools/iron_leg_left
+	name = "Iron leg (L) (+1 Cog)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/bodypart/l_leg/rprosthetic/iron
+	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
+/datum/anvil_recipe/tools/iron_leg_right
+	name = "Iron leg (R) (+1 Cog)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/bodypart/r_leg/rprosthetic/iron
+	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 // --------- Steel -----------
 
 /datum/anvil_recipe/tools/steelpick
@@ -182,6 +206,31 @@
 	created_item = list(/obj/item/roguegear, /obj/item/roguegear, /obj/item/roguegear)
 	i_type = "General"
 
+/datum/anvil_recipe/tools/steel_arm_left
+	name = "Steel arm (L) (+1 Cog)"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/bodypart/l_arm/rprosthetic/steel
+	additional_items = list(/obj/item/roguegear)
+
+/datum/anvil_recipe/tools/steel_arm_right
+	name = "Steel arm (R) (+1 Cog)"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/bodypart/r_arm/rprosthetic/steel
+	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
+
+/datum/anvil_recipe/tools/steel_leg_left
+	name = "Steel leg (L) (+1 Cog)"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/bodypart/l_leg/rprosthetic/steel
+	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
+/datum/anvil_recipe/tools/steel_leg_right
+	name = "Steel leg (R) (+1 Cog)"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/bodypart/r_leg/rprosthetic/steel
+	additional_items = list(/obj/item/roguegear)
+	i_type = "General"
 // --------- SILVER -----------
 
 /datum/anvil_recipe/tools/cupssil
@@ -196,4 +245,29 @@
 	name = "Goblets 3x"
 	req_bar = /obj/item/ingot/gold
 	created_item = list(/obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden)
+	i_type = "General"
+
+/datum/anvil_recipe/tools/clock_arm_left
+	name = "Clockwork arm (L) (+2 Cogs)"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/bodypart/l_arm/rprosthetic/clock
+	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
+	i_type = "General"
+/datum/anvil_recipe/tools/clock_arm_right
+	name = "Clockwork arm (R) (+2 Cogs)"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/bodypart/r_arm/rprosthetic/clock
+	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
+	i_type = "General"
+/datum/anvil_recipe/tools/clock_leg_left
+	name = "Clockwork leg (L) (+2 Cogs)"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/bodypart/l_leg/rprosthetic/clock
+	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
+	i_type = "General"
+/datum/anvil_recipe/tools/clock_leg_right
+	name = "Clockwork leg (R) (+2 Cogs)"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/bodypart/r_leg/rprosthetic/clock
+	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
 	i_type = "General"

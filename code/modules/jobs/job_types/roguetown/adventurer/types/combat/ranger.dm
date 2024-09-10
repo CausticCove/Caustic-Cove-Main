@@ -4,6 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/ranger
+	maximum_possible_slots = 3
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_ADVENTURER)
 
