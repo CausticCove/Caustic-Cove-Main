@@ -200,8 +200,8 @@
 	if(cmode_music)
 		H.cmode_music = cmode_music
 
-	if(!H.mind.special_role)
-		GLOB.actors_list[H.mobid] = "[H.real_name] as [H.mind.assigned_role]<BR>"
+//	if(!H.mind.special_role)
+//		GLOB.actors_list[H.mobid] = "[H.real_name] as [H.mind.assigned_role]<BR>"
 
 /mob/living/carbon/human/proc/add_credit()
 	if(!mind || !client)
