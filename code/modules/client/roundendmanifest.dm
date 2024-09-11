@@ -8,10 +8,10 @@
 	popup.set_content(dat)
 	popup.open(FALSE)
 
-/client/proc/view_actors_manifest()
-	var/dat
-	for(var/X in GLOB.actors_list)
-		dat += "[GLOB.actors_list[X]]"
+///client/proc/view_actors_manifest()
+//	var/dat
+//	for(var/X in GLOB.actors_list)
+//		dat += "[GLOB.actors_list[X]]"
 
 	var/datum/browser/popup = new(src, "actors", "<center>This Story's Actors</center>", 387, 420)
 	popup.set_content(dat)
