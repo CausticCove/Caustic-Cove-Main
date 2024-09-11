@@ -2041,9 +2041,9 @@ Slots: [job.spawn_positions]</span>
 					migrant.show_ui()
 					return
 
-				if("manifest")
-					parent.view_actors_manifest()
-					return
+//				if("manifest")
+//					parent.view_actors_manifest()
+//					return
 
 //				if("observe")
 //					var/mob/dead/new_player/P = user
