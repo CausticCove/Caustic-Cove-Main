@@ -82,7 +82,7 @@
 		/datum/language/common,
 		/datum/language/draconic
 	)
-	stress_examine = TRUE
+	stress_examine = FALSE
 	stress_desc = span_red("Thieving little kobold...")
 	descriptor_choices = list(
 		/datum/descriptor_choice/height,
