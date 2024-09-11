@@ -13,7 +13,9 @@ GLOBAL_LIST_INIT(character_accents, list("No accent",
 	"Hissy accent",
 	"Inzectoid accent",
 	"Feline accent",
-	"Slopes accent"))
+	"Slopes accent",
+	"Axian accent",
+	"Lupian accent"))
 
 /mob/living/carbon/human
 	var/char_accent = "No accent"
