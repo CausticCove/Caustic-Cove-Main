@@ -218,7 +218,7 @@
 	return TRUE
 
 /datum/reagent/medicine/C2/multiver //enhanced with MULTIple medicines
-	name = "Multiver"
+	name = "Charcoal"
 	description = "A chem-purger that becomes more effective the more unique medicines present. Slightly heals toxicity but causes lung damage (mitigatable by unique medicines)."
 
 /datum/reagent/medicine/C2/multiver/on_mob_life(mob/living/carbon/human/M)
@@ -235,7 +235,7 @@
 			continue
 		var/amount2purge = 0.1
 		if(istype(the_reagent2,/datum/reagent/toxin) || istype(the_reagent2,/datum/reagent/consumable/ethanol/))
-			amount2purge *= (5*medibonus) //very good antitox and antidrink (well just removing them) for roundstart availability
+			amount2purge *= (2.5*medibonus) //very good antitox and antidrink (well just removing them) for roundstart availability
 		else if(medibonus >= 5 && istype(the_reagent2, /datum/reagent/medicine)) //5 unique meds (4+multiver) will make it not purge medicines
 			continue
 		M.reagents.remove_reagent(the_reagent2.type, amount2purge)
