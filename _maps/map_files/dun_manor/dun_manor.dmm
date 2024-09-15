@@ -493,7 +493,7 @@
 "dGH" = (/obj/structure/mineral_door/bars{lockid = "manor"},/turf/open/floor/rogue/cobble,/area/rogue/under/town/basement)
 "dGX" = (/obj/effect/decal/cobbleedge,/turf/open/floor/rogue/blocks,/area/rogue/indoors/town)
 "dHl" = (/turf/open/floor/rogue/blocks/stonered/tiny,/area/rogue/indoors/town)
-"dHr" = (/obj/structure/closet/crate/chest{name = "house keys"},/obj/item/roguekey/houses/house1,/obj/item/roguekey/houses/house2,/obj/item/roguekey/houses/house3,/obj/item/roguekey/houses/house4,/obj/item/roguekey/houses/house5,/obj/item/roguekey/houses/house6,/turf/open/floor/rogue/tile/tilerg,/area/rogue/indoors)
+"dHr" = (/obj/structure/closet/crate/chest,/turf/open/floor/rogue/tile/tilerg,/area/rogue/indoors)
 "dHC" = (/obj/structure/fluff/walldeco/psybanner{pixel_y = 29},/obj/structure/closet/crate/drawer,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/town/church/chapel)
 "dHE" = (/obj/machinery/light/rogue/wallfire/candle,/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/indoors)
 "dIf" = (/turf/closed/wall/mineral/rogue/stone,/area/rogue/under/town/basement)
