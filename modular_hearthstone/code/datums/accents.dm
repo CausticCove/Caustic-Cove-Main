@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(character_accents, list("No accent",
 	"Hissy accent",
 	"Inzectoid accent",
 	"Feline accent",
-	"Slopes accent".
+	"Slopes accent",
 	"Axian pirate accent",
 	"Lupian accent"))
 
