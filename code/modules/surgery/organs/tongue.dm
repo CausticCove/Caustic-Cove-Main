@@ -17,7 +17,7 @@
 		/datum/language/hellspeak,
 		/datum/language/beast,
 		/datum/language/orcish,
-		/datum/language/draconic
+		/datum/language/draconic,
 		/datum/language/canilunzt
 	))
 
