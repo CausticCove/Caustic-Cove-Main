@@ -87,4 +87,3 @@
 		arrows += A
 	update_icon()
 */
-
