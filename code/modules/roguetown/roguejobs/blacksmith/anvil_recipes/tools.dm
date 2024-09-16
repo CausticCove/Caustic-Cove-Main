@@ -211,7 +211,7 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/bodypart/l_arm/rprosthetic/steel
 	additional_items = list(/obj/item/roguegear)
-
+	i_type = "General"
 /datum/anvil_recipe/tools/steel_arm_right
 	name = "Steel arm (R) (+1 Cog)"
 	req_bar = /obj/item/ingot/steel
