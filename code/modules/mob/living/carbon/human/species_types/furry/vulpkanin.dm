@@ -99,7 +99,7 @@
 		/datum/descriptor_choice/prominent_three,
 		/datum/descriptor_choice/prominent_four,
 	)
-languages = list(
+	languages = list(
 		/datum/language/common,
 		/datum/language/canilunzt
 	)
