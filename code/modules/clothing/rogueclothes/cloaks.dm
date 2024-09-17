@@ -47,12 +47,14 @@
 		return
 	if(world.time > (the_time + 30 SECONDS))
 		return
+	var/symbol_chosen = FALSE
 	if(design == "Symbol")
 		design = null
 		design = input(user, "Select a symbol.","Tabard Design") as null|anything in list("chalice","psy","peace","z","imp","skull","widow","arrow")
 		if(!design)
 			return
 		design = "_[design]"
+		symbol_chosen = TRUE
 	var/colorone = input(user, "Select a primary color.","Tabard Design") as null|anything in CLOTHING_COLOR_NAMES
 	if(!colorone)
 		return
@@ -75,6 +77,7 @@
 			detail_tag = "_box"
 		if("Diamonds")
 			detail_tag = "_dim"
+	boobed_detail = symbol_chosen
 	color = clothing_color2hex(colorone)
 	if(colortwo)
 		detail_color = clothing_color2hex(colortwo)
@@ -103,6 +106,7 @@
 /obj/item/clothing/cloak/tabard/crusader
 	detail_tag = "_psy"
 	detail_color = CLOTHING_RED
+	boobed_detail = FALSE
 
 /obj/item/clothing/cloak/tabard/crusader/Initialize()
 	..()
@@ -145,6 +149,14 @@
 	color = "#9B7538"
 	detail_color = CLOTHING_WHITE
 
+/obj/item/clothing/cloak/tabard/crusader/ravox
+	color = CLOTHING_RED
+	detail_color = CLOTHING_BLACK
+
+/obj/item/clothing/cloak/tabard/crusader/malum
+	color = CLOTHING_RED
+	detail_color = CLOTHING_YELLOW
+
 /obj/item/clothing/cloak/tabard/crusader/dendor
 	color = "#4B5637"
 	detail_color = "#3D1D1C"
@@ -160,6 +172,10 @@
 /obj/item/clothing/cloak/tabard/crusader/noc
 	color = "#2C2231"
 	detail_color = "#9AB0B0"
+
+/obj/item/clothing/cloak/tabard/crusader/psydon
+	color = CLOTHING_BLACK
+	detail_color = CLOTHING_WHITE
 
 //Eora content from Stonekeep
 
@@ -769,6 +785,11 @@
 
 /obj/item/clothing/cloak/raincloak/furcloak/black
 	color = "#66564d"
+
+/obj/item/clothing/cloak/raincloak/furcloak/woad
+	name = "Warden's fur cloak"
+	desc = "Usually sewn by the very wardens that wear them, this hue of blue is made to alart denizens of the forest to their presence."
+	color = "#597fb9"
 
 /obj/item/clothing/head/hooded/rainhood/furhood
 	icon_state = "fur_hood"

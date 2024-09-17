@@ -122,11 +122,13 @@
 
 /obj/item/keyring/proc/update_desc()
 	if(keys.len)
-		desc = span_info("Holds \Roman[keys.len] key\s, including:")
+		desc = initial(desc)
+		desc += span_info("\nHolds \Roman[keys.len] key\s, including:")
 		for(var/obj/item/roguekey/KE in keys)
 			desc += span_info("\n- [KE.name ? "A [KE.name]." : "An unknown key."]")
 	else
-		desc = ""
+		desc = initial(desc)
+
 
 /obj/item/keyring/sheriff
 	keys = list(/obj/item/roguekey/sheriff, /obj/item/roguekey/dungeon, /obj/item/roguekey/garrison, /obj/item/roguekey/walls, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard)

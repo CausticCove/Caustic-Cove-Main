@@ -1,4 +1,5 @@
 
+
 /obj/item/clothing/gloves/roguetown
 	slot_flags = ITEM_SLOT_GLOVES
 	body_parts_covered = HANDS

@@ -4,6 +4,7 @@
 	overlay_state = "howl"
 	antimagic_allowed = TRUE
 	charge_max = 600 //1 minute
+	ignore_cockblock = TRUE
 
 /obj/effect/proc_holder/spell/self/howl/cast(mob/user = usr)
 	..()
@@ -38,6 +39,7 @@
 	overlay_state = "claws"
 	antimagic_allowed = TRUE
 	charge_max = 20 //2 seconds
+	ignore_cockblock = TRUE
 	var/extended = FALSE
 
 /obj/effect/proc_holder/spell/self/claws/cast(mob/user = usr)

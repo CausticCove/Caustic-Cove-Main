@@ -1,7 +1,8 @@
 GLOBAL_LIST_INIT(ghost_verbs, list(
 	/client/proc/ghost_up,
 	/client/proc/ghost_down,
-	/client/proc/descend
+	/client/proc/descend,
+	/client/proc/reenter_corpse
 	))
 
 /client/proc/ghost_up()
@@ -52,6 +53,14 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 			verbs -= GLOB.ghost_verbs
 		if("No")
 			usr << "You have second thoughts."	
+
+
+/client/proc/reenter_corpse()
+	set category = "Spirit"
+	set name = "Reenter Corpse"
+	if(isobserver(mob))
+		var/mob/dead/observer/O = mob
+		O.reenter_corpse()
 
 /mob/verb/returntolobby()
 	set name = "{RETURN TO LOBBY}"
