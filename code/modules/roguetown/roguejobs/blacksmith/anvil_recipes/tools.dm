@@ -118,7 +118,7 @@
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/pot
-	name = "Pot"
+	name = "Metal Pot"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/reagent_containers/glass/bucket/pot
 

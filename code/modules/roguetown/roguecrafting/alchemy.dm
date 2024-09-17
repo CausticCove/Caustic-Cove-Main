@@ -12,6 +12,12 @@
 	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /obj/item/ash = 2, /obj/item/rogueore/coal = 1, /obj/item/natural/cloth = 1)
 	craftdiff = 4
 
+/datum/crafting_recipe/roguetown/alchemy/thermometer
+	name = "Thermoscope"
+	result = list(/obj/item/thermometer)
+	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /datum/reagent/mercury = 5)
+	craftdiff = 2
+
 /datum/crafting_recipe/roguetown/alchemy/ozium
 	name = "Ozium"
 	result = list(/obj/item/reagent_containers/powder/ozium)

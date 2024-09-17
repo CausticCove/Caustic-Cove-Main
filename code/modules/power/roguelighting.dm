@@ -877,7 +877,7 @@
 						food = C
 			if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
 				if(attachment.reagents)
-					attachment.reagents.expose_temperature(400, 0.033)
+					attachment.reagents.expose_temperature(1000, 0.033)
 					if(attachment.reagents.chem_temp > 374)
 						boilloop.start()
 					else

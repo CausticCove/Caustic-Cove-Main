@@ -203,6 +203,17 @@
 	id = "sleepytime"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/vamp_dreams
 
+/datum/status_effect/debuff/goblingas
+	id = "goblingas"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/goblingas
+	effectedstats = list("intelligence" = -3, "endurance" = -3)
+	duration = 40 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/goblingas
+	name = "Goblin Brained"
+	desc = "My entire body's going numb..."
+	icon_state = "fentanyl"
+
 /atom/movable/screen/alert/status_effect/debuff/vamp_dreams
 	name = "Insight"
 	desc = "With some sleep in a coffin I feel like I could become better."

@@ -11,6 +11,7 @@
 	slot_flags = null
 	item_state = "pot"
 	drop_sound = 'sound/foley/dropsound/shovel_drop.ogg'
+	obj_flags = CAN_BE_HIT
 	w_class = WEIGHT_CLASS_BULKY
 	reagent_flags = OPENCONTAINER
 	throwforce = 10
