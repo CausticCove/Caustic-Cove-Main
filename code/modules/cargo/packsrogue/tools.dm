@@ -110,7 +110,7 @@
 /datum/supply_pack/rogue/tools/prarmr
 	name = "Prosthetic Arm (R)"
 	cost = 55
-	contains = list(/obj/item/bodypart/r_arm/rprosthetic/steel
+	contains = list(/obj/item/bodypart/r_arm/rprosthetic/steel)
 
 /datum/supply_pack/rogue/tools/waterskin
 	name = "Waterskin"
