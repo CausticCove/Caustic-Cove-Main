@@ -21,32 +21,22 @@
 	. = ..()
 
 /obj/machinery/light/rogue/forge/attackby(obj/item/W, mob/living/user, params)
-
 	if(!attachment)
 		if(istype(W, /obj/item/cooking/pan) || istype(W, /obj/item/reagent_containers/glass/bucket/pot))
 			attachment = W
 			W.forceMove(src)
 			update_icon()
 			return
-	else
-		if(istype(W, /obj/item/rogueweapon/tongs) && on)
-			var/obj/item/rogueweapon/tongs/T = W
-			if(T.hingot)
-				var/tyme = world.time
-				T.hott = tyme
-				addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 100)
-				T.update_icon()
-				user.visible_message(span_info("[user] heats the bar."))
-				var/obj/item/rogueweapon/tongs/heldstuff = user.get_active_held_item()
-				if(istype(heldstuff, /obj/item/rogueweapon/tongs/stone))
-					heldstuff.obj_integrity -= 1
-					if(heldstuff.obj_integrity <= 0)
-						heldstuff.hingot.forceMove(get_turf(user))
-						heldstuff.hingot = null
-						heldstuff.hott = FALSE
-						heldstuff.obj_break()
+	if(istype(W, /obj/item/rogueweapon/tongs) && on)
+		var/obj/item/rogueweapon/tongs/T = W
+		if(T.hingot)
+			var/tyme = world.time
+			T.hott = tyme
+			addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 100)
+			T.update_icon()
+			user.visible_message(span_info("[user] heats the bar."))
 			return
-		
+	else
 		if(istype(attachment, /obj/item/cooking/pan))
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
 				var/obj/item/reagent_containers/food/snacks/S = W
@@ -94,7 +84,7 @@
 				I.pixel_x = 0
 				I.pixel_y = 0
 				add_overlay(new /mutable_appearance(I))
-
+	
 /obj/machinery/light/rogue/forge/attack_hand(mob/user)
 	. = ..()
 	if(.)
