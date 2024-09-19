@@ -35,6 +35,10 @@
 			return strings("feline_replacement.json", type)
 		if("Slopes accent")
 			return strings("welsh_replacement.json", type)
+		if("Axian pirate accent")
+			return strings("pirate_replacement.json", type)
+		if("Lupian accent")
+			return strings("czech_replacement.json", type)
 
 /datum/species/proc/get_accent(mob/living/carbon/human/H)
 	return get_accent_list(H,"full")
