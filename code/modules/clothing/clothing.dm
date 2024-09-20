@@ -67,7 +67,8 @@
 	var/detail_tag
 	var/detail_color
 	var/boobed_detail = TRUE
-	
+	var/sleeved_detail = TRUE
+
 /obj/item/clothing/New()
 	..()
 	if(armor_class)
