@@ -103,5 +103,5 @@
 			return CLOTHING_ORANGE
 		if("Majenta")
 			return CLOTHING_MAJENTA
-				if("Azure")
+		if("Azure")
 			return CLOTHING_AZURE
