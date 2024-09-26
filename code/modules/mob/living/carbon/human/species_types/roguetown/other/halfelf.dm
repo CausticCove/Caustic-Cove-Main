@@ -75,6 +75,11 @@
 		/datum/body_marking/tonage,
 	)
 
+	languages = list(
+		/datum/language/common,
+		/datum/language/elvish
+	)
+	
 /datum/species/human/halfelf/get_skin_list()
 	return list(
 		"Timber-Gronn" = SKIN_COLOR_TIMBER_GRONN,
