@@ -231,6 +231,11 @@
 	icon_state = "bardhat"
 	sewrepair = TRUE
 
+/obj/item/clothing/head/roguetown/smokingcap
+	name = "smoking cap"
+	icon_state = "smokingc"
+	sewrepair = TRUE
+
 /obj/item/clothing/head/roguetown/fancyhat
 	name = "fancy hat"
 	desc = "A fancy looking hat with colorful feathers sticking out of it."
@@ -240,8 +245,8 @@
 
 /obj/item/clothing/head/roguetown/hatfur
 	name = "fur hat"
-	icon_state = "hatfur"
 	desc = "A comfortable warm hat lined with fur."
+	icon_state = "hatfur"
 	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/papakha
@@ -331,8 +336,8 @@
 
 /obj/item/clothing/head/roguetown/knitcap
 	name = "knit cap"
-	icon_state = "knitcap"
 	desc = "A simple knitted cap."
+	icon_state = "knitcap"
 	sewrepair = TRUE
 	//dropshrink = 0.75
 
@@ -352,7 +357,7 @@
 	color = CLOTHING_RED
 
 /obj/item/clothing/head/roguetown/crown/serpcrown
-	name = "crown of caustic cove"
+	name = "crown of azure peak"
 	desc = ""
 	icon_state = "serpcrown"
 	//dropshrink = 0
@@ -366,7 +371,7 @@
 	SSroguemachine.crown = src
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
-	src.visible_message(span_warning("The Crown of Caustic Cove crumbles to dust, the ashes spiriting away in the direction of the Keep."))
+	src.visible_message(span_warning("The Crown of Azure Peak crumbles to dust, the ashes spiriting away in the direction of the Keep."))
 	SSroguemachine.crown = null //Do not harddel.
 	qdel(src) //Anti-stall
 
@@ -438,8 +443,8 @@
 
 /obj/item/clothing/head/roguetown/paddedcap
 	name = "padded cap"
-	icon_state = "armingcap"
 	desc = "A modest arming cap."
+	icon_state = "armingcap"
 	item_state = "armingcap"
 	sleevetype = null
 	sleeved = null
@@ -480,14 +485,14 @@
 
 /obj/item/clothing/head/roguetown/helmet/horned
 	name = "horned cap"
-	icon_state = "hornedcap"
 	desc = "A helmet with two horns poking out of the sides."
+	icon_state = "hornedcap"
 	body_parts_covered = HEAD|HAIR
 
 /obj/item/clothing/head/roguetown/helmet/winged
 	name = "winged cap"
-	icon_state = "wingedcap"
 	desc = "A helmet with two wings on its sides."
+	icon_state = "wingedcap"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	worn_x_dimension = 64
 	worn_y_dimension = 64
@@ -684,8 +689,6 @@
 	icon_state = "nochelm"
 	item_state = "nochelm"
 	emote_environment = 3
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_RIGHT|FOV_LEFT
 	body_parts_covered = HEAD|HAIR|EARS
 	flags_inv = HIDEEARS|HIDEHAIR
 	block2add = FOV_BEHIND
@@ -703,6 +706,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
 	name = "dendor helmet"
+	desc = "Headwear commonly worn by Templars in service to Dendor. Its protrusions almost resemble branches. Take root in the earth, and you will never be moved."
 	icon_state = "dendorhelm"
 	item_state = "dendorhelm"
 	emote_environment = 3
@@ -801,7 +805,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth
 	name = "froggemund helmet"
-	desc = "A tall and imposing frogmouth-style helm popular in the highest plateaus of the Caustic Cove. Covers not just the head, but the neck as well. Add a cloth to show the colors of your family or allegiance."
+	desc = "A tall and imposing frogmouth-style helm popular in the highest plateaus of the Azure Peak. Covers not just the head, but the neck as well. Add a cloth to show the colors of your family or allegiance."
 	icon_state = "frogmouth"
 	item_state = "frogmouth"
 	emote_environment = 3
@@ -976,6 +980,12 @@
 		wise.change_stat("intelligence", -2, "wisehat")
 		to_chat(wise, span_red("I lose wisdom."))
 
+/obj/item/clothing/head/roguetown/witchhat
+	name = "witch hat"
+	desc = ""
+	icon_state = "witch"
+	sewrepair = TRUE
+
 /obj/item/clothing/head/roguetown/physician
 	name = "doctor's hat"
 	desc = "My cure is most effective."
@@ -1003,6 +1013,7 @@
 	dynamic_hair_suffix = ""
 	max_integrity = 150
 	armor = list("blunt" = 15, "slash" = 20, "stab" = 15, "bullet" = 1, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	sewrepair = TRUE
 	var/picked = FALSE
 
 /obj/item/clothing/head/roguetown/grenzelhofthat/attack_right(mob/user)
