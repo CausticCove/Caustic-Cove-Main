@@ -73,6 +73,7 @@
 #define CLOTHING_WHITE			"#ffffff"
 #define CLOTHING_ORANGE			"#bd6606"
 #define CLOTHING_MAJENTA		"#962e5c"
+#define CLOTHING_AZURE			"#007fff"
 
 #define CLOTHING_WET			"#bbbbbb"
 
@@ -102,3 +103,5 @@
 			return CLOTHING_ORANGE
 		if("Majenta")
 			return CLOTHING_MAJENTA
+		if("Azure")
+			return CLOTHING_AZURE
