@@ -71,7 +71,7 @@
 				/obj/item/reagent_containers/powder/health,
 				/obj/item/reagent_containers/powder/health,
 				)
-	reqs = list(/obj/item/ash = 3, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 2, /obj/item/natural/worms/leech = 2)
+	reqs = list(/obj/item/ash = 3, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 3, /obj/item/natural/worms/leech = 2)
 	craftdiff = 4
 
 /// bottle craft
