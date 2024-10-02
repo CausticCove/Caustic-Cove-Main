@@ -26,6 +26,12 @@
 		/datum/sprite_accessory/horns/ram,
 		/datum/sprite_accessory/horns/angler,
 		/datum/sprite_accessory/horns/guilmon,
+		/datum/sprite_accessory/horns/uni,
+		/datum/sprite_accessory/horns/oni,
+		/datum/sprite_accessory/horns/oni_large,
+		/datum/sprite_accessory/horns/broken,
+		/datum/sprite_accessory/horns/rbroken,
+		/datum/sprite_accessory/horns/lbroken,
 		/datum/sprite_accessory/horns/drake,
 		/datum/sprite_accessory/horns/knight,
 		/datum/sprite_accessory/horns/antlers,
@@ -37,9 +43,12 @@
 		/datum/sprite_accessory/horns/smallramhornsalt,
 		/datum/sprite_accessory/horns/smallramhornsthree,
 		/datum/sprite_accessory/horns/liftedhorns,
+		/datum/sprite_accessory/horns/sideswept,
 		/datum/sprite_accessory/horns/bigcurlyhorns,
 		/datum/sprite_accessory/horns/billberry,
 		/datum/sprite_accessory/horns/stabbers,
+		/datum/sprite_accessory/horns/unihorn,
+		/datum/sprite_accessory/horns/longhorns,
 		/datum/sprite_accessory/horns/outstretched,
 		/datum/sprite_accessory/horns/halo,
 		/datum/sprite_accessory/horns/greathorns,
@@ -48,6 +57,7 @@
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
 		/datum/sprite_accessory/horns/doublehorns,
+		/datum/sprite_accessory/horns/tiefling
 		)
 
 /datum/customizer/organ/horns/demihuman
@@ -64,6 +74,12 @@
 		/datum/sprite_accessory/horns/curled,
 		/datum/sprite_accessory/horns/ram,
 		/datum/sprite_accessory/horns/guilmon,
+		/datum/sprite_accessory/horns/uni,
+		/datum/sprite_accessory/horns/oni,
+		/datum/sprite_accessory/horns/oni_large,
+		/datum/sprite_accessory/horns/broken,
+		/datum/sprite_accessory/horns/rbroken,
+		/datum/sprite_accessory/horns/lbroken,
 		/datum/sprite_accessory/horns/drake,
 		/datum/sprite_accessory/horns/knight,
 		/datum/sprite_accessory/horns/antlers,
@@ -75,6 +91,7 @@
 		/datum/sprite_accessory/horns/smallramhornsalt,
 		/datum/sprite_accessory/horns/smallramhornsthree,
 		/datum/sprite_accessory/horns/liftedhorns,
+		/datum/sprite_accessory/horns/sideswept,
 		/datum/sprite_accessory/horns/bigcurlyhorns,
 		/datum/sprite_accessory/horns/billberry,
 		/datum/sprite_accessory/horns/stabbers,
@@ -88,6 +105,7 @@
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
 		/datum/sprite_accessory/horns/doublehorns,
+		/datum/sprite_accessory/horns/tiefling
 		)
 
 /datum/customizer/organ/horns/anthro
@@ -104,6 +122,12 @@
 		/datum/sprite_accessory/horns/curled,
 		/datum/sprite_accessory/horns/ram,
 		/datum/sprite_accessory/horns/guilmon,
+		/datum/sprite_accessory/horns/uni,
+		/datum/sprite_accessory/horns/oni,
+		/datum/sprite_accessory/horns/oni_large,
+		/datum/sprite_accessory/horns/broken,
+		/datum/sprite_accessory/horns/rbroken,
+		/datum/sprite_accessory/horns/lbroken,
 		/datum/sprite_accessory/horns/drake,
 		/datum/sprite_accessory/horns/knight,
 		/datum/sprite_accessory/horns/antlers,
@@ -115,6 +139,7 @@
 		/datum/sprite_accessory/horns/smallramhornsalt,
 		/datum/sprite_accessory/horns/smallramhornsthree,
 		/datum/sprite_accessory/horns/liftedhorns,
+		/datum/sprite_accessory/horns/sideswept,
 		/datum/sprite_accessory/horns/bigcurlyhorns,
 		/datum/sprite_accessory/horns/billberry,
 		/datum/sprite_accessory/horns/stabbers,
@@ -128,4 +153,5 @@
 		/datum/sprite_accessory/horns/faceguard,
 		/datum/sprite_accessory/horns/sheephorns,
 		/datum/sprite_accessory/horns/doublehorns,
+		/datum/sprite_accessory/horns/tiefling
 		)

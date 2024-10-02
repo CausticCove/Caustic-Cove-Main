@@ -15,7 +15,8 @@
 	and leading to most seeking a solitary life outside the watchful eyes of others. \
 	Tiefling cannot reproduce with mortals, and so no half-breed exists. \
 	Tiefling tend to be extremely perceptive and paranoid, as luck is rarely on their side \
-	and their unique biology makes them extremely susceptible to injury."
+	and their unique biology makes them extremely susceptible to injury. \
+	+1 Intelligence."
 
 	skin_tone_wording = "Progenitor"
 
@@ -60,8 +61,8 @@
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TAIL = /obj/item/organ/tail/tiefling,
-		ORGAN_SLOT_HORNS = /obj/item/organ/horns/tiefling,
+		//ORGAN_SLOT_TAIL = /obj/item/organ/tail/tiefling,
+		//ORGAN_SLOT_HORNS = /obj/item/organ/horns/tiefling, We don't need these. No duplicate horns!
 		)
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
@@ -75,19 +76,21 @@
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,
 		/datum/customizer/organ/horns/anthro,
+		/datum/customizer/organ/tail/tiefling,
 		/datum/customizer/organ/testicles/human,
 		/datum/customizer/organ/penis/human,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
 		/datum/body_marking/tonage,
 	)
 	languages = list(
 		/datum/language/common,
 		/datum/language/hellspeak,
 	)
-	stress_examine = FALSE
+	stress_examine = TRUE
 	stress_desc = span_red("Helldweller... better stay away.")
 
 /datum/species/tieberian/on_species_gain(mob/living/carbon/C, datum/species/old_species)
