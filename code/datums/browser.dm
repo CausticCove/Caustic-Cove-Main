@@ -59,11 +59,11 @@
 		stylesheets[asset_name] = file
 
 		if (!SSassets.cache[asset_name])
-			register_asset(asset_name, file)
+			SSassets.transport.register_asset(asset_name, file)
 
 /datum/browser/proc/add_script(name, file)
 	scripts["[ckey(name)].js"] = file
-	register_asset("[ckey(name)].js", file)
+	SSassets.transport.register_asset("[ckey(name)].js", file)
 
 /datum/browser/proc/set_content(ncontent)
 	content = ncontent
@@ -119,9 +119,9 @@
 	if (width && height)
 		window_size = "size=[width]x[height];"
 	if (stylesheets.len)
-		send_asset_list(user, stylesheets, verify=FALSE)
+		SSassets.transport.send_asset_list(user, stylesheets, verify=FALSE)
 	if (scripts.len)
-		send_asset_list(user, scripts, verify=FALSE)
+		SSassets.transport.send_asset_list(user, scripts, verify=FALSE)
 	user << browse(get_content(), "window=[window_id];[window_size][window_options]")
 	if (use_onclose)
 		setup_onclose()

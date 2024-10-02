@@ -234,7 +234,8 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 	playsound(get_turf(user), 'sound/blank.ogg', 50, TRUE)
 	return(BRUTELOSS)
 
-/obj/item/pipe_dispenser/ui_base_html(html)
+// CC-remove
+///obj/item/pipe_dispenser/ui_base_html(html)
 //	var/datum/asset/spritesheet/assets = get_asset_datum(/datum/asset/spritesheet/pipes)
 //	. = replacetext(html, "<!--customheadhtml-->", assets.css_tag())
 

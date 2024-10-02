@@ -210,7 +210,13 @@ GLOBAL_VAR_INIT(mobids, 1)
 		if(M.see_invisible < invisibility)//if src is invisible to M
 			msg = blind_message
 		else if(T != loc && T != src) //if src is inside something and not a turf.
-			msg = blind_message
+			// CC-edit Start
+			if(istype(loc, /obj/vore_belly))
+				if(M.loc != loc && M != loc.loc)
+					msg = blind_message
+			// CC-edit End
+			else if(M != loc)
+				msg = blind_message
 //		else if(T.lighting_object && T.lighting_object.invisibility <= M.see_invisible && T.is_softly_lit()) //if it is too dark.
 //			msg = blind_message
 		if(!msg)

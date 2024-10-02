@@ -965,8 +965,15 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		'html/browser/playeroptions.css',
 		)
 	spawn (10) //removing this spawn causes all clients to not get verbs.
+		//load info on what assets the client has
+		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
+
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
-		getFilesSlow(src, SSassets.preload, register_asset = FALSE)
+		if (CONFIG_GET(flag/asset_simple_preload))
+			addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
+
+		//Precache the client with all other assets slowly, so as to not block other browse() calls
+		//getFilesSlow(src, SSassets.preload, register_asset = FALSE)
 //		#if (PRELOAD_RSC == 0)
 //		for (var/name in GLOB.vox_sounds)
 //			var/file = GLOB.vox_sounds[name]

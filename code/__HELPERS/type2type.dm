@@ -13,7 +13,7 @@
 //skips preceding invalid characters
 //breaks when hittin invalid characters thereafter
 // If safe=TRUE, returns null on incorrect input strings instead of CRASHing
-/proc/hex2num(hex, safe=FALSE)
+/*/proc/hex2num(hex, safe=FALSE)
 	. = 0
 	var/place = 1
 	for(var/i in length(hex) to 1 step -1)
@@ -34,7 +34,7 @@
 					CRASH("Malformed hex number")
 
 		. += num * place
-		place *= 16
+		place *= 16*/
 
 //Returns the hex value of a decimal number
 //len == length of returned string
@@ -42,7 +42,7 @@
 //Only supports positive numbers
 //if an invalid number is provided, it assumes num==0
 //Note, unlike previous versions, this one works from low to high <-- that way
-/proc/num2hex(num, len=2)
+/*/proc/num2hex(num, len=2)
 	if(!isnum(num))
 		num = 0
 	num = round(abs(num))
@@ -66,7 +66,7 @@
 			else
 				. = "0" + .
 		i++
-	return .
+	return .*/
 
 //Splits the text of a file at seperator and returns them in a list.
 //returns an empty list if the file doesn't exist
@@ -551,7 +551,7 @@
 		else //regex everything else (works for /proc too)
 			return lowertext(replacetext("[the_type]", "[type2parent(the_type)]/", ""))
 
-/proc/strtohex(str)
+/*/proc/strtohex(str)
 	if(!istext(str)||!str)
 		return
 	var/r
@@ -573,4 +573,9 @@
 		if(isnull(c))
 			return null
 		r += ascii2text(c)
-	return r
+	return r*/
+
+/// Return html to load a url.
+/// for use inside of browse() calls to html assets that might be loaded on a cdn.
+/proc/url2htmlloader(url)
+	return {"<html><head><meta http-equiv="refresh" content="0;URL='[url]'"/></head><body onLoad="parent.location='[url]'"></body></html>"}

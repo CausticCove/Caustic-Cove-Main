@@ -52,6 +52,8 @@
 	LoadMOTD()
 	LoadPolicy()
 	LoadChatFilter()
+	if(Master)
+		Master.OnConfigLoad()
 
 /datum/controller/configuration/proc/full_wipe()
 	if(IsAdminAdvancedProcCall())

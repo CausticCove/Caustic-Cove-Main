@@ -17,6 +17,12 @@
 	  */
 	var/gc_destroyed
 
+	//CC-edit copying a TG change to datums
+	// Open uis owned by this datum
+	/// Lazy, since this case is semi rare
+	var/list/open_uis
+	//CC-edit end
+
 	/// Active timers with this datum as the target
 	var/list/active_timers
 	/// Status traits attached to this datum
