@@ -1,6 +1,7 @@
 /datum/customizer/organ/horns
 	abstract_type = /datum/customizer/organ/horns
 	name = "Horns"
+	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/horns
 	abstract_type = /datum/customizer_choice/organ/horns
