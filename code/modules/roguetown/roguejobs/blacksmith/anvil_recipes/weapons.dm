@@ -23,17 +23,19 @@
 	craftdiff = 0
 
 /datum/anvil_recipe/weapons/idagger
-	name = "Dagger x2"
+	name = "Dagger"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/rogueweapon/huntingknife/idagger
-	createditem_num = 2
+	created_item = list(/obj/item/rogueweapon/huntingknife/idagger, 
+						/obj/item/rogueweapon/huntingknife/idagger)
+	//createditem_num = 2
 	craftdiff = 0
 
 /datum/anvil_recipe/weapons/sdagger
 	name = "Dagger x2"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel
-	createditem_num = 2
+	created_item = list(/obj/item/rogueweapon/huntingknife/idagger/steel, 
+						/obj/item/rogueweapon/huntingknife/idagger/steel)
+	//createditem_num = 2
 
 /datum/anvil_recipe/weapons/sdaggerparrying
 	name = "Parrying Dagger (+1 Steel)"
@@ -98,8 +100,9 @@
 /datum/anvil_recipe/weapons/hknife
 	name = "Hunting knife x2"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/rogueweapon/huntingknife
-	createditem_num = 2
+	created_item = list(/obj/item/rogueweapon/huntingknife, 
+						/obj/item/rogueweapon/huntingknife)
+	//createditem_num = 2
 
 /datum/anvil_recipe/weapons/cleaver
 	name = "Cleaver"
@@ -343,8 +346,12 @@
 	name = "Crossbow Bolts 5x (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/ammo_casing/caseless/rogue/bolt
-	createditem_num = 5
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt)
+	//createditem_num = 5
 	i_type = "Ammo"
 
 /// BOWS
@@ -352,8 +359,12 @@
 	name = "Arrows 5x (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/ammo_casing/caseless/rogue/arrow/iron
-	createditem_num = 5
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron)
+	//createditem_num = 5
 	i_type = "Ammo"
 	craftdiff = 0
 

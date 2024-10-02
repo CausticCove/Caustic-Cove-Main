@@ -37,7 +37,7 @@
 			S.name = "knight's tabard ([index])"
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
-		var/honorary = "Ser"
+		var/honorary = "Sir"
 		if(H.pronouns == SHE_HER)
 			honorary = "Dame"
 		H.real_name = "[honorary] [prev_real_name]"
@@ -57,7 +57,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
-	beltl = /obj/item/storage/keyring/guardcastle
+	beltl = /obj/item/keyring/guardcastle
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/signal_horn = 1)
@@ -102,7 +102,7 @@
 	H.change_stat("speed", -2)		//Lower speed for more strength and con of other knight, and to off-set endurance. (They need the end-stam for 2 handed.)
 
 	H.adjust_blindness(-3)
-	var/weapons = list("Zweihander","Great Mace","Battle Axe", "Estoc")
+	var/weapons = list("Zweihander","Great Mace","Battle Axe")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
@@ -112,10 +112,8 @@
 			r_hand = /obj/item/rogueweapon/mace/goden/steel
 		if("Battle Axe")	// Why did heavy knights get a mace+shield combo if they're supposed to be the two-hander guys? Gives them a greataxe instead.
 			r_hand = /obj/item/rogueweapon/stoneaxe/battle
-		if("Estoc")
-			r_hand = /obj/item/rogueweapon/greatsword/estoc
 
-	neck = /obj/item/clothing/neck/roguetown/bevor
+	neck = /obj/item/clothing/neck/roguetown/bervor
 	armor = /obj/item/clothing/suit/roguetown/armor/plate		//this is actually steel half-plate, full plate is plate/full. given because they are SLOW.
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
