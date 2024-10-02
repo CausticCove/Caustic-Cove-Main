@@ -121,6 +121,7 @@
 	name = "Metal Pot"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/reagent_containers/glass/bucket/pot
+	i_type = "Tools"
 
 /datum/anvil_recipe/tools/iron_arm_left
 	name = "Iron arm (L) (+1 Cog)"
