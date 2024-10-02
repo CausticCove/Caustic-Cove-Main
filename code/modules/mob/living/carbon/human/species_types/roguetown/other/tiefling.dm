@@ -83,7 +83,7 @@
 		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
-		/datum/body_marking/tonage,
+		/datum/body_marking/tonage
 	)
 	languages = list(
 		/datum/language/common,
