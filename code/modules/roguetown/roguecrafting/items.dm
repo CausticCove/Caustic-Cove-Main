@@ -139,6 +139,7 @@
 	name = "wood club"
 	result = /obj/item/rogueweapon/mace/woodclub/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1)
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/billhook
 	name = "improvised billhook"
