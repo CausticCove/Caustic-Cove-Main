@@ -167,6 +167,7 @@
 "nQ" = (/obj/effect/landmark/mapGenerator/rogue/forest{endTurfX = 155; endTurfY = 155},/turf/closed/mineral/rogue/bedrock,/area/rogue/under/cave)
 "oa" = (/turf/closed/wall/mineral/rogue/tent,/area/rogue/outdoors/mountains)
 "oi" = (/obj/effect/decal/cobbleedge{dir = 4},/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
+"om" = (/obj/structure/spacevine,/obj/effect/mob_spawn/human/orc/corpse/orcmarauder{icon = 'icons/mob/human.dmi'; icon_state = "human_basic"},/turf/open/lava/acid,/area/rogue/under/cave)
 "op" = (/turf/open/water/river{dir = 8; icon_state = "rockwd"},/area/rogue/under/cave)
 "os" = (/obj/structure/bars/steel,/obj/structure/bars/pipe,/obj/effect/turf_decal/trimline/yellow/filled,/turf/open/floor/rogue/metal,/area/rogue/under/cave/dungeon1/gethsmane)
 "ow" = (/obj/structure/bars/pipe{dir = 1; pixel_x = 25},/turf/open/lava/acid,/area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -233,7 +234,7 @@
 "ty" = (/obj/structure/table/wood{dir = 5; icon_state = "largetable"},/obj/item/reagent_containers/glass/cup,/turf/open/floor/rogue/greenstone,/area/rogue/under/cave/dungeon1/gethsmane)
 "tM" = (/obj/item/clothing/head/roguetown/dendormask,/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "tN" = (/turf/open/lava/acid,/area/rogue/under/cave/dungeon1/gethsmane/inner)
-"tQ" = (/obj/item/rogueore/iron,/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
+"tQ" = (/obj/structure/flora/newbranch/leafless{dir = 8},/turf/open/lava/acid,/area/rogue/under/cave)
 "tS" = (/obj/item/natural/stone{pixel_x = -5; pixel_y = 9},/turf/open/floor/rogue/dirt,/area/rogue/under/cave/dungeon1/gethsmane)
 "tU" = (/obj/structure/spacevine,/turf/open/water/swamp/deep,/area/rogue/under/cave/dungeon1/gethsmane)
 "ug" = (/obj/machinery/light/rogue/torchholder/c{pixel_y = -32},/obj/item/flashlight/flare/torch,/turf/open/floor/rogue/grass,/area/rogue/indoors/shelter/woods)
@@ -314,6 +315,7 @@
 "Al" = (/obj/item/restraints/legcuffs/beartrap/armed/camouflage,/turf/open/water/swamp/deep,/area/rogue/under/cave/dungeon1/gethsmane/inner)
 "Aq" = (/obj/effect/decal/cobbleedge{dir = 8},/turf/open/floor/rogue/naturalstone,/area/rogue/outdoors/mountains)
 "As" = (/obj/structure/bars/steel,/turf/open/water/swamp,/area/rogue/under/cave)
+"Ay" = (/obj/structure/flora/newbranch/connector{dir = 1},/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "AB" = (/obj/machinery/conveyor/auto{color = "#755f48"; dir = 1},/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/gethsmane,/turf/open/water/sewer,/area/rogue/under/cave/dungeon1/gethsmane/inner)
 "AD" = (/obj/structure/fluff/railing/wood{dir = 4},/turf/open/floor/rogue/greenstone,/area/rogue/under/cave/dungeon1/gethsmane/inner)
 "AF" = (/turf/open/floor/rogue/metal/barograte,/area/rogue/under/cave/dungeon1/gethsmane)
@@ -386,6 +388,7 @@
 "FL" = (/obj/item/chair/stool/bar/rogue/crafted,/turf/open/floor/rogue/dirt/road,/area/rogue/indoors/shelter/woods)
 "FO" = (/mob/living/simple_animal/hostile/retaliate/rogue/mudcrab,/turf/open/floor/rogue/grass,/area/rogue/outdoors/woods)
 "FQ" = (/obj/effect/spawner/lootdrop/roguetown/dungeon,/turf/open/water/sewer,/area/rogue/under/cave/dungeon1/gethsmane/inner)
+"FR" = (/obj/structure/flora/roguegrass/bush/wall,/obj/structure/spacevine,/turf/closed/mineral/random/rogue/high,/area/rogue/under/cave)
 "FS" = (/obj/structure/flora/newleaf/corner{dir = 6},/obj/structure/bonepile,/turf/open/lava/acid,/area/rogue/under/cave)
 "FW" = (/obj/structure/table/wood{dir = 1; icon_state = "tablewood1"},/turf/open/floor/rogue/greenstone,/area/rogue/under/cave/dungeon1/gethsmane)
 "FZ" = (/obj/structure/spacevine,/turf/open/water/sewer,/area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -423,6 +426,7 @@
 "HO" = (/turf/open/floor/rogue/naturalstone,/area/rogue/outdoors/mountains)
 "HP" = (/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,/turf/open/floor/rogue/greenstone,/area/rogue/under/cave/dungeon1/gethsmane)
 "HR" = (/obj/effect/decal/cobbleedge{dir = 8},/turf/open/floor/rogue/ruinedwood,/area/rogue/indoors)
+"HS" = (/obj/effect/mob_spawn/human/orc/corpse/orcmarauder{icon = 'icons/mob/human.dmi'; icon_state = "human_basic"},/turf/open/lava/acid,/area/rogue/under/cave)
 "HU" = (/obj/item/natural/stone{pixel_x = 8; pixel_y = -9},/turf/open/floor/rogue/greenstone,/area/rogue/under/cave/dungeon1/gethsmane/inner)
 "Ie" = (/obj/structure/flora/newleaf/corner{dir = 6},/turf/open/transparent/openspace,/area/rogue/under/cave)
 "Ii" = (/obj/item/restraints/legcuffs/beartrap/armed,/turf/open/water/sewer,/area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -448,6 +452,7 @@
 "JL" = (/obj/structure/bars/steel,/obj/structure/bars/pipe,/obj/structure/bars/pipe,/obj/effect/turf_decal/trimline/yellow/filled,/turf/open/floor/rogue/metal,/area/rogue/under/cave/dungeon1/gethsmane)
 "JM" = (/obj/structure/flora/newbranch/leafless,/turf/open/lava/acid,/area/rogue/under/cave)
 "JO" = (/obj/structure/fluff/railing/border{dir = 4; icon_state = "border"},/obj/machinery/light/rogue/firebowl/standing,/turf/open/floor/rogue/ruinedwood/turned,/area/rogue/indoors)
+"JW" = (/obj/structure/flora/roguegrass/bush,/obj/structure/spacevine,/obj/structure/flora/newbranch/connector,/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "Ke" = (/obj/structure/flora/newleaf/corner{dir = 6},/turf/open/floor/rogue/dirt,/area/rogue/outdoors/woods)
 "Kg" = (/turf/open/floor/rogue/cobble,/area/rogue/under/cave)
 "Kj" = (/obj/structure/stairs/stone{dir = 4},/turf/open/floor/rogue/dirt,/area/rogue/outdoors/mountains)
@@ -524,6 +529,7 @@
 "Pz" = (/obj/structure/spacevine,/turf/closed/wall/mineral/rogue/stone/moss,/area/rogue/under/cave)
 "PA" = (/obj/structure/closet/dirthole/grave,/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "PN" = (/obj/structure/bars/pipe{dir = 4},/turf/open/floor/rogue/greenstone,/area/rogue/under/cave)
+"PR" = (/obj/structure/flora/newbranch/connector{dir = 1},/turf/open/lava/acid,/area/rogue/under/cave)
 "Qf" = (/obj/item/grown/log/tree/small,/turf/open/floor/rogue/dirt/road,/area/rogue/indoors/shelter/woods)
 "Qi" = (/obj/structure/bars/pipe,/turf/open/water/sewer,/area/rogue/under/cave/dungeon1/gethsmane/inner)
 "Qn" = (/obj/structure/fluff/railing/border,/obj/structure/rack/rogue/shelf/big,/turf/open/floor/rogue/ruinedwood/turned,/area/rogue/indoors)
@@ -532,6 +538,7 @@
 "Qt" = (/obj/structure/fluff/railing/border{dir = 8; icon_state = "border"},/obj/structure/fluff/railing/border,/turf/open/transparent/openspace,/area/rogue/outdoors/woods)
 "Qv" = (/obj/structure/mineral_door/wood/window,/turf/open/floor/rogue/ruinedwood,/area/rogue/indoors)
 "Qy" = (/obj/structure/stairs/stone,/turf/open/floor/rogue/hexstone,/area/rogue/under/town/basement)
+"QB" = (/obj/structure/flora/roguegrass/bush/wall,/obj/structure/spacevine,/obj/effect/mob_spawn/human/orc/corpse/orcmarauder{icon = 'icons/mob/human.dmi'; icon_state = "human_basic"},/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "QI" = (/mob/living/carbon/human/species/skeleton/npc/ambush,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/mountains)
 "QJ" = (/obj/structure/fluff/railing/wood,/turf/open/floor/rogue/greenstone,/area/rogue/under/cave/dungeon1/gethsmane/inner)
 "QQ" = (/turf/open/floor/rogue/rooftop{dir = 2; icon_state = "roofg"},/area/rogue/outdoors/mountains)
@@ -546,9 +553,11 @@
 "Ru" = (/turf/open/transparent/openspace,/area/rogue/under/cave)
 "Rv" = (/obj/structure/mineral_door/wood/deadbolt,/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/woods)
 "Rx" = (/turf/open/water/ocean,/area/rogue/outdoors/beach)
+"Rz" = (/obj/structure/flora/newbranch/connector{dir = 4},/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "RB" = (/obj/structure/flora/newtree,/obj/structure/flora/newtree,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/woods)
 "RG" = (/turf/closed/wall/mineral/rogue/wooddark/window,/area/rogue/indoors/shelter/woods)
 "RI" = (/turf/open/floor/rogue/dirt/road,/area/rogue/outdoors/beach)
+"RL" = (/obj/structure/flora/newbranch/leafless,/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "RQ" = (/obj/structure/bars/pipe/left,/turf/open/water/sewer,/area/rogue/under/cave/dungeon1/gethsmane/inner)
 "Se" = (/turf/closed/mineral/rogue/bedrock,/area/rogue/outdoors/mountains)
 "Sh" = (/obj/structure/fluff/railing/border{dir = 4; icon_state = "border"},/turf/open/transparent/openspace,/area/rogue/outdoors/mountains)
@@ -567,12 +576,14 @@
 "SX" = (/obj/structure/stairs/stone{dir = 1; icon_state = "stonestairs"},/turf/open/floor/rogue/cobblerock,/area/rogue/outdoors/woods)
 "Ta" = (/mob/living/simple_animal/hostile/retaliate/rogue/cow,/turf/open/floor/rogue/grass,/area/rogue/outdoors/woods)
 "Tf" = (/mob/living/carbon/human/species/skeleton/npc/ambush,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
+"Tn" = (/obj/effect/mob_spawn/human/orc/corpse/orcmarauder{icon = 'icons/mob/human.dmi'; icon_state = "human_basic"},/obj/structure/flora/roguegrass/bush/wall,/obj/structure/spacevine,/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "To" = (/obj/structure/mineral_door/wood/donjon{dir = 8},/turf/open/floor/rogue/hexstone,/area/rogue/under/cave)
 "Tp" = (/turf/open/water/ocean/deep,/area/rogue/outdoors/beach)
 "Tq" = (/obj/effect/decal/cobbleedge{dir = 4},/turf/open/floor/rogue/ruinedwood,/area/rogue/indoors)
 "Ts" = (/obj/structure/bars/pipe{dir = 4},/obj/structure/spacevine,/turf/open/floor/rogue/greenstone,/area/rogue/under/cave)
 "Tt" = (/obj/structure/flora/roguegrass,/obj/machinery/light/small{color = "#b51d12"; dir = 8; light_color = "#b51d12"; mouse_opacity = 0},/turf/open/water/sewer,/area/rogue/under/cave)
 "Tv" = (/obj/machinery/light/rogue/campfire/densefire,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
+"Tw" = (/obj/structure/flora/newbranch/leafless{dir = 1},/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "TA" = (/obj/structure/flora/roguegrass/water/reeds,/turf/open/water/river{icon_state = "rockwd"},/area/rogue/under/cave)
 "TC" = (/obj/structure/flora/roguegrass/water/reeds,/turf/open/water/river{dir = 1; icon_state = "rockwd"},/area/rogue/under/cave)
 "TD" = (/obj/structure/spider/stickyweb,/turf/open/water/swamp/deep,/area/rogue/under/cave)
@@ -587,6 +598,7 @@
 "Ui" = (/obj/machinery/conveyor/auto{color = "#755f48"; dir = 4},/turf/open/floor/rogue/metal/barograte,/area/rogue/under/cave/dungeon1/gethsmane/inner)
 "Uo" = (/obj/structure/flora/newbranch/leafless{dir = 1},/turf/open/lava/acid,/area/rogue/under/cave)
 "Up" = (/turf/closed/mineral/random/rogue,/area/rogue/outdoors/beach)
+"Uy" = (/obj/effect/mob_spawn/human/orc/corpse/orcmarauder{icon = 'icons/mob/human.dmi'; icon_state = "human_basic"},/obj/structure/spacevine,/turf/open/lava/acid,/area/rogue/under/cave)
 "UE" = (/obj/structure/spider/stickyweb,/obj/effect/spawner/lootdrop/roguetown/dungeon,/turf/open/floor/rogue/metal/barograte,/area/rogue/under/cave/dungeon1/gethsmane)
 "UF" = (/obj/item/restraints/legcuffs/beartrap/armed/camouflage,/obj/machinery/conveyor/auto{color = "#755f48"; dir = 8},/turf/open/water/sewer,/area/rogue/under/cave/dungeon1/gethsmane/inner)
 "UL" = (/obj/machinery/conveyor/auto{color = "#755f48"; dir = 1},/obj/structure/spacevine,/turf/open/floor/rogue/greenstone,/area/rogue/under/cave)
@@ -603,6 +615,7 @@
 "Vn" = (/turf/open/water/cleanshallow,/area/rogue/outdoors/woods)
 "Vs" = (/obj/structure/roguerock,/turf/open/water/cleanshallow,/area/rogue/outdoors/woods)
 "Vu" = (/obj/structure/flora/newbranch/connector,/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
+"Vv" = (/obj/item/rogueore/iron,/turf/open/floor/rogue/dirt,/area/rogue/under/cave)
 "Vw" = (/obj/item/reagent_containers/glass/bucket/wooden{pixel_y = 15},/obj/item/bath/soap,/turf/open/floor/rogue/greenstone,/area/rogue/under/cave/dungeon1/gethsmane)
 "Vx" = (/turf/open/water/river{dir = 4; icon_state = "rockwd"},/area/rogue/outdoors/beach)
 "Vy" = (/obj/structure/flora/roguetree/stump/log,/turf/open/floor/rogue/grass,/area/rogue/outdoors/woods)
@@ -665,36 +678,36 @@
 
 (1,1,1) = {"
 gUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgUgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHXyXyXyXyXyGHGHGHGHGHGHGHGHGHGHGHGHGHGHqcqcqcGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHXytrGHGHGHXyXyGHGHGHGHGHGHGHGHGHGHaAaAaAaAaAGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdGHfdfdfdfdfdGHGHGHGHGHGHGHXyGHGHnKuOvDGHgCIKtaXyXyGHGHGHGHGHGHGHGHGHaAaAaAaAaAGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdGHGHGHXyGHVgVgJMGHXyIKIKgCVkGHGHGHGHGHGHGHGHGHGHGHaAaAaAdiGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdXyXyGHIKgCIKVgVgIKoFIKIKGHtaXyPzGHGHGHGHGHGHGHGHIKaAaAaAGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdIKtaIKXyGHtaGHGHXyGHIKIKtMoFPzGHGHGHGHGHGHGHGHIKaAaAIKGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdIKXyGHXyGHXyGHVkXyVkXygCnKVgvpXyXyGHGHGHGHGHIKGHaAIKGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdXygCXyGHGHGHXyGHGHVkPzUOVgVgVgoFXyGHGHGHXyVkgCIKaAaAIKGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdzizizizizifdfdfdfdfdfdfdfdfdfdfdfdXyIKGHGHGHIKoFGHGHPzUOVgVgUOBAgCVkGHGHXyXyIKIKIKaAIKGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdzizizizizifdfdfdIKgiDifdfdfdfdfdfdfdgCIKIKtaIKGHGHXyHtVgVgVgoFgCXyVkGHGHXygCIKIKIKaAGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdzizizizizizizizizizizifdfdESCRIKDifdfdfdfdfdfdVkOAgCGHtaOAoFIKgCVgnKSPXyVkVkGHGHXyXyIKIKIKaAIKGHGHGHGHGHgUzbgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHvbGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdzizizizizizizizizizizicAIKIKIKIKPAfdfdfdfdfdfdfdOAIKVkIKoFoFIKXyoFgCXyGHGHGHGHGHGHgCIKIKaAaAGHGHGHgUgUgUzbJFJFzbgUgUgUgUgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHlglglglglglgGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdzizizizizizizizizizitQIKIKfdfdIKfdfdfdXyXyfdfdIKIKIKXyGHGHGHXyGHGHXyGHGHGHGHGHXyXyIKIKaAaAGHGHGHGHgUJFJFJFJFJFumumumumumumgUgUGHGHGHgUgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHhTIKIKGHGHGHlglglgGHGHGHlgXfGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdzizizizizizizizizizizizifdfdfdfdIKfdXytawwoFIKIKIKVkgCGHGHGHGHXyXyGHGHGHGHGHXyXyXygCIKIKaAGHGHGHGHgUzbJFJFJFJFJFJFJFJFJFumumumgUgUGHGHgUwegUgUgUgUgUgUgUgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHIKIKhTIKGHlglglgXfGHGHGHlglgGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdzizizizizizizizizizizizizizizifdIKfdtaVkXyfdtrGHVkOAIKIKCHGHGHGHXyXyXyGHGHGHGHgCIKIKIKaAIKGHGHGHgUzbJFJFHLHLJFJFJFJFJFJFumumumumgUgUGHgUKwpJpJpJpJpJpJItoygUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIGHGHGHGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHIKIKlglglglglgGHGHGHlglglglglglglgGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdzizizizizizizizizizizizizizizifdIKIKIKfdfdfdgCGHGHOAIKGHGHGHGHGHGHGHXyGHXyXygCIKIKIKaAIKGHGHGHGHgUJFJFJFjjHLHLHLHLHLHLHLMgumumumumgUGHgUDKvpvpvpvpvpvpvpvWvpvpGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIGHGHGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHIKlglgGHGHlglglgvblglggvlgvbGHGHlglglgGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdzizizizizizizizizizizizizizizifdfdIKfdfdfdXyVgGHGHGHgCXyGHOjxgVkGHGHGHGHXyoFgCIKIKaAaAGHGHGHGHHLHLumjjjjHLHLjjjjjjjjjjHLMgMgumumumgUGHvpYVvpweweweweIKweSWgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIGHGHGHGHgU
-gUGHGHGHGHGHGHGHGHlglggvGHGHGHXflglglglglglgGHGHGHXflglgGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdzizizizizizizizizizizizizizizifdfdfdfdXyYmGoMCGHGHGHoFXyQUsulQrZVkGHGHGHXyoFIKIKaAaAgCGHFJFJzbHLMgumjjjjjjjjjjjjjjjjHLHLMgeCMgumumgUGHvpMWvpaMaMvpweweIKVEwegUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIGHGHGHgU
-gUGHGHGHGHGHGHGHGHlglgGHGHGHGHGHGHGHGHlgvbGHGHGHGHGHlglgGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdzizizizizizizizizizizizizizizifdfdfdfdfdfdVgnKGHGHGHxgezvFVgnKhcXyGHGHSCoFIKIKaAaAoFGHGHFJFJzbHLumumjjjjjjjjjjjjjjHLHLHLHLHLGHGHGHvpvpkoDzIKIKTskovpweweVEwewegUGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIGHgU
-gUGHGHGHGHGHGHGHGHlglgGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHlglgGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdzizizizizizizizizizizizizizizifdfdfdfdfdXyIKGHGHXyXyFSUoznVgSjXGGHGHCPgCIKIKIKaAIKCPGHGHFJFJzbJFumjjjjJFjjMgMgMgvmvmQJQJvmHLGHGHvpvpCfxiDzCfCfYSxikFvpweLhgUgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRxRx
-gUGHGHGHGHGHGHGHGHlgGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHXflglglgGHGHGHGHfdfdfdfdfdfdfdfdfdfdzizizizizizizizizizizizizizizifdfdfdfdVkgCIKgCVkVkdvIKVuvDuxXGIKGHGHIKIKIKIKSCIKIKCPGHGHFJFJzbJFjjjjjjjjjjADkzkzaHADkzkzaHHLGHGHvpHGHGkoHavXHGPNkokokolsDQlsgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRxRx
-gUGHGHGHGHGHGHGHlglglgGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHlglglglglgGHGHGHfdfdfdfdfdfdfdfdfdfdfdzizizizizizizizizizizizizifdfdfdfdfdgCIKIKGHGHXyXyGHjuOjxgSLGHGHgCIKSCCPaAIKIKgCGHGHGHHLHLHLHLjjjjjjjjDFADkzkzaHADkzkzaHHLHLHLHLTtHGvXULvXlsQYlskokogrDQlsgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRxRxTp
-gUGHGHGHGHGHGHvblglglglgGHGHGHGHGHGHGHGHGHGHGHGHGHGHlglglglglgGHGHGHfdfdfdfdfdfdfdfdfdfdfdzizizizizizizizizizizizizifdfdfdfdfdfdXygCGHGHGHGHGHVkGHxgXGIKnfxgSLwFXYIKIKSCGHGHGHvpHLvmhkvmjjvmLGLGvmvmLGLGvmvmLGLGvmIOvmvmbpMfcOvXDzkogrPNHGHGHGlsgblsgUGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRxRxTp
-gUGHGHGHGHGHGHGHGHlglglgGHGHGHGHGHGHGHGHGHGHIKIKGHGHGHlglglglgXfGHGHfdfdfdfdfdfdfdfdfdfdfdzizizizizizizizizizizizizifdfdfdfdfdfdGHGHGHGHGHGHGHGHGHVkIKKrxgXQILzkXGGHGHGHGHGHGHvpvmvmQJQJvmvmQJQJvmvmQJQJvmhkQJQJvmIOvmvmbpSimWHGKulsHGQYHGHGkoweSWvpgUGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRxRxTp
-gUGHGHGHGHGHGHlglglglglgGHGHGHGHGHGHGHGHGHIKIKIKIKGHGHGHlglgGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdzizizizizifdfdfdfdfdfdfdfdGHGHGHGHGHGHGHGHGHGHGHnfxgBuVguxxgSCCPGHGHGHGHGHvpsqADkzkzaHADkzkzaHADkzkzaHADkzkzaHHLHLHLHLKBvXHGHaHGHGPNkokoHGweSWvpGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRxRxRxTp
-gUGHGHGHGHGHGHGHlglgGHlgGHGHGHGHGHGHGHGHGHIKIKIKIKIKGHGHGHlgGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdzizizizizifdfdfdfdfdfdfdfdGHGHGHGHGHGHGHGHGHGHCPAUxgwxuxxgXGtrrZGHSCkkGHGHvpvmADkzkzaHADkzkzaHADkzkzaHADkzkzaHHLGHGHvpKBHGkoHaHGlsPNkokokolsSWvpGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIvkRIRIRIRIRIRIRIRIRIRIRIRIRxRxTpTp
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHIKIKIKIKIKGHlglgGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdGHGHGHGHGHGHGHGHCPGHSCCPIKrZzkxgxgCPGHSLRjvFILEzGHvpvmvmLGLGvmvmLGLGvmvmLGLGvmvmLGLGvmHLGHGHvpKBHGkoDzHGHGQYHGkowevpSWgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIyORIvkRIRIRIRIRIRIRIRIRIRIRxRxTpTpTp
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHIKIKIKaAaAlglgGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdGHGHGHGHGHGHGHGHGHIKIKIKxgSLIKrZxgXGIKGHGHCPVgVgwUSCgUumumiZiZvmvmQJQJvmhkvmzbzbzbzbzbzbzbGHGHvpcwHGPzwaGHGHGHGHGHwevpSWgUGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIvkvkvkvkRIRIRIRIRIRIRIRIRIRxRxTpTpTp
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHIKIKIKIKIKaAGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdGHGHGHGHGHGHGHCPIKIKIKIKzhxgSCgCGHGHGHGHSCYcVgnKuigUgUumumiZiZvmADkzkzaHvmHLzbzbzbzbzbzbzbGHGHvpkowevpYVGHweweweweweweSWgUGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIvkvkvkvkRIRIRIRIRIRIRIRIRIRxRxTpTpTp
-gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHIKIKIKaAIKIKaAaAGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdGHGHGHGHGHGHGHIKIKIKIKaAaAIKCPGHGHGHGHGHGHEzpTGoCPzbzbumvmJFMgvmADkzkzaHYpvmHLHLHLHLHLGHGHGHGHvpwewevpljlYNIdcNINININIVTgUGHGHGHGHGHGHGHGHGHGHDtDtRIRIRIvkvkvkvkRIRIRIRIRIRIRIRIRxRxRxTpTpTp
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHVkVkVkGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHXyXyXyXyXyGHGHGHGHGHGHGHGHGHGHGHGHGHGHqcqcqcGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHVkVgVgVgVgVgVkGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHXytrGHGHGHXyXyGHGHGHGHGHGHGHGHGHGHaAaAaAaAaAGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHVkVkGHGHfdfdVgVkfdfdVkVkfdfdfdGHVgfdfdfdfdGHVgGHGHGHGHGHXyGHGHnKuOvDGHgCIKtaXyXyGHGHGHGHGHGHGHGHGHaAaAaAaAaAGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHVkVkVkVkVkfdVgVgVkVkVkVkVkVkVgVgVgVgfdfdfdVgVgVgfdfdGHGHGHXyGHVgVgJMGHXyIKIKgCVkGHGHGHGHGHGHGHGHGHGHGHaAaAaAdiGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdVkVkVgVgVkfdIKVgVuVgVggCfdVkVgfdfdfdfdfdfdVgfdXyfdfdXyXyGHIKgCIKVgVgIKoFIKIKGHtaXyPzGHGHGHGHGHGHGHGHIKaAaAaAGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdVkVkVkVgfdfdVgVgVkVkVgtQGoGoGoVkfdVgVgVgVgVgfdXyfdfdfdIKtaIKXyGHtaGHGHXyGHIKIKtMoFPzGHGHGHGHGHGHGHGHIKaAaAIKGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdVkVkVgfdVgVgVkVkVkVkVgVgVgVgPRVgVgfdfdfdVgIKQBVkfdfdIKXyGHXyGHXyGHVkXyVkXygCnKVgvpXyXyGHGHGHGHGHIKGHaAIKGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdVkVkVgVgVgVkVkziziVkRzlQVgUoPRVgfdfdfdfdXyIKIKVkfdXygCXyGHGHXyXyGHGHVkPzUOVgVgVgoFXyGHGHGHXyVkgCIKaAaAIKGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdVkVgVgVkVkziziziVkVkgCgCPRRLtataXyfdfdXyTnIKfdfdXyIKGHGHGHVuoFGHGHPzUOVgVgUOBAgCVkGHGHXyXyIKIKIKaAIKGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdVgVgziziziVkVkVgVgVkVkVktaIKgiDiVkXyXyIKIKfdVkgCIKIKtaVuGHGHXyHtVgVgVgoFgCXyVkGHGHXygCIKIKIKaAGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdVgziziziVkVkVgVgIKVkVkVkXyESCRIKDiXyXyVkIKXyXyXyOAgCGHJWOAoFIKgCVgnKSPXyVkVkGHGHXyXyIKIKIKaAIKGHGHGHGHGHgUzbgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHvbGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdVkVkVkVgVgVgziTwgCAyVgIKgCzizicAIKIKIKIKPAfdXyIKIKIKXyfdOAIKVkRLoFoFIKXyoFgCXyGHGHGHGHGHGHgCIKIKaAaAGHGHGHgUgUgUzbJFJFzbgUgUgUgUgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHlglglglglglgGHGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdVkVkVkVgVgVgPRVgPRVgIKziziziIKIKfdfdIKfdfdXyXyXyIKfdIKIKIKXyXyGHGHXyGHGHXyGHGHGHGHGHXyXyIKIKaAaAGHGHGHGHgUJFJFJFJFJFumumumumumumgUgUGHGHGHgUgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHhTIKIKGHGHGHlglglgGHGHGHlgXfGHGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdVkVkgCgCVkVkgCVkVkgCVkVkXyziVvfdfdIKfdXytawwoFIKIKIKVkgCGHGHGHGHXyXyGHGHGHGHGHXyXyXygCIKIKaAGHGHGHGHgUzbJFJFJFJFJFJFJFJFJFumumumgUgUGHGHgUwegUgUgUgUgUgUgUgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHIKIKhTIKGHlglglgXfGHGHGHlglgGHGHGHGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdVkVkVkVkVkVkgCIKVkVkVkVkziXyXyXyzifdIKfdtaVkXyfdtrGHVkOAIKIKCHGHGHGHXyXyXyGHGHGHGHgCIKIKIKaAIKGHGHGHgUzbJFJFHLHLJFJFJFJFJFJFumumumumgUgUGHgUKwpJpJpJpJpJpJItoygUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIGHGHGHGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHIKIKlglglglglgGHGHGHlglglglglglglgGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdVkVkziziVkVkIKIKIKziziziXyUyXyXyfdIKIKIKfdfdfdgCGHGHOAIKGHGHGHGHGHGHGHXyGHXyXygCIKIKIKaAIKGHGHGHGHgUJFJFJFjjHLHLHLHLHLHLHLMgumumumumgUGHgUDKvpvpvpvpvpvpvpvWvpvpGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIGHGHGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHIKlglgGHGHlglglgvblglggvlgvbGHGHlglglgGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdVkIKIKVgIKVkgCVkIKIKXyXyXyXyXyXyfdfdIKfdfdfdXyVgGHGHGHgCXyGHOjxgVkGHGHGHGHXyoFgCIKIKaAaAGHGHGHGHHLHLumjjjjHLHLjjjjjjjjjjHLMgMgumumumgUGHvpYVvpweweweweIKweSWgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIGHGHGHGHgU
+gUGHGHGHGHGHGHGHGHlglggvGHGHGHXflglglglglglgGHGHGHXflglgGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdVkVkoFvDOAXyXyVkVkgCXyUyXyXyXyXyfdfdfdfdXyYmGoMCGHGHGHoFXyQUsulQrZVkGHGHGHXyoFIKIKaAaAgCGHFJFJzbHLMgumjjjjjjjjjjjjjjjjHLHLMgeCMgumumgUGHvpMWvpaMaMvpweweIKVEwegUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIGHGHGHgU
+gUGHGHGHGHGHGHGHGHlglgGHGHGHGHGHGHGHGHlgvbGHGHGHGHGHlglgGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdziIKVgIKXyomtaIKIKXyXyXyUOXyXyfdfdfdfdfdfdVgnKGHGHGHxgezvFVgnKhcXyGHGHSCoFIKIKaAaAoFGHGHFJFJzbHLumumjjjjjjjjjjjjjjHLHLHLHLHLGHGHGHvpvpkoDzIKIKTskovpweweVEwewegUGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIGHgU
+gUGHGHGHGHGHGHGHGHlglgGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHlglgGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdzioFoFoFXyXyXytaXyXyomXyXyXyXyVkfdfdfdfdXyIKGHGHXyXyFSUoznVgSjXGGHGHCPgCIKIKIKaAIKCPGHGHFJFJzbJFumjjjjJFjjMgMgMgvmvmQJQJvmHLGHGHvpvpCfxiDzCfCfYSxikFvpweLhgUgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRxRx
+gUGHGHGHGHGHGHGHGHlgGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHXflglglgGHGHGHGHfdfdfdfdfdfdfdfdfdfdziziXyXyXyziziIKIKoFtaFRUOoFVkVkfdfdfdVkgCIKgCVkVkdvIKVuvDuxXGIKGHGHIKIKIKIKSCIKIKCPGHGHFJFJzbJFjjjjjjjjjjADkzkzaHADkzkzaHHLGHGHvpHGHGkoHavXHGPNkokokolsDQlsgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRxRx
+gUGHGHGHGHGHGHGHlglglgGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHlglglglglgGHGHGHfdfdfdfdfdfdfdfdfdfdfdziVknKnKHSziIKziVkIKzizivDVkVkfdfdfdgCIKIKGHGHXyXyGHjuOjxgSLGHGHgCIKSCCPaAIKIKgCGHGHGHHLHLHLHLjjjjjjjjDFADkzkzaHADkzkzaHHLHLHLHLTtHGvXULvXlsQYlskokogrDQlsgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRxRxTp
+gUGHGHGHGHGHGHvblglglglgGHGHGHGHGHGHGHGHGHGHGHGHGHGHlglglglglgGHGHGHfdfdfdfdfdfdfdfdfdfdfdziVknKVkIKIKIKziIKIKnKVkVkVkVkfdfdfdfdXygCGHGHGHGHGHVkGHxgXGIKnfxgSLwFXYIKIKSCGHGHGHvpHLvmhkvmjjvmLGLGvmvmLGLGvmvmLGLGvmIOvmvmbpMfcOvXDzkogrPNHGHGHGlsgblsgUGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRxRxTp
+gUGHGHGHGHGHGHGHGHlglglgGHGHGHGHGHGHGHGHGHGHIKIKGHGHGHlglglglgXfGHGHfdfdfdfdfdfdfdfdfdfdfdziVkVkVkHSIKIKIKIKVkHSVkVkVkVkfdfdfdfdGHGHGHGHGHGHGHGHGHVkIKKrxgXQILzkXGGHGHGHGHGHGHvpvmvmQJQJvmvmQJQJvmvmQJQJvmhkQJQJvmIOvmvmbpSimWHGKulsHGQYHGHGkoweSWvpgUGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRxRxTp
+gUGHGHGHGHGHGHlglglglglgGHGHGHGHGHGHGHGHGHIKIKIKIKGHGHGHlglgGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdVkVkvFnKVknKHSVknKVkVkVkfdfdfdfdGHGHGHGHGHGHGHGHGHGHGHnfxgBuVguxxgSCCPGHGHGHGHGHvpsqADkzkzaHADkzkzaHADkzkzaHADkzkzaHHLHLHLHLKBvXHGHaHGHGPNkokoHGweSWvpGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIRIRIRIRIRIRIRIRIRIRIRIRIRxRxRxTp
+gUGHGHGHGHGHGHGHlglgGHlgGHGHGHGHGHGHGHGHGHIKIKIKIKIKGHGHGHlgGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdVkVkVkVkVkVkVkVkVkVkVkVkfdfdfdfdGHGHGHGHGHGHGHGHGHGHCPAUxgwxuxxgXGtrrZGHSCkkGHGHvpvmADkzkzaHADkzkzaHADkzkzaHADkzkzaHHLGHGHvpKBHGkoHaHGlsPNkokokolsSWvpGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIvkRIRIRIRIRIRIRIRIRIRIRIRIRxRxTpTp
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHIKIKIKIKIKGHlglgGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdVkVkVkVkVkVkVkVkVkfdVkVkfdfdfdfdGHGHGHGHGHGHGHGHCPGHSCCPIKrZzkxgxgCPGHSLRjvFILEzGHvpvmvmLGLGvmvmLGLGvmvmLGLGvmvmLGLGvmHLGHGHvpKBHGkoDzHGHGQYHGkowevpSWgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHRIyORIvkRIRIRIRIRIRIRIRIRIRIRxRxTpTpTp
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHIKIKIKaAaAlglgGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdVkVkfdfdfdfdVkVkfdfdfdfdfdfdfdGHGHGHGHGHGHGHGHGHIKIKIKxgSLIKrZxgXGIKGHGHCPVgVgwUSCgUumumiZiZvmvmQJQJvmhkvmzbzbzbzbzbzbzbGHGHvpcwHGPzwaGHGHGHGHGHwevpSWgUGHGHGHGHGHGHGHGHGHGHGHGHGHRIRIvkvkvkvkRIRIRIRIRIRIRIRIRIRxRxTpTpTp
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHIKIKIKIKIKaAGHGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdVkfdfdfdfdfdVkVkfdfdfdfdfdfdfdGHGHGHGHGHGHGHCPIKIKIKIKzhxgSCgCGHGHGHGHSCYcVgnKuigUgUumumiZiZvmADkzkzaHvmHLzbzbzbzbzbzbzbGHGHvpkowevpYVGHweweweweweweSWgUGHGHGHGHGHGHGHGHGHGHGHGHRIRIRIvkvkvkvkRIRIRIRIRIRIRIRIRIRxRxTpTpTp
+gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHIKIKIKaAIKIKaAaAGHGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdVkfdfdfdfdfdfdfdGHGHGHGHGHGHGHIKIKIKIKaAaAIKCPGHGHGHGHGHGHEzpTGoCPzbzbumvmJFMgvmADkzkzaHYpvmHLHLHLHLHLGHGHGHGHvpwewevpljlYNIdcNINININIVTgUGHGHGHGHGHGHGHGHGHGHDtDtRIRIRIvkvkvkvkRIRIRIRIRIRIRIRIRxRxRxTpTpTp
 gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHIKIKaAaAIKIKIKIKGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdGHGHGHGHGHGHGHGHGHIKIKIKIKaAaAIKIKGHGHGHGHGHGHgUgUEzEzCPzbzbJFJFJFMgMgSILGLGvmvmvmfwUiUiaGHLGHGHGHGHvpvpvpvpweIKIKIKIKgUgUgUgUgUGHGHGHGHGHGHGHGHGHGHDtRIRIRIvkvkvkvkvkRIRIRIRIRIRIRIRIRxRxTpTpTpTp
 gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHIKIKIKaAIKIKIKIKGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdGHGHGHGHGHGHGHIKIKIKIKIKIKaAaAIKIKIKCPIKIKGHGHgUgUzbzbzbzbzbAlJFJFJFMgvmvmvmvmvmHLHLfwfwfwzvHLGHGHGHGHGHGHGHgUIKIKgUgUgUgUGHGHGHGHGHGHGHGHGHGHGHGHDtDtDtRIRIRIRIvkvkyOvkRIRIRIRIRIRIRIRIRxRxTpTpTpTp
 gUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHIKIKaAIKIKIKGHGHGHGHGHGHGHfdfdfdfdfdfdfdfdfdfdfdfdfdGHGHGHGHGHGHGHGHGHGHGHGHGHIKIKIKIKIKaAaAIKIKIKIKIKIKGHGHGHgUgUMgJFJFJFJFumumumumumMgyYHLowtNHLHLHLHLHLHLzvHLHLHLFJGHGHGHGHgUgUgUgUGHGHGHGHGHGHGHGHGHGHGHGHGHGHGHDtDtDtRIRIRIvkvkvkvkRIRIRIRIRIRIRIRIRxRxRxTpTpTpTp
