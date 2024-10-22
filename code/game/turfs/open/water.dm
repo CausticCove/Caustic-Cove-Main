@@ -396,8 +396,8 @@
 	wash_in = FALSE
 
 /turf/open/water/acid
-	name = "acid"
-	desc = "Caustic and horrible, its bubbling incessantly."
+	name = "diluted acid"
+	desc = "A foul smelling depth of less-than acid."
 	icon_state = "acid"
 	icon = 'icons/turf/roguefloor.dmi'
 	water_level = 2 //waist high
