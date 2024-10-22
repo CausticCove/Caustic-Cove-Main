@@ -23,7 +23,7 @@
 /datum/crafting_recipe/roguetown/breakdowncloth
 	name = "unwind cloth"
 	result = /obj/item/natural/fibers //inefficient, will need two cloth to make back what was broken down for another cloth
-	reqs = list(obj/item/natural/cloth = 1)
+	reqs = list(/obj/item/natural/cloth = 1)
 	skillcraft = null
 	verbage_simple = "pick apart"
 	verbage = "picks apart"
