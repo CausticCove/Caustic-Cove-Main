@@ -652,6 +652,13 @@
 	icon_state = "cobblestone_edges"
 	mouse_opacity = 0
 
+/obj/effect/decal/trenchflooring
+	name = ""
+	desc = ""
+	icon = 'icons/roguetown/rav/map_project/floors.dmi'
+	icon_state = "trench_flooring"
+	mouse_opacity = 0
+
 /turf/open/floor/rogue/tile
 	icon_state = "chess"
 	landsound = 'sound/foley/jumpland/tileland.wav'
