@@ -18,6 +18,8 @@
 #define VOREPREF_INIT	(1<<8)
 #define LICKABLE		(1<<9)
 
+#define DEFAULT_VORE_FLAGS (DIGESTABLE | DEVOURABLE | FEEDING | LICKABLE)
+
 #define MAX_VORE_FLAG	(1<<10)-1 // change this whenever you add a vore flag, must be largest vore flag*2-1
 
 #define isbelly(A) istype(A, /obj/belly)

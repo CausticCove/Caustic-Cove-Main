@@ -1,6 +1,6 @@
 ///////////////////// Mob Living /////////////////////
 /mob/living
-	var/vore_flags = 0
+	var/vore_flags = DEFAULT_VORE_FLAGS
 	var/showvoreprefs = TRUE				// Determines if the mechanical vore preferences button will be displayed on the mob or not.
 	var/obj/belly/vore_selected				// Default to no vore capability.
 	var/list/vore_organs = list()			// List of vore containers inside a mob

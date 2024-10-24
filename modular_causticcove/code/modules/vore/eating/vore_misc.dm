@@ -22,7 +22,7 @@
 /datum/preferences
 	//bad stuff
 	var/vorepref = "Ask"
-	var/vore_flags = 0
+	var/vore_flags = NONE
 	var/list/belly_prefs = list()
 	var/vore_taste = "nothing in particular"
 	var/toggleeatingnoise = TRUE
