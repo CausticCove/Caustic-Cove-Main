@@ -587,6 +587,9 @@
 		if(hud_used.cmode_button)
 			hud_used.cmode_button.update_icon()
 
+	if(cmode)
+		disable_vore_mode()
+
 /mob
 	var/last_aimhchange = 0
 	var/aimheight = 11
