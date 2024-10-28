@@ -4,7 +4,7 @@
 /datum/species/anthromacro
 	name = "Goliath"
 	id = "anthromacro"
-	desc = "Some species of Wild-Kin hail from Graggarite touched bloodlines, and have the size, and temper to match."
+	desc = "Some species of Wild-Kin hail from Graggarite touched bloodlines, and have the size, and temper to match. (ONLY WORKS FOR ADVENTURER AND PILGRIM!!!)"
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
