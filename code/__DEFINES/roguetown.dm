@@ -45,6 +45,8 @@
 #define RACES_SHUNNED \
 	/datum/species/halforc,\
 	/datum/species/anthromorphsmall,\
+	/datum/species/anthromacro,\
+	/datum/species/demimacro,\
 	/datum/species/kobold
 
 #define RACES_DESPISED \
