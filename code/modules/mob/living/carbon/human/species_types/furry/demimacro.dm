@@ -4,7 +4,7 @@
 /datum/species/demimacro
 	name = "Half-Giants"
 	id = "demimacro"
-	desc = "Similar to Goliaths, these beasts trace their lineage to graggarite roots. They may be a tad more friendly however. Just a bit."
+	desc = "Similar to Goliaths, these beasts trace their lineage to graggarite roots. They may be a tad more friendly however. Just a bit. (ONLY WORKS WITH ADVENTURERS AND PILGRIMS)"
 	skin_tone_wording = "Ancestry"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,MUTCOLORS_PARTSONLY)
