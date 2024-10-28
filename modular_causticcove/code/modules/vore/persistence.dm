@@ -88,3 +88,11 @@ in their list
 	var/atom/movable/thing = new path(loc)
 	thing.deserialize(data)
 	return thing
+
+/proc/safe_json_encode_cit(list/L, default = "")
+	. = default
+	return json_encode(L)
+
+/proc/safe_json_decode_cit(string, default = list())
+	. = default
+	return json_decode(string)

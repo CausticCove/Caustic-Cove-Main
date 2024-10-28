@@ -525,6 +525,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["customizer_entries"] >> customizer_entries
 	validate_customizer_entries()
 
+	load_vore_prefs(S)
+
 	return TRUE
 
 /datum/preferences/proc/save_character()
@@ -599,6 +601,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["voice_type"] , voice_type)
 	WRITE_FILE(S["pronouns"] , pronouns)
 	WRITE_FILE(S["statpack"] , statpack.type)
+
+	save_vore_prefs(S)
 
 
 	return TRUE

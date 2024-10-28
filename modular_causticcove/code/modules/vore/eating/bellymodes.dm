@@ -227,7 +227,7 @@
 				if(!(M.status_flags & GODMODE))
 					M.adjustFireLoss(digest_burn)
 					M.adjustToxLoss(2) // something something plasma based acids
-					M.adjustCloneLoss(1) // eventually this'll kill you if you're healing everything else, you nerds.
+
 				//Contaminate or gurgle items
 			var/obj/item/T = pick(touchable_items)
 			if(istype(T))

@@ -29,6 +29,40 @@
 	var/toggledigestionnoise = TRUE
 	var/cit_toggles = CIT_TOGGLES_DEFAULT
 
+/datum/preferences/proc/save_vore_prefs(savefile/S)
+	WRITE_FILE(S["cit_toggles"], cit_toggles)
+	WRITE_FILE(S["vore_flags"], vore_flags)
+	WRITE_FILE(S["vore_taste"], vore_taste)
+
+	var/ckey = parent.ckey
+
+	//Belly_prefs
+	var/vr_path = "data/player_saves/[ckey[1]]/[ckey]/vore"
+	var/char_vr_path = "[vr_path]/character_[default_slot]_v2.json"
+	var/belly_prefs_json = safe_json_encode_cit(list("belly_prefs" = belly_prefs))
+	if(fexists(char_vr_path))
+		fdel(char_vr_path)
+	text2file(belly_prefs_json,char_vr_path)
+
+/datum/preferences/proc/load_vore_prefs(savefile/S)
+	S["cit_toggles"] >> cit_toggles
+	S["vore_flags"] >> vore_flags
+	S["vore_taste"] >> vore_taste
+
+	var/ckey = parent.ckey
+
+	var/vr_path = "data/player_saves/[ckey[1]]/[ckey]/vore"
+	var/char_vr_path = "[vr_path]/character_[default_slot]_v2.json"
+	if(fexists(char_vr_path))
+		var/list/json_from_file = json_decode(file2text(char_vr_path))
+		if(json_from_file)
+			belly_prefs = json_from_file["belly_prefs"]
+
+	vore_flags = sanitize_integer(vore_flags, 0, MAX_VORE_FLAG, 0)
+	vore_taste = copytext(vore_taste, 1, MAX_TASTE_LEN)
+	belly_prefs = SANITIZE_LIST(belly_prefs)
+	cit_toggles = sanitize_integer(cit_toggles, 0, 16777215, initial(cit_toggles))
+
 /obj/item
 	var/hides_bulges = FALSE
 
