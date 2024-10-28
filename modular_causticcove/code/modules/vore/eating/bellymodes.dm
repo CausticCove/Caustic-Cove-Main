@@ -112,6 +112,7 @@
 				// Deal digestion damage (and feed the pred)
 				if(!(M.status_flags & GODMODE))
 					M.adjustFireLoss(digest_burn)
+					M.adjustOxyLoss(3.0)
 					owner.adjust_nutrition(1)
 
 			//Contaminate or gurgle items
