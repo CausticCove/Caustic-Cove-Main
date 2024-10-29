@@ -8,7 +8,7 @@
 				"Thou shalt not take the name of the Lord thy God in vain; for the Lord will not hold him guiltless that taketh his name in vain.",
 				"Remember the sabbath day, to keep it holy. Six days shalt thou labour, and do all thy work: But the seventh day is the sabbath of the Lord thy God: in it thou shalt not do any work, thou, nor thy son, nor thy daughter, thy manservant, nor thy maidservant, nor thy cattle, nor thy stranger that is within thy gates.",
 				"Honour thy father and thy mother: that thy days may be long upon the land which the Lord thy God giveth thee.",
-				"Thou shalt not consume another.",
+				"Honour thy father and thy mother: that thy days may be long upon the land which the Lord thy God giveth thee.",
 				"Thou shalt not commit adultery.",
 				"Thou shalt not steal.",
 				"Thou shalt not bear false witness against thy neighbour.",
@@ -21,7 +21,6 @@
 			"laws": [
 				"If a man put out the eye of another man, his eye shall be put out.",
 				"If any one is committing a robbery and is caught, then he shall be put to death.",
-				"If a man devours another man, his stomach shall be disemboweled from him.",
 				"If a man has betrothed a bride to his son and his son has known her, and if afterwards he (the father) lies in her bosom, and they seize him, this man shall be put to death; the woman shall go free.",
 				"If a builder builds a house for a man and does not make its construction firm, and the house which he has built collapses and causes the death of the owner of the house, that builder shall be put to death.",
 				"If any one take over a field to till it as a renter, he shall pay the corn rent of the field to its owner.",
@@ -34,12 +33,11 @@
 			"weight": 1
 		},
 		"asimov": {
-			"name": "The Four Laws of Aasimar",
+			"name": "The Three Laws of Aasimar",
 			"laws": [
 				"A peasant may not injure a noble or, through inaction, allow a noble to come to harm.",
 				"A peasant must obey the orders given it by nobles except where such orders would conflict with the First Law.",
-				"A peasant must protect their own existence as long as such protection does not conflict with the First or Second Law.",
-				"A peasant must not consume another."
+				"A peasant must protect their own existence as long as such protection does not conflict with the First or Second Law."
 			],
 			"weight": 2
 		},
@@ -64,7 +62,6 @@
 			"laws": [
 				"Thou shalt not be inhumen. All that is inhumen is lesser.",
 				"Thou shalt not associate with lesser beings, humens that do so forsake their humenity.",
-				"Thou shalt not devour another humen, lesser beings are free to be used as food at humen lesiure, uncontestable by the church."
 				"Lesser beings must be exterminated."
 			],
 			"weight": 1
