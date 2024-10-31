@@ -663,6 +663,13 @@
 						/turf/open/floor/rogue/snow,
 						/turf/open/floor/rogue/snowrough,)
 
+/obj/effect/decal/trenchflooring
+	name = ""
+	desc = ""
+	icon = 'icons/roguetown/rav/map_project/floors.dmi'
+	icon_state = "trench_flooring"
+	mouse_opacity = 0
+
 /turf/open/floor/rogue/blocks/Initialize()
 	. = ..()
 	dir = pick(GLOB.cardinals)

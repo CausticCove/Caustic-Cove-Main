@@ -36,10 +36,20 @@
 	verbage = "sews"
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/breakdowncloth
+	name = "unwind cloth"
+	result = /obj/item/natural/fibers //inefficient, will need two cloth to make back what was broken down for another cloth
+	reqs = list(/obj/item/natural/cloth = 1)
+	skillcraft = null
+	verbage_simple = "pick apart"
+	verbage = "picks apart"
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/clothbelt
 	name = "cloth belt"
 	result = /obj/item/storage/belt/rogue/leather/cloth
 	reqs = list(/obj/item/natural/cloth = 1)
+	skillcraft = null //CC edit: No crafting skill should be gained for tying cloth/rope in a knot
 	craftdiff = 0
 	verbage_simple = "tie"
 	verbage = "ties"
@@ -48,6 +58,7 @@
 	name = "untie cloth belt"
 	result = /obj/item/natural/cloth
 	reqs = list(/obj/item/storage/belt/rogue/leather/cloth = 1)
+	skillcraft = null
 	craftdiff = 0
 	verbage_simple = "untie"
 	verbage = "unties"
@@ -56,6 +67,7 @@
 	name = "rope belt"
 	result = /obj/item/storage/belt/rogue/leather/rope
 	reqs = list(/obj/item/rope = 1)
+	skillcraft = null
 	craftdiff = 0
 	verbage_simple = "tie"
 	verbage = "ties"
@@ -64,6 +76,7 @@
 	name = "untie rope belt"
 	result = /obj/item/rope
 	reqs = list(/obj/item/storage/belt/rogue/leather/rope = 1)
+	skillcraft = null
 	craftdiff = 0
 	verbage_simple = "untie"
 	verbage = "unties"
@@ -94,6 +107,7 @@
 	name = "wooden bow"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	reqs = list(/obj/item/natural/bowstring = 1, /obj/item/grown/log/tree/bowpartial = 1)
+	skillcraft = /datum/skill/combat/bows
 	verbage_simple = "string together"
 	verbage = "strings together"
 	craftdiff = 2
@@ -211,6 +225,7 @@
 	name = "wood club"
 	result = /obj/item/rogueweapon/mace/woodclub/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1)
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/billhook
 	name = "improvised billhook"
@@ -265,13 +280,13 @@
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/spoon
-	name = "spoon (x2)"
+	name = "spoon"
 	result = list(/obj/item/kitchen/spoon,
 				/obj/item/kitchen/spoon)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
 /datum/crafting_recipe/roguetown/platter
-	name = "platter (x2)"
+	name = "platter"
 	result = list(/obj/item/cooking/platter,
 				/obj/item/cooking/platter)
 	reqs = list(/obj/item/grown/log/tree/small = 1)

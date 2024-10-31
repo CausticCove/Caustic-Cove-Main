@@ -200,7 +200,9 @@
 
 /turf/open/lava/acid
 	name = "acid"
+	desc = "Caustic and horrid, it bubbles incessantly."
 	icon_state = "acid"
+	slowdown = 8 //caustic cove edit
 	light_range = 4
 	light_power = 1
 	light_color = "#56ff0d"
@@ -247,6 +249,7 @@
 //				if(S && H && S.clothing_flags & LAVAPROTECT && H.clothing_flags & LAVAPROTECT)
 //					return
 				//make this acid
+/***
 				var/shouldupdate = FALSE
 				var/lethality = prob(95)
 				for(var/obj/item/bodypart/B in C.bodyparts)
@@ -266,6 +269,10 @@
 
 //			if("lava" in L.weather_immunities)
 //				continue
+***/
 
-			L.dust(drop_items = TRUE)
-
+			L.adjustFireLoss(10) //would have higher, but I wanted to give prey their fanservice
+			playsound(src, 'modular_causticcove/sound/misc/bigmelt.ogg', 100, FALSE)
+			if(L.health <= 0) //melt away once dead
+				L.dust(drop_items = TRUE) 
+				playsound(src, 'modular_causticcove/sound/misc/deathdigest.ogg', 100, FALSE) //caustic cove edit end

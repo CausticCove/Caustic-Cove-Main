@@ -394,6 +394,23 @@
 	swim_skill = TRUE
 	wash_in = FALSE
 
+	
+/turf/open/water/acid
+	name = "diluted acid"
+	desc = "A foul smelling depth of less-than acid."
+	icon_state = "acid"
+	icon = 'icons/turf/roguefloor.dmi'
+	water_level = 2 //waist high
+	water_color = "#56ff0d"
+	slowdown = 4
+	swim_skill = TRUE
+	wash_in = FALSE //no
+	water_reagent = /datum/reagent/water/gross
+
+/turf/open/water/acid/Initialize()
+	.  = ..()
+	icon_state = "acid"
+
 /turf/open/water/pond
 	name = "pond"
 	desc = "Still and idyllic water that flows through meadows."
