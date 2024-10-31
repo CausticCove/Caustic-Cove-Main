@@ -33,26 +33,6 @@
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
-		if(H.dna?.species)
-		if(isanthrom(H))
-			H.change_stat("strength", 8)
-			H.change_stat("constitution", 8)
-			H.change_stat("endurance", 8)
-			H.change_stat("speed", -8)
-			H.change_stat("speed", -4)
-			H.transform = H.transform.Scale(2.25, 2.25)
-			H.transform = H.transform.Translate(0, (0.25 * 16))
-			H.update_transform()
-		if(isdemim(H))
-			H.change_stat("strength", 8)
-			H.change_stat("constitution", 8)
-			H.change_stat("endurance", 8)
-			H.change_stat("speed", -8)
-			H.change_stat("speed", -4)
-			H.transform = H.transform.Scale(2.25, 2.25)
-			H.transform = H.transform.Translate(0, (0.25 * 16))
-			H.update_transform()
-
 		if(GLOB.adventurer_hugbox_duration)
 			///FOR SOME RETARDED FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
 			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, adv_hugboxing_start)), 1)
