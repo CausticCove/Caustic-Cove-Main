@@ -20,6 +20,8 @@
 	/datum/species/halforc,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
+	/datum/species/anthromacro,\
+	/datum/species/demimacro,\
 )
 
 #define RACES_RESPECTED \
@@ -45,6 +47,8 @@
 #define RACES_SHUNNED \
 	/datum/species/halforc,\
 	/datum/species/anthromorphsmall,\
+	/datum/species/anthromacro,\
+	/datum/species/demimacro,\
 	/datum/species/kobold
 
 #define RACES_DESPISED \
@@ -99,6 +103,8 @@
 	/datum/species/halforc,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
+	/datum/species/anthromacro,\
+	/datum/species/demimacro,\
 )
 // Non-dwarf non-kobold non-goblin mostly
 #define NON_DWARVEN_RACE_TYPES list(\
@@ -118,6 +124,8 @@
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
+	/datum/species/anthromacro,\
+	/datum/species/demimacro,\
 )
 // Non-elf non-dwarf non-kobold non-goblin mostly
 #define HUMANLIKE_RACE_TYPES list(\
@@ -133,6 +141,8 @@
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
+	/datum/species/anthromacro,\
+	/datum/species/demimacro,\
 )
 #define ALL_CLERIC_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/necra, /datum/patron/divine/pestra, /datum/patron/divine/ravox, /datum/patron/divine/malum, /datum/patron/divine/eora)
 
@@ -199,6 +209,7 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define STRESS_NEUTRAL 2
 #define STRESS_GOOD 1
 #define STRESS_VGOOD 0
+
 
 /*
 	Formerly bitflags, now we are strings
