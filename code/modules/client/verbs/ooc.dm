@@ -85,7 +85,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.chat_toggles & CHAT_OOC)
 			msg_to_send = "<font color='[color2use]'><EM>[keyname]:</EM></font> <font color='[chat_color]'><span class='message linkify'>[msg]</span></font>"
-			if(holder)
+			if(holder && (C.prefs.toggles & TOGGLE_BLUE_OOC))
 				msg_to_send = "<font color='[color2use]'><EM>[keyname]:</EM></font> <font color='#4972bc'><span class='message linkify'>[msg]</span></font>"
 			to_chat(C, msg_to_send)
 
@@ -187,7 +187,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 				continue
 
 			msg_to_send = "<font color='[color2use]'><EM>[keyname]:</EM></font> <font color='[chat_color]'><span class='message linkify'>[msg]</span></font>"
-			if(holder)
+			if(holder && (C.prefs.toggles & TOGGLE_BLUE_OOC))
 				msg_to_send = "<font color='[color2use]'><EM>[keyname]:</EM></font> <font color='#4972bc'><span class='message linkify'>[msg]</span></font>"
 
 			to_chat(C, msg_to_send)

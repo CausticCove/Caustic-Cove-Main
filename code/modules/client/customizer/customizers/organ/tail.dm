@@ -147,6 +147,12 @@
 		/datum/sprite_accessory/tail/lizard/dtiger,
 		/datum/sprite_accessory/tail/lizard/ltiger,
 		/datum/sprite_accessory/tail/lizard/spikes,
+		/datum/sprite_accessory/tail/taur/snake,
+		/datum/sprite_accessory/tail/taur/wolf,
+		/datum/sprite_accessory/tail/taur/feline,
+		/datum/sprite_accessory/tail/taur/fatsnake,
+		/datum/sprite_accessory/tail/taur/spider,
+		/datum/sprite_accessory/tail/taur/sect,
 		)
 
 /datum/customizer/organ/tail/anthro
@@ -212,4 +218,10 @@
 		/datum/sprite_accessory/tail/lizard/dtiger,
 		/datum/sprite_accessory/tail/lizard/ltiger,
 		/datum/sprite_accessory/tail/lizard/spikes,
+		/datum/sprite_accessory/tail/taur/snake,
+		/datum/sprite_accessory/tail/taur/wolf,
+		/datum/sprite_accessory/tail/taur/feline,
+		/datum/sprite_accessory/tail/taur/fatsnake,
+		/datum/sprite_accessory/tail/taur/spider,
+		/datum/sprite_accessory/tail/taur/sect,
 		)
