@@ -51,8 +51,8 @@
 			else	
 				to_chat(user, span_warning("Wrong key."))
 				return
-	if(istype(P, /obj/item/keyring))
-		var/obj/item/keyring/K = P
+	if(istype(P, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = P
 		for(var/obj/item/roguekey/KE in K.keys)
 			if(KE.lockid == keycontrol)
 				locked = !locked
@@ -262,9 +262,24 @@
 /obj/structure/roguemachine/vendor/inn
 	keycontrol = "tavern"
 
+/obj/structure/roguemachine/vendor/bathhouse
+	keycontrol = "nightman"
+
 /obj/structure/roguemachine/vendor/inn/Initialize()
 	. = ..()
 	for(var/X in list(/obj/item/roguekey/roomi,/obj/item/roguekey/roomii,/obj/item/roguekey/roomiii,/obj/item/roguekey/roomiv,/obj/item/roguekey/roomv,/obj/item/roguekey/roomvi))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 10
+	update_icon()
+
+/obj/structure/roguemachine/vendor/merchant
+	keycontrol = "merchant"
+
+/obj/structure/roguemachine/vendor/merchant/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/roguekey/apartments/stall1,/obj/item/roguekey/apartments/stall2,/obj/item/roguekey/apartments/stall3))
 		var/obj/P = new X(src)
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name

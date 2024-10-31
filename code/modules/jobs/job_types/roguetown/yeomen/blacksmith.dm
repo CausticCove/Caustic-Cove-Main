@@ -8,13 +8,14 @@
 
 	allowed_races = RACES_ALL_KINDS
 
-	tutorial = "You studied for many decades under your master with a few other apprentices to become an Armorer, a trade that certainly has seen a boom in revenue in recent times with many a bannerlord seeing the importance in maintaining a well-equipped army."
+	tutorial = "You studied for many decades under your master with a few other apprentices to become an Armorer--a trade that certainly has seen a boom in recent times, with many a bannerlord keenly aware of the importance in maintaining a well-equipped army."
 
 	outfit = /datum/outfit/job/roguetown/armorsmith
 	display_order = JDO_ARMORER
 	give_bank_account = 11
 	min_pq = 0
 	max_pq = null
+	round_contrib_points = 3
 
 /datum/outfit/job/roguetown/armorsmith/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -29,11 +30,13 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/smelting, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
-	if(H.pronouns == SHE_HER)
+			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 1, TRUE)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		pants = /obj/item/clothing/under/roguetown/trou
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		backr = /obj/item/storage/backpack/rogue/satchel
@@ -76,6 +79,7 @@
 	give_bank_account = 11
 	min_pq = 0
 	max_pq = null
+	round_contrib_points = 3
 
 /datum/outfit/job/roguetown/weaponsmith/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -90,11 +94,13 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/smelting, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
-	if(H.pronouns == SHE_HER)
+			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 1, TRUE)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		pants = /obj/item/clothing/under/roguetown/trou
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		backr = /obj/item/storage/backpack/rogue/satchel
@@ -136,11 +142,13 @@
 	give_bank_account = 11
 	min_pq = 0
 	max_pq = null
+	round_contrib_points = 3
 
 /datum/outfit/job/roguetown/blacksmith/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/hatfur
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves/blacksmith
+	ADD_TRAIT(H, TRAIT_TRAINED_SMITH, TRAIT_GENERIC)
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/hatblu
 	if(H.mind)
@@ -149,15 +157,17 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/smelting, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
-	if(H.pronouns == SHE_HER)
+			H.mind.adjust_skillrank(/datum/skill/craft/smelting, 1, TRUE)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		pants = /obj/item/clothing/under/roguetown/trou
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		backr = /obj/item/storage/backpack/rogue/satchel

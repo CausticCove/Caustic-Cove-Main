@@ -38,6 +38,8 @@
 	var/blessed_time = 0
 	/// Time remaining for the soil to decay and destroy itself, only applicable when its out of water and nutriments and has no plant
 	var/soil_decay_time = SOIL_DECAY_TIME
+	///The time remaining in which the soil was given special fertilizer, effect is similar to being blessed but with less beneficial effects
+	var/fertilized_time = 0
 
 /obj/structure/soil/Crossed(atom/movable/AM)
 	. = ..()
@@ -51,6 +53,9 @@
 	add_sleep_experience(user, /datum/skill/labor/farming, user.STAINT * 2)
 
 	var/farming_skill = user.mind.get_skill_level(/datum/skill/labor/farming)
+	var/is_legendary = FALSE
+	if(farming_skill == SKILL_LEVEL_LEGENDARY) //check if the user has legendary farming skill
+		is_legendary = TRUE //we do
 	var/chance_to_ruin = 50 - (farming_skill * 25)
 	if(prob(chance_to_ruin))
 		ruin_produce()
@@ -68,7 +73,7 @@
 		modifier += 1
 
 	to_chat(user, span_notice(feedback))
-	yield_produce(modifier)
+	yield_produce(modifier, is_legendary)
 
 /obj/structure/soil/proc/try_handle_harvest(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/rogueweapon/sickle))
@@ -100,9 +105,15 @@
 
 /obj/structure/soil/proc/try_handle_tilling(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/rogueweapon/hoe))
+		var/is_legendary = FALSE
+		if(user.mind.get_skill_level(/datum/skill/labor/farming) == SKILL_LEVEL_LEGENDARY)
+			is_legendary = TRUE
+		var/work_time = 4 SECONDS
+		if(is_legendary)
+			work_time = 1.5 SECONDS //this is then by get_farming_do_time to around .5 seconds
 		to_chat(user, span_notice("I begin to till the soil..."))
 		playsound(src,'sound/items/dig_shovel.ogg', 100, TRUE)
-		if(do_after(user, get_farming_do_time(user, 4 SECONDS), target = src))
+		if(do_after(user, get_farming_do_time(user, work_time), target = src))
 			to_chat(user, span_notice("I till the soil."))
 			playsound(src,'sound/items/dig_shovel.ogg', 100, TRUE)
 			user_till_soil(user)
@@ -141,8 +152,8 @@
 		fertilize_amount = 150
 	else if (istype(attacking_item, /obj/item/compost))
 		fertilize_amount = 150
-	else if (istype(attacking_item, /obj/item/fertilizer)) // Hearthstone Port
-		to_chat(user, span_notice("Something about this mixture..."))
+	else if (istype(attacking_item, /obj/item/fertilizer))
+		to_chat(user, span_notice("You mix the fertilizer into the soil..."))
 		fertilize_soil()
 		qdel(attacking_item)
 		return TRUE
@@ -278,15 +289,8 @@
 		add_growth(2 MINUTES)
 
 /obj/structure/soil/proc/fertilize_soil()
-	blessed_time = 60 MINUTES //Meant to outlast the effects of dendor's blessing
-	
-	// Similar effects on nutrition
-	if(nutrition < 100)
-		adjust_nutrition(max(100 - nutrition, 0))
-	// Similar effects on water
-	if(water < 100)
-		adjust_water(max(100 - water, 0))
-	//No growth bonus nor plant revival.
+	fertilized_time = 60 MINUTES //Keeps the plant fertilized for a good while
+
 /obj/structure/soil/proc/adjust_water(adjust_amount)
 	water = clamp(water + adjust_amount, 0, MAX_PLANT_WATER)
 	update_icon()
@@ -426,6 +430,8 @@
 	// Blessed feedback
 	if(blessed_time > 0)
 		. += span_good("The soil seems blessed.")
+	if(fertilized_time > 0)
+		. += span_good("The soil has special fertilzier mixed in.")
 
 #define BLESSING_WEED_DECAY_RATE 10 / (1 MINUTES)
 #define WEED_GROWTH_RATE 3 / (1 MINUTES)
@@ -438,7 +444,7 @@
 
 /obj/structure/soil/proc/process_weeds(dt)
 	// Blessed soil will have the weeds die
-	if(blessed_time > 0)
+	if(blessed_time > 0 || fertilized_time > 0)
 		adjust_weeds(-dt * BLESSING_WEED_DECAY_RATE)
 	if(plant && plant.weed_immune)
 		// Weeds die if the plant is immune to them
@@ -505,8 +511,8 @@
 	// If soil is tilled, grow faster
 	if(tilled_time > 0)
 		growth_multiplier *= 1.6
-	// If soil is blessed, grow faster and take up less nutriments
-	if(blessed_time > 0)
+	// If soil is blessed or fertilized, grow faster and take up less nutriments
+	if(blessed_time > 0 || fertilized_time > 0)
 		growth_multiplier *= 2.0
 		nutriment_eat_mutliplier *= 0.4
 	// If there's too many weeds, they hamper the growth of the plant
@@ -560,7 +566,8 @@
 
 	adjust_water(-dt * SOIL_WATER_DECAY_RATE)
 	adjust_nutrition(-dt * SOIL_NUTRIMENT_DECAY_RATE)
-
+	if(fertilized_time > 0)
+		nutrition = 100
 	tilled_time = max(tilled_time - dt, 0)
 	blessed_time = max(blessed_time - dt, 0)
 
@@ -590,7 +597,7 @@
 	update_icon()
 
 /// Yields produce on its tile if it's ready for harvest
-/obj/structure/soil/proc/yield_produce(modifier = 0)
+/obj/structure/soil/proc/yield_produce(modifier = 0, is_legendary = FALSE)
 	if(!produce_ready)
 		return
 	var/base_amount = rand(plant.produce_amount_min, plant.produce_amount_max)
@@ -599,7 +606,11 @@
 		new plant.produce_type(loc)
 	produce_ready = FALSE
 	if(!plant.perennial)
-		uproot()
+		if(is_legendary) //the user has legendary skill
+			growth_time = 0 //reset growth time
+			matured = FALSE //not mature anymore
+		else
+			uproot()
 	update_icon()
 
 /obj/structure/soil/proc/insert_plant(datum/plant_def/new_plant)

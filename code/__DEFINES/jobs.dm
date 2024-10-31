@@ -102,7 +102,7 @@
 #define STEWARD		(1<<3)
 #define KNIGHT		(1<<4)
 #define GUARD_CAPTAIN		(1<<5)
-#define BAILIFF		(1<<6)
+#define MARSHAL		(1<<6)
 #define HOSTAGE		(1<<7)
 
 #define GARRISON		(1<<1)
@@ -140,7 +140,7 @@
 #define WEAPONSMITH (1<<3)
 #define BLACKSMITH  (1<<4)
 #define ALCHEMIST	(1<<5)
-#define MASON		(1<<6)
+#define ARTIFICER	(1<<6)
 #define TAILOR		(1<<7)
 #define MERCHANT	(1<<8)
 #define SCRIBE		(1<<9)
@@ -155,17 +155,19 @@
 #define LUMBERJACK	(1<<4)
 #define MINER		(1<<5)
 #define COOK		(1<<6)
-#define GRABBER		(1<<7)
-#define NIGHTMASTER	(1<<8)
-#define BEGGAR		(1<<9)
+#define KNAVEWENCH (1<<7)
+#define GRABBER		(1<<8)
+#define NITEMASTER	(1<<9)
 #define WENCH		(1<<10)
-#define ADVENTURER	(1<<11)
-#define PILGRIM		(1<<12)
-#define VILLAGER	(1<<13)
-#define PRISONERR	(1<<14)
-#define PRISONERB	(1<<15)
-#define LUNATIC		(1<<16)
-#define MIGRANT		(1<<17)
+#define BEGGAR		(1<<11)
+#define ADVENTURER	(1<<12)
+#define PILGRIM		(1<<13)
+#define VILLAGER	(1<<14)
+#define PRISONERR	(1<<15)
+#define PRISONERB	(1<<16)
+#define LUNATIC		(1<<17)
+#define MIGRANT		(1<<18)
+#define BANDIT		(1<<19)
 
 #define YOUNGFOLK	(1<<6)
 
@@ -219,7 +221,7 @@
 #define JDO_HAND 2
 #define JDO_STEWARD 3
 #define JDO_CLERK 3.1
-#define JDO_BAILIFF 4
+#define JDO_MARSHAL 4
 #define JDO_COUNCILLOR 4.1
 
 // Courtiers
@@ -263,26 +265,27 @@
 #define JDO_BLACKSMITH 20
 #define JDO_APPRENTICE 21
 
-#define JDO_MASON 22
+#define JDO_ARTIFICER 22
+#define JDO_TAILOR 24
 
 #define JDO_BARKEEP 26
 #define JDO_COOK 27
+#define JDO_NITEMASTER 27.1
+#define JDO_KNAVEWENCH 27.2
+#define JDO_WENCH 27.3
 
-#define JDO_BUTCHER 27.1
-#define JDO_SOILSON 27.2
-
-#define JDO_NIGHTMASTER 28
-#define JDO_WENCH 28.1
+#define JDO_SOILSON 28
 
 #define JDO_VILLAGER 30
 #define JDO_ADVENTURER 30.1
 #define JDO_PILGRIM 30.2
 #define JDO_MIGRANT 32.3
+#define JDO_BANDIT 31.3
 
 #define JDO_MERCENARY 31
 #define JDO_GRENZELHOFT 31.1
 #define JDO_DESERT_RIDER 31.2
-#define JDO_VET 31.3
+#define JDO_VET 31.4
 
 #define JDO_VAGRANT 33
 #define JDO_ORPHAN 34
@@ -312,7 +315,7 @@
 	/datum/job/roguetown/prince,\
 	/datum/job/roguetown/councillor,\
 	/datum/job/roguetown/physician,\
-	/datum/job/roguetown/bailiff,\
+	/datum/job/roguetown/marshal,\
 	/datum/job/roguetown/captain,\
 	/datum/job/roguetown/hand,\
 	/datum/job/roguetown/knight,\
@@ -326,10 +329,8 @@
 
 #define CHURCH_ROLES \
 	/datum/job/roguetown/churchling,\
-	/datum/job/roguetown/shepherd,\
 	/datum/job/roguetown/druid,\
 	/datum/job/roguetown/monk,\
-	/datum/job/roguetown/undertaker,\
 	/datum/job/roguetown/priest,\
 	/datum/job/roguetown/puritan,\
 	/datum/job/roguetown/templar
@@ -340,8 +341,8 @@
 	/datum/job/roguetown/beggar,\
 	/datum/job/roguetown/butcher,\
 	/datum/job/roguetown/cook,\
+	/datum/job/roguetown/knavewench,\
 	/datum/job/roguetown/lunatic,\
-	/datum/job/roguetown/nightman,\
 	/datum/job/roguetown/farmer,\
 	/datum/job/roguetown/orphan,\
 	/datum/job/roguetown/shophand,\
@@ -352,20 +353,25 @@
 
 #define YEOMEN_ROLES \
 	/datum/job/roguetown/woodsman,\
+	/datum/job/roguetown/niteman,\
 	/datum/job/roguetown/archivist,\
 	/datum/job/roguetown/barkeep,\
 	/datum/job/roguetown/armorsmith,\
 	/datum/job/roguetown/weaponsmith,\
 	/datum/job/roguetown/blacksmith,\
-	/datum/job/roguetown/mason,\
+	/datum/job/roguetown/artificer,\
 	/datum/job/roguetown/merchant,\
+	/datum/job/roguetown/tailor,\
 	/datum/job/roguetown/scribe
+
+
 
 #define WANDERER_ROLES \
 	/datum/job/roguetown/pilgrim,\
 	/datum/job/roguetown/adventurer,\
 	/datum/job/roguetown/mercenary/desert_rider,\
-	/datum/job/roguetown/mercenary/grenzelhoft
+	/datum/job/roguetown/mercenary/grenzelhoft,\
+	/datum/job/roguetown/bandit
 
 #define GARRISON_ROLES \
 	/datum/job/roguetown/bogguardsman,\

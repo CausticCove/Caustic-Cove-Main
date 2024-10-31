@@ -30,6 +30,9 @@
 	//How many players have this job
 	var/current_positions = 0
 
+	//Whether this job clears a slot when you get a rename prompt.
+	var/antag_job = FALSE
+
 	//Supervisors, who this person answers to directly
 	var/supervisors = ""
 
@@ -91,10 +94,12 @@
 	var/plevel_req = 0
 	var/min_pq = 0
 	var/max_pq = 0
+	var/round_contrib_points = 0 //Each 10 contributor points counts as 1 PQ, up to 10 PQ.
 
 	var/show_in_credits = TRUE
-
+	var/announce_latejoin = TRUE
 	var/give_bank_account = FALSE
+	var/noble_income = FALSE //Passive income every day from noble estate
 
 	var/can_random = TRUE
 
@@ -134,14 +139,17 @@
 */
 	var/PQ_boost_divider = 0
 
-	//VRELL - Stuff to support custom genital restrictions
-	var/allow_custom_genitals = FALSE
-
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE
 
+/client/proc/job_greet(var/datum/job/greeting_job)
+	if(mob.job == greeting_job.title)
+		greeting_job.greet(mob)
+
 /datum/job/proc/greet(mob/player)
+	if(player?.mind?.assigned_role != title)
+		return
 	if(!job_greet_text)
 		return
 	to_chat(player, span_notice("You are the <b>[title]</b>"))
@@ -182,15 +190,18 @@
 		for(var/datum/mind/MF in get_minds(X))
 			H.mind.i_know_person(MF)
 
-	if(H.islatejoin && show_in_credits)
+	if(H.islatejoin && announce_latejoin)
 		var/used_title = title
-		if((H.pronouns == SHE_HER) && f_title)
+		if((H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F) && f_title)
 			used_title = f_title
 		scom_announce("[H.real_name] the [used_title] arrives from Kingsfield.")
 
 	if(give_bank_account)
 		if(give_bank_account > 1)
 			SStreasury.create_bank_account(H, give_bank_account)
+			if(noble_income)
+				SStreasury.noble_incomes[H] = noble_income
+
 		else
 			SStreasury.create_bank_account(H)
 
@@ -203,28 +214,39 @@
 	if(!H.mind.special_role)
 		GLOB.actors_list[H.mobid] = "[H.real_name] as [H.mind.assigned_role]<BR>"
 
-/mob/living/carbon/human/proc/add_credit()
+/client/verb/set_mugshot()
+	set category = "OOC"
+	set name = "Set Credits Mugshot"
+	if(mob && ishuman(mob) && mob.mind)
+		var/mob/living/carbon/human/H = mob
+		if(!H.mind.mugshot_set)
+			to_chat(src, "Updating mugshot...")
+			H.mind.mugshot_set = TRUE
+			H.add_credit(TRUE)
+			to_chat(src, "Mugshot updated.")
+		else
+			to_chat(src, "Mugshots are resource intensive. You are limited to one per character.")
+
+/mob/living/carbon/human/proc/add_credit(generate_for_adv_class = FALSE) //Evil code to get the proper image for adv classes after they spawn in.
 	if(!mind || !client)
 		return
 	var/thename = "[real_name]"
 	var/datum/job/J = SSjob.GetJob(mind.assigned_role)
-	var/used_title
-	if(J)
-		used_title = J.title
-		if(pronouns == SHE_HER && J.f_title)
-			used_title = J.f_title
-	if(used_title)
-		thename = "[real_name] the [used_title]"
+	var/used_title = get_role_title()
+
 	GLOB.credits_icons[thename] = list()
 	var/client/C = client
 	var/datum/preferences/P = C.prefs
-	if(!P)
-		return
-	var/icon/I = get_flat_human_icon(null, J, P, DUMMY_HUMAN_SLOT_MANIFEST, list(SOUTH))
+	var/icon/I
+	if(generate_for_adv_class)
+		I = get_flat_human_icon(null, J, P, DUMMY_HUMAN_SLOT_MANIFEST, list(SOUTH), human_gear_override = src)
+	else if (P)
+		I = get_flat_human_icon(null, J, P, DUMMY_HUMAN_SLOT_MANIFEST, list(SOUTH))
 	if(I)
 		var/icon/female_s = icon("icon"='icons/mob/clothing/under/masking_helpers.dmi', "icon_state"="credits")
 		I.Blend(female_s, ICON_MULTIPLY)
 		I.Scale(96,96)
+		GLOB.credits_icons[thename]["title"] = used_title
 		GLOB.credits_icons[thename]["icon"] = I
 		GLOB.credits_icons[thename]["vc"] = voice_color
 

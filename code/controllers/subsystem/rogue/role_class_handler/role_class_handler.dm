@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	ex: special_session_queue[ckey] += /datum/advclass/BIGMAN
 	contents: special_session_queue = list("ckey" = list("funID" = /datum/advclass/class), "ckey2" = list("funID" = /datum/advclass/class)... etc)
 */
-	var/list/special_session_queue = list()
+	var/list/list/special_session_queue = list()
 
 
 /*
@@ -39,13 +39,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	/// Whether bandits have been injected in the game
 	var/bandits_in_round = FALSE
 
-/// Assoc list of class registers to keep track of what townies and migrant parties are and message listeners- CC Edit
-	var/list/class_registers = list()//CC Edit
 
-
-/*
-	We init and build the retard azz listszz
-*/
 /datum/controller/subsystem/role_class_handler/Initialize()
 	build_dumbass_category_lists()
 
@@ -60,12 +54,12 @@ SUBSYSTEM_DEF(role_class_handler)
 	init_subtypes(/datum/advclass, all_classes) // Init all the classes
 	sorted_class_categories[CTAG_ALLCLASS] = all_classes
 
-	//Time to sort these retards, and sort them we shall.
-	for(var/datum/advclass/retard_datum in all_classes)
-		for(var/ctag in retard_datum.category_tags)
+	//Time to sort these silly buggers, and sort them we shall.
+	for(var/datum/advclass/silly_datum in all_classes)
+		for(var/ctag in silly_datum.category_tags)
 			if(!sorted_class_categories[ctag]) // New cat
 				sorted_class_categories[ctag] = list()
-			sorted_class_categories[ctag] += retard_datum
+			sorted_class_categories[ctag] += silly_datum
 
 	//Well that about covers it really.
 
@@ -73,11 +67,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	We setup the class handler here, aka the menu
 	We will cache it per server session via an assc list with a ckey leading to the datum.
 */
-/datum/controller/subsystem/role_class_handler/proc/setup_class_handler(mob/living/carbon/human/H, advclass_rolls_override = null, register_id = null)
-	// Bandaid to this extremely badly coded system
-	if(!register_id)
-		if(H.job == "Towner")
-			register_id = "towner"
+/datum/controller/subsystem/role_class_handler/proc/setup_class_handler(mob/living/carbon/human/H, advclass_rolls_override = null)
 	// insure they somehow aren't closing the datum they got and opening a new one w rolls
 	var/datum/class_select_handler/GOT_IT = class_select_handlers[H.client.ckey]
 	if(GOT_IT)
@@ -108,7 +98,6 @@ SUBSYSTEM_DEF(role_class_handler)
 			if(XTRA_SPECIAL.maximum_possible_slots > XTRA_SPECIAL.total_slots_occupied)
 				XTRA_MEATY.special_session_queue += XTRA_SPECIAL
 
-	XTRA_MEATY.register_id = register_id
 	XTRA_MEATY.initial_setup()
 	class_select_handlers[H.client.ckey] = XTRA_MEATY
 
@@ -137,8 +126,6 @@ SUBSYSTEM_DEF(role_class_handler)
 	if(plus_factor)
 		picked_class.boost_by_plus_power(plus_factor, H)
 
-	if(related_handler.register_id)
-		add_class_register_msg(related_handler.register_id, "[H.real_name] is the [picked_class.name]", related_handler.linked_client.mob)
 
 	// In retrospect, If I don't just delete these Ill have to actually attempt to keep track of when a byond browser window is actually open lol
 	// soooo..... this will be the place where we take it out, as it means they finished class selection, and we can safely delete the handler.
@@ -157,38 +144,12 @@ SUBSYSTEM_DEF(role_class_handler)
 
 	if(!(target_datum.maximum_possible_slots == -1)) // Is the class not set to infinite?
 		if((target_datum.total_slots_occupied >= target_datum.maximum_possible_slots)) // We just hit a cap, iterate all the class handlers and inform them.
-			for(var/CUCKS in class_select_handlers)
-				var/datum/class_select_handler/found_menu = class_select_handlers[CUCKS]
+			for(var/class_handler in class_select_handlers)
+				var/datum/class_select_handler/found_menu = class_select_handlers[class_handler]
 
 				if(target_datum in found_menu.rolled_classes) // We found the target datum in one of the classes they rolled aka in the list of options they got visible,
 					found_menu.rolled_class_is_full(target_datum) //  inform the datum of its error.
 
 
 
-/datum/controller/subsystem/role_class_handler/proc/get_advclass_by_name(advclass_name)
-	for(var/category in sorted_class_categories)
-		for(var/datum/advclass/class as anything in sorted_class_categories[category])
-			if(class.name != advclass_name)
-				continue
-			return class
-	return null
 
-
-/datum/controller/subsystem/role_class_handler/proc/get_class_register(register_id)
-	if(!class_registers[register_id])
-		var/datum/class_register/register = new /datum/class_register()
-		register.id = register_id
-		class_registers[register_id] = register
-	return class_registers[register_id]
-
-/datum/controller/subsystem/role_class_handler/proc/add_class_register_msg(register_id, msg, mob/invoker)
-	var/datum/class_register/register = get_class_register(register_id)
-	register.add_message(msg, invoker)
-
-/datum/controller/subsystem/role_class_handler/proc/add_class_register_listener(register_id, mob/listener)
-	var/datum/class_register/register = get_class_register(register_id)
-	register.add_listener(listener)
-
-/datum/controller/subsystem/role_class_handler/proc/remove_class_register_listener(register_id, mob/listener)
-	var/datum/class_register/register = get_class_register(register_id)
-	register.remove_listener(listener)

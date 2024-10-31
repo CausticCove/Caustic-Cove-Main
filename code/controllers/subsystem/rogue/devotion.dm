@@ -42,15 +42,19 @@
 	src.holder = holder
 	holder?.devotion = src
 	src.patron = patron
+	if (patron.type == /datum/patron/inhumen/zizo || patron.type == /datum/patron/divine/necra)
+		ADD_TRAIT(holder, TRAIT_DEATHSIGHT, "devotion")
 
 /datum/devotion/Destroy(force)
 	. = ..()
+	if (patron.type == /datum/patron/inhumen/zizo || patron.type == /datum/patron/divine/necra)
+		REMOVE_TRAIT(holder, TRAIT_DEATHSIGHT, "devotion")
 	holder?.devotion = null
 	holder = null
 	patron = null
 	granted_spells = null
 	STOP_PROCESSING(SSobj, src)
-	
+
 /datum/devotion/process()
 	if(!passive_devotion_gain && !passive_progression_gain)
 		return PROCESS_KILL
@@ -103,7 +107,7 @@
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(patron.t0, patron.t1)
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, patron.t0, patron.t1)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -117,7 +121,9 @@
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/churn, patron.t0)
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, patron.t0)
+	if(istype(patron,/datum/patron/divine))
+		spelllist += /obj/effect/proc_holder/spell/targeted/abrogation
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -132,7 +138,7 @@
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(/obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/diagnose) //This would have caused jank.
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, /obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/diagnose) //This would have caused jank.
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -148,7 +154,7 @@
 		return
 
 	granted_spells = list()
-	var/list/spelllist = list(patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -165,7 +171,7 @@
 		return
 
 	granted_spells = list()
-	var/list/spelllist = list(patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -197,14 +203,14 @@
 
 	if(!devotion)
 		return FALSE
-	
+
 	to_chat(src,"My devotion is [devotion.devotion].")
 	return TRUE
 
 /mob/living/carbon/human/proc/clericpray()
 	set name = "Give Prayer"
 	set category = "Cleric"
-	
+
 	if(!devotion)
 		return FALSE
 

@@ -4,6 +4,16 @@
 	structurecraft = /obj/structure/fluff/dryingrack
 	skillcraft = /datum/skill/craft/tanning
 
+/datum/crafting_recipe/roguetown/leather/bedroll
+	name = "bedroll"
+	result = /obj/item/bedroll
+	reqs = list(/obj/item/natural/hide = 2,
+				/obj/item/rope = 1)
+	tools = list(/obj/item/needle)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/leather/pouch
 	name = "leather pouch"
 	result = list(/obj/item/storage/belt/rogue/pouch,
@@ -11,6 +21,7 @@
 	reqs = list(/obj/item/natural/hide = 1,
 				/obj/item/natural/fibers = 1)
 	sellprice = 6
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/leather/satchel
 	name = "leather satchel"
@@ -40,12 +51,20 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 30
 
+/datum/crafting_recipe/roguetown/leather/belt
+	name = "leather belt"
+	result = /obj/item/storage/belt/rogue/leather
+	reqs = list(/obj/item/natural/hide = 2,
+				/obj/item/natural/fibers = 2)
+	sellprice = 30
+
 /datum/crafting_recipe/roguetown/leather/gloves
 	name = "leather gloves"
 	result = list(/obj/item/clothing/gloves/roguetown/leather,
 	/obj/item/clothing/gloves/roguetown/leather)
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 10
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/leather/heavygloves
 	name = "heavy leather gloves"
@@ -91,6 +110,7 @@
 	result = /obj/item/clothing/head/roguetown/helmet/bandana
 	reqs = list(/obj/item/natural/hide = 1)
 	sellprice = 27
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/leather/tricorn
 	name = "leather tricorn"
@@ -115,9 +135,22 @@
 	reqs = list(/obj/item/natural/hide = 2)
 	sellprice = 26
 
+/datum/crafting_recipe/roguetown/leather/bikini
+	name = "leather bikini armor"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini
+	reqs = list(/obj/item/natural/hide = 2)
+	sellprice = 26
+
 /datum/crafting_recipe/roguetown/leather/hidearmor
 	name = "hide armor"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/hide
+	reqs = list(/obj/item/natural/hide = 2,
+				/obj/item/natural/fur = 1)
+	sellprice = 26
+
+/datum/crafting_recipe/roguetown/leather/hidebikini
+	name = "hide bikini armor"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
 	reqs = list(/obj/item/natural/hide = 2,
 				/obj/item/natural/fur = 1)
 	sellprice = 26

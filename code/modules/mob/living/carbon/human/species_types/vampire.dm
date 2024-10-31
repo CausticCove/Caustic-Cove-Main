@@ -118,13 +118,7 @@
 
 /mob/living/carbon/Stat()
 	..()
-	return
-	if(statpanel("Status")) //RTCHANGE
-		var/obj/item/organ/heart/vampire/darkheart = getorgan(/obj/item/organ/heart/vampire)
-		if(darkheart)
-			stat(null, span_notice("Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."))
-			return 1
-
+	return //RTCHANGE
 
 /obj/item/organ/heart/vampire
 	name = "vampire heart"
@@ -135,7 +129,7 @@
 	name = "Bat Form"
 	desc = ""
 	invocation = ""
-	vitaedrain = 2500
+	vitaedrain = 1000
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
@@ -145,7 +139,7 @@
 	name = "Mist Form"
 	desc = ""
 	invocation = ""
-	vitaedrain = 2500
+	vitaedrain = 1500
 	charge_max = 60
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE

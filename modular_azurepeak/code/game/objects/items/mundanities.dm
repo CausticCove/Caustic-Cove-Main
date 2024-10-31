@@ -45,7 +45,7 @@
 
 //medium
 
-obj/item/mundane/puzzlebox/medium
+/obj/item/mundane/puzzlebox/medium
 	name = "\improper ebony puzzle-box"
 	icon = 'modular_azurepeak/icons/obj/items/mundanities.dmi'
 	icon_state = "ebon_box"
@@ -133,3 +133,4 @@ obj/item/mundane/puzzlebox/medium
 			user.add_stress(/datum/stressevent/puzzle_fail)
 			finished_ckeys += ckey
 			playsound(src.loc, 'sound/foley/doors/lockrattle.ogg', 75, TRUE)
+

@@ -29,7 +29,7 @@
 	var/buildstackamount = 1
 	var/framestackamount = 2
 	var/deconstruction_ready = 1
-	custom_materials = list(/datum/material/iron = 2000)
+	custom_materials = null
 	max_integrity = 100
 	integrity_failure = 0.33
 	smooth = SMOOTH_TRUE
@@ -37,6 +37,7 @@
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 	blade_dulling = DULLING_BASHCHOP
+	debris = list(/obj/item/grown/log/tree/small = 1)
 
 /obj/structure/table/examine(mob/user)
 	. = ..()
@@ -120,7 +121,7 @@
 		to_chat(user, span_danger("Throwing [pushed_mob] onto the table might hurt them!"))
 		return
 	var/added_passtable = FALSE
-	if(!pushed_mob.pass_flags & PASSTABLE)
+	if(!(pushed_mob.pass_flags & PASSTABLE))
 		added_passtable = TRUE
 		pushed_mob.pass_flags |= PASSTABLE
 	pushed_mob.Move(src.loc)
@@ -312,10 +313,11 @@
 	max_integrity = 70
 	smooth = 0
 	climb_offset = 10
+	buildstack = /obj/item/grown/log/tree/small
 
 /obj/structure/table/wood/crafted/Initialize()
 	. = ..()
-	icon_state = pick("tablewood2", "tablewood1")
+	icon_state = "tablewood1"
 
 /obj/structure/table/wood/narsie_act(total_override = TRUE)
 	if(!total_override)
@@ -329,6 +331,7 @@
 	max_integrity = 300
 	smooth = 0
 	climb_offset = 10
+	debris = list(/obj/item/natural/stone = 1)
 
 /obj/structure/table/church/OnCrafted(dirin, user)
 	if(dirin == NORTH || dirin == SOUTH)

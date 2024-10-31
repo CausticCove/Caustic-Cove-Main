@@ -52,6 +52,9 @@
 		"...The pale volf gets on it's hindlegs, and howls unto the moon. It seeks prey, and you happen to be unfortunate enough to be in it's forest. This is the third time it circled you, as you press yourself tighter into the hollow tree, completely still..."
 	)
 
+/datum/skill/misc/lockpicking
+	name = "Lockpicking"
+
 /datum/skill/misc/riding
 	name = "Riding"
 	dreams = list(
@@ -84,6 +87,3 @@
 		"...as the years go by, the mantra becomes more and more opressive. Stitch, sew, cut ties, stitch, sew, thread the needle twice...",
 		"...you turn over the fabric, and within the two layers of the gown, you hide a secret. your stiched initials, for no one to ever lay eyes upon but you. A curse in some cultures. You never liked the bride much..."
 	)
-
-/datum/skill/misc/weaving
-	name = "Weaving"

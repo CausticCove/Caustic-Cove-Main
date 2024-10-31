@@ -17,6 +17,7 @@
 	var/scom_number
 	var/obj/structure/roguemachine/scomm/calling = null
 	var/obj/structure/roguemachine/scomm/called_by = null
+	var/spawned_rat = FALSE
 
 /obj/structure/roguemachine/scomm/OnCrafted(dirin, mob/user)
 	. = ..()
@@ -100,10 +101,10 @@
 		return
 	var/canread = user.can_read(src, TRUE)
 	var/contents
-	if(SSticker.rulertype == "Monarch")
-		contents += "<center>MONARCH'S DECREES<BR>"
+	if(SSticker.rulertype == "Grand Duke")
+		contents += "<center>GRAND DUKE'S DECREES<BR>"
 	else
-		contents += "<center>MONARCH'S DECREES<BR>"
+		contents += "<center>GRAND DUCHESS' DECREES<BR>"
 	contents += "-----------<BR><BR></center>"
 	for(var/i = GLOB.lord_decrees.len to 1 step -1)
 		contents += "[i]. <span class='info'>[GLOB.lord_decrees[i]]</span><BR>"
@@ -244,6 +245,14 @@
 			if(calling.calling == src)
 				calling.repeat_message(raw_message, src, usedcolor, message_language)
 			return
+		if(length(raw_message) > 100) //When these people talk too much, put that shit in slow motion, yeah
+			/*if(length(raw_message) > 200)
+				if(!spawned_rat)
+					visible_message(span_warning("An angered rous emerges from the SCOMlines!"))
+					new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat(get_turf(src))
+					spawned_rat = TRUE
+				return*/
+			raw_message = "<small>[raw_message]</small>"
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
 			if(!S.calling)
 				S.repeat_message(raw_message, src, usedcolor, message_language)
@@ -280,7 +289,7 @@
 //SCOMSTONE                 SCOMSTONE
 
 /obj/item/scomstone
-	name = "emerald ring"
+	name = "scomstone"
 	icon_state = "ring_emerald"
 	desc = "A golden ring with an emerald gem."
 	gripped_intents = null
@@ -298,16 +307,22 @@
 	var/speaking = TRUE
 	sellprice = 100
 //wip
-/obj/item/scomstone/attack_right(mob/user)
+/obj/item/scomstone/attack_right(mob/living/carbon/human/user)
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/input_text = input(user, "Enter your message:", "Message")
 	if(input_text)
+		var/usedcolor = user.voice_color
+		if(user.voicecolor_override)
+			usedcolor = user.voicecolor_override
+		user.whisper(input_text)
+		if(length(input_text) > 100) //When these people talk too much, put that shit in slow motion, yeah
+			input_text = "<small>[input_text]</small>"
 		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
-			S.repeat_message(input_text)
+			S.repeat_message(input_text, src, usedcolor)
 		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
-			S.repeat_message(input_text)
+			S.repeat_message(input_text, src, usedcolor)
 		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)//make the listenstone hear scomstone
-			S.repeat_message(input_text)
+			S.repeat_message(input_text, src, usedcolor)
 
 /obj/item/scomstone/MiddleClick(mob/user)
 	if(.)
@@ -431,3 +446,90 @@
 		send_speech(message, 1, src, , spans, message_language=language)
 
 	return
+
+// MATTHIAN SCOMCOIN
+
+/obj/item/mattcoin
+	name = "Ruby Band"
+	icon_state = "mattcoin"
+	desc = "A faded coin, a ruby laid into its center."
+	gripped_intents = null
+	dropshrink = 0.75
+	possible_item_intents = list(INTENT_GENERIC)
+	force = 10
+	throwforce = 10
+	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_RING
+	obj_flags = null
+	icon = 'icons/roguetown/items/misc.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	flags_1 = HEAR_1
+	muteinmouth = TRUE
+	var/listening = TRUE
+	var/speaking = TRUE
+	sellprice = 0
+
+/obj/item/mattcoin/pickup(mob/living/user)
+	if(!HAS_TRAIT(user, TRAIT_COMMIE))
+		to_chat(user, "The coin turns to ash in my hands!")
+		playsound(loc, 'sound/items/firesnuff.ogg', 100, FALSE, -1)
+		qdel(src)
+	..()
+
+/obj/item/mattcoin/attack_right(mob/living/carbon/human/user)
+	user.changeNext_move(CLICK_CD_MELEE)
+	var/input_text = input(user, "Enter your message:", "Message")
+	if(input_text)
+		var/usedcolor = user.voice_color
+		if(user.voicecolor_override)
+			usedcolor = user.voicecolor_override
+		user.whisper(input_text)
+		if(length(input_text) > 100)
+			input_text = "<small>[input_text]</small>"
+		for(var/obj/item/mattcoin/S in SSroguemachine.scomm_machines)
+			S.repeat_message(input_text, src, usedcolor)
+
+/obj/item/mattcoin/MiddleClick(mob/user)
+	if(.)
+		return
+	user.changeNext_move(CLICK_CD_MELEE)
+	playsound(loc, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
+	listening = !listening
+	speaking = !speaking
+	to_chat(user, span_info("I [speaking ? "unmute" : "mute"] the Matthian-SCOMstone"))
+	update_icon()
+
+/obj/item/mattcoin/Destroy()
+	SSroguemachine.scomm_machines -= src
+	return ..()
+
+/obj/item/mattcoin/Initialize()
+	. = ..()
+	update_icon()
+	SSroguemachine.scomm_machines += src
+
+/obj/item/mattcoin/proc/repeat_message(message, atom/A, tcolor, message_language)
+	if(A == src)
+		return
+	if(!ismob(loc))
+		return
+	if(tcolor)
+		voicecolor_override = tcolor
+	if(speaking && message)
+		playsound(loc, 'sound/foley/coins1.ogg', 100, TRUE, -1)
+		say(message, language = message_language)
+	voicecolor_override = null
+
+
+/obj/item/mattcoin/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
+	if(!can_speak())
+		return
+	if(message == "" || !message)
+		return
+	spans |= speech_span
+	if(!language)
+		language = get_default_language()
+	if(istype(loc, /obj/item))
+		var/obj/item/I = loc
+		I.send_speech(message, 1, I, , spans, message_language=language)
+	else
+		send_speech(message, 1, src, , spans, message_language=language)

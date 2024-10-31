@@ -13,6 +13,8 @@
 					/obj/item/rope,
 				)
 
+
+/datum/supply_pack/rogue/tools/scomst
 	name = "Scomstone"
 	cost = 120
 	contains = list(/obj/item/scomstone)
@@ -30,6 +32,11 @@
 					/obj/item/rope/chain,
 					/obj/item/rope/chain,
 				)
+
+/datum/supply_pack/rogue/tools/lockpicks
+	name = "Lockpicks"
+	cost = 20
+	contains = list(/obj/item/lockpickring/mundane)
 
 /datum/supply_pack/rogue/tools/sacks
 	name = "Sacks"
@@ -102,19 +109,29 @@
 				)
 
 /datum/supply_pack/rogue/tools/prarml
-	name = "Prosthetic Arm (L)"
-	cost = 55
-	contains = list(/obj/item/bodypart/l_arm/rprosthetic/steel)
+	name = "Prosthetic Wood Arm (L)"
+	cost = 40
+	contains = list(/obj/item/bodypart/l_arm/prosthetic/woodleft)
 
 /datum/supply_pack/rogue/tools/prarmr
-	name = "Prosthetic Arm (R)"
-	cost = 55
-	contains = list(/obj/item/bodypart/r_arm/rprosthetic/steel)
+	name = "Prosthetic Wood Arm (R)"
+	cost = 40
+	contains = list(/obj/item/bodypart/r_arm/prosthetic/woodright)
 
 /datum/supply_pack/rogue/tools/waterskin
 	name = "Waterskin"
 	cost = 10
 	contains = list(/obj/item/reagent_containers/glass/bottle/waterskin)
+
+/datum/supply_pack/rogue/tools/bedroll
+	name = "Bedroll"
+	cost = 20
+	contains = list(/obj/item/bedroll)
+
+/datum/supply_pack/rogue/tools/hoe
+	name = "Hoe"
+	cost = 30
+	contains = list(/obj/item/rogueweapon/hoe)
 
 /datum/supply_pack/rogue/tools/soapps
 	name = "Soap"
@@ -123,10 +140,10 @@
 
 /datum/supply_pack/rogue/tools/keyrings
 	name = "Keyrings"
-	cost = 8
-	contains = list(/obj/item/keyring,
-					/obj/item/keyring,
-					/obj/item/keyring)
+	cost = 20
+	contains = list(/obj/item/storage/keyring,
+					/obj/item/storage/keyring,
+					/obj/item/storage/keyring)
 
 /datum/supply_pack/rogue/tools/needles
 	name = "Needles"

@@ -20,8 +20,6 @@
 	/datum/species/halforc,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
-	/datum/species/anthromacro,\
-	/datum/species/demimacro,\
 )
 
 #define RACES_RESPECTED \
@@ -47,8 +45,6 @@
 #define RACES_SHUNNED \
 	/datum/species/halforc,\
 	/datum/species/anthromorphsmall,\
-	/datum/species/anthromacro,\
-	/datum/species/demimacro,\
 	/datum/species/kobold
 
 #define RACES_DESPISED \
@@ -103,8 +99,6 @@
 	/datum/species/halforc,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
-	/datum/species/anthromacro,\
-	/datum/species/demimacro,\
 )
 // Non-dwarf non-kobold non-goblin mostly
 #define NON_DWARVEN_RACE_TYPES list(\
@@ -124,8 +118,6 @@
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
-	/datum/species/anthromacro,\
-	/datum/species/demimacro,\
 )
 // Non-elf non-dwarf non-kobold non-goblin mostly
 #define HUMANLIKE_RACE_TYPES list(\
@@ -141,14 +133,18 @@
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
-	/datum/species/anthromacro,\
-	/datum/species/demimacro,\
 )
-#define ALL_CLERIC_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/necra, /datum/patron/divine/pestra, /datum/patron/divine/eora)
+#define ALL_CLERIC_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/necra, /datum/patron/divine/pestra, /datum/patron/divine/ravox, /datum/patron/divine/malum, /datum/patron/divine/eora)
 
-#define ALL_ACOLYTE_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/pestra, /datum/patron/divine/eora)
+#define ALL_PALADIN_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/necra, /datum/patron/divine/pestra, /datum/patron/divine/ravox, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/old_god)
+
+#define ALL_ACOLYTE_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/pestra, /datum/patron/divine/eora, /datum/patron/divine/necra)
 
 #define ALL_DIVINE_PATRONS list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora)
+
+#define ALL_INHUMEN_PATRONS list(/datum/patron/inhumen/zizo, /datum/patron/inhumen/graggar, /datum/patron/inhumen/matthios, /datum/patron/inhumen/baotha)
+
+#define ALL_PATRONS  list(/datum/patron/divine/astrata, /datum/patron/divine/noc, /datum/patron/divine/dendor, /datum/patron/divine/abyssor, /datum/patron/divine/ravox, /datum/patron/divine/necra, /datum/patron/divine/xylix, /datum/patron/divine/pestra, /datum/patron/divine/malum, /datum/patron/divine/eora, /datum/patron/old_god, /datum/patron/inhumen/zizo, /datum/patron/inhumen/graggar, /datum/patron/inhumen/matthios, /datum/patron/inhumen/baotha)
 
 #define PLATEHIT "plate"
 #define CHAINHIT "chain"
@@ -193,6 +189,7 @@ GLOBAL_LIST_EMPTY(confessors)
 GLOBAL_LIST_EMPTY(sunlights)
 GLOBAL_LIST_EMPTY(head_bounties)
 GLOBAL_LIST_EMPTY(job_respawn_delays)
+GLOBAL_LIST_EMPTY(round_join_times)
 
 //stress levels
 #define STRESS_MAX 30
@@ -202,34 +199,6 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define STRESS_NEUTRAL 2
 #define STRESS_GOOD 1
 #define STRESS_VGOOD 0
-
-/*	........   Nutrition defines   ................ */
-#define MEAL_FILLING 30
-#define MEAL_GOOD 24
-#define MEAL_AVERAGE 18
-#define MEAL_MEAGRE 15
-#define SNACK_CHUNKY 12
-#define SNACK_NUTRITIOUS 9
-#define SNACK_DECENT 6
-#define SNACK_POOR 3
-
-#define DOUGH_NUTRITION MEAL_MEAGRE
-#define SMALLDOUGH_NUTRITION MEAL_MEAGRE/2
-#define BUTTERDOUGH_NUTRITION DOUGH_NUTRITION+BUTTERSLICE_NUTRITION
-#define BUTTERDOUGHSLICE_NUTRITION BUTTERDOUGH_NUTRITION/2
-#define BUTTER_NUTRITION SNACK_CHUNKY
-#define BUTTERSLICE_NUTRITION BUTTER_NUTRITION/6
-#define MEATSLAB_NUTRITION SNACK_NUTRITIOUS
-#define SAUSAGE_NUTRITION SNACK_NUTRITIOUS
-#define MINCE_NUTRITION MEATSLAB_NUTRITION/2
-#define FRESHCHEESE_NUTRITION SNACK_DECENT
-
-/*	........   Rotting defines   ................ */
-#define SHELFLIFE_EXTREME 90 MINUTES
-#define SHELFLIFE_LONG 45 MINUTES
-#define SHELFLIFE_DECENT 25 MINUTES
-#define SHELFLIFE_SHORT 15 MINUTES
-#define SHELFLIFE_TINY 10 MINUTES
 
 /*
 	Formerly bitflags, now we are strings
@@ -244,11 +213,16 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_ANTAG 			"CAT_ANTAG"  		// Antag class - results in an antag
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
 #define CTAG_CHALLENGE 		"CAT_CHALLENGE"  	// Challenge class - Meant to be free for everyone
+#define CTAG_VAGABOND		"CAT_VAGABOND"		// Vagabond class - start with nothing and work your way up
 
 #define CTAG_WATCH			"CAT_WATCH"			// Watch class - Handles Town Watch class selector
 #define CTAG_MENATARMS		"CAT_MENATARMS"		// Men-at-Arms class - Handles Men-at-Arms class selector
 #define CTAG_ROYALGUARD		"CAT_ROYALGUARD"	// Royal Guard class - Handles Royal Guard class selector
 #define CTAG_MERCENARY		"CAT_MERCENARY"		// Mercenary class - Handles Mercenary class selector
+#define CTAG_HAND			"CAT_HAND"			// Hand class - Handles Hand class selector
+#define CTAG_TEMPLAR		"CAT_TEMPLAR"		// Templar class - Handles Templar class selector
+#define CTAG_HEIR			"CAT_HEIR"			// Prince(cess) class - Handles Heir class selector
+#define CTAG_SQUIRE			"CAT_SQUIRE"		// Squire class - Handles Squire class selector
 
 /*
 	Defines for the triumph buy datum categories

@@ -44,28 +44,11 @@
 	var/list/allowed_patrons
 	/// Default patron in case the patron is not allowed
 	var/datum/patron/default_patron
+	/// Can select equipment after you spawn in.
+	var/has_loadout = FALSE
 
 /datum/outfit/job/roguetown/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
-	if(H.dna?.species)
-		if(isanthrom(H))
-			H.change_stat("strength", 8)
-			H.change_stat("constitution", 8)
-			H.change_stat("endurance", 8)
-			H.change_stat("speed", -8)
-			H.change_stat("speed", -4)
-			H.transform = H.transform.Scale(2.25, 2.25)
-			H.transform = H.transform.Translate(0, (0.25 * 16))
-			H.update_transform()
-		if(isdemim(H))
-			H.change_stat("strength", 8)
-			H.change_stat("constitution", 8)
-			H.change_stat("endurance", 8)
-			H.change_stat("speed", -8)
-			H.change_stat("speed", -4)
-			H.transform = H.transform.Scale(2.25, 2.25)
-			H.transform = H.transform.Translate(0, (0.25 * 16))
-			H.update_transform()
 	var/datum/patron/old_patron = H.patron
 	if(length(allowed_patrons) && (!old_patron || !(old_patron.type in allowed_patrons)))
 		var/list/datum/patron/possiblegods = list()
@@ -87,19 +70,11 @@
 		else
 			// Characters during round start are first equipped before clients are moved into them. This is a bandaid to give an important piece of information correctly to the client
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, change_message), 5 SECONDS)
-	// if(H.mind)
-	//	var/datum/species/pref_species = H.dna?.species
-	//	var/weak_gender = FEMALE
-	//	if(pref_species?.gender_swapping)
-	//		weak_gender = MALE
-	// if(H.gender == weak_gender)
-	//		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-	//		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-	//		H.mind.adjust_skillrank(/datum/skill/misc/weaving, 1, TRUE)
-	//	if(H.dna)
-	//		if(H.dna.species)
-	//			if(H.dna.species.name in list("Elf", "Half-Elf"))
-	//				H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	if(H.mind)
+		if(H.dna)
+			if(H.dna.species)
+				if(H.dna.species.name in list("Elf", "Half-Elf"))
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.update_body()
 
 /datum/outfit/job/roguetown/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -112,4 +87,13 @@
 	for(var/list_key in SStriumphs.post_equip_calls)
 		var/datum/triumph_buy/thing = SStriumphs.post_equip_calls[list_key]
 		thing.on_activate(H)
+	if(has_loadout && H.mind)
+		addtimer(CALLBACK(src, PROC_REF(choose_loadout), H), 50)
 	return
+
+/datum/outfit/job/roguetown/proc/choose_loadout(mob/living/carbon/human/H)
+	if(!has_loadout)
+		return
+	if(!H.client)
+		addtimer(CALLBACK(src, PROC_REF(choose_loadout), H), 50)
+		return

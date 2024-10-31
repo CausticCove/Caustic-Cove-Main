@@ -79,6 +79,7 @@
 	clusterMax = 10
 	clusterMin = 10
 	checkdensity = FALSE
+	excluded_turfs = list(/turf/closed)
 	allowed_areas = list(/area/rogue/outdoors)
 
 /obj/machinery/light/roguestreet
@@ -160,12 +161,16 @@
 	var/cookonme = FALSE
 	var/crossfire = TRUE
 	var/can_damage = FALSE
+	var/start_fuel //Override for fueluse. Mostly used for smelters.
+	var/fuel_modifier = 1 //Modifier for firefuel
 
 /obj/machinery/light/rogue/Initialize()
 	if(soundloop)
 		soundloop = new soundloop(list(src), FALSE)
 		soundloop.start()
 	GLOB.fires_list += src
+	if(start_fuel)
+		fueluse = start_fuel
 	if(fueluse)
 		fueluse = fueluse - (rand(fueluse*0.1,fueluse*0.3))
 	update_icon()
@@ -296,19 +301,21 @@
 		if(initial(fueluse))
 			if(fueluse > initial(fueluse) - 5 SECONDS)
 				to_chat(user, span_warning("The fire is fully fueled."))
-				return
+				return FALSE
 		else
 			if(!on)
 				return
 		if (alert(usr, "Feed [W] to the fire?", "ROGUETOWN", "Yes", "No") != "Yes")
 			return
+		if(!W)
+			return
 		qdel(W)
 		user.visible_message(span_warning("[user] feeds [W] to [src]."))
 		if(initial(fueluse))
-			fueluse = fueluse + W.firefuel
+			fueluse = fueluse + W.firefuel*fuel_modifier
 			if(fueluse > initial(fueluse)) //keep it at the max
 				fueluse = initial(fueluse)
-		return
+		return TRUE
 	else
 		if(on)
 			if(istype(W, /obj/item/natural/dirtclod))
@@ -648,7 +655,9 @@
 	name = "hearth"
 	icon_state = "hearth1"
 	base_state = "hearth"
-	density = FALSE
+	density = TRUE
+	climbable = TRUE
+	pass_flags = LETPASSTHROW
 	anchored = TRUE
 	layer = 2.8
 	var/obj/item/attachment = null
@@ -659,6 +668,16 @@
 /obj/machinery/light/rogue/hearth/Initialize()
 	boilloop = new(list(src), FALSE)
 	. = ..()
+
+/obj/machinery/light/rogue/hearth/CanPass(atom/movable/mover, turf/target)
+	if(istype(mover) && (mover.pass_flags & PASSTABLE))
+		return 1
+	if(mover.throwing)
+		return 1
+	if(locate(/obj/structure/table) in get_turf(mover))
+		return 1
+	else
+		return !density
 
 /obj/machinery/light/rogue/hearth/attackby(obj/item/W, mob/living/user, params)
 	if(!attachment)
@@ -877,7 +896,7 @@
 						food = C
 			if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
 				if(attachment.reagents)
-					attachment.reagents.expose_temperature(1000, 0.033)
+					attachment.reagents.expose_temperature(400, 0.033)
 					if(attachment.reagents.chem_temp > 374)
 						boilloop.start()
 					else

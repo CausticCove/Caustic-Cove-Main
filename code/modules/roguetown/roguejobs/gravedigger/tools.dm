@@ -1,7 +1,7 @@
 /obj/item/rogueweapon/shovel
 	force = 21
-	possible_item_intents = list(/datum/intent/mace/strike/shovel, /datum/intent/shovelscoop)
-	gripped_intents = list(/datum/intent/mace/strike/shovel, /datum/intent/shovelscoop, /datum/intent/axe/chop/stone)
+	possible_item_intents = list(/datum/intent/shovelscoop, /datum/intent/mace/strike/shovel)
+	gripped_intents = list(/datum/intent/shovelscoop, /datum/intent/mace/strike/shovel, /datum/intent/axe/chop/stone)
 	name = "shovel"
 	desc = "Essential for digging (graves) in this darkened earth."
 	icon_state = "shovel"
@@ -95,7 +95,7 @@
 			playsound(T,'sound/items/empty_shovel.ogg', 100, TRUE)
 			update_icon()
 			return
-		if(istype(T, /turf/open/floor/rogue/grass))
+		if(istype(T, /turf/open/floor/rogue/grass) || istype(T, /turf/open/floor/rogue/grassred) || istype(T, /turf/open/floor/rogue/grassyel) || istype(T, /turf/open/floor/rogue/grasscold))
 			to_chat(user, span_warning("There is grass in the way."))
 			return
 		return

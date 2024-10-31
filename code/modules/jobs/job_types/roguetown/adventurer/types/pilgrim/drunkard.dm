@@ -6,9 +6,6 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/drunkard
 	category_tags = list(CTAG_TOWNER)
 
-/datum/outfit/job/roguetown/adventurer/drunkard
-	allowed_patrons = list(/datum/patron/inhumen/baotha, /datum/patron/divine/xylix)
-
 /datum/outfit/job/roguetown/adventurer/drunkard/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
@@ -29,6 +26,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE) //Climbing into windows to steal drugs or booze.
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.change_stat("intelligence", -2)
 		H.change_stat("constitution", 1)
 		H.change_stat("strength", 1)

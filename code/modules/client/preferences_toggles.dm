@@ -75,6 +75,18 @@
 		to_chat(src, "You will no longer hear music in the lobby.")
 		mob.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 
+/client/verb/toggle_roleplay_ads()
+	set name = "Roleplay Ads (Toggle)"
+	set category = "OOC"
+	set desc = ""
+	if(prefs)
+		prefs.toggles ^= ROLEPLAY_ADS
+		prefs.save_preferences()
+	if(prefs.toggles & ROLEPLAY_ADS)
+		to_chat(src, "You will now be notified of new roleplay ads.")
+	else
+		to_chat(src, "You will no longer be notified of new roleplay ads.")
+
 /client/verb/stop_sounds_rogue()
 	set name = "StopSounds"
 	set category = "Options"
@@ -548,14 +560,3 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 		return
 	prefs.asaycolor = initial(prefs.asaycolor)
 	prefs.save_preferences()
-
-/client/proc/togglebluehighlight()
-	set name = "Toggle Blue OOC"
-	set desc = ""
-	set category = "Prefs - Admin"
-	if(!holder)
-		return
-	prefs.toggles ^= TOGGLE_BLUE_OOC
-	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.toggles & TOGGLE_BLUE_OOC) ? "now" : "no longer"] send OOC messages with blue-colored text.")
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Blue OOC", "[usr.client.prefs.toggles & TOGGLE_BLUE_OOC ? "Enabled" : "Disabled"]"))

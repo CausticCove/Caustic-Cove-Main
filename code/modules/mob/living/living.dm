@@ -140,6 +140,9 @@
 	if(!M.buckled && !M.has_buckled_mobs())
 		var/mob_swap = FALSE
 		var/too_strong = (M.move_resist > move_force) //can't swap with immovable objects unless they help us
+		if(istype(M,/mob/living/simple_animal/hostile/retaliate)) 
+			if(!M:aggressive)
+				mob_swap = TRUE
 		if(!they_can_move) //we have to physically move them
 			if(!too_strong)
 				mob_swap = FALSE
@@ -160,7 +163,6 @@
 			now_pushing = 1
 			var/oldloc = loc
 			var/oldMloc = M.loc
-
 
 			var/M_passmob = (M.pass_flags & PASSMOB) // we give PASSMOB to both mobs to avoid bumping other mobs during swap.
 			var/src_passmob = (pass_flags & PASSMOB)
@@ -331,6 +333,8 @@
 /mob/living/carbon/proc/kick_attack_check(mob/living/L)
 	if(L == src)
 		return FALSE
+	if(!(src.mobility_flags & MOBILITY_STAND))
+		return TRUE
 	var/list/acceptable = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_R_ARM, BODY_ZONE_CHEST, BODY_ZONE_L_ARM)
 	if( !(check_zone(L.zone_selected) in acceptable) )
 		to_chat(L, span_warning("I can't reach that."))
@@ -486,40 +490,6 @@
 
 /mob/living/proc/set_pull_offsets(mob/living/M, grab_state = GRAB_PASSIVE)
 	return //rtd fix not updating because no dirchange
-	if(M == src)
-		return
-	if(M.wallpressed)
-		return
-	if(M.buckled)
-		return //don't make them change direction or offset them if they're buckled into something.
-	var/offset = 0
-	switch(grab_state)
-		if(GRAB_PASSIVE)
-			offset = GRAB_PIXEL_SHIFT_PASSIVE
-		if(GRAB_AGGRESSIVE)
-			offset = GRAB_PIXEL_SHIFT_AGGRESSIVE
-		if(GRAB_NECK)
-			offset = GRAB_PIXEL_SHIFT_NECK
-		if(GRAB_KILL)
-			offset = GRAB_PIXEL_SHIFT_NECK
-	M.setDir(get_dir(M, src))
-	switch(M.dir)
-		if(NORTH)
-			M.set_mob_offsets("pulledby", _x = 0, _y = offset)
-		if(SOUTH)
-			M.set_mob_offsets("pulledby", _x = 0, _y = -offset)
-		if(EAST)
-			if(M.lying == 270) //update the dragged dude's direction if we've turned
-				M.lying = 90
-				M.update_transform() //force a transformation update, otherwise it'll take a few ticks for update_mobility() to do so
-				M.lying_prev = M.lying
-			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
-		if(WEST)
-			if(M.lying == 90)
-				M.lying = 270
-				M.update_transform()
-				M.lying_prev = M.lying
-			M.set_mob_offsets("pulledby", _x = offset, _y = 0)
 
 /mob/living
 	var/list/mob_offsets = list()
@@ -606,7 +576,7 @@
 		return
 	if(!reaper)
 		return
-	if (InCritical() || health <= 0 || blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE)
+	if (InCritical() || health <= 0 || (blood_volume < BLOOD_VOLUME_SURVIVE))
 		log_message("Has [whispered ? "whispered his final words" : "succumbed to death"] while in [InFullCritical() ? "hard":"soft"] critical with [round(health, 0.1)] points of health!", LOG_ATTACK)
 		adjustOxyLoss(201)
 		updatehealth()
@@ -687,6 +657,7 @@
 				return TRUE
 		else
 			src.visible_message(span_warning("[src] tries to stand up."))
+			return FALSE
 
 /mob/living/proc/toggle_rest()
 	set name = "Rest/Stand"
@@ -1067,25 +1038,31 @@
 		else if(last_special <= world.time)
 			resist_restraints() //trying to remove cuffs.
 
-/mob/living/verb/submit()
+/mob/living/proc/submit(var/instant = FALSE)
 	set name = "Yield"
 	set category = "IC"
 	set hidden = 1
-	if(surrendering)
+	if(surrendering || stat)
 		return
-	if(stat)
-		return
+	if(!instant)
+		if(alert(src, "Do you yield?", "SURRENDER", "Yes", "No") == "No")
+			return
+	log_combat(src, null, "surrendered")
 	surrendering = 1
+	toggle_cmode()
 	changeNext_move(CLICK_CD_EXHAUSTED)
-	var/image/flaggy = image('icons/effects/effects.dmi',src,"surrender_large",ABOVE_MOB_LAYER)
-	flaggy.appearance_flags = RESET_TRANSFORM|KEEP_APART
-	flaggy.transform = null
-	flaggy.pixel_y = 8
-	flick_overlay_view(flaggy, src, 150)
-	Stun(150)
+	var/obj/effect/temp_visual/surrender/flaggy = new(src)
+	vis_contents += flaggy
+	Stun(300)
+	Knockdown(300)
+	apply_status_effect(/datum/status_effect/debuff/breedable)
+	apply_status_effect(/datum/status_effect/debuff/submissive)
 	src.visible_message(span_notice("[src] yields!"))
-	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1)
-	sleep(150)
+	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1, ignore_walls=TRUE)
+	update_vision_cone()
+	addtimer(CALLBACK(src, PROC_REF(end_submit)), 600)
+
+/mob/living/proc/end_submit()
 	surrendering = 0
 
 
@@ -1116,27 +1093,27 @@
 	. = TRUE
 
 	var/wrestling_diff = 0
-	var/resist_chance = 60
+	var/resist_chance = 40
 	var/mob/living/L = pulledby
+	var/combat_modifier = 1
 
 	if(mind)
 		wrestling_diff += (mind.get_skill_level(/datum/skill/combat/wrestling)) //NPCs don't use this
 	if(L.mind)
 		wrestling_diff -= (L.mind.get_skill_level(/datum/skill/combat/wrestling))
 
-	resist_chance += ((STASTR - L.STASTR) * 7)
+	if(restrained())
+		combat_modifier -= 0.25
 
-	if(!(mobility_flags & MOBILITY_STAND))
-		resist_chance -= clamp(15 - (wrestling_diff * 4), 0, 15)
+	if(!(L.mobility_flags & MOBILITY_STAND) && mobility_flags & MOBILITY_STAND)
+		combat_modifier += 0.2
 
-	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
-		resist_chance -= clamp(15 - (wrestling_diff * 4), 0, 15)
+	if(cmode && !L.cmode)
+		combat_modifier += 0.3
+	else if(!cmode && L.cmode)
+		combat_modifier -= 0.3
 
-	var/minimum_roll = 40
-	if(pulledby.grab_state >= GRAB_AGGRESSIVE || !(mobility_flags & MOBILITY_STAND))
-		minimum_roll = 25
-
-	resist_chance = max(resist_chance, minimum_roll)
+	resist_chance = clamp((((4 + (((STASTR - L.STASTR)/2) + wrestling_diff)) * 10 + rand(-5, 10)) * combat_modifier), 5, 95)
 
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
@@ -1244,11 +1221,21 @@
 		to_chat(src, span_warning("Your hands pass right through \the [what]!"))
 		return
 
+	var/surrender_mod = 1
+
+	if(isliving(who))
+		var/mob/living/L = who
+		if(L.cmode && L.mobility_flags & MOBILITY_STAND && !L.restrained())
+			to_chat(src, span_warning("I can't take \the [what] off, they are too tense!"))
+			return
+		if(L.surrendering)
+			surrender_mod = 0.5
+
 	who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
 					span_danger("[src] tries to remove my [what.name]."), null, null, src)
 	to_chat(src, span_danger("I try to remove [who]'s [what.name]..."))
 	what.add_fingerprint(src)
-	if(do_mob(src, who, what.strip_delay))
+	if(do_mob(src, who, what.strip_delay * surrender_mod))
 		if(what && Adjacent(who))
 			if(islist(where))
 				var/list/L = where
@@ -1285,10 +1272,20 @@
 			to_chat(src, span_warning("\The [what.name] doesn't fit in that place!"))
 			return
 
+		var/surrender_mod = 1
+
+		if(isliving(who))
+			var/mob/living/L = who
+			if(L.cmode && L.mobility_flags & MOBILITY_STAND)
+				to_chat(src, span_warning("I can't put \the [what] on them, they are too tense!"))
+				return
+			if(L.surrendering)
+				surrender_mod = 0.5
+
 		who.visible_message(span_notice("[src] tries to put [what] on [who]."), \
 						span_notice("[src] tries to put [what] on you."), null, null, src)
 		to_chat(src, span_notice("I try to put [what] on [who]..."))
-		if(do_mob(src, who, what.equip_delay_other))
+		if(do_mob(src, who, what.equip_delay_other * surrender_mod))
 			if(what && Adjacent(who) && what.mob_can_equip(who, src, final_where, TRUE, TRUE))
 				if(temporarilyRemoveItemFromInventory(what))
 					if(where_list)
@@ -1623,7 +1620,7 @@
 	else
 		mobility_flags |= MOBILITY_PULL
 
-	var/canitem = !paralyzed && !stun && conscious && !chokehold && !restrained && has_arms
+	var/canitem = !paralyzed && !stun && conscious && !chokehold && !restrained && has_arms && !surrendering
 	if(canitem)
 		mobility_flags |= (MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_STORAGE)
 	else
@@ -1645,7 +1642,7 @@
 	else
 		if(layer == LYING_MOB_LAYER)
 			layer = initial(layer)
-
+	update_cone_show()
 	update_transform()
 	lying_prev = lying
 
@@ -2038,7 +2035,9 @@
 //	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(stop_looking))
 
 /mob/living/proc/stop_looking()
-//	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
+	if(!client)
+		return
+	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
 	if(client)
 		client.pixel_x = 0
 		client.pixel_y = 0
