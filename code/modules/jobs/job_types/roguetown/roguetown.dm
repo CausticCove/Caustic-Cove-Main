@@ -49,7 +49,7 @@
 
 /datum/outfit/job/roguetown/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
-		if(H.dna?.species)
+	if(H.dna?.species)
 		if(isanthrom(H))
 			H.change_stat("strength", 8)
 			H.change_stat("constitution", 8)
@@ -106,7 +106,7 @@
 	for(var/list_key in SStriumphs.post_equip_calls)
 		var/datum/triumph_buy/thing = SStriumphs.post_equip_calls[list_key]
 		thing.on_activate(H)
-	if(has_loadout && H.mind)
+		if(has_loadout && H.mind)
 		addtimer(CALLBACK(src, PROC_REF(choose_loadout), H), 50)
 	return
 

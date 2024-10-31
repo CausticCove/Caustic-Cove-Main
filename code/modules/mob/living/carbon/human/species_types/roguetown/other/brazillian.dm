@@ -28,24 +28,6 @@
 	mutant_bodyparts = list("tail_lizard", "snout", "frills", "spines", "body_markings")
 	mutanttongue = /obj/item/organ/tongue/lizard
 	mutanteyes = /obj/item/organ/eyes/night_vision/argonian
-	specstats = list(
-		"strength" = 0, 
-		"perception" = 3, 
-		"intelligence" = -3, 
-		"constitution" = 0, 
-		"endurance" = 1, 
-		"speed" = 3, 
-		"fortune" = -3,
-	)
-	specstats_f = list(
-		"strength" = 0, 
-		"perception" = 3, 
-		"intelligence" = -3, 
-		"constitution" = 0, 
-		"endurance" = 1, 
-		"speed" = 3, 
-		"fortune" = -3,
-	)
 	enflamed_icon = "widefire"
 
 /datum/species/lizard/brazil/on_species_gain(mob/living/carbon/C, datum/species/old_species)

@@ -325,6 +325,7 @@
 #define OFFSET_ARMOR_F "wear_armorf"
 #define OFFSET_HANDS_F "handsf"
 #define OFFSET_UNDIES_F "underwearf"
+#define OFFSET_TAUR "taur"
 #define OFFSET_TAUR_F "taurf"
 
 //MINOR TWEAKS/MISC
