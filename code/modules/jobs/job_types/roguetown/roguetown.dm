@@ -49,7 +49,7 @@
 
 /datum/outfit/job/roguetown/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
-	if(H.dna?.species)
+		if(H.dna?.species)
 		if(isanthrom(H))
 			H.change_stat("strength", 8)
 			H.change_stat("constitution", 8)
