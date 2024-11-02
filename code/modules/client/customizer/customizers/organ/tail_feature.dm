@@ -22,6 +22,12 @@
 		/datum/sprite_accessory/tail_feature/spines/long,
 		/datum/sprite_accessory/tail_feature/spines/longmeme,
 		/datum/sprite_accessory/tail_feature/spines/aquatic,
+		/datum/sprite_accessory/tail_feature/taur/sect,
+		/datum/sprite_accessory/tail_feature/taur/megasect,
+		/datum/sprite_accessory/tail_feature/taur/naga,
+		/datum/sprite_accessory/tail_feature/taur/fatnaga,
+		/datum/sprite_accessory/tail_feature/taur/feline,
+		/datum/sprite_accessory/tail_feature/taur/wolf,
 		)
 
 /datum/customizer/organ/tail_feature/vox_markings
