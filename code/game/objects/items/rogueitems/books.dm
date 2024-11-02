@@ -368,6 +368,13 @@
 	base_icon_state = "book8"
 	bookfile = "tales14.json"
 
+/obj/item/book/rogue/carnipii
+	name = "The Corpus Carnipii: Bog Flower"
+	desc = "By Oleg Goodwin"
+	icon_state ="book2_0"
+	base_icon_state = "book2"
+	bookfile = "carnipii.json"
+
 /obj/item/book/rogue/playerbook
 	var/player_book_text
 	var/player_book_title
