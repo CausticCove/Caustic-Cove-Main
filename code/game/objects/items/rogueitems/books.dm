@@ -226,13 +226,13 @@
 
 /obj/item/book/rogue/law
 	name = "Tome of Justice"
-	desc = ""
+	desc = "The Tome of laws as passed by the Holy See to its many Ten-worshipping communities."
 	icon_state ="lawtome_0"
 	base_icon_state = "lawtome"
-	bookfile = "law.json"
+	bookfile = "law_2.json"
 
 /obj/item/book/rogue/cooking
-	name = "Tastes Fit For The Lord" 
+	name = "Tastes Fit For The Lord"
 	desc = ""
 	icon_state ="book_0"
 	base_icon_state = "book"
@@ -248,7 +248,7 @@
 
 /obj/item/book/rogue/secret/xylix
 	name = "Book of Gold"
-	desc = "{<font color='red'><blink>An ominous book with untold powers.</blink></font>}"
+	desc = "<font color='red'><blink>An ominous book with untold powers.</blink></font>"
 	icon_state ="xylix_0"
 	base_icon_state = "xylix"
 	bookfile = "xylix.json"
@@ -260,6 +260,13 @@
 	..()
 	user.update_inv_hands()
 	to_chat(user, span_notice("You feel laughter echo in your head."))
+
+/obj/item/book/rogue/secret/thefireisgone
+	name = "THE FIRE IS GONE"
+	desc = "{<font color='red'><blink>AN ANCIENT TOME WRITTEN BY THE GODS' GREATEST FOOL</blink></font>}"
+	icon_state ="book6_0"
+	base_icon_state = "book6"
+	bookfile = "thefireisgone.json"
 
 //player made books
 /obj/item/book/rogue/tales1
@@ -278,7 +285,7 @@
 
 
 /obj/item/book/rogue/tales3
-	name = "Myths & Legends of Rockhill & Beyond Volume I"
+	name = "Myths & Legends of the Peaks & Beyond Volume I"
 	desc = "Arbalius The Younger"
 	icon_state ="book3_0"
 	base_icon_state = "book3"
@@ -375,8 +382,6 @@
 	var/player_book_icon
 	var/player_book_author_ckey
 	var/is_in_round_player_generated
-	var/list/player_book_titles
-	var/list/player_book_content
 	var/list/book_icons = list(
 	"Sickly green with embossed bronze" = "book8",
 	"White with embossed obsidian" = "book7",
@@ -392,31 +397,44 @@
 	icon_state = "basic_book_0"
 	base_icon_state = "basic_book"
 	override_find_book = TRUE
-	
+
 /obj/item/book/rogue/playerbook/Initialize(loc, in_round_player_generated, var/mob/living/in_round_player_mob, text)
 	. = ..()
 	is_in_round_player_generated = in_round_player_generated
 	if(is_in_round_player_generated)
 		player_book_text = text
-		while(!player_book_author_ckey) // doesn't have to be this, but better than defining a bool.
-			player_book_title = dd_limittext(capitalize(sanitize_hear_message(input(in_round_player_mob, "What title do you want to give the book? (max 42 characters)", "Title", "Unknown"))), MAX_NAME_LEN)	
-			player_book_author = "[dd_limittext(sanitize_hear_message(input(in_round_player_mob, "What do you want the author text to be? (max 42 characters)", "Author", "")), MAX_NAME_LEN)]"
-			player_book_icon = book_icons[input(in_round_player_mob, "Choose a book style", "Book Style") as anything in book_icons]
-			player_book_author_ckey = in_round_player_mob.ckey
-			if(alert("Confirm?:\nTitle: [player_book_title]\nAuthor: [player_book_author]\nBook Cover: [player_book_icon]", "", "Yes", "No") == "No")
-				player_book_author_ckey = null
-		message_admins("[player_book_author_ckey]([in_round_player_mob.real_name]) has generated the player book: [player_book_title]")
+		INVOKE_ASYNC(src, PROC_REF(prompt_for_contents), in_round_player_mob)
 	else
-		player_book_titles = SSlibrarian.pull_player_book_titles()
-		player_book_content = SSlibrarian.file2playerbook(pick(player_book_titles))
-		player_book_title = player_book_content["book_title"]
-		player_book_author = player_book_content["author"]
-		player_book_author_ckey = player_book_content["author_ckey"]
-		player_book_icon = player_book_content["icon"]
-		player_book_text = player_book_content["text"]
-		// no longer required.
-		player_book_titles = null
-		player_book_content = null
+		pick_random_book()
+
+//Just rewrite this entirely. STRIP_HTML_SIMPLE might be insufficient, but that's just the tip of the iceberg.area
+//This needs to check if an input is valid via reject_bad_text, and if not prompt the user again.
+/obj/item/book/rogue/playerbook/proc/prompt_for_contents(var/mob/living/in_round_player_mob)
+	while(!player_book_author_ckey) // doesn't have to be this, but better than defining a bool.
+		player_book_title = capitalize(STRIP_HTML_SIMPLE(input(in_round_player_mob, "What title do you want to give the book? (max 42 characters)", "Title", "Unknown"), MAX_NAME_LEN))
+		player_book_author = STRIP_HTML_SIMPLE(input(in_round_player_mob, "What do you want the author text to be? (max 42 characters)", "Author", ""), MAX_NAME_LEN)
+		player_book_icon = book_icons[input(in_round_player_mob, "Choose a book style", "Book Style") as anything in book_icons]
+		player_book_author_ckey = in_round_player_mob.ckey
+		//This gives the icon_state name, not the descriptive name, i. e. "book8", instead of "Sickly green with embossed Bronze"
+		if(alert("Confirm?:\nTitle: [player_book_title]\nAuthor: [player_book_author]\nBook Cover: [player_book_icon]", "", "Yes", "No") == "No")
+			player_book_author_ckey = null
+		message_admins("[player_book_author_ckey]([in_round_player_mob.real_name]) has generated the player book: [player_book_title]")
+
+	name = "[player_book_title]"
+	desc = "By [player_book_author]"
+	icon_state = "[player_book_icon]_0"
+	base_icon_state = "[player_book_icon]"
+	pages = list("<b3><h3>Title: [player_book_title]<br>Author: [player_book_author]</b><h3>[player_book_text]")
+
+/obj/item/book/rogue/playerbook/proc/pick_random_book()
+	var/list/player_book_titles = SSlibrarian.pull_player_book_titles()
+	var/list/chosen_book = SSlibrarian.file2playerbook(pick(player_book_titles))
+
+	player_book_title = chosen_book["book_title"]
+	player_book_author = chosen_book["author"]
+	player_book_author_ckey = chosen_book["author_ckey"]
+	player_book_icon = chosen_book["icon"]
+	player_book_text = chosen_book["text"]
 
 	name = "[player_book_title]"
 	desc = "By [player_book_author]"

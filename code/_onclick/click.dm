@@ -264,7 +264,7 @@
 
 	// Allows you to click on a box's contents, if that box is on the ground, but no deeper than that
 	if(isturf(A) || isturf(A.loc) || (A.loc && isturf(A.loc.loc)))
-		if(A.Adjacent(src))
+		if(CanReach(A) || CanReach(A, W))
 			if(isopenturf(A))
 				var/turf/T = A
 				if(used_intent.noaa)
@@ -507,7 +507,7 @@
 		return
 	if(user.get_active_held_item())
 		return
-	var/list/atomy = list()
+	var/list/atom/atomy = list()
 	var/list/atomcounts = list()
 	var/list/atomrefs = list()
 	var/list/overrides = list()

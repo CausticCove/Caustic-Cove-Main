@@ -4,12 +4,8 @@
 	allowed_sexes = list(FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/sorceress
-	maximum_possible_slots = 3
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	category_tags = list(CTAG_DISABLED)
-
-/datum/outfit/job/roguetown/adventurer/sorceress
-	allowed_patrons = list(/datum/patron/divine/noc)
 
 /datum/outfit/job/roguetown/adventurer/sorceress/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -20,7 +16,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	beltl = /obj/item/rogueweapon/huntingknife
-	neck = /obj/item/storage/belt/rogue/pouch/coins/poor	
+	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	r_hand = /obj/item/rogueweapon/woodstaff
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)

@@ -4,7 +4,6 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/ranger
-	maximum_possible_slots = 3
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_ADVENTURER)
 
@@ -100,7 +99,7 @@
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 3)
 		
-	if(H.gender == MALE)
+	if(H.pronouns == HE_HIM || H.pronouns == THEY_THEM || H.pronouns == IT_ITS)
 		pants = /obj/item/clothing/under/roguetown/trou/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	else
@@ -108,7 +107,4 @@
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-	if(prob(23))
-		if(!H.has_language(/datum/language/elvish))
-			H.grant_language(/datum/language/elvish)
-			to_chat(H, span_info("I can speak Elfish with ,e before my speech."))
+

@@ -2,15 +2,14 @@
 	name = "Noble"
 	tutorial = "You are a noble, from some place far away, trying to visit the nobility of the area \
 	you are encouraged to make your own story. But with wealth, come the poor, ready to pilfer you \
-	of your hard earned (inherited) Mammons, so tread lightly unless you want to meet a grizzly end \
-		\
-		This role allows for full customization."
+	of your hard earned (inherited) Mammons, so tread lightly unless you want to meet a grizzly end."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/noble
 	traits_applied = list(TRAIT_NOBLE)
 	category_tags = list(CTAG_PILGRIM)
-	allow_custom_genitals = TRUE
+
+	noble_income = 10
 
 /datum/outfit/job/roguetown/adventurer/noble/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -22,7 +21,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	id = /obj/item/clothing/ring/silver
 	cloak = /obj/item/clothing/cloak/half/red
-	if(H.pronouns == SHE_HER && H.gender == FEMALE)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
 		head = /obj/item/clothing/head/roguetown/hatblu
 		beltl = /obj/item/storage/belt/rogue/pouch/food

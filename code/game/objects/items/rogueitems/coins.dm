@@ -23,6 +23,7 @@
 	var/base_type //used for compares
 	var/quantity = 1
 	var/plural_name
+	resistance_flags = FIRE_PROOF
 
 /obj/item/roguecoin/Initialize(mapload, coin_amount)
 	. = ..()
@@ -46,11 +47,12 @@
 	if(isturf(T) && quantity > 1)
 		var/obj/structure/table/TA = locate() in T
 		if(!TA) //no table
-			var/obj/item/roguecoin/new_coin = new type(T)
-			new_coin.set_quantity(1) // prevent exploits with coin piles
-			new_coin.pixel_x = rand(-8, 8)
-			new_coin.pixel_y = rand(-5, 5)
-			set_quantity(quantity - 1)
+			for(var/i in 2 to quantity)
+				var/obj/item/roguecoin/new_coin = new type(T)
+				new_coin.set_quantity(1) // prevent exploits with coin piles
+				new_coin.pixel_x = rand(-8, 8)
+				new_coin.pixel_y = rand(-5, 5)
+				set_quantity(quantity - 1)
 
 /obj/item/roguecoin/get_real_price()
 	return sellprice * quantity
@@ -70,10 +72,7 @@
 		return
 	if(G.base_type != base_type)
 		return
-	if(user)
-		if(user.get_inactive_held_item() != G && !isturf(G.loc))
-			return
-	
+
 	var/amt_to_merge = min(G.quantity, MAX_COIN_STACK_SIZE - quantity)
 	if(amt_to_merge <= 0)
 		return
@@ -131,7 +130,7 @@
 		drop_sound = 'sound/foley/coins1.ogg'
 	else
 		drop_sound = 'sound/foley/coinphy (1).ogg'
-		
+
 	if(quantity == 1)
 		name = initial(name)
 		desc = initial(desc)
@@ -165,7 +164,7 @@
 /obj/item/roguecoin/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/roguecoin))
 		var/obj/item/roguecoin/G = I
-		G.merge(src, user)
+		merge(G, user)
 		return
 	return ..()
 

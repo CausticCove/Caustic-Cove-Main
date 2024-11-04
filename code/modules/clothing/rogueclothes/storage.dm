@@ -37,6 +37,7 @@
 	equip_sound = 'sound/blank.ogg'
 	heldz_items = 3
 	sewrepair = TRUE
+	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/belt/rogue/leather/plaquegold
 	name = "plaque belt"
@@ -62,7 +63,7 @@
 	sewrepair = FALSE
 	anvilrepair = /datum/skill/craft/armorsmithing
 
-/obj/item/storage/belt/rogue/leather/hand
+/obj/item/storage/belt/rogue/leather/steel
 	name = "steel belt"
 	icon_state = "steelplaque"
 	sellprice = 30
@@ -106,6 +107,7 @@
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE
+	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/belt/rogue/pouch/ComponentInitialize()
 	. = ..()
@@ -168,7 +170,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
-	resistance_flags = NONE
+	resistance_flags = FIRE_PROOF
 	max_integrity = 300
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
@@ -201,6 +203,9 @@
 		STR.max_combined_w_class = 21
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 5
+		STR.click_gather = TRUE
+		STR.allow_quick_empty = TRUE
+		STR.allow_dump_out = TRUE
 
 /obj/item/storage/backpack/rogue/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
@@ -217,7 +222,7 @@
 	icon = 'icons/roguetown/clothing/storage.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK_L
-	resistance_flags = NONE
+	resistance_flags = FIRE_PROOF
 	max_integrity = 300
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
@@ -231,3 +236,4 @@
 		STR.max_w_class = WEIGHT_CLASS_NORMAL
 		STR.max_items = 14
 		STR.not_while_equipped = TRUE
+		STR.allow_dump_out = TRUE

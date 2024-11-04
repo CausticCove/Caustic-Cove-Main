@@ -40,16 +40,16 @@ GLOBAL_PROTECT(href_token)
 	if(!ckey)
 		QDEL_IN(src, 0)
 		CRASH("Admin datum created without a ckey")
-		return
 	if(!istype(R))
 		QDEL_IN(src, 0)
 		CRASH("Admin datum created without a rank")
-		return
 	target = ckey
 	name = "[ckey]'s admin datum ([R])"
 	rank = R
 	admin_signature = "Nanotrasen Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	href_token = GenerateToken()
+	if(R.rights & R_DEBUG) //grant profile access
+		world.SetConfig("APP/admin", ckey, "role=admin")
 	//only admins with +ADMIN start admined
 	if(protected)
 		GLOB.protected_admins[target] = src

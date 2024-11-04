@@ -8,9 +8,7 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	tutorial = "You're too valuable to outright kill yet not a free person. You either messed up really bad or got very unlucky. Either way, the crown has held you hostage until you home country pays your ransom, as if that would ever happen. Might as well start praying to whatever god you find solace in. \
-		\
-		This role allows for full customization."
+	tutorial = "You're too valuable to outright kill yet not a free person. You either messed up really bad or got very unlucky. Either way, the crown has held you hostage until you home country pays your ransom, as if that would ever happen. Might as well start praying to whatever god you find solace in."
 
 	outfit = /datum/outfit/job/roguetown/hostage
 	bypass_jobban = TRUE
@@ -19,8 +17,6 @@
 	min_pq = -14
 	max_pq = null
 	can_random = FALSE
-
-	allow_custom_genitals = TRUE //Vrell - Canonically a noble
 
 /datum/outfit/job/roguetown/hostage/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -45,7 +41,7 @@
 		H.mind.add_antag_datum(new_antag)
 	ADD_TRAIT(H, TRAIT_BANDITCAMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
-	if(H.pronouns == SHE_HER)
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
 		H.change_stat("strength", -1)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
 		head = /obj/item/clothing/head/roguetown/hatblu

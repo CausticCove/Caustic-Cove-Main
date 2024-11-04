@@ -191,7 +191,6 @@ SUBSYSTEM_DEF(migrants)
 /datum/controller/subsystem/migrants/proc/spawn_migrant(datum/migrant_wave/wave, datum/migrant_assignment/assignment, spawn_on_location)
 	var/rank = "Migrant"
 	var/mob/dead/new_player/newplayer = assignment.client.mob
-	var/ckey = assignment.client.ckey
 
 	SSjob.AssignRole(newplayer, rank, TRUE)
 
@@ -220,7 +219,7 @@ SUBSYSTEM_DEF(migrants)
 
 	if(humanc)
 		var/fakekey = character.ckey
-		if(ckey in GLOB.anonymize)
+		if(character.ckey in GLOB.anonymize)
 			fakekey = get_fake_key(character.ckey)
 		GLOB.character_list[character.mobid] = "[fakekey] was [character.real_name] ([rank])<BR>"
 		GLOB.character_ckey_list[character.real_name] = character.ckey
@@ -419,7 +418,7 @@ SUBSYSTEM_DEF(migrants)
 	character.become_blind("advsetup")
 
 	if(GLOB.adventurer_hugbox_duration)
-		///FOR SOME RETARDED FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
+		///FOR SOME silly FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
 		addtimer(CALLBACK(character, TYPE_PROC_REF(/mob/living/carbon/human, adv_hugboxing_start)), 1)
 
 /proc/grant_lit_torch(mob/living/carbon/human/character)

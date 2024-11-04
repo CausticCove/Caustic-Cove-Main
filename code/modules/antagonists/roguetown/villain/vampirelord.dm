@@ -25,8 +25,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	var/starved = FALSE
 	var/sired = FALSE
 	var/vamplevel = 0
-	var/vitae = 1000
-	var/vmax = 2000
+	var/vitae = 2000
+	var/vmax = 2500
 	var/obj/structure/vampire/bloodpool/mypool
 	var/last_transform
 	var/cache_skin
@@ -58,7 +58,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	C.vampires |= owner
 	. = ..()
 	owner.special_role = name
-	ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]") //half assed but necessary otherwise these guys be invincible
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, "[type]")
@@ -66,9 +65,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, "[type]")
-	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_VAMPMANSION, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_VAMP_DREAMS, "[type]")
+	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
 	owner.current.cmode_music = 'sound/music/combat_vamp.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
@@ -158,11 +157,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/magic/blood, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/swords, 6, TRUE) //he has been alive for 2 thousand years, bro why
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 6, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 6, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 6, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
 	pants = /obj/item/clothing/under/roguetown/tights/black
@@ -231,7 +230,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	nodismemsleeves = TRUE
 	max_integrity = 500
 	allowed_sex = list(MALE, FEMALE)
-	do_sound = TRUE
+	do_sound_plate = TRUE
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 40
@@ -912,7 +911,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/objective/vampirelord/infiltrate/two/check_completion()
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/list/noblejobs = list("Monarch", "Consort", "Prince", "Princess", "Hand", "Steward")
+	var/list/noblejobs = list("Grand Duke", "Consort", "Prince", "Princess", "Hand", "Steward")
 	for(var/datum/mind/V in C.vampires)
 		if(V.current.job in noblejobs)
 			return TRUE
@@ -1065,7 +1064,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vampirelord/Initialize()
-	..()
+	. = ..()
 	GLOB.vlord_starts += loc
 
 /obj/effect/landmark/start/vampirespawn
@@ -1080,7 +1079,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vampirespawn/Initialize()
-	..()
+	. = ..()
 	GLOB.vspawn_starts += loc
 
 /obj/effect/landmark/vteleport
@@ -1334,7 +1333,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 					var/holyskill = L.mind.get_skill_level(/datum/skill/magic/holy)
 					var/arcaneskill = L.mind.get_skill_level(/datum/skill/magic/arcane)
 					if(holyskill + arcaneskill >= 1)
-						to_chat(L, "I feel like the unholy magic came from [user]. I should use my magic or miracles on them.")
+						to_chat(L, "I feel like the unholy magic came from [user].")
 
 /obj/effect/proc_holder/spell/targeted/transfix/master
 	name = "Subjugate"
@@ -1358,38 +1357,31 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(length(msg) < 10)
 		to_chat(user, span_userdanger("This is not enough!"))
 		return FALSE
-	var/bloodskill = user.mind.get_skill_level(/datum/skill/magic/blood)
-	var/bloodroll = roll("[bloodskill]d10")
 	user.say(msg)
 	user.visible_message("<font color='red'>[user]'s eyes glow a ghastly red as they project their will outwards!</font>")
 	for(var/mob/living/carbon/human/L in targets)
 		var/datum/antagonist/vampirelord/VD = L.mind.has_antag_datum(/datum/antagonist/vampirelord)
-		var/willpower = round(L.STAINT / 4)
-		var/willroll = roll("[willpower]d6")
 		if(VD)
 			return
-		if(L.cmode)
-			willroll += 15
-		if(bloodroll >= willroll)
-			L.drowsyness = min(L.drowsyness + 50, 150)
-			switch(L.drowsyness)
-				if(0 to 50)
-					to_chat(L, "You feel like a curtain is coming over your mind.")
-					L.Slowdown(20)
-				if(50 to 100)
-					to_chat(L, "Your eyelids force themselves shut as you feel intense lethargy.")
-					L.Slowdown(50)
-					L.eyesclosed = TRUE
-					for(var/atom/movable/screen/eye_intent/eyet in L.hud_used.static_inventory)
-						eyet.update_icon(L)
-					L.become_blind("eyelids")
-				if(100 to INFINITY)
-					to_chat(L, span_userdanger("You can't take it anymore. Your legs give out as you fall into the dreamworld."))
-					L.eyesclosed = TRUE
-					for(var/atom/movable/screen/eye_intent/eyet in L.hud_used.static_inventory)
-						eyet.update_icon(L)
-					L.become_blind("eyelids")
-					L.Slowdown(50)
-					sleep(50)
-					L.Sleeping(300)
+		L.drowsyness = min(L.drowsyness + 50, 150)
+		switch(L.drowsyness)
+			if(0 to 50)
+				to_chat(L, "You feel like a curtain is coming over your mind.")
+				L.Slowdown(20)
+			if(50 to 100)
+				to_chat(L, "Your eyelids force themselves shut as you feel intense lethargy.")
+				L.Slowdown(50)
+				L.eyesclosed = TRUE
+				for(var/atom/movable/screen/eye_intent/eyet in L.hud_used.static_inventory)
+					eyet.update_icon(L)
+				L.become_blind("eyelids")
+			if(100 to INFINITY)
+				to_chat(L, span_userdanger("You can't take it anymore. Your legs give out as you fall into the dreamworld."))
+				L.eyesclosed = TRUE
+				for(var/atom/movable/screen/eye_intent/eyet in L.hud_used.static_inventory)
+					eyet.update_icon(L)
+				L.become_blind("eyelids")
+				L.Slowdown(50)
+				sleep(50)
+				L.Sleeping(300)
 

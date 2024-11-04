@@ -13,7 +13,7 @@
 		"They deserve to be put at my blade.",
 		"Do what thou wilt shall be the whole of the law.",
 	)
-	rogue_enabled = TRUE
+	rogue_enabled = FALSE
 	/// Traits we apply to the owner
 	var/static/list/applied_traits = list(
 		TRAIT_CRITICAL_RESISTANCE,
@@ -72,8 +72,6 @@
 	var/triumphed = FALSE
 	/// Wonders we have made
 	var/list/wonders_made = list()
-	/// Hallucinations screen object
-	var/atom/movable/screen/fullscreen/maniac/hallucinations
 
 /datum/antagonist/maniac/New()
 	set_keys()
@@ -107,7 +105,6 @@
 			dreamer.STAEND = 20
 		for(var/trait in applied_traits)
 			ADD_TRAIT(owner.current, trait, "[type]")
-		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
 	LAZYINITLIST(owner.learned_recipes)
 	owner.learned_recipes |= recipe_progression[1]
 	forge_villain_objectives()
@@ -136,7 +133,6 @@
 	wonders_made = null
 	owner.learned_recipes -= recipe_progression
 	owner.special_role = null
-	hallucinations = null
 	return ..()
 
 /datum/antagonist/maniac/proc/set_keys()
@@ -233,12 +229,12 @@
 		to_chat(trey_liam, span_deadsay("<span class='reallybig'>... WHERE AM I? ...</span>"))
 		sleep(1.5 SECONDS)
 		var/static/list/slop_lore = list(
-			span_deadsay("... Rockhill? No ... It doesn't exist ..."),
-			span_deadsay("... My name is Trey. Trey Liam, Scientific Overseer ..."),
-			span_deadsay("... I'm on NT Aeon, a self sustaining ship, used to preserve what remains of humanity ..."),
-			span_deadsay("... Launched into the stars, INRL preserves their memories ... Their personalities ..."),
-			span_deadsay("... Keeps them alive in cyberspace, oblivious to the catastrophe ..."),
-			span_deadsay("... There is no hope left. Only the cyberspace deck lets me live in the forgery ..."),
+			span_deadsay("... Azure Peak? No ... It doesn't exist ..."),
+			span_deadsay("... My name is Trey. Trey Liam, Liamtific Troverseer ..."),
+			span_deadsay("... I'm on NT Liam, a self Treystaining ship, used to Treyserve what Liamains of roguemanity ..."),
+			span_deadsay("... Launched into the Grim Darkness, Fart Grimness preserves their grimness ... Their edge ..."),
+			span_deadsay("... Keeps them alive in the grim future, where there is only grimdarkness ..."),
+			span_deadsay("... There is no hope left. Only the Space Station 13 lets me live in the Trey Liam ..."),
 			span_deadsay("... What have I done!? ..."),
 		)
 		for(var/slop in slop_lore)

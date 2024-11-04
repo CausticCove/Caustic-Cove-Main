@@ -50,7 +50,6 @@
 	var/species_icon = ""
 
 	var/animal_origin = null //for nonhuman bodypart (e.g. monkey)
-	var/prosthetic_prefix = "pr" // for unique prosthetic icons on mob
 	var/dismemberable = 1 //whether it can be dismembered with a weapon.
 	var/disableable = 1
 
@@ -85,7 +84,6 @@
 	var/skeletonized = FALSE
 
 	var/fingers = TRUE
-	var/organ_slowdown = 0 // Its here because this is first shared definition between two leg organ paths
 
 	/// Visaul markings to be rendered alongside the bodypart
 	var/list/markings
@@ -100,7 +98,8 @@
 
 /obj/item/bodypart/proc/get_specific_markings_overlays(list/specific_markings, aux = FALSE, mob/living/carbon/human/human_owner, override_color)
 	var/list/appearance_list = list()
-	var/specific_layer = aux ? aux_layer : BODYPARTS_LAYER
+//	var/specific_layer = aux ? aux_layer : BODYPARTS_LAYER
+	var/specific_layer = aux_layer ? aux_layer : BODYPARTS_LAYER
 	var/specific_render_zone = aux ? aux_zone : body_zone
 	for(var/key in specific_markings)
 		var/color = specific_markings[key]
@@ -135,6 +134,8 @@
 	return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
 
 /obj/item/bodypart/chest/grabbedintents(mob/living/user, precise)
+	if(precise == BODY_ZONE_PRECISE_GROIN)
+		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/shove)
 	return list(/datum/intent/grab/move, /datum/intent/grab/shove)
 
 /obj/item/bodypart/blob_act()
@@ -152,6 +153,9 @@
 
 /obj/item/bodypart/onbite(mob/living/carbon/human/user)
 	if((user.mind && user.mind.has_antag_datum(/datum/antagonist/zombie)) || istype(user.dna.species, /datum/species/werewolf))
+		if(user.has_status_effect(/datum/status_effect/debuff/silver_curse))
+			to_chat(user, span_notice("My power is weakened, I cannot heal!"))
+			return
 		if(do_after(user, 50, target = src))
 			user.visible_message(span_warning("[user] consumes [src]!"),\
 							span_notice("I consume [src]!"))
@@ -161,6 +165,40 @@
 			qdel(src)
 		return
 	return ..()
+
+/obj/item/bodypart/MiddleClick(mob/living/user, params)
+	var/obj/item/held_item = user.get_active_held_item()
+	if(held_item)
+		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
+			if(skeletonized)
+				to_chat(user, span_warning("There's not even a sliver of flesh on this!"))
+				return
+			var/used_time = 210
+			if(user.mind)
+				used_time -= (user.mind.get_skill_level(/datum/skill/labor/butchering) * 30)
+			visible_message("[user] begins to butcher \the [src].")
+			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
+			var/steaks = 1
+			switch(user.mind.get_skill_level(/datum/skill/labor/butchering))
+				if(3)
+					steaks = 2
+				if(4 to 5)
+					steaks = 3
+				if(6)
+					steaks = 4 // the steaks have never been higher
+			var/amt2raise = user.STAINT/3
+			var/produced_steaks = list()
+			if(do_after(user, used_time, target = src))
+				for(steaks, steaks>0, steaks--)
+					var/obj/item/reagent_containers/food/snacks/rogue/meat/steak/new_steak = new(get_turf(src))
+					produced_steaks += new_steak
+				if(rotted)
+					for(var/obj/item/reagent_containers/food/snacks/rogue/meat/steak/putrid in produced_steaks)
+						putrid.become_rotten()
+				new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+				user.mind.add_sleep_experience(/datum/skill/labor/butchering, amt2raise, FALSE)
+				qdel(src)
+	..()
 
 /obj/item/bodypart/attack(mob/living/carbon/C, mob/user)
 	if(ishuman(C))
@@ -246,7 +284,7 @@
 		. |= BODYPART_LIFE_UPDATE_HEALTH
 
 /obj/item/bodypart/Initialize()
-	..()
+	. = ..()
 	update_HP()
 
 /obj/item/bodypart/proc/update_HP()
@@ -324,6 +362,10 @@
 	update_HP()
 	if(required_status && (status != required_status)) //So we can only heal certain kinds of limbs, ie robotic vs organic.
 		return
+	if(owner && owner.has_status_effect(/datum/status_effect/buff/fortify))
+		brute *= 1.5
+		burn *= 1.5
+		stamina *= 1.5
 
 	brute_dam	= round(max(brute_dam - brute, 0), DAMAGE_PRECISION)
 	burn_dam	= round(max(burn_dam - burn, 0), DAMAGE_PRECISION)
@@ -575,11 +617,10 @@
 
 	else
 		limb.icon = species_icon
-		limb.icon_state = "[prosthetic_prefix]_[body_zone]"
+		limb.icon_state = "pr_[body_zone]"
 		if(aux_zone)
 			if(!hideaux)
-				//Prosthetic arms do not have additional hand icons on them, because of this they do not render above clothing, this is why aux image uses body_zone var instead of aux_zone//
-				aux = image(limb.icon, "[prosthetic_prefix]_[body_zone]", -aux_layer, image_dir)
+				aux = image(limb.icon, "pr_[aux_zone]", -aux_layer, image_dir)
 				. += aux
 
 
@@ -594,7 +635,7 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone && !hideaux)
 				aux.color = "#[draw_color]"
-
+	
 	var/draw_organ_features = TRUE
 	var/draw_bodypart_features = TRUE
 	if(owner && owner.dna)
@@ -603,22 +644,22 @@
 			draw_organ_features = FALSE
 		if(NO_BODYPART_FEATURES in owner_species.species_traits)
 			draw_bodypart_features = FALSE
-
+	
 	// Markings overlays
 	if(!skeletonized)
 		var/list/marking_overlays = get_markings_overlays(override_color)
 		if(marking_overlays)
 			. += marking_overlays
-
+	
 	// Organ overlays
-	if(!rotted && !skeletonized && draw_organ_features)
+	if(!skeletonized && draw_organ_features)
 		for(var/obj/item/organ/organ as anything in get_organs())
 			if(!organ.is_visible())
 				continue
 			var/mutable_appearance/organ_appearance = organ.get_bodypart_overlay(src)
 			if(organ_appearance)
 				. += organ_appearance
-
+	
 	// Feature overlays
 	if(!skeletonized && draw_bodypart_features)
 		for(var/datum/bodypart_feature/feature as anything in bodypart_features)
@@ -834,6 +875,8 @@
 	px_x = -2
 	px_y = 12
 	max_stamina_damage = 50
+	aux_zone = "l_leg_above"
+	aux_layer = LEG_PART_LAYER
 	subtargets = list(BODY_ZONE_PRECISE_L_FOOT)
 	grabtargets = list(BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_L_LEG)
 	dismember_wound = /datum/wound/dismemberment/l_leg
@@ -891,6 +934,8 @@
 	px_x = 2
 	px_y = 12
 	max_stamina_damage = 50
+	aux_zone = "r_leg_above"
+	aux_layer = LEG_PART_LAYER
 	subtargets = list(BODY_ZONE_PRECISE_R_FOOT)
 	grabtargets = list(BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_R_LEG)
 	dismember_wound = /datum/wound/dismemberment/r_leg

@@ -12,7 +12,6 @@
 		LIPS,
 		HAIR,
 	)
-	inherent_traits = list(TRAIT_NOMOBSWAP)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	attack_verb = "slash"
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -38,8 +37,6 @@
 		OFFSET_NECK_F = list(0,-5), OFFSET_MOUTH_F = list(0,-5), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,-4), OFFSET_UNDIES_F = list(0,-4), \
 		)
-	specstats = list("strength" = -2, "perception" = 1, "intelligence" = 0, "constitution" = -1, "endurance" = 1, "speed" = 2, "fortune" = 0)
-	specstats_f = list("strength" = -3, "perception" = 1, "intelligence" = 2, "constitution" = -1, "endurance" = 0, "speed" = 2, "fortune" = 0)
 	race_bonus = list(STAT_SPEED = 1, STAT_INTELLIGENCE = -1)
 	enflamed_icon = "widefire"
 	organs = list(
@@ -85,6 +82,8 @@
 		/datum/body_marking_set/none,
 	)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/small/plain,
 		/datum/body_marking/small/sock,
 		/datum/body_marking/small/socklonger,
@@ -98,7 +97,7 @@
 		/datum/body_marking/small/front,
 		/datum/body_marking/small/spotted,
 	)
-	stress_examine = FALSE
+	stress_examine = TRUE
 	stress_desc = span_red("Filthy vermin...")
 	descriptor_choices = list(
 		/datum/descriptor_choice/height,

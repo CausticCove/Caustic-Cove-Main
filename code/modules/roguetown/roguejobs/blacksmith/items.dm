@@ -25,8 +25,8 @@
 
 /obj/item/roguestatue/gold/loot/Initialize()
 	. = ..()
-	sellprice = rand(45,100)
-	icon_state = "lstatue[pick(1,2)]"
+	sellprice = rand(45,150)
+	icon_state = "lstatue[pick(1,2,3,4)]"
 
 /obj/item/roguestatue/silver
 	name = "silver statue"
@@ -63,50 +63,6 @@
 
 
 //000000000000000000000000000--
-
-/obj/item/roguegear
-	icon = 'icons/roguetown/items/misc.dmi'
-	name = "cog"
-	desc = "A cog with teeth meticulously crafted for tight interlocking."
-	icon_state = "gear"
-	w_class = WEIGHT_CLASS_SMALL
-	smeltresult = null
-	var/obj/structure/linking
-
-/obj/item/roguegear/Destroy()
-	if(linking)
-		linking = null
-	. = ..()
-
-/obj/item/roguegear/attack_self(mob/user)
-	if(linking)
-		linking = null
-		to_chat(user, span_warning("Linking halted."))
-		return
-
-/obj/item/roguegear/attack_obj(obj/O, mob/living/user)
-	if(!istype(O, /obj/structure))
-		return ..()
-	var/obj/structure/S = O
-	if(linking)
-		if(linking == O)
-			to_chat(user, span_warning("You cannot link me to myself."))
-			return
-		if(linking in S.redstone_attached)
-			to_chat(user, span_warning("Already linked."))
-			linking = null
-			return
-		S.redstone_attached |= linking
-		linking.redstone_attached |= S
-		linking = null
-		to_chat(user, span_notice("Link complete."))
-		return
-	else
-		linking = S
-		to_chat(user, span_info("Link beginning..."))
-		return
-	..()
-
 
 /obj/item/var/polished = FALSE
 
@@ -204,7 +160,6 @@
 			force_wielded -= 3
 			var/datum/component/glint = GetComponent(/datum/component/metal_glint)
 			qdel(glint)
-			remove_atom_colour(FIXED_COLOUR_PRIORITY)
 		else if(polished >= 1 && polished <= 4)
 			remove_atom_colour(FIXED_COLOUR_PRIORITY)
 			UnregisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT)
@@ -249,11 +204,11 @@
 	var/atom/current_parent = parent
 	if(istype(current_parent.loc,/turf) || istype(current_parent.loc, /mob/living))
 		if(prob(25))
-			new /obj/effect/temp_visual/armor_glint(get_turf(parent))
+			new /obj/effect/temp_visual/armor_glint(current_parent.loc)
 		if(prob(15))
-			new /obj/effect/temp_visual/armor_glint(get_turf(parent), 2)
+			new /obj/effect/temp_visual/armor_glint(current_parent.loc, 2)
 		if(prob(5))
-			new /obj/effect/temp_visual/armor_glint(get_turf(parent), 3)
+			new /obj/effect/temp_visual/armor_glint(current_parent.loc, 3)
 
 /datum/component/metal_glint/proc/stop_process()
 	STOP_PROCESSING(SSobj, src)

@@ -4,11 +4,10 @@
 /datum/species/demihuman
 	name = "Half-Kin"
 	id = "demihuman"
-	desc = "In time you will learn the history of this race"
+	desc = "The inevitable union between wildkin and some form of humanity or another, and while they also experience animalistic tendencies akin to their full-blooded ancestors, their intermingling with others has stemmed the intensity. (Half-kin are not a template race to play your own custom race, if you play a half-kin, you are expected to roleplay to the setting and the race's lore.)"
 	skin_tone_wording = "Ancestry"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,MUTCOLORS_PARTSONLY)
-	inherent_traits = list(TRAIT_NOMOBSWAP)
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = TRUE
 	possible_ages = ALL_AGES_LIST
@@ -33,11 +32,7 @@
 		OFFSET_FACE_F = list(0,-1), OFFSET_BELT_F = list(0,0), OFFSET_BACK_F = list(0,-1), \
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
-		OFFSET_TAUR = list(-16,-1), OFFSET_TAUR_F = list(-16, -1),\
-
 		)
-	specstats = list("strength" = 0, "perception" = 1, "intelligence" = -1, "constitution" = 0, "endurance" = 1, "speed" = -1, "fortune" = 0)
-	specstats_f = list("strength" = -1, "perception" = 0, "intelligence" = 2, "constitution" = -1, "endurance" = 0, "speed" = 1, "fortune" = 0)
 	race_bonus = list(STAT_PERCEPTION = 1)
 	enflamed_icon = "widefire"
 	bodypart_features = list(
@@ -54,8 +49,9 @@
 		/datum/customizer/organ/ears/demihuman,
 		/datum/customizer/organ/horns/demihuman,
 		/datum/customizer/organ/tail/demihuman,
-		/datum/customizer/organ/testicles/human,
-		/datum/customizer/organ/penis/canine,
+		/datum/customizer/organ/wings/anthro,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		/datum/customizer/organ/tail_feature/anthro,
@@ -65,6 +61,8 @@
 		/datum/body_marking_set/socks,
 	)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 		/datum/body_marking/socklonger,
 		/datum/body_marking/tips,
@@ -133,8 +131,9 @@
 		"Otava" = SKIN_COLOR_OTAVA,
 		"Etrusca" = SKIN_COLOR_ETRUSCA,
 		"Gronn" = SKIN_COLOR_GRONN,
-		"Giza" = SKIN_COLOR_GIZA,
-		"Shalvistine" = SKIN_COLOR_SHALVISTINE,
-		"Lalvestine" = SKIN_COLOR_LALVESTINE,
-		"Ebon" = SKIN_COLOR_EBON,
+		"North Zybantia (Giza)" = SKIN_COLOR_GIZA,
+		"West Zybantia (Shalvistine)" = SKIN_COLOR_SHALVISTINE,
+		"East Zybantia (Lalvestine)" = SKIN_COLOR_LALVESTINE,
+		"Naledi" = SKIN_COLOR_NALEDI,
+		"Kazengun" = SKIN_COLOR_KAZENGUN,
 	)

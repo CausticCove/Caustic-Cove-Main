@@ -45,69 +45,9 @@
 	var/masterkey = TRUE //if masterkey can open this regardless
 	var/kickthresh = 15
 	var/swing_closed = TRUE
+	var/lock_strength = 100
 
-		/// Whether to grant a resident_key- CC Edit Start
-	var/grant_resident_key = FALSE
-	var/resident_key_amount = 1
-	/// The type of a key the resident will get
-	var/resident_key_type
-	/// The required role of the resident
-	var/resident_role
-	/// The requied advclass of the resident
-	var/resident_advclass
-	//CC Edit Ends.
 	damage_deflection = 10
-
-/obj/structure/mineral_door/proc/try_award_resident_key(mob/user)//CC Edit Starts
-	if(!grant_resident_key)
-		return FALSE
-	if(!lockid)
-		return FALSE
-	if(!ishuman(user))
-		return FALSE
-	var/mob/living/carbon/human/human = user
-	if(human.received_resident_key)
-		return FALSE
-	if(resident_role)
-		var/datum/job/job = SSjob.name_occupations[human.job]
-		if(job.type != resident_role)
-			return FALSE
-	if(resident_advclass)
-		if(!human.advjob)
-			return FALSE
-		var/datum/advclass/advclass = SSrole_class_handler.get_advclass_by_name(human.advjob)
-		if(!advclass)
-			return FALSE
-		if(advclass.type != resident_advclass)
-			return FALSE
-	var/alert = alert(user, "Is this my home?", "Home", "Yes", "No")
-	if(alert != "Yes")
-		return
-	if(!grant_resident_key)
-		return
-	var/spare_key = alert(user, "Have I got an extra spare key?", "Home", "Yes", "No")
-	if(!grant_resident_key)
-		return
-	if(spare_key == "Yes")
-		resident_key_amount = 2
-	else
-		resident_key_amount = 1
-	for(var/i in 1 to resident_key_amount)
-		var/obj/item/roguekey/key
-		if(resident_key_type)
-			key = new resident_key_type(get_turf(human))
-		else
-			key = new /obj/item/roguekey(get_turf(human))
-		key.lockid = lockid
-		key.lockhash = lockhash
-		human.put_in_hands(key)
-	human.received_resident_key = TRUE
-	grant_resident_key = FALSE
-	if(resident_key_amount > 1)
-		to_chat(human, span_notice("They're just where I left them..."))
-	else
-		to_chat(human, span_notice("It's just where I left it..."))
-	return TRUE	//CC Edit ends
 
 /obj/structure/mineral_door/onkick(mob/user)
 	if(isSwitchingStates)
@@ -170,8 +110,6 @@
 	if(!base_state)
 		base_state = icon_state
 	air_update_turf(TRUE)
-	if(grant_resident_key && !lockid)	//CC edit
-		lockid = "random_lock_id_[rand(1,9999999)]" // I know, not foolproof- CC edit
 	if(lockhash)
 		GLOB.lockhashes += lockhash
 	else if(keylock)
@@ -242,8 +180,6 @@
 	if(brokenstate)
 		return
 	if(isSwitchingStates)
-		return
-	if(try_award_resident_key(user))
 		return
 	if(locked)
 		if(isliving(user))
@@ -341,19 +277,27 @@
 
 /obj/structure/mineral_door/attackby(obj/item/I, mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
-	if(istype(I, /obj/item/roguekey) || istype(I, /obj/item/keyring))
+	if(istype(I, /obj/item/roguekey) || istype(I, /obj/item/storage/keyring))
 		if(!locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the right."))
 			door_rattle()
 			return
 		trykeylock(I, user)
+	if(istype(I, /obj/item/lockpick))
+		trypicklock(I, user)
+	if(istype(I,/obj/item/lockpickring))
+		var/obj/item/lockpickring/pickring = I
+		if(pickring.picks.len)
+			pickring.removefromring(user)
+			to_chat(user, span_warning("You clumsily drop a lockpick off the ring as you try to pick the lock with it."))
+		return
 	else
 		return ..()
 
 /obj/structure/mineral_door/attack_right(mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
 	var/obj/item = user.get_active_held_item()
-	if(istype(item, /obj/item/roguekey) || istype(item, /obj/item/keyring))
+	if(istype(item, /obj/item/roguekey) || istype(item, /obj/item/storage/keyring))
 		if(locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the left."))
 			door_rattle()
@@ -370,11 +314,11 @@
 	if(lockbroken)
 		to_chat(user, span_warning("The lock to this door is broken."))
 	user.changeNext_move(CLICK_CD_MELEE)
-	if(istype(I,/obj/item/keyring))
-		var/obj/item/keyring/R = I
-		if(!R.keys.len)
+	if(istype(I,/obj/item/storage/keyring))
+		var/obj/item/storage/keyring/R = I
+		if(!R.contents.len)
 			return
-		var/list/keysy = shuffle(R.keys.Copy())
+		var/list/keysy = shuffle(R.contents.Copy())
 		for(var/obj/item/roguekey/K in keysy)
 			if(user.cmode)
 				if(!do_after(user, 10, TRUE, src))
@@ -395,6 +339,63 @@
 			door_rattle()
 		return
 
+/obj/structure/mineral_door/proc/trypicklock(obj/item/I, mob/user)
+	if(door_opened || isSwitchingStates)
+		to_chat(user, "<span class='warning'>This cannot be picked while it is open.</span>")
+		return
+	if(!keylock)
+		return
+	if(lockbroken)
+		to_chat(user, "<span class='warning'>The lock to this door is broken.</span>")
+		user.changeNext_move(CLICK_CD_MELEE)
+	else
+		var/lockprogress = 0
+		var/locktreshold = lock_strength
+
+		var/obj/item/lockpick/P = I
+		var/mob/living/L = user
+
+		var/pickskill = user.mind.get_skill_level(/datum/skill/misc/lockpicking)
+		var/perbonus = L.STAPER/5
+		var/picktime = 70
+		var/pickchance = 35
+		var/moveup = 10
+
+		picktime -= (pickskill * 10)
+		picktime = clamp(picktime, 10, 70)
+
+		moveup += (pickskill * 3)
+		moveup = clamp(moveup, 10, 30)
+
+		pickchance += pickskill * 10
+		pickchance += perbonus
+		pickchance *= P.picklvl
+		pickchance = clamp(pickchance, 1, 95)
+
+
+
+		while(!QDELETED(I) &&(lockprogress < locktreshold))
+			if(!do_after(user, picktime, target = src))
+				break
+			if(prob(pickchance))
+				lockprogress += moveup
+				playsound(src.loc, pick('sound/items/pickgood1.ogg','sound/items/pickgood2.ogg'), 5, TRUE)
+				to_chat(user, "<span class='warning'>Click...</span>")
+				if(L.mind)
+					add_sleep_experience(L, /datum/skill/misc/lockpicking, L.STAINT/2)
+				if(lockprogress >= locktreshold)
+					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
+					lock_toggle(user)
+					break
+				else
+					continue
+			else
+				playsound(loc, 'sound/items/pickbad.ogg', 40, TRUE)
+				I.take_damage(1, BRUTE, "blunt")
+				to_chat(user, "<span class='warning'>Clack.</span>")
+				add_sleep_experience(L, /datum/skill/misc/lockpicking, L.STAINT/4)
+				continue
+		return
 
 /obj/structure/mineral_door/proc/lock_toggle(mob/user)
 	if(isSwitchingStates || door_opened)
@@ -732,7 +733,7 @@
 	lockdir = dir
 
 /obj/structure/mineral_door/wood/deadbolt/Initialize()
-	..()
+	. = ..()
 	lockdir = dir
 	icon_state = base_state
 
@@ -764,6 +765,7 @@
 	unlocksound = 'sound/foley/doors/lockmetal.ogg'
 	rattlesound = 'sound/foley/doors/lockrattlemetal.ogg'
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
+	lock_strength = 200
 
 /obj/structure/mineral_door/wood/donjon/stone
 	desc = "stone door"
@@ -836,6 +838,7 @@
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 	ridethrough = TRUE
 	swing_closed = FALSE
+	lock_strength = 150
 
 /obj/structure/mineral_door/barsold
 	name = "iron door"
@@ -843,7 +846,7 @@
 	icon_state = "barsold"
 
 /obj/structure/mineral_door/bars/Initialize()
-	..()
+	. = ..()
 	add_overlay(mutable_appearance(icon, "barsopen", ABOVE_MOB_LAYER))
 
 
@@ -863,56 +866,3 @@
 	closeSound = 'modular/Neu_Food/sound/blindsclose.ogg'
 	dir = NORTH
 	locked = TRUE
-
-/obj/structure/mineral_door/wood/towner
-	locked = TRUE
-	keylock = TRUE
-	grant_resident_key = TRUE
-	resident_key_type = /obj/item/roguekey/townie
-	resident_role = /datum/job/roguetown/villager
-	lockid = null //Will be randomized
-
-/obj/structure/mineral_door/wood/towner/generic
-
-/obj/structure/mineral_door/wood/towner/generic/two_keys
-	resident_key_amount = 2
-
-/obj/structure/mineral_door/wood/towner/blacksmith
-	resident_advclass = /datum/advclass/blacksmith
-	lockid = "towner_blacksmith"
-
-/obj/structure/mineral_door/wood/towner/carpenter
-	resident_advclass = /datum/advclass/carpenter
-	lockid = "towner_carpenter"
-
-/obj/structure/mineral_door/wood/towner/cheesemaker
-	resident_advclass = /datum/advclass/cheesemaker
-	lockid = "towner_cheesemaker"
-
-/obj/structure/mineral_door/wood/towner/hunter
-	resident_advclass = /datum/advclass/hunter
-	lockid = "towner_hunter"
-
-/obj/structure/mineral_door/wood/towner/miner
-	resident_advclass = /datum/advclass/miner
-	lockid = "towner_miner"
-
-/obj/structure/mineral_door/wood/towner/farmer
-	resident_advclass = /datum/advclass/peasant
-	lockid = "towner_farmer"
-
-/obj/structure/mineral_door/wood/towner/seamstress
-	resident_advclass = /datum/advclass/seamstress
-	lockid = "towner_seamstress"
-
-/obj/structure/mineral_door/wood/towner/towndoctor
-	resident_advclass = /datum/advclass/towndoctor
-	lockid = "towner_towndoctor"
-
-/obj/structure/mineral_door/wood/towner/woodcutter
-	resident_advclass = /datum/advclass/woodcutter
-	lockid = "towner_woodcutter"
-
-/obj/structure/mineral_door/wood/towner/fisher
-	resident_advclass = /datum/advclass/fisher
-	lockid = "towner_fisher"
