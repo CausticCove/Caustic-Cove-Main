@@ -200,6 +200,13 @@
 	color_key_names = list("Tail", "Inner")
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/australian_shepherd
+	name = "Australian Shepherd"
+	icon_state = "australianshepherd"
+	color_keys = 2
+	color_key_names = list("Tail", "Inner")
+	can_wag = TRUE
+
 /datum/sprite_accessory/tail/skunk
 	name = "Skunk"
 	icon_state = "skunk"
@@ -334,6 +341,7 @@
 	icon_state = "hearttail"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 	can_wag = TRUE
+
 
 //TAUR BULLSHIT HELP
 

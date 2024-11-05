@@ -117,8 +117,11 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/process()
 	..()
 	if(rotprocess)
-		if(!istype(loc, /obj/structure/closet/crate/chest))
-			warming -= 20 //ssobj processing has a wait of 20
+		if(!istype(loc, /obj/structure/closet/crate/chest) && !istype(loc, /obj/structure/roguemachine/vendor))
+			if(!locate(/obj/structure/table) in loc)
+				warming -= 20 //ssobj processing has a wait of 20
+			else
+				warming -= 10
 			if(warming < (-1*rotprocess))
 				if(become_rotten())
 					STOP_PROCESSING(SSobj, src)
@@ -178,7 +181,7 @@ All foods are distributed among various categories. Use common sense.
 			result = new /obj/item/reagent_containers/food/snacks/badrecipe(A)
 		initialize_cooked_food(result, 1)
 		return result
-	if(istype(A,/obj/machinery/light/rogue/hearth) || istype(A,/obj/machinery/light/rogue/forge) || istype(A,/obj/machinery/light/rogue/firebowl) || istype(A,/obj/machinery/light/rogue/campfire))
+	if(istype(A,/obj/machinery/light/rogue/hearth) || istype(A,/obj/machinery/light/rogue/firebowl) || istype(A,/obj/machinery/light/rogue/campfire))
 		var/obj/item/result
 		if(fried_type)
 			result = new fried_type(A)

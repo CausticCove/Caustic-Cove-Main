@@ -1,14 +1,14 @@
 
 /obj/structure/roguewindow
 	name = "window"
-	desc = "A glass window. Glass is very rare nowadays."
+	desc = "A glass window."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "window-solid"
 	layer = TABLE_LAYER
 	density = TRUE
 	anchored = TRUE
 	opacity = FALSE
-	max_integrity = 800
+	max_integrity = 100
 	integrity_failure = 0.1
 	var/base_state = "window-solid"
 	var/lockdir = 0
@@ -31,12 +31,17 @@
 		return
 	icon_state = "[base_state]"
 
+/obj/structure/roguewindow/openclose/OnCrafted(dirin)
+	dirin = turn(dirin, 180)
+	lockdir = dirin
+	. = ..(dirin)
+
 /obj/structure/roguewindow/stained
 	icon_state = null
 	base_state = null
 	opacity = TRUE
 	max_integrity = 100 
-	integrity_failure = 0.75
+	integrity_failure = 0.5
 
 /obj/structure/roguewindow/stained/silver
 	icon_state = "stained-silver"
@@ -55,7 +60,14 @@
 	base_state = "woodwindow"
 	opacity = TRUE
 	max_integrity = 100
-	integrity_failure = 0.9
+	integrity_failure = 0.5
+
+/obj/structure/roguewindow/openclose/reinforced
+	desc = "A glass window. This one looks reinforced with a metal mesh."
+	icon_state = "reinforcedwindowdir"
+	base_state = "reinforcedwindow"
+	max_integrity = 800
+	integrity_failure = 0.1
 
 /obj/structure/roguewindow/openclose/Initialize()
 	lockdir = dir

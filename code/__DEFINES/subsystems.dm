@@ -160,12 +160,12 @@
 #define FIRE_PRIORITY_THROWING		25
 #define FIRE_PRIORITY_SPACEDRIFT	30
 #define FIRE_PRIORITY_FIELDS		30
-#define FIRE_PRIOTITY_SMOOTHING		35
+#define FIRE_PRIORITY_SMOOTHING		35
 #define FIRE_PRIORITY_HUDS			40
 #define FIRE_PRIORITY_NETWORKS		40
 #define FIRE_PRIORITY_OBJ			40
 #define FIRE_PRIORITY_ACID			40
-#define FIRE_PRIOTITY_BURNING		40
+#define FIRE_PRIORITY_BURNING		40
 #define FIRE_PRIORITY_DEFAULT		50
 #define FIRE_PRIORITY_PARALLAX		65
 #define FIRE_PRIORITY_MOBS			100
@@ -193,7 +193,7 @@
 
 ///Compile all the overlays for an atom from the cache lists
 #define COMPILE_OVERLAYS(A)\
-	if (TRUE) {\
+	do {\
 		var/list/ad = A.add_overlays;\
 		var/list/rm = A.remove_overlays;\
 		var/list/po = A.priority_overlays;\
@@ -215,4 +215,4 @@
 			}\
 		}\
 		A.flags_1 &= ~OVERLAY_QUEUED_1;\
-	}
+	} while (FALSE)

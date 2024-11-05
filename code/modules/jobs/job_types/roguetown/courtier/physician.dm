@@ -9,28 +9,24 @@
 	allowed_races = RACES_ALL_KINDS
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_PHYSICIAN
-	tutorial = "You were a child born into good wealth - But poor health. \
+	tutorial = "You were a child born into good wealth--but poor health. \
 		Perhaps in another life, you would have turned out to be a powerful mage, wise archivist or a shrewd steward, \
 		but leprosy took away your younger years. \
 		Out of desperation, you followed the ways of Pestra and managed to be cured. \
-		Now you serve in the King's court ensuring the good health of those inhabiting the keep. \
-		\
-		This role allows for full customization."
+		Now you serve in the Duke's court ensuring the good health of those inhabiting the keep."
 	outfit = /datum/outfit/job/roguetown/physician
 	whitelist_req = TRUE
 
-	give_bank_account = 25
-	min_pq = 0
+	give_bank_account = 30
+	min_pq = 3 //Please don't kill the monarch by operating on strong intent. Play apothecary until you're deserving of the great white beak of doom
 	max_pq = null
+	round_contrib_points = 3
 
 	cmode_music = 'sound/music/combat_physician.ogg'
-
-	allow_custom_genitals = TRUE
 
 /datum/outfit/job/roguetown/physician
 	name = "Physician"
 	jobtype = /datum/job/roguetown/physician
-	allowed_patrons = list(/datum/patron/divine/pestra)
 
 /datum/outfit/job/roguetown/physician/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -44,18 +40,18 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/surgery_bag/full/physician
-	beltr = /obj/item/keyring/physician
-	id = /obj/item/clothing/ring/quartzs
+	beltr = /obj/item/storage/keyring/physician
+	id = /obj/item/scomstone/bad
 	r_hand = /obj/item/rogueweapon/woodstaff
 	backl = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 2,
 		/obj/item/natural/worms/leech/cheele = 1, //little buddy
-		/obj/item/reagent_containers/glass/bottle/waterskin = 1
+		/obj/item/reagent_containers/glass/bottle/waterskin = 1,
+		/obj/item/storage/belt/rogue/pouch/coins/poor = 1
 	)
 	ADD_TRAIT(H, TRAIT_EMPATH, "[type]")
 	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
-	ADD_TRAIT(H, TRAIT_ROT_EATER, "[type]")
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 5, TRUE)

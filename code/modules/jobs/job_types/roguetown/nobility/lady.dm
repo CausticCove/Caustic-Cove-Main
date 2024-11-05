@@ -8,17 +8,17 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	tutorial = "Picked out of your political value rather than likely any form of love, you have become the Monarch's most trusted confidant and likely friend throughout your marriage. Your loyalty and perhaps, love, will be tested this day. For the daggers that threaten your beloved are as equally pointed at your own throat."
+	tutorial = "Picked out of your political value rather than likely any form of love, you have become the Monarch's most trusted confidant--and likely friend--throughout your marriage. Your loyalty and perhaps even your love will be tested this day...for the daggers that threaten your beloved are as equally pointed at your own throat."
 
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/servant)
 	outfit = /datum/outfit/job/roguetown/lady
 
 	display_order = JDO_LADY
-	give_bank_account = TRUE
-	min_pq = 0
+	give_bank_account = 50
+	noble_income = 22
+	min_pq = 5
 	max_pq = null
-
-	allow_custom_genitals = TRUE
+	round_contrib_points = 3
 
 /datum/job/roguetown/exlady //just used to change the ladys title
 	title = "Consort Dowager"
@@ -30,19 +30,14 @@
 	display_order = JDO_LADY
 	give_bank_account = TRUE
 
-/datum/job/roguetown/lady/after_spawn(mob/living/H, mob/M, latejoin)
-	. = ..()
-	if(GLOB.lordsurname && H)
-		give_lord_surname(H, preserve_original = TRUE)
-
 /datum/outfit/job/roguetown/lady/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 //		SSticker.rulermob = H
-	if(H.pronouns == SHE_HER)
-		beltl = /obj/item/keyring/royal
+	if(H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F)
+		beltl = /obj/item/storage/keyring/royal
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		if(isdwarf(H))
@@ -62,7 +57,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		belt = /obj/item/storage/belt/rogue/leather
-		beltl = /obj/item/keyring/royal
+		beltl = /obj/item/storage/keyring/royal
 		beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 		backr = /obj/item/storage/backpack/rogue/satchel
 		id = /obj/item/clothing/ring/silver
@@ -75,8 +70,6 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.change_stat("intelligence", 3)
 		H.change_stat("endurance", 3)
 		H.change_stat("speed", 2)
@@ -86,6 +79,7 @@
 /obj/effect/proc_holder/spell/self/convertrole/servant
 	name = "Recruit Servant"
 	new_role = "Servant"
+	overlay_state = "recruit_servant"
 	recruitment_faction = "Servants"
 	recruitment_message = "Serve the crown, %RECRUIT!"
 	accept_message = "FOR THE CROWN!"

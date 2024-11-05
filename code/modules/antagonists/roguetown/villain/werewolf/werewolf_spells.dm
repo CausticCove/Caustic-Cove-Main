@@ -15,7 +15,7 @@
 
 	// sound played for owner
 	playsound(src, pick('sound/vo/mobs/wwolf/howl (1).ogg','sound/vo/mobs/wwolf/howl (2).ogg'), 100, TRUE)
-	
+
 	for(var/mob/player in GLOB.player_list)
 
 		if(!player.mind) continue
@@ -64,4 +64,3 @@
 		user.put_in_hands(r, TRUE, FALSE, TRUE)
 		//user.visible_message("Your claws extend.", "You feel your claws extending.", "You hear a sound of claws extending.")
 		extended = TRUE
-	

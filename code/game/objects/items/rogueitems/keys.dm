@@ -12,7 +12,9 @@
 	var/lockhash = 0
 	var/lockid = null
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
+	drop_sound = 'sound/items/gems (1).ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
+	resistance_flags = FIRE_PROOF
 
 /obj/item/roguekey/Initialize()
 	. = ..()
@@ -26,11 +28,38 @@
 			GLOB.lockhashes += lockhash
 			GLOB.lockids[lockid] = lockhash
 
+/obj/item/lockpick
+	name = "lockpick"
+	desc = "A small, sharp piece of metal to aid opening locks in the absence of a key."
+	icon_state = "lockpick"
+	icon = 'icons/roguetown/items/keys.dmi'
+	w_class = WEIGHT_CLASS_TINY
+	dropshrink = 0.75
+	throwforce = 0
+	max_integrity = 10
+	picklvl = 1
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
+	destroy_sound = 'sound/items/pickbreak.ogg'
+	resistance_flags = FIRE_PROOF
+
 /obj/item/roguekey/lord
 	name = "master key"
 	desc = "The Lord's key."
 	icon_state = "bosskey"
 	lockid = "lord"
+	visual_replacement = /obj/item/roguekey/royal
+
+/obj/item/roguekey/lord/Initialize()
+	. = ..()
+	if(SSroguemachine.key)
+		qdel(src)
+	else
+		SSroguemachine.key = src
+
+/obj/item/roguekey/lord/proc/anti_stall()
+	src.visible_message(span_warning("The Key of Azure Peak crumbles to dust, the ashes spiriting away in the direction of the Keep."))
+	SSroguemachine.key = null //Do not harddel.
+	qdel(src) //Anti-stall
 
 /obj/item/roguekey/lord/pre_attack(target, user, params)
 	. = ..()
@@ -47,13 +76,19 @@
 	name = "Royal Key"
 	desc = "The Key to the royal chambers. It even feels pretentious."
 	icon_state = "ekey"
-	lockid = "lord"
+	lockid = "royal"
 
 /obj/item/roguekey/manor
 	name = "manor key"
 	desc = "This key will open any manor doors."
 	icon_state = "mazekey"
 	lockid = "manor"
+
+/obj/item/roguekey/heir
+	name = "heir room key"
+	desc = "A highly coveted key belonging to the doors of the heirs of this monarchy."
+	icon_state = "hornkey"
+	lockid = "heir"
 
 /obj/item/roguekey/garrison
 	name = "town watch key"
@@ -108,6 +143,12 @@
 	desc = "This key should open and close any tavern door."
 	icon_state = "hornkey"
 	lockid = "tavern"
+
+/obj/item/roguekey/tavernkeep
+	name = "innkeep's key"
+	desc = "This key opens and closes the innkeep's bedroom."
+	icon_state = "greenkey"
+	lockid = "innkeep"
 
 /obj/item/roguekey/velder
 	name = "elder's key"
@@ -244,21 +285,27 @@
 	icon_state = "rustkey"
 	lockid = "graveyard"
 
-/obj/item/roguekey/mason
-	name = "mason's key"
-	desc = "This bronze key should open the mason's guild."
+/obj/item/roguekey/artificer
+	name = "artificer's key"
+	desc = "This bronze key should open the Artificer's guild."
 	icon_state = "brownkey"
-	lockid = "mason"
+	lockid = "artificer"
+
+/obj/item/roguekey/tailor
+	name = "tailor's key"
+	desc = "This key opens the tailor's shop. There is a thin thread wrapped around it."
+	icon_state = "brownkey"
+	lockid = "tailor"
 
 /obj/item/roguekey/nightman
-	name = "nightmaster's key"
-	desc = "This regal key opens a few doors within the castle."
+	name = "bathmaster's key"
+	desc = "This regal key opens the bathmaster's office - and his vault."
 	icon_state = "greenkey"
 	lockid = "nightman"
 
 /obj/item/roguekey/nightmaiden
-	name = "nightmaiden's key"
-	desc = "This regal key opens a few doors within the castle."
+	name = "bathhouse key"
+	desc = "This regal key opens doors inside the bath-house."
 	icon_state = "brownkey"
 	lockid = "nightmaiden"
 
@@ -288,7 +335,7 @@
 
 /obj/item/roguekey/hand
 	name = "hand's key"
-	desc = "This regal key belongs to the King's Right Hand."
+	desc = "This regal key belongs to the Grand Duke's Right Hand."
 	icon_state = "cheesekey"
 	lockid = "hand"
 
@@ -372,6 +419,41 @@
 	name = "apartment iv key"
 	icon_state = "brownkey"
 	lockid = "apartment4"
+
+/obj/item/roguekey/apartments/stall1
+	name = "stall i key"
+	icon_state = "brownkey"
+	lockid = "stall1"
+
+/obj/item/roguekey/apartments/stall2
+	name = "stall ii key"
+	icon_state = "brownkey"
+	lockid = "stall2"
+
+/obj/item/roguekey/apartments/stall3
+	name = "stall iii key"
+	icon_state = "brownkey"
+	lockid = "stall3"
+
+/obj/item/roguekey/apartments/stall4
+	name = "stall iv key"
+	icon_state = "brownkey"
+	lockid = "stall4"
+
+/obj/item/roguekey/apartments/stable1
+	name = "stable i key"
+	icon_state = "brownkey"
+	lockid = "stable1"
+
+/obj/item/roguekey/apartments/stable2
+	name = "stable ii key"
+	icon_state = "brownkey"
+	lockid = "stable2"
+
+/obj/item/roguekey/apartments/stable3
+	name = "stable iii key"
+	icon_state = "brownkey"
+	lockid = "stable3"
 
 //custom key
 /obj/item/roguekey/custom
@@ -487,6 +569,7 @@
 		else
 			KE.keylock = TRUE
 			KE.lockhash = src.lockhash
+			KE.lock_strength = 100
 			if(src.holdname)
 				KE.name = (src.holdname + " " + KE.name)
 			to_chat(user, span_notice("You add [src] to [K]."))
@@ -498,6 +581,7 @@
 		else
 			KE.keylock = TRUE
 			KE.lockhash = src.lockhash
+			KE.lock_strength = 100
 			if(src.holdname)
 				KE.name = src.holdname
 			to_chat(user, span_notice("You add [src] to [K]."))

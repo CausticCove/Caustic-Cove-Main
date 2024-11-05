@@ -64,7 +64,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "generic_event"
 
 /obj/effect/landmark/events/haunts/Initialize(mapload)
-	..()
+	. = ..()
 	GLOB.hauntstart += src
 	icon_state = ""
 
@@ -75,7 +75,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	var/aportalloc = "a"
 
 /obj/effect/landmark/events/testportal/Initialize(mapload)
-	..()
+	. = ..()
 //	GLOB.hauntstart += loc
 #ifdef TESTSERVER
 	var/obj/structure/fluff/testportal/T = new /obj/structure/fluff/testportal(loc)
@@ -99,7 +99,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/bogguardlate
 	name = "Bogguardlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Bog Master", "Bog Guard")
+	jobspawn_override = list("Bog Master", "Bog Guard", "Warden")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vagrantlate
@@ -139,7 +139,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/lord
-	name = "Monarch"
+	name = "Grand Duke"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/knight
@@ -194,8 +194,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Bog Guard"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/bailiff
-	name = "Bailiff"
+/obj/effect/landmark/start/marshal
+	name = "Marshal"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/councillor
@@ -219,7 +219,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/woodsman
-	name = "Village Elder"
+	name = "Town Elder"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/priest
@@ -251,7 +251,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/nightman
-	name = "Nightmaster"
+	name = "Bathmaster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/nightmaiden
@@ -299,8 +299,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Alchemist"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/mason
-	name = "Mason"
+/obj/effect/landmark/start/artificer
+	name = "Artificer"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/scribe
@@ -317,6 +317,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 /obj/effect/landmark/start/cook
 	name = "Cook"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/knavewench
+	name = "Tavern Knave"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/gravedigger
@@ -376,7 +380,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/barkeeper
-	name = "Barkeeper"
+	name = "Innkeeper"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/adventurer
@@ -613,7 +617,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "wiznerd_spawn"
 
 /obj/effect/landmark/start/wizard/Initialize()
-	..()
+	. = ..()
 	GLOB.wizardstart += loc
 
 /obj/effect/landmark/start/nukeop
@@ -622,7 +626,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "snukeop_spawn"
 
 /obj/effect/landmark/start/nukeop/Initialize()
-	..()
+	. = ..()
 	GLOB.nukeop_start += loc
 
 /obj/effect/landmark/start/bandit
@@ -631,7 +635,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/bandit/Initialize()
-	..()
+	. = ..()
 	GLOB.bandit_starts += loc
 
 
@@ -641,7 +645,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/delf/Initialize()
-	..()
+	. = ..()
 	GLOB.delf_starts += loc
 
 
@@ -651,7 +655,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "snukeop_leader_spawn"
 
 /obj/effect/landmark/start/nukeop_leader/Initialize()
-	..()
+	. = ..()
 	GLOB.nukeop_leader_start += loc
 
 // Must be immediate because players will
@@ -662,7 +666,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	name = "New Player"
 
 /obj/effect/landmark/start/new_player/Initialize()
-	..()
+	. = ..()
 	GLOB.newplayer_start += loc
 
 /obj/effect/landmark/latejoin
@@ -826,7 +830,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/underworldcoin
 	name = "ferryman coin"
 
-/obj/effect/landmark/underworldsafe // To prevent demons spawn camping will save a lot of ear rape.
+/obj/effect/landmark/underworldsafe
 	name = "safe zone"
 
 GLOBAL_LIST_EMPTY(travel_tile_locations)

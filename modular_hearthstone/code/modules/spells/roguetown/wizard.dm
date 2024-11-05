@@ -21,7 +21,7 @@
 	name = "\improper prestidigitating touch"
 	desc = "You recall the following incantations you've learned:\n \
 	<b>Touch</b>: Use your arcyne powers to scrub an object or something clean, like using soap. Also known as the Apprentice's Woe.\n \
-	<b>Shove</b>: Will forth a spark <i>in front of you</i> to ignite flammable items and things like torches, lanterns or campfires. \n \
+	<b>Shove</b>: Will forth a spark on an item of your choosing (or in front of you, if used on the ground) to ignite flammable items and things like torches, lanterns or campfires. \n \
 	<b>Use</b>: Conjure forth an orbiting mote of magelight to light your way."
 	catchphrase = null
 	possible_item_intents = list(INTENT_HELP, INTENT_DISARM, /datum/intent/use)
@@ -58,7 +58,7 @@
 				handle_xp(user, fatigue_used, TRUE) // cleaning ignores the xp cooldown because it awards comparatively little
 		if (INTENT_DISARM) // Snap your fingers and produce a spark
 			fatigue_used = handle_cost(user, PRESTI_SPARK)
-			if (create_spark(user))
+			if (create_spark(user, target))
 				handle_xp(user, fatigue_used)
 		if (/datum/intent/use) // Summon an orbiting arcane mote for light
 			fatigue_used = handle_cost(user, PRESTI_MOTE)
@@ -77,7 +77,7 @@
 			extra_fatigue = 5 // just a bit of extra fatigue on this one
 		if (PRESTI_MOTE)
 			extra_fatigue = 15 // same deal here
-		
+
 	user.rogfat_add(fatigue_used + extra_fatigue)
 
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
@@ -105,12 +105,14 @@
 	//let's adjust the light power based on our skill, too
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
 	var/mote_power = clamp(4 + (skill_level - 3), 4, 7) // every step above journeyman should get us 1 more tile of brightness
-	mote.light_range = mote_power
+	mote.set_light_range(mote_power)
+	if(mote.light_system == STATIC_LIGHT)
+		mote.update_light()
 
 	if (mote.loc == src)
 		user.visible_message(span_notice("[user] holds open the palm of [user.p_their()] hand and concentrates..."), span_notice("I hold open the palm of my hand and concentrate on my arcyne power..."))
 		if (do_after(user, src.motespeed, target = user))
-			mote.orbit(user, 18, pick(list(TRUE, FALSE)), 2000, 48, TRUE)
+			mote.orbit(user, 1, TRUE, 0, 48, TRUE)
 			return TRUE
 		return FALSE
 	else
@@ -118,20 +120,27 @@
 		mote.forceMove(src)
 		return TRUE
 
-/obj/item/melee/touch_attack/prestidigitation/proc/create_spark(mob/living/carbon/human/user)
-	// adjusted from /obj/item/flint 
+/obj/item/melee/touch_attack/prestidigitation/proc/create_spark(mob/living/carbon/human/user, atom/thing)
+	// adjusted from /obj/item/flint
 	if (world.time < spark_cd + sparkspeed)
-		return
+		return FALSE
 	spark_cd = world.time
+
 	playsound(user, 'sound/foley/finger-snap.ogg', 100, FALSE)
-	user.visible_message(span_notice("[user] snaps [user.p_their()] fingers, producing a spark!"), span_notice("I will forth a tiny spark with a snap of my fingers."))
+	user.flash_fullscreen("whiteflash")
 	flick("flintstrike", src)
 
-	user.flash_fullscreen("whiteflash")
-	var/datum/effect_system/spark_spread/S = new()
-	var/turf/front = get_step(user, user.dir)
-	S.set_up(1, 1, front)
-	S.start()
+	if (isturf(thing) || !user.Adjacent(thing))
+		var/datum/effect_system/spark_spread/S = new()
+		var/turf/front = get_step(user, user.dir)
+		S.set_up(1, 1, front)
+		S.start()
+		user.visible_message(span_notice("[user] snaps [user.p_their()] fingers, producing a spark!"), span_notice("I will forth a tiny spark with a snap of my fingers."))
+	else
+		thing.spark_act()
+		user.visible_message(span_notice("[user] snaps [user.p_their()] fingers, and a spark leaps forth towards [thing]!"), span_notice("I will forth a tiny spark and direct it towards [thing]."))
+	
+	return TRUE
 
 /obj/item/melee/touch_attack/prestidigitation/proc/clean_thing(atom/target, mob/living/carbon/human/user)
 	// adjusted from /obj/item/soap in clown_items.dm, some duplication unfortunately (needed for flavor)
@@ -190,7 +199,7 @@
 	//list of spells you can learn, it may be good to move this somewhere else eventually
 	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
 	var/list/choices = list()
-	var/list/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,
+	var/list/obj/effect/proc_holder/spell/spell_choices = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball,
 		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,
 		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
 		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
@@ -200,7 +209,7 @@
 		/obj/effect/proc_holder/spell/invoked/push_spell,
 		/obj/effect/proc_holder/spell/invoked/blade_burst,
 		/obj/effect/proc_holder/spell/targeted/touch/nondetection,
-		/obj/effect/proc_holder/spell/invoked/knock,
+//		/obj/effect/proc_holder/spell/invoked/knock,
 		/obj/effect/proc_holder/spell/invoked/haste,
 		/obj/effect/proc_holder/spell/invoked/featherfall,
 		/obj/effect/proc_holder/spell/targeted/touch/darkvision,
@@ -211,8 +220,8 @@
 
 	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
 	var/obj/effect/proc_holder/spell/item = choices[choice]
-	if(!item) 
-		return     // user canceled; 
+	if(!item)
+		return     // user canceled;
 	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
 		return
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
@@ -225,7 +234,7 @@
 	else
 		user.mind.used_spell_points += item.cost
 		user.mind.AddSpell(new item)
-		addtimer(CALLBACK(user.mind, TYPE_PROC_REF(/datum/mind, check_learnspell), src), 2 SECONDS) //self remove if no points
+		addtimer(CALLBACK(user.mind, TYPE_PROC_REF(/datum/mind, check_learnspell)), 2 SECONDS) //self remove if no points
 		return TRUE
 
 //forcewall
@@ -257,14 +266,14 @@
 	desc = "A wall of pure arcyne force."
 	name = "Arcyne Wall"
 	icon = 'icons/effects/effects.dmi'
-	icon_state = "m_shield"
+	icon_state = "forcefield"
 	break_sound = 'sound/combat/hits/onstone/stonedeath.ogg'
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
 	opacity = 0
 	density = TRUE
-	max_integrity = 80	
+	max_integrity = 80
 	CanAtmosPass = ATMOS_PASS_DENSITY
-	var/timeleft = 20 SECONDS  
+	var/timeleft = 20 SECONDS
 
 /obj/structure/forcefield_weak/Initialize()
 	. = ..()
@@ -291,7 +300,7 @@
 	caster = summoner
 
 /obj/structure/forcefield_weak/caster/CanPass(atom/movable/mover, turf/target)	//only the caster can move through this freely
-	if(mover == caster)		
+	if(mover == caster)
 		return TRUE
 	if(ismob(mover))
 		var/mob/M = mover
@@ -355,7 +364,7 @@
 /obj/effect/proc_holder/spell/self/message
 	name = "Message"
 	desc = "Latch onto the mind of one who is familiar to you, whispering a message into their head."
-	cost = 2
+	cost = 1
 	xp_gain = TRUE
 	releasedrain = 30
 	charge_max = 60 SECONDS
@@ -397,6 +406,7 @@
 			if(!identified) //we failed the check OR we just dont know who that is
 				to_chat(HL, "Arcyne whispers fill the back of my head, resolving into an unknown [user.gender == FEMALE ? "woman" : "man"]'s voice: <font color=#7246ff>[message]</font>")
 
+			user.visible_message("[user] mutters an incantation and their mouth briefly flashes white.")
 			user.whisper(message)
 			log_game("[key_name(user)] sent a message to [key_name(HL)] with contents [message]")
 			// maybe an option to return a message, here?
@@ -430,9 +440,10 @@
 	var/list/thrownatoms = list()
 	var/atom/throwtarget
 	var/distfromcaster
-	playMagSound()
+	playsound(user, 'sound/magic/repulse.ogg', 80, TRUE)
 	user.visible_message("[user] mutters an incantation and a wave of force radiates outward!")
 	for(var/turf/T in view(push_range, user))
+		new /obj/effect/temp_visual/kinetic_blast(T)
 		for(var/atom/movable/AM in T)
 			thrownatoms += AM
 
@@ -499,14 +510,18 @@
 
 /obj/effect/proc_holder/spell/invoked/blade_burst/cast(list/targets, mob/user)
 	var/turf/T = get_turf(targets[1])
+	var/play_cleave = FALSE
 	new /obj/effect/temp_visual/trap(T)
+	playsound(T, 'sound/magic/blade_burst.ogg', 80, TRUE, soundping = TRUE)
 	sleep(delay)
 	new /obj/effect/temp_visual/blade_burst(T)
-	playsound(T,'sound/magic/charged.ogg', 80, TRUE)
 	for(var/mob/living/L in T.contents)
+		play_cleave = TRUE
 		L.adjustBruteLoss(damage)
 		playsound(T, "genslash", 80, TRUE)
 		to_chat(L, "<span class='userdanger'>I'm cut by arcyne force!</span>")
+	if(play_cleave)
+		playsound(T,'sound/combat/newstuck.ogg', 80, TRUE, soundping = TRUE)
 	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/touch/nondetection
@@ -563,26 +578,26 @@
 
 		if(!do_after(user, 5 SECONDS, target = spelltarget))
 			return
-		
+
 		qdel(sacrifice)
 		ADD_TRAIT(spelltarget, TRAIT_ANTISCRYING, MAGIC_TRAIT)
 		if(spelltarget != user)
 			user.visible_message("[user] draws a glyph in the air and blows some ash onto [spelltarget].")
 		else
 			user.visible_message("[user] draws a glyph in the air and covers themselves in ash.")
-		
+
 		base_spell.add_buff_timer(spelltarget)
 		attached_spell.remove_hand()
 	return
 
 /obj/effect/proc_holder/spell/targeted/touch/darkvision
 	name = "Darkvision"
-	desc = "Enhance the night vision of a target you touch for an hour."
+	desc = "Enhance the night vision of a target you touch for 15 minutes."
 	clothes_req = FALSE
 	drawmessage = "I prepare to grant Darkvision."
 	dropmessage = "I release my arcyne focus."
 	school = "transmutation"
-	charge_max = 2 MINUTES
+	charge_max = 1 MINUTES
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/darkvision
@@ -591,7 +606,7 @@
 
 /obj/item/melee/touch_attack/darkvision
 	name = "\improper arcyne focus"
-	desc = "Touch a creature to grant them Darkvision for an hour."
+	desc = "Touch a creature to grant them Darkvision for 15 minutes."
 	catchphrase = null
 	possible_item_intents = list(INTENT_HELP)
 	icon = 'icons/mob/roguehudgrabs.dmi'
@@ -651,7 +666,7 @@
 	releasedrain = 60
 	chargedrain = 1
 	chargetime = 4 SECONDS
-	charge_max = 5 MINUTES
+	charge_max = 1.5 MINUTES
 	warnie = "spellwarning"
 	school = "transmutation"
 	no_early_release = TRUE
@@ -668,7 +683,8 @@
 
 	var/mob/living/spelltarget = A
 	spelltarget.apply_status_effect(/datum/status_effect/buff/haste)
-	
+	playsound(get_turf(spelltarget), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
+
 	if(spelltarget != user)
 		user.visible_message("[user] mutters an incantation and [spelltarget] briefly shines yellow.")
 	else
@@ -725,7 +741,7 @@
 	releasedrain = 50
 	chargedrain = 0
 	chargetime = 4 SECONDS
-	charge_max = 2 MINUTES
+	charge_max = 1.5 MINUTES
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	charging_slowdown = 1

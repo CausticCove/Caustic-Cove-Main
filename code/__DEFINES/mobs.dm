@@ -308,7 +308,6 @@
 #define OFFSET_ARMOR "wear_armor"
 #define OFFSET_HANDS "hands"
 #define OFFSET_UNDIES "underwear"
-#define OFFSET_TAUR "taur"
 
 #define OFFSET_ID_F "wear_ringf"
 #define OFFSET_GLOVES_F "glovesf"
@@ -326,6 +325,7 @@
 #define OFFSET_ARMOR_F "wear_armorf"
 #define OFFSET_HANDS_F "handsf"
 #define OFFSET_UNDIES_F "underwearf"
+#define OFFSET_TAUR "taur"
 #define OFFSET_TAUR_F "taurf"
 
 //MINOR TWEAKS/MISC
@@ -436,10 +436,12 @@
 #define SKIN_COLOR_GIZA "ba9882"
 #define SKIN_COLOR_SHALVISTINE "ac8369"
 #define SKIN_COLOR_LALVESTINE "9c6f52"
-#define SKIN_COLOR_EBON "4e3729"
+#define SKIN_COLOR_NALEDI "4e3729"
 #define SKIN_COLOR_KAZENGUN "dbcca9"
 
 //AASIMAR SKIN TONES
+#define SKIN_COLOR_CULTOR "b5a4a4"
+#define SKIN_COLOR_SPIRITUS "f0eded"
 #define SKIN_COLOR_PLANETAR "ffd859"
 #define SKIN_COLOR_DEVA "b6f1f2"
 #define SKIN_COLOR_SOLAR "daeaeb"
@@ -455,7 +457,7 @@
 #define SKIN_COLOR_GIZA_AZURE "fcccb3"
 #define SKIN_COLOR_WALNUT_STINE "edc6b3"
 #define SKIN_COLOR_ETRUSTCAN_DANDELION "e2b9a3"
-#define SKIN_COLOR_EBON_BORN "5a4a41"
+#define SKIN_COLOR_NALEDI_BORN "5a4a41"
 #define SKIN_COLOR_KAZE_LOTUS "E0D5B8"
 
 //HALF ORK SKIN TONES

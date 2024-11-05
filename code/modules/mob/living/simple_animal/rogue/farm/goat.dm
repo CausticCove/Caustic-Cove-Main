@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/Initialize()
-	..()
+	. = ..()
 	GLOB.farm_animals++
 	if(tame)
 		tamed()
@@ -76,7 +76,12 @@
 	base_intents = list(/datum/intent/simple/headbutt)
 	health = 80
 	maxHealth = 80
-	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat,/obj/item/reagent_containers/food/snacks/grown/apple)
+	food_type = list(
+		/obj/item/reagent_containers/food/snacks/grown/wheat,
+		/obj/item/reagent_containers/food/snacks/grown/oat,
+		/obj/item/reagent_containers/food/snacks/grown/apple,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
+		)
 	tame_chance = 25
 	bonus_tame_chance = 15
 	footstep_type = FOOTSTEP_MOB_SHOE
@@ -208,7 +213,12 @@
 	retreat_distance = 0
 	minimum_distance = 0
 	milkies = FALSE
-	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat,/obj/item/reagent_containers/food/snacks/grown/apple)
+	food_type = list(
+		/obj/item/reagent_containers/food/snacks/grown/wheat,
+		/obj/item/reagent_containers/food/snacks/grown/oat,
+		/obj/item/reagent_containers/food/snacks/grown/apple,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
+		)
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = /obj/item/natural/poo/horse
 	STACON = 7
@@ -246,7 +256,7 @@
 		D.set_vehicle_dir_layer(WEST, OBJ_LAYER)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/Initialize()
-	..()
+	. = ..()
 	GLOB.farm_animals++
 	if(tame)
 		tamed()

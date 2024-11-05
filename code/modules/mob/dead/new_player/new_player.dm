@@ -162,6 +162,9 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			if(SSticker.job_change_locked)
 				return
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
+			if(tready == PLAYER_READY_TO_PLAY && length(client.prefs.flavortext) < MINIMUM_FLAVOR_TEXT)
+				to_chat(src, span_boldwarning("You need a minimum of [MINIMUM_FLAVOR_TEXT] characters in your flavor text in order to play."))
+				return
 			if(ready != tready)
 				ready = tready
 		//if it's post initialisation and they're trying to observe we do the needful
@@ -258,6 +261,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			to_chat(usr, span_boldwarning("You are in the migrant queue."))
 			return
 
+		if(length(client.prefs.flavortext) < MINIMUM_FLAVOR_TEXT)
+			to_chat(usr, span_boldwarning("You need a minimum of [MINIMUM_FLAVOR_TEXT] characters in your flavor text in order to play."))
+			return
+
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return
 
@@ -287,7 +294,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	var/list/dat = list()
 	dat += GLOB.roleplay_readme
 	if(dat)
-		var/datum/browser/popup = new(src, "Primer", "CAUSTIC COVE", 460, 550)
+		var/datum/browser/popup = new(src, "Primer", "AZURE PEAK", 460, 550)
 		popup.set_content(dat.Join())
 		popup.open()
 
@@ -309,7 +316,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	if(check_rights(R_WATCH, FALSE))
 		observer = new /mob/dead/observer/admin(src)
 	else
-		observer = new /mob/dead/observer/rogue(src)
+		observer = new /mob/dead/observer/rogue/nodraw(src)
 	spawning = TRUE
 
 	observer.started_as_observer = TRUE
@@ -548,7 +555,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		SSquirks.AssignQuirks(humanc, humanc.client, TRUE)*/
 	if(humanc)
 		var/fakekey = character.ckey
-		if(ckey in GLOB.anonymize)
+		if(character.ckey in GLOB.anonymize)
 			fakekey = get_fake_key(character.ckey)
 		GLOB.character_list[character.mobid] = "[fakekey] was [character.real_name] ([rank])<BR>"
 		GLOB.character_ckey_list[character.real_name] = character.ckey
@@ -672,7 +679,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 					if(job_datum in SSjob.prioritized_jobs)
 						dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[used_name] ([job_datum.current_positions])</span></a>"
 					else
-						dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[used_name] ([job_datum.current_positions])</a>"
+						dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[used_name] ([job_datum.current_positions])[job_datum.round_contrib_points ? " RCP: +[job_datum.round_contrib_points]" : ""]</a>"
 
 			dat += "</fieldset><br>"
 			column_counter++

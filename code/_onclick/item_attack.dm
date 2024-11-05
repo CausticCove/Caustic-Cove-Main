@@ -182,9 +182,9 @@
 		user.do_attack_animation(O)
 		return TRUE
 
-/obj/item/proc/attack_turf(turf/T, mob/living/user)
+/obj/item/proc/attack_turf(turf/T, mob/living/user, multiplier)
 	if(T.max_integrity)
-		if(T.attacked_by(src, user))
+		if(T.attacked_by(src, user, multiplier))
 			user.do_attack_animation(T)
 			return TRUE
 
@@ -283,7 +283,7 @@
 			if(!cont)
 				return 0
 		if(DULLING_PICK) //cannot deal damage if not a pick item. aka rock walls
-				    
+
 			if(user.used_intent.blade_class != BCLASS_PICK)
 				return 0
 			var/mob/living/miner = user
@@ -291,10 +291,12 @@
 			newforce = newforce * (8+(mineskill*1.5))
 			shake_camera(user, 1, 1)
 			miner.mind.add_sleep_experience(/datum/skill/labor/mining, (miner.STAINT*0.2))
-	
+
 	newforce = (newforce * user.used_intent.damfactor) * dullfactor
 	if(user.used_intent.get_chargetime() && user.client?.chargedprog < 100)
 		newforce = newforce * 0.5
+	if(!(user.mobility_flags & MOBILITY_STAND))
+		newforce *= 0.5
 	newforce = round(newforce,1)
 	newforce = max(newforce, 1)
 	testing("endforce [newforce]")
@@ -327,7 +329,7 @@
 		I.take_damage(1, BRUTE, I.d_type)
 	return TRUE
 
-/turf/proc/attacked_by(obj/item/I, mob/living/user)
+/turf/proc/attacked_by(obj/item/I, mob/living/user, multiplier)
 	var/newforce = get_complex_damage(I, user, blade_dulling)
 	if(!newforce)
 		testing("attack6")
@@ -350,6 +352,9 @@
 	else
 		user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
 
+	if(multiplier)
+		newforce = newforce * multiplier
+	
 	take_damage(newforce, I.damtype, I.d_type, 1)
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)
@@ -404,6 +409,42 @@
 	return "body"
 
 /obj/item/proc/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
+	if(is_silver)
+		if(world.time < src.last_used + 120)
+			to_chat(user, span_notice("The silver effect is on cooldown."))
+			return
+
+		if(ishuman(target) && target.mind)
+			var/mob/living/carbon/human/s_user = user
+			var/mob/living/carbon/human/H = target
+			var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+			var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+			var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+			if(V)
+				if(V.disguised)
+					H.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
+					to_chat(H, span_userdanger("I'm hit by my BANE!"))
+					H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+					src.last_used = world.time
+				else
+					H.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
+					to_chat(H, span_userdanger("I'm hit by my BANE!"))
+					H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+					src.last_used = world.time
+			if(V_lord)
+				if(V_lord.vamplevel < 4 && !V)
+					H.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
+					to_chat(H, span_userdanger("I'm hit by my BANE!"))
+					H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+					src.last_used = world.time
+				if(V_lord.vamplevel == 4 && !V)
+					to_chat(s_user, "<font color='red'> The silver weapon fails!</font>")
+					H.visible_message(H, span_userdanger("This feeble metal can't hurt me, I AM ANCIENT!"))
+			if(W && W.transformed == TRUE)
+				H.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
+				to_chat(H, span_userdanger("I'm hit by my BANE!"))
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
 	return
 
 /mob/living/attacked_by(obj/item/I, mob/living/user)
@@ -416,11 +457,14 @@
 		if(I.damtype == BRUTE)
 			next_attack_msg.Cut()
 			if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
+				simple_woundcritroll(user.used_intent.blade_class, newforce, user, hitlim)
+				/* No embedding on simple mobs, thank you!
 				var/datum/wound/crit_wound  = simple_woundcritroll(user.used_intent.blade_class, newforce, user, hitlim)
 				if(should_embed_weapon(crit_wound, I))
 					// throw_alert("embeddedobject", /atom/movable/screen/alert/embeddedobject)
 					simple_add_embedded_object(I, silent = FALSE, crit_message = TRUE)
 					src.grabbedby(user, 1, item_override = I)
+				*/
 			var/haha = user.used_intent.blade_class
 			if(newforce > 5)
 				if(haha != BCLASS_BLUNT)

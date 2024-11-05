@@ -6,6 +6,7 @@
 	desc = ""
 	w_class = WEIGHT_CLASS_TINY
 	var/bundletype = null
+	var/quality = SMELTERY_LEVEL_NORMAL // To not ruin blacksmith recipes
 
 /obj/item/natural/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/natural/bundle))
@@ -78,6 +79,20 @@
 			to_chat(user, "There's not enough space in [src].")
 	else
 		return ..()
+
+/obj/item/natural/bundle/use(used)
+	if(src.amount >= used)
+		src.amount -= used
+		src.update_bundle()
+		switch(src.amount)
+			if(1)
+				new src.stacktype(src.loc)
+				qdel(src)
+			if(0)
+				qdel(src)
+		return TRUE
+	else
+		return FALSE
 
 /obj/item/natural/bundle/attack_right(mob/user)
 	var/mob/living/carbon/human/H = user

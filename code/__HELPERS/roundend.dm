@@ -163,6 +163,7 @@
 	if(SSticker.current_state != GAME_STATE_FINISHED)
 		return
 	if(client)
+		client.verbs += /client/proc/lobbyooc
 		client.show_game_over()
 
 /mob/living/do_game_over()
@@ -180,26 +181,24 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		H.mode = AI_OFF
-	if(client)
-		client.verbs += /client/proc/lobbyooc
 
 /client/proc/show_game_over()
 	var/atom/movable/screen/splash/credits/S = new(src, FALSE)
 	S.Fade(FALSE,FALSE)
 	RollCredits()
-//	if(GLOB.credits_icons.len)
-//		for(var/i=0, i<=GLOB.credits_icons.len, i++)
-//			var/atom/movable/screen/P = new()
-//			P.layer = SPLASHSCREEN_LAYER+1
-//			P.appearance = GLOB.credits_icons
-//			screen += P
+	if(GLOB.credits_icons.len)
+		for(var/i=0, i<=GLOB.credits_icons.len, i++)
+			var/atom/movable/screen/P = new()
+			P.layer = SPLASHSCREEN_LAYER+1
+			P.appearance = GLOB.credits_icons
+			screen += P
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
 	set waitfor = FALSE
 
 	log_game("The round has ended.")
 
-	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale on Caustic Cove.</span>")
+	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale on Azure Peak.</span>")
 	get_end_reason()
 
 	var/list/key_list = list()
@@ -215,6 +214,12 @@
 		if(H.stat != DEAD)
 			if(H.get_triumphs() < 0)
 				H.adjust_triumphs(1)
+		if(GLOB.round_join_times[H.ckey] && H.job && H.allmig_reward)
+			if((GLOB.round_join_times[H.ckey] + 45 MINUTES) < world.time)
+				var/datum/job/job = SSjob.GetJob(H.job)
+				if(job && job.round_contrib_points)
+					to_chat(H, "\n<font color='purple'><b>[job.round_contrib_points]</b> ROUND CONTRIBUTOR POINTS AWARDED. Thank you for playing!</font>")
+					add_roundpoints(job.round_contrib_points, H.ckey)
 	add_roundplayed(key_list)
 //	SEND_SOUND(world, sound(pick('sound/misc/roundend1.ogg','sound/misc/roundend2.ogg')))
 //	SEND_SOUND(world, sound('sound/misc/roundend.ogg'))
@@ -305,22 +310,20 @@
 
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
 		var/datum/game_mode/chaosmode/C = SSticker.mode
-		if(C.check_for_lord)
-			if(!C.check_for_lord(forced = TRUE))
-				end_reason = pick("Without a Monarch, they were doomed to become slaves of Zizo.",
-								"Without a Monarch, they were doomed to be eaten by nite creachers.",
-								"Without a Monarch, they were doomed to become victims of Gehenna.",
-								"Without a Monarch, they were doomed to enjoy a mass-suicide.",
-								"Without a Monarch, the Lich made them his playthings.",
-								"Without a Monarch, some jealous rival reigned in tyranny.",
-								"Without a Monarch, the town was abandoned.")
+		end_reason = pick("So concluded another chapter of the story. Another begins shortly.",
+						"A blank page is filled; a new canvas presented.",
+						"Our actors hang up their masks. A new cast begins to rehearse.",
+						"Thus the week's events have taken place. Eventful or mundane, life continues.",
+						"Pawns of gods, preachers of nite, all come together to recite this tale.",
+						"Whether with loss or life, the duchy survives... for now.",
+						"The people of Azure prepare to look forward; their actions locked in the impermeable past.")
 //		if(C.not_enough_players)
 //			end_reason = "The town was abandoned."
 
 		if(C.vampire_werewolf() == "vampire")
 			end_reason = "When the Vampires finished sucking the town dry, they moved on to the next one."
 		if(C.vampire_werewolf() == "werewolf")
-			end_reason = "The Werevolves formed an unholy clan, marauding Caustic Cove until the end of its daes."
+			end_reason = "The Werevolves formed an unholy clan, marauding Azure Peak until the end of its daes."
 
 		if(C.headrebdecree)
 			end_reason = "The peasant rebels took control of the throne, hail the new community!"

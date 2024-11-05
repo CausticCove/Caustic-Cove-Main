@@ -13,7 +13,7 @@
 
 /turf/open/floor/rogue/dirt/Initialize()
 	. = ..()
-	if(istype(loc, /area/rogue/outdoors/bog))
+	if(istype(loc, /area/rogue/outdoors/woods))
 		if(!((locate(/obj/structure) in src) || (locate(/obj/machinery) in src)))
 			if(prob(4))
 				hidden_truffles = TRUE
@@ -71,7 +71,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/toxicshrooms/cooked
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	color = "#835b4f"
-/obj/item/reagent_containers/food/snacks/rogue/truffles/Initialize()
+/obj/item/reagent_containers/food/snacks/rogue/toxicshrooms/Initialize()
 	icon_state = pick("mushroom1_full","mushroom1_full","mushroom1_full")
 	. = ..()
 

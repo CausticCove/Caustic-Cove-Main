@@ -16,13 +16,11 @@
 	give_bank_account = TRUE
 	min_pq = -15
 	max_pq = null
+	round_contrib_points = 2
 	wanderer_examine = FALSE
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
 	same_job_respawn_delay = 0
-
-	allow_custom_genitals = TRUE //Vrell - This prevents the job itself from culling the parts since advanced classes determine if they are allowed
-	
 
 /datum/job/roguetown/villager/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
@@ -31,7 +29,6 @@
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
-
 
 /*
 /datum/job/roguetown/adventurer/villager/New()

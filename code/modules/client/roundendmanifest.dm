@@ -4,7 +4,7 @@
 	for(var/X in GLOB.character_list)
 		dat += "[GLOB.character_list[X]]"
 
-	var/datum/browser/popup = new(src, "actors", "<center>Inhabitants of Caustic Cove</center>", 387, 420)
+	var/datum/browser/popup = new(src, "actors", "<center>Inhabitants of Azure Peak</center>", 387, 420)
 	popup.set_content(dat)
 	popup.open(FALSE)
 
@@ -14,5 +14,14 @@
 		dat += "[GLOB.actors_list[X]]"
 
 	var/datum/browser/popup = new(src, "actors", "<center>This Story's Actors</center>", 387, 420)
+	popup.set_content(dat)
+	popup.open(FALSE)
+
+/client/proc/view_roleplay_ads()
+	var/dat
+	for(var/X in GLOB.roleplay_ads)
+		dat += "[GLOB.roleplay_ads[X]]"
+
+	var/datum/browser/popup = new(src, "actors", "<center>Roleplay Ads</center>", 500, 600)
 	popup.set_content(dat)
 	popup.open(FALSE)

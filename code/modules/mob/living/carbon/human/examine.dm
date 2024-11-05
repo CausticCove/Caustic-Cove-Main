@@ -3,14 +3,6 @@
 		return
 	if(user.mind)
 		user.mind.i_know_person(src)
-	var/datum/species/self_species = dna.species
-	var/datum/species/examiner_species = user.dna.species
-	if(self_species.stress_examine && self_species.type != examiner_species.type && !HAS_TRAIT(user, TRAIT_TOLERANT))
-		var/event_type = /datum/stressevent/shunned_race
-		if(HAS_TRAIT(user, TRAIT_XENOPHOBIC))
-			event_type = /datum/stressevent/shunned_race_xenophobic
-		var/datum/stressevent/event = user.add_stress(event_type)
-		event.desc = self_species.stress_desc
 	if(user.has_flaw(/datum/charflaw/paranoid) && (STASTR - user.STASTR) > 1)
 		user.add_stress(/datum/stressevent/parastr)
 	if(HAS_TRAIT(user, TRAIT_JESTERPHOBIA) && job == "Jester")
@@ -71,7 +63,7 @@
 				display_as_wanderer = TRUE
 		else if(job)
 			var/datum/job/J = SSjob.GetJob(job)
-			if(J.wanderer_examine)
+			if(!J || J.wanderer_examine)
 				display_as_wanderer = TRUE
 			if(islatejoin)
 				is_returning = TRUE
@@ -84,6 +76,9 @@
 
 		if(GLOB.lord_titles[name])
 			. += span_notice("[m3] been granted the title of \"[GLOB.lord_titles[name]]\".")
+
+		if(HAS_TRAIT(src, TRAIT_NOBLE) && HAS_TRAIT(user, TRAIT_NOBLE))
+			. += span_notice("A fellow noble.")
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -102,8 +97,8 @@
 			if(mind.special_role == "Bandit")
 				if(HAS_TRAIT(user, TRAIT_COMMIE))
 					commie_text = span_notice("Free man!")
-				else
-					commie_text = span_userdanger("BANDIT!")
+				/*else
+					commie_text = span_userdanger("BANDIT!")*/
 			if(mind.special_role == "Vampire Lord")
 				. += span_userdanger("A MONSTER!")
 			if(mind.assigned_role == "Lunatic")
@@ -116,6 +111,12 @@
 			. += commie_text
 		else if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(user, TRAIT_COMMIE))
 			. += span_notice("Comrade!")
+		else if(HAS_TRAIT(src, TRAIT_CABAL) && HAS_TRAIT(user, TRAIT_CABAL))
+			. += span_notice("Another of the Cabal!")
+		else if(HAS_TRAIT(src, TRAIT_HORDE) && HAS_TRAIT(user, TRAIT_HORDE))
+			. += span_notice("Anointed!")
+		else if(HAS_TRAIT(src, TRAIT_DEPRAVED) && HAS_TRAIT(user, TRAIT_DEPRAVED))
+			. += span_notice("Debased!")
 
 	if(leprosy == 1)
 		. += span_necrosis("A LEPER...")

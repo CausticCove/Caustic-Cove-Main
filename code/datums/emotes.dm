@@ -37,7 +37,11 @@
 
 /datum/emote/New()
 	if(!runechat_msg)
-		runechat_msg = strip_punctuation(message)
+		//strip punctuation
+		var/static/regex/regex = regex(@"[,.!?]", "g")
+		runechat_msg = regex.Replace(message, "")
+		runechat_msg = trim(runechat_msg, MAX_MESSAGE_LEN)
+
 	if (ispath(mob_type_allowed_typecache))
 		switch (mob_type_allowed_typecache)
 			if (/mob)
@@ -111,9 +115,9 @@
 		if(show_runechat)
 			runechat_msg_to_use = runechat_msg ? runechat_msg : raw_msg
 		if(emote_type == EMOTE_AUDIBLE)
-			user.audible_message(msg, runechat_message = runechat_msg_to_use)
+			user.audible_message(msg, runechat_message = runechat_msg_to_use, log_seen = SEEN_LOG_EMOTE)
 		else
-			user.visible_message(msg, runechat_message = runechat_msg_to_use)
+			user.visible_message(msg, runechat_message = runechat_msg_to_use, log_seen = SEEN_LOG_EMOTE)
 
 /datum/emote/proc/get_env(mob/living/user)
 	return
@@ -152,7 +156,7 @@
 				switch (H.voice_type)
 					if (VOICE_TYPE_MASC)
 						possible_sounds = H.dna.species.soundpack_m.get_sound(key, modifier)
-					if (VOICE_TYPE_FEM)
+					else
 						if (H.dna.species.soundpack_f)
 							possible_sounds = H.dna.species.soundpack_f.get_sound(key, modifier)
 						else

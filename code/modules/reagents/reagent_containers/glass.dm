@@ -5,9 +5,8 @@
 	possible_transfer_amounts = list(5, 10, 15, 20, 25, 30, 50)
 	volume = 50
 	reagent_flags = OPENCONTAINER|REFILLABLE
-	obj_flags = CAN_BE_HIT
 	spillable = TRUE
-	possible_item_intents = list(INTENT_GENERIC, /datum/intent/fill, INTENT_POUR, INTENT_SPLASH)
+	possible_item_intents = list(INTENT_POUR, /datum/intent/fill, INTENT_SPLASH, INTENT_GENERIC)
 	resistance_flags = ACID_PROOF
 
 /datum/intent/fill
@@ -43,13 +42,14 @@
 			if(ishuman(M))
 				var/mob/living/carbon/human/humanized = M
 				if(get_location_accessible(humanized, BODY_ZONE_CHEST))
-					if(humanized.has_breasts() && humanized.getorganslot(ORGAN_SLOT_BREASTS).lactating)
-						if(humanized.getorganslot(ORGAN_SLOT_BREASTS).milk_stored > 0)
+					var/obj/item/organ/breasts/breasts = humanized.has_breasts()
+					if(breasts && breasts.lactating)
+						if(breasts.milk_stored > 0)
 							if(reagents.total_volume < volume)
-								var/milk_to_take = min(humanized.getorganslot(ORGAN_SLOT_BREASTS).milk_stored, max(humanized.getorganslot(ORGAN_SLOT_BREASTS).breast_size, 1), volume - reagents.total_volume)
+								var/milk_to_take = min(breasts.milk_stored, max(breasts.breast_size, 1), volume - reagents.total_volume)
 								if(do_after(user, 20, target = M))
 									reagents.add_reagent(/datum/reagent/consumable/milk, milk_to_take)
-									humanized.getorganslot(ORGAN_SLOT_BREASTS).milk_stored -= milk_to_take
+									breasts.milk_stored -= milk_to_take
 									user.visible_message(span_notice("[user] milks [M] using \the [src]."), span_notice("I milk [M] using \the [src]."))
 							else
 								to_chat(user, span_warning("[src] is full."))
@@ -190,8 +190,8 @@
 /obj/item/reagent_containers/glass/attackby(obj/item/I, mob/user, params)
 	var/hotness = I.get_temperature()
 	if(hotness && reagents)
-		src.reagents.expose_temperature(hotness)
-		to_chat(user, span_notice("I heat [src] with [I]!"))
+		reagents.expose_temperature(hotness)
+		to_chat(user, span_notice("I heat [name] with [I]!"))
 
 	if(istype(I, /obj/item/reagent_containers/food/snacks/egg)) //breaking eggs
 		var/obj/item/reagent_containers/food/snacks/egg/E = I
@@ -392,14 +392,14 @@
 
 	cut_overlays()
 
-	if(reagents.total_volume > 0) 
-		if(reagents.total_volume <= 50) 
+	if(reagents.total_volume > 0)
+		if(reagents.total_volume <= 50)
 			var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bucket_half")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
 			add_overlay(filling)
 
-		if(reagents.total_volume > 50) 
+		if(reagents.total_volume > 50)
 			var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bucket_full")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)

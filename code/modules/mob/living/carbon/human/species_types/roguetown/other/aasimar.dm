@@ -11,8 +11,9 @@
 	Most commonly, Aasimar are similar to Humans, albeit taller, and possess uncanny beauty. \
 	They have strangely colored skin and are more physically frail than the average Human. \
 	Because of their upbringing, they make for natural conduits for godly powers. \
-	Caustic Cove's populace holds them with a mixture of uneasy fear or, and respect. \
-	It is also widely believed that an Aasimars death is a bad omen..."
+	Azure Peak's populace holds them with a mixture of uneasy fear or, and respect. \
+	It is also widely believed that an Aasimars death is a bad omen... \
+	+1 Fortune, -1 Perception."
 
 	skin_tone_wording = "Craft"
 
@@ -43,8 +44,6 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	specstats = list("strength" = 0, "perception" = 1, "intelligence" = 2, "constitution" = -1, "endurance" = -1, "speed" = 1, "fortune" = 1)
-	specstats_f = list("strength" = 0, "perception" = 1, "intelligence" = 2, "constitution" = -1, "endurance" = -1, "speed" = 1, "fortune" = 1)
 	race_bonus = list(STAT_FORTUNE = 1, STAT_PERCEPTION = -1)
 	enflamed_icon = "widefire"
 	customizers = list(
@@ -54,12 +53,14 @@
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,
-		/datum/customizer/organ/testicles/human,
-		/datum/customizer/organ/penis/human,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
 		)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks, //Azure > Hearth
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 	)
 	languages = list(
@@ -82,6 +83,8 @@
 
 /datum/species/aasimar/get_skin_list()
 	return list(
+		"Cultor" = SKIN_COLOR_CULTOR,
+		"Spiritus" = SKIN_COLOR_SPIRITUS,
 		"Planetar" = SKIN_COLOR_PLANETAR,
 		"Deva"	   = SKIN_COLOR_DEVA,
 		"Solar" = SKIN_COLOR_SOLAR,

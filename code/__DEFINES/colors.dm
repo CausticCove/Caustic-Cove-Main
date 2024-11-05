@@ -64,16 +64,17 @@
 #define CLOTHING_RED			"#a32121"
 #define CLOTHING_PURPLE			"#8747b1"
 #define CLOTHING_BLACK			"#414143"
+#define CLOTHING_GREY			"#6c6c6c"
 #define CLOTHING_BROWN			"#685542"
 #define CLOTHING_GREEN			"#428138"
 #define CLOTHING_DARK_GREEN		"#264d26"
 #define CLOTHING_BLUE			"#537bc6"
 #define CLOTHING_YELLOW			"#b5b004"
 #define CLOTHING_TEAL			"#249589"
+#define CLOTHING_AZURE			"#007fff"
 #define CLOTHING_WHITE			"#ffffff"
 #define CLOTHING_ORANGE			"#bd6606"
 #define CLOTHING_MAJENTA		"#962e5c"
-#define CLOTHING_AZURE			"#007fff"
 
 #define CLOTHING_WET			"#bbbbbb"
 
@@ -97,11 +98,11 @@
 			return CLOTHING_YELLOW
 		if("Teal")
 			return CLOTHING_TEAL
+		if("Azure")
+			return CLOTHING_AZURE
 		if("White")
 			return CLOTHING_WHITE
 		if("Orange")
 			return CLOTHING_ORANGE
 		if("Majenta")
 			return CLOTHING_MAJENTA
-		if("Azure")
-			return CLOTHING_AZURE
