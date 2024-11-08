@@ -39,7 +39,7 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
-			if(H.dna?.species)
+		if(H.dna?.species)
 		if(isanthrom(H))
 			H.change_stat("strength", 8)
 			H.change_stat("constitution", 8)
