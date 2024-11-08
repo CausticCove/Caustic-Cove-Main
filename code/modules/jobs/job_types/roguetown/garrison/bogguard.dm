@@ -24,6 +24,25 @@
 Also given some non-combat skills that a peasent would have, just to support themselves, but not anything to replace soilsons with.*/
 /datum/outfit/job/roguetown/bogguardsman/pre_equip(mob/living/carbon/human/H)
 	. = ..()
+	if(H.dna?.species)
+		if(isanthrom(H))
+			H.change_stat("strength", 8)
+			H.change_stat("constitution", 8)
+			H.change_stat("endurance", 8)
+			H.change_stat("speed", -8)
+			H.change_stat("speed", -4)
+			H.transform = H.transform.Scale(2.25, 2.25)
+			H.transform = H.transform.Translate(0, (0.25 * 16))
+			H.update_transform()
+		if(isdemim(H))
+			H.change_stat("strength", 8)
+			H.change_stat("constitution", 8)
+			H.change_stat("endurance", 8)
+			H.change_stat("speed", -8)
+			H.change_stat("speed", -4)
+			H.transform = H.transform.Scale(2.25, 2.25)
+			H.transform = H.transform.Translate(0, (0.25 * 16))
+			H.update_transform()
 	head = /obj/item/clothing/head/roguetown/helmet/kettle
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/woad
