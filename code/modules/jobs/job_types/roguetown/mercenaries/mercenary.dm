@@ -20,11 +20,6 @@
 
 /datum/job/roguetown/mercenary/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
-	if(L)
-		var/mob/living/carbon/human/H = L
-		H.advsetup = 1
-		H.invisibility = INVISIBILITY_MAXIMUM
-		H.become_blind("advsetup")
 	if(H.dna?.species)
 		if(isanthrom(H))
 			H.change_stat("strength", 8)
@@ -44,3 +39,9 @@
 			H.transform = H.transform.Scale(2.25, 2.25)
 			H.transform = H.transform.Translate(0, (0.25 * 16))
 			H.update_transform()
+
+	if(L)
+		var/mob/living/carbon/human/H = L
+		H.advsetup = 1
+		H.invisibility = INVISIBILITY_MAXIMUM
+		H.become_blind("advsetup")
