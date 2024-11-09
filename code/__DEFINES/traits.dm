@@ -46,6 +46,7 @@
 #define TRAIT_KNIGHTSMAN "Royal Defiance"
 #define TRAIT_GOODRUNNER "Good Runner"
 
+
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //Will always find any tracks and analyzes them perfectly.
 #define TRAIT_NOCSIGHT "Blessing of Noc" // I can see just a bit more clearly in darkness.
@@ -164,7 +165,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CABAL = span_info("In secret, I have studied the ways of Her ascension, and know of others of the Cabal."),
 	TRAIT_HORDE = span_info("BY BLOOD AND BONE, I AM OF GRAGGAR'S ANOINTED! I FEEL THE STRENGTH IN OTHERS WHO ARE THE SAME."),
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others."),
-	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!")
+	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
+	TRAIT_FORTITUDE = span_info("The typical drain I feel from day to day life is lessened, my athleticism greater."),
+	TRAIT_GUIDANCE = span_info("Arcyne assistance guides my weapons.")
 ))
 
 // trait accessor defines
@@ -436,3 +439,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TIMESTOP_TRAIT "timestop"
 #define HUGBOX_TRAIT "hugbox"
 #define ADVENTURER_TRAIT "adventurer"
+#define TRAIT_GUIDANCE "guidance"
+#define TRAIT_FORTITUDE "fortitude"
