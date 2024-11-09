@@ -3616,4 +3616,5 @@
 #include "modular_hearthstone\code\modules\spells\roguetown\wizard.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\anthromacro.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\demimacro.dm"
+#include "modular_causticcove\code\__DEFINES\status_effects.dm"
 // END_INCLUDE
