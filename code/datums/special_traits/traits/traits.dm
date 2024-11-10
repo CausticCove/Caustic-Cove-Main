@@ -563,3 +563,21 @@
 /datum/special_trait/illicit_merchant/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Merchant Key"] = /obj/item/roguekey/merchant
 	character.mind.special_items["GOLDFACE Gem"] = /obj/item/gem_device/goldface
+
+/datum/special_trait/cursed
+	name = "Cursed"
+	greet_text = span_boldwarning("...I keep experiencing vivid hallucinations, What is happening here?")
+	weight = 25
+	var/atom/movable/screen/fullscreen/maniac/hallucinations
+
+/datum/special_trait/cursed/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_SCHIZO_AMBIENCE, "[name]")
+	hallucinations = character.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
+
+
+/datum/special_trait/cursed/on_life(mob/living/carbon/human/owner)
+	. = ..()
+	handle_maniac_visions(owner, hallucinations)
+	handle_maniac_hallucinations(owner)
+	handle_maniac_floors(owner)
+	handle_maniac_walls(owner)
