@@ -28,6 +28,8 @@
 /mob/living/rogstam_add(added as num)
 	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
 		return TRUE
+	if(HAS_TRAIT(src, TRAIT_FORTITUDE))
+		added = added * 0.5
 	if(HAS_TRAIT(src, TRAIT_NOSLEEP))
 		return TRUE
 	if(m_intent == MOVE_INTENT_RUN)

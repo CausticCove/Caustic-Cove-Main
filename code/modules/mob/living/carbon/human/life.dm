@@ -73,6 +73,7 @@
 					leprosy = 3
 		//heart attack stuff
 		handle_heart()
+		handle_trait()
 		handle_liver()
 		update_rogfat()
 		update_rogstam()
