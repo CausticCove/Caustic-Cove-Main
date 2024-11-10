@@ -22,6 +22,26 @@
 
 /datum/outfit/job/roguetown/prisonerb/pre_equip(mob/living/carbon/human/H)
 	..()
+	if(H.dna?.species)
+		if(isanthrom(H))
+			H.change_stat("strength", 8)
+			H.change_stat("constitution", 8)
+			H.change_stat("endurance", 8)
+			H.change_stat("speed", -8)
+			H.change_stat("speed", -4)
+			H.transform = H.transform.Scale(2.25, 2.25)
+			H.transform = H.transform.Translate(0, (0.25 * 16))
+			H.update_transform()
+		if(isdemim(H))
+			H.change_stat("strength", 8)
+			H.change_stat("constitution", 8)
+			H.change_stat("endurance", 8)
+			H.change_stat("speed", -8)
+			H.change_stat("speed", -4)
+			H.transform = H.transform.Scale(2.25, 2.25)
+			H.transform = H.transform.Translate(0, (0.25 * 16))
+			H.update_transform()
+
 	neck = /obj/item/clothing/neck/roguetown/gorget/prisoner
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	if(H.mind)
