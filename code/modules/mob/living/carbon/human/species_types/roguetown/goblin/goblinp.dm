@@ -66,6 +66,7 @@
 		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
+		/datum/customizer/organ/belly/human, // :thinking:
 		)
 	languages = list(
 		/datum/language/common,

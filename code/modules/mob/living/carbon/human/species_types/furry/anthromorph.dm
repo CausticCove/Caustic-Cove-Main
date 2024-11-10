@@ -78,6 +78,7 @@
 		/datum/customizer/organ/neck_feature/anthro,
 		/datum/customizer/organ/testicles/anthro,
 		/datum/customizer/organ/penis/anthro,
+		/datum/customizer/organ/belly/animal,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/anthro,
 		)

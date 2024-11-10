@@ -72,6 +72,7 @@
 		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
+		/datum/customizer/organ/belly/animal,
 		/datum/customizer/organ/ears/tajaran
 		)
 	body_marking_sets = list(

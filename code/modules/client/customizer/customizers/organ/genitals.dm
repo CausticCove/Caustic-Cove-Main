@@ -381,6 +381,7 @@
 		/datum/sprite_accessory/vagina/human,
 		/datum/sprite_accessory/vagina/gaping,
 		/datum/sprite_accessory/vagina/hairy,
+		/datum/sprite_accessory/vagina/extrahairy,
 		)
 	allows_accessory_color_customization = TRUE
 
@@ -408,3 +409,104 @@
 		/datum/sprite_accessory/vagina/furred,
 		/datum/sprite_accessory/vagina/cloaca,
 		)
+
+/datum/customizer_entry/organ/belly
+	var/belly_size = DEFAULT_BELLY_SIZE
+
+/datum/customizer/organ/belly
+	abstract_type = /datum/customizer/organ/belly
+	name = "Belly"
+	allows_disabling = TRUE
+	default_disabled = FALSE
+
+/datum/customizer/organ/belly/is_allowed(datum/preferences/prefs)
+	return TRUE
+
+/datum/customizer_choice/organ/belly
+	abstract_type = /datum/customizer_choice/organ/belly
+	name = "Belly"
+	customizer_entry_type = /datum/customizer_entry/organ/belly
+	organ_type = /obj/item/organ/belly
+	organ_slot = ORGAN_SLOT_BELLY
+	organ_dna_type = /datum/organ_dna/belly
+
+/datum/customizer_choice/organ/belly/validate_entry(datum/preferences/prefs, datum/customizer_entry/entry)
+	..()
+	var/datum/customizer_entry/organ/belly/belly_entry = entry
+	belly_entry.belly_size = sanitize_integer(belly_entry.belly_size, MIN_BELLY_SIZE, MAX_BELLY_SIZE, DEFAULT_BELLY_SIZE)
+
+/datum/customizer_choice/organ/belly/imprint_organ_dna(datum/organ_dna/organ_dna, datum/customizer_entry/entry, datum/preferences/prefs)
+	..()
+	var/datum/organ_dna/belly/belly_dna = organ_dna
+	var/datum/customizer_entry/organ/belly/belly_entry = entry
+	belly_dna.belly_size = belly_entry.belly_size
+
+/datum/customizer_choice/organ/belly/generate_pref_choices(list/dat, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
+	..()
+	var/datum/customizer_entry/organ/belly/belly_entry = entry
+	dat += "<br>Belly size: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=belly_size''>[find_key_by_value(GLOB.named_belly_sizes, belly_entry.belly_size)]</a>"
+
+/datum/customizer_choice/organ/belly/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
+	..()
+	var/datum/customizer_entry/organ/belly/belly_entry = entry
+	switch(href_list["customizer_task"])
+		if("belly_size")
+			var/named_size = input(user, "Choose your belly size:", "Character Preference", find_key_by_value(GLOB.named_belly_sizes, belly_entry.belly_size)) as anything in GLOB.named_belly_sizes
+			if(isnull(named_size))
+				return
+			var/new_size = GLOB.named_belly_sizes[named_size]
+			belly_entry.belly_size = sanitize_integer(new_size, MIN_BELLY_SIZE, MAX_BELLY_SIZE, DEFAULT_BELLY_SIZE)
+
+/datum/customizer/organ/belly/human
+	customizer_choices = list(/datum/customizer_choice/organ/belly/human)
+
+/datum/customizer_choice/organ/belly/human
+	sprite_accessories = list(/datum/sprite_accessory/belly)
+	allows_accessory_color_customization = FALSE
+
+/datum/customizer/organ/belly/animal
+	customizer_choices = list(/datum/customizer_choice/organ/belly/animal)
+
+/datum/customizer_choice/organ/belly/animal
+	sprite_accessories = list(
+		/datum/sprite_accessory/belly
+		)
+
+/mob/living/carbon/verb/changebellysize()
+	set name = "Change Belly Size"
+	set category = "OOC"
+	set desc = "Change the size of your belly"
+	change_belly_size_customizer(src)
+
+/mob/living/carbon/proc/change_belly_size_customizer(mob/living/carbon/user) // This could have been done better, but i'm too stupid and tired to get something out of it
+	var/obj/item/organ/belly/_belly = getorganslot("belly")
+	var/datum/preferences/prefs = user.client.prefs
+	var/datum/customizer_entry/organ/belly/belly_entry = null
+	if(!_belly)
+		to_chat(user, "<span class='warning'>What belly?</span>")
+		return
+	if (!prefs)
+	{
+		return
+	}
+ 
+	for (var/datum/customizer_entry/entry in prefs.customizer_entries)
+	{
+		if (istype(entry, /datum/customizer_entry/organ/belly))
+		{
+			belly_entry = entry
+			break
+		}
+	}
+
+	var/named_size = input(user, "Choose your belly size:", "Belly", find_key_by_value(GLOB.named_belly_sizes, belly_entry.belly_size)) as anything in GLOB.named_belly_sizes
+    
+	if (isnull(named_size))
+		return
+
+	var/new_size = GLOB.named_belly_sizes[named_size]
+
+	belly_entry.belly_size = sanitize_integer(new_size, MIN_BELLY_SIZE, MAX_BELLY_SIZE, DEFAULT_BELLY_SIZE)
+
+	_belly.belly_size = belly_entry.belly_size
+	user.regenerate_icons()
