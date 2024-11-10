@@ -28,6 +28,7 @@
 			return TRUE
 
 		if(L.electrocute_act(30, src))
+			L.update_sneak_invis(TRUE)
 			L.consider_ambush()
 			if(L.throwing)
 				L.throwing.finalize(FALSE)

@@ -44,6 +44,8 @@
 #define TRAIT_TRAINED_SMITH "Trained Smith"
 #define TRAIT_GUARDSMAN "Vigilant Guardsman"
 #define TRAIT_KNIGHTSMAN "Royal Defiance"
+#define TRAIT_GOODRUNNER "Good Runner"
+
 
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //Will always find any tracks and analyzes them perfectly.
@@ -171,6 +173,10 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	//Hearthstone Port
 	TRAIT_MALUMSGRACE = "Malum is my muse.",
 	TRAIT_ABYSSORS_BLESSING = span_info("I feel like I can course through water with ease... Yet, my body tires faster than I remembered.")
+  //Caustic Changes
+	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
+	TRAIT_FORTITUDE = span_info("The typical drain I feel from day to day life is lessened, my athleticism greater."),
+	TRAIT_GUIDANCE = span_info("Arcyne assistance guides my weapons.")
 ))
 
 // trait accessor defines
@@ -442,3 +448,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TIMESTOP_TRAIT "timestop"
 #define HUGBOX_TRAIT "hugbox"
 #define ADVENTURER_TRAIT "adventurer"
+#define TRAIT_GUIDANCE "guidance"
+#define TRAIT_FORTITUDE "fortitude"
