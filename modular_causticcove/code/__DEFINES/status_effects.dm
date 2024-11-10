@@ -11,3 +11,6 @@
 
 #define STATUS_EFFECT_VIRILITY /datum/status_effect/virility //\SHOULD\ grant people the ability to have infinite orgasms for the duration.
 
+#define STATUS_EFFECT_RAVOX_BREW /datum/status_effect/ravoxbrew // Gives a buff at cost of poison to self
+
+#define STATUS_EFFECT_ABYSSORS_BREW /datum/status_effect/abyssorbrew // Free movement at cost of speed and stamina drain
