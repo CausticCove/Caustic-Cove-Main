@@ -13,4 +13,4 @@
 
 #define STATUS_EFFECT_RAVOX_BREW /datum/status_effect/ravoxbrew // Gives a buff at cost of poison to self
 
-#define STATUS_EFFECT_ABYSSORS_BREW /datum/status_effect/abyssorbrew // Free movement at cost of speed and stamina drain
+#define STATUS_EFFECT_ABYSSORS_BREW /datum/status_effect/abyssorbrew // Free water movement at cost of speed, and strength, and untouched stam drain over water

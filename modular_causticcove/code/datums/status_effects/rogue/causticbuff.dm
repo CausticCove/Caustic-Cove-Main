@@ -54,7 +54,7 @@
 /datum/status_effect/buff/swiftnessbuff
 	id = "swiftnessbuff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/swiftness
-	effectedstats = list("endurance" = 1, "speed" = 3)
+	effectedstats = list("speed" = 3)
 	duration = 7 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/swiftness
@@ -65,7 +65,7 @@
 /datum/status_effect/buff/intellectbuff
 	id = "intellectbuff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/intellect
-	effectedstats = list("intelligence" = 3, "perception" = 3)
+	effectedstats = list("perception" = 1, "intelligence" = 2)
 	duration = 7 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/intellect
