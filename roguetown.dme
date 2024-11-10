@@ -3622,5 +3622,4 @@
 #include "modular_causticcove\code\modules\roguetown\roguecrafting\alchemy.dm"
 #include "modular_causticcove\code\modules\roguetown\roguejobs\alchemist\containers.dm"
 #include "modular_causticcove\code\game\area\objects\items\rogueitems\natural\animals.dm"
-#include "modular_causticcove\code\modules\roguetown\roguejobs\alchemist\weaponized_containers.dm"
 // END_INCLUDE
