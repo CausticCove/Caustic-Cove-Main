@@ -3,9 +3,9 @@
 /*************************************************************
 ***********************  POTIONS  ****************************
 *************************************************************/
-#define STATUS_EFFECT_FORTITUDE /datum/status_effect/fortitude //Grants people 1 CON and 1 END for the duration.
+#define STATUS_EFFECT_FORTITUDE /datum/status_effect/fortitude //Grants people 1 CON and 2 END for the duration.
 
-#define STATUS_EFFECT_SWIFTNESS /datum/status_effect/swiftness //Grants people 1 DEX and 3 SPD for the duration.
+#define STATUS_EFFECT_SWIFTNESS /datum/status_effect/swiftness //Grants people 1 END and 3 SPD for the duration.
 
 #define STATUS_EFFECT_INTELLECT /datum/status_effect/intellect //Grants people 3 INT and 3 PER for the duration.
 

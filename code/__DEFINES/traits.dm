@@ -94,6 +94,11 @@
 #define TRAIT_LEPROSY "Leprosy"
 #define TRAIT_NUDE_SLEEPER "Nude Sleeper"
 
+//Hearthstone Port
+#define TRAIT_MALUMSGRACE "Malum's Grace"
+//Caustic Additions
+#define TRAIT_ABYSSORS_BLESSING "Abyssor's Blessing"
+
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
 	TRAIT_GUARDSMAN = span_info("I am vigilant in my duties. In the town of Azure Peak, my abilities are sharper due to my routine and familiarity."),
@@ -162,7 +167,10 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_XYLIX = span_info("I know how to speak in code that only fellow tricksters can understand."),
 	TRAIT_CABAL = span_info("In secret, I have studied the ways of Her ascension, and know of others of the Cabal."),
 	TRAIT_HORDE = span_info("BY BLOOD AND BONE, I AM OF GRAGGAR'S ANOINTED! I FEEL THE STRENGTH IN OTHERS WHO ARE THE SAME."),
-	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others.")
+	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others."),
+	//Hearthstone Port
+	TRAIT_MALUMSGRACE = "Malum is my muse.",
+	TRAIT_ABYSSORS_BLESSING = span_info("I feel like I can course through water with ease... Yet, my body tires faster than I remembered.")
 ))
 
 // trait accessor defines

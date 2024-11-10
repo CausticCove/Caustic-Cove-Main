@@ -107,7 +107,7 @@
 		var/datum/triumph_buy/thing = SStriumphs.post_equip_calls[list_key]
 		thing.on_activate(H)
 		if(has_loadout && H.mind)
-		addtimer(CALLBACK(src, PROC_REF(choose_loadout), H), 50)
+			addtimer(CALLBACK(src, PROC_REF(choose_loadout), H), 50)
 
 
 

@@ -88,7 +88,12 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_OIL_FRIED" = TRAIT_OIL_FRIED,
 		"TRAIT_XENO_IMMUNE" = TRAIT_XENO_IMMUNE,
 		"TRAIT_DRUQK" = TRAIT_DRUQK,
-		"TRAIT_SEEPRICES" = TRAIT_SEEPRICES
+		"TRAIT_SEEPRICES" = TRAIT_SEEPRICES,
+		//Hearthstone Port
+		"TRAIT_MALUMSGRACE" = TRAIT_MALUMSGRACE,
+		//Caustic Changes
+		"TRAIT_ABYSSORS_BLESSING" = TRAIT_ABYSSORS_BLESSING // NOT To be confused with Abyssors Swim! You will still fatigue in water!
+		
 	),
 	/obj/item/bodypart = list(
 		"TRAIT_PARALYSIS" = TRAIT_PARALYSIS

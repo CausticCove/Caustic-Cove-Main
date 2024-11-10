@@ -213,8 +213,13 @@
 
 /turf/open/water/get_slowdown(mob/user)
 	var/returned = slowdown
+	var/negate_slowdown = FALSE
 	if(user.mind && swim_skill)
 		returned = returned - (user.mind.get_skill_level(/datum/skill/misc/swimming))
+	if(HAS_TRAIT(user, TRAIT_ABYSSORS_BLESSING))
+		negate_slowdown = TRUE
+	if(negate_slowdown)
+		returned = max(returned-1.5, 0)
 	return returned
 
 //turf/open/water/Initialize()
