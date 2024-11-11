@@ -316,7 +316,7 @@
 	//Blood vomit with distance to show that they're very fucked.
 	vomit(1, blood = TRUE, stun = TRUE, distance = 2)
 	emote("groan")
-	addtimer(CALLBACK(src, PROC_REF(wake_zombie)), 2 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(wake_zombie)), (1 MINUTES + ((0.2 * src.STACON) MINUTES)))
 	return zombie_antag
 
 /mob/living/carbon/human/proc/wake_zombie()
