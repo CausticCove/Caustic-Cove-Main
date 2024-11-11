@@ -529,6 +529,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["customizer_entries"] >> customizer_entries
 	validate_customizer_entries()
 
+	load_vore_prefs(S)
+
 	return TRUE
 
 /datum/preferences/proc/save_character()
@@ -607,6 +609,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		WRITE_FILE(S["loadout"] , loadout.type)
 	else
 		WRITE_FILE(S["loadout"] , null)
+
+	save_vore_prefs(S)
 
 
 	return TRUE
