@@ -11,8 +11,9 @@
 	more common visitors to fur trading posts and prospecting camps, eventually leading to half-orcs \
 	being born in these rough places otherwise devoid of a fairer sex. Your mother-clan is in thrall \
 	to the Ironmask, true orcs would kill you as a mongrel dog and your father’s people cannot decide \
-	between mere distrust and disgust. Yet somehow your wandering feet came to Caustic Cove, where \
-	half-orcs ply muscle and their hardiness in the rough underbelly or outer reaches of society."
+	between mere distrust and disgust. Yet somehow your wandering feet came to Azure Peak, where \
+	half-orcs ply muscle and their hardiness in the rough underbelly or outer reaches of society. \
+	+1 Strength, -1 Intelligence."
 
 	skin_tone_wording = "Clan"
 
@@ -42,8 +43,6 @@
 	OFFSET_FACE_F = list(0,1), OFFSET_BELT_F = list(0,1), OFFSET_BACK_F = list(0,1), \
 	OFFSET_NECK_F = list(0,1), OFFSET_MOUTH_F = list(0,1), OFFSET_PANTS_F = list(0,1), \
 	OFFSET_SHIRT_F = list(0,1), OFFSET_ARMOR_F = list(0,1), OFFSET_UNDIES_F = list(0,1))
-	specstats = list("strength" = 1, "perception" = -2, "intelligence" = -2, "constitution" = 2, "endurance" = 1, "speed" = 0, "fortune" = 0)
-	specstats_f = list("strength" = 1, "perception" = -1, "intelligence" = -2, "constitution" = 1, "endurance" = 2, "speed" = 0, "fortune" = -1)
 	race_bonus = list(STAT_STRENGTH = 1, STAT_INTELLIGENCE = -1)
 	enflamed_icon = "widefire"
 	organs = list(
@@ -63,6 +62,8 @@
 		//ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 	)
 	customizers = list(
@@ -72,9 +73,10 @@
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,
-		/datum/customizer/organ/testicles/human,
-		/datum/customizer/organ/penis/human,
+		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/human,
+		/datum/customizer/organ/belly/human,
 		/datum/customizer/organ/vagina/human,
 		)
 	languages = list(

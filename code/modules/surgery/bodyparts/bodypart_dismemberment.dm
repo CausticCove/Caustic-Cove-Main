@@ -150,9 +150,6 @@
 	was_owner.bodyparts -= src
 	owner = null
 
-	if(organ_slowdown)
-		was_owner.remove_movespeed_modifier("[src.type]_slow", update = TRUE)
-
 	update_icon_dropped()
 	was_owner.update_health_hud() //update the healthdoll
 	was_owner.update_body()
@@ -364,8 +361,7 @@
 		affecting.remove_wound(dismember_wound)
 
 	update_bodypart_damage_state()
-	if(organ_slowdown)
-		C.add_movespeed_modifier("[src.type]_slow", update=TRUE, priority=100, flags=NONE, override=FALSE, multiplicative_slowdown=organ_slowdown, movetypes=GROUND, blacklisted_movetypes=NONE, conflict=FALSE)
+
 	C.updatehealth()
 	C.update_body()
 	C.update_hair()

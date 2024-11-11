@@ -185,6 +185,14 @@
 					attacker_skill = U.mind.get_skill_level(/datum/skill/combat/unarmed)
 					prob2defend -= (attacker_skill * 20)
 
+			
+			if(HAS_TRAIT(src, TRAIT_GUIDANCE))
+				prob2defend += 10
+			
+			if(HAS_TRAIT(user, TRAIT_GUIDANCE))
+				prob2defend -= 10
+				
+
 			// parrying while knocked down sucks ass
 			if(!(mobility_flags & MOBILITY_STAND))
 				prob2defend *= 0.65
@@ -225,7 +233,7 @@
 						else
 							attacker_skill_type = /datum/skill/combat/unarmed
 						if((U.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(U, attacker_skill_type, SKILL_LEVEL_EXPERT))
-							U.mind.add_sleep_experience(used_weapon.associated_skill, max(round(STAINT*exp_multi), 0), FALSE)
+							U.mind.add_sleep_experience(attacker_skill_type, max(round(STAINT*exp_multi), 0), FALSE)
 
 					if(prob(66) && AB)
 						if((used_weapon.flags_1 & CONDUCT_1) && (AB.flags_1 & CONDUCT_1))

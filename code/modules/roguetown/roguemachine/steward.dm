@@ -32,8 +32,8 @@
 		else
 			to_chat(user, span_warning("Wrong key."))
 			return
-	if(istype(P, /obj/item/keyring))
-		var/obj/item/keyring/K = P
+	if(istype(P, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = P
 		for(var/obj/item/roguekey/KE in K.keys)
 			if(KE.lockid == keycontrol)
 				locked = !locked
@@ -41,6 +41,11 @@
 				update_icon()
 				return
 		to_chat(user, span_warning("Wrong key."))
+		return
+	if(istype(P, /obj/item/roguecoin))
+		SStreasury.give_money_treasury(P.get_real_price(), "NERVE MASTER deposit")
+		qdel(P)
+		playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
 		return
 	return ..()
 

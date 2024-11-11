@@ -1,3 +1,4 @@
+
 /datum/special_trait
 	abstract_type = /datum/special_trait
 	var/name
@@ -20,3 +21,25 @@
 
 /datum/special_trait/proc/on_apply(mob/living/carbon/human/character, silent)
 	return
+
+/mob/living/carbon/human
+	var/list/special_traits = list()
+
+/mob/living/carbon/human/proc/add_special_trait(trait_type)
+	var/datum/special_trait/special = GLOB.special_traits[trait_type]
+	if(special && !(special in special_traits))
+		special_traits += special
+		special.on_apply(src, FALSE)
+
+/mob/living/carbon/human/proc/remove_special_trait(trait_type)
+	var/datum/special_trait/special = GLOB.special_traits[trait_type]
+	if(special in special_traits)
+		special_traits -= special
+
+/mob/living/carbon/human/proc/handle_trait()
+	for(var/datum/special_trait/special in special_traits)
+		special.on_life(src) 
+
+/datum/special_trait/proc/on_life()
+	return
+

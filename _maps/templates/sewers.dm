@@ -81,10 +81,10 @@
 		/obj/item/rogueweapon/halberd = 1,
 		/obj/item/rogueweapon/woodstaff = 3,
 		/obj/item/rogueweapon/spear = 1,
+		/obj/item/rogueweapon/huntingknife/idagger/navaja = 1,
 
 		// tools
 		/obj/item/rogueweapon/shovel = 3,
-		/obj/machinery/light/rogue/hearth = 4,
 		/obj/item/rogueweapon/thresher = 3,
 		/obj/item/flint = 4,
 		/obj/item/rogueweapon/stoneaxe/woodcut = 3,

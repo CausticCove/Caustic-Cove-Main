@@ -1,11 +1,9 @@
 /mob/living/proc/update_rogfat() //update hud and regen after last_fatigued delay on taking
-//	maxrogfat = round(100 * (rogstam/maxrogstam))
-//	if(maxrogfat < 5)
-//		maxrogfat = 5
+	maxrogfat = maxrogstam / 10
 
-	if(world.time > last_fatigued + 50) //regen fatigue
+	if(world.time > last_fatigued + 30) //regen fatigue
 		var/added = rogstam / maxrogstam
-		added = round(-10+ (added*-40))
+		added = round(-10+ (added*-30))
 		if(HAS_TRAIT(src, TRAIT_MISSING_NOSE))
 			added = round(added * 0.5, 1)
 		if(rogfat >= 1)
@@ -30,6 +28,8 @@
 /mob/living/rogstam_add(added as num)
 	if(HAS_TRAIT(src, TRAIT_NOROGSTAM))
 		return TRUE
+	if(HAS_TRAIT(src, TRAIT_FORTITUDE))
+		added = added * 0.5
 	if(HAS_TRAIT(src, TRAIT_NOSLEEP))
 		return TRUE
 	if(m_intent == MOVE_INTENT_RUN)

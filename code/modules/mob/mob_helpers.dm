@@ -74,7 +74,7 @@
   * This proc is dangerously laggy, avoid it or die
   */
 /proc/stars(n, pr)
-	n = strip_html_simple(n)
+	n = STRIP_HTML_SIMPLE(n, MAX_MESSAGE_LEN)
 	if (pr == null)
 		pr = 25
 	if (pr <= 0)
@@ -98,7 +98,7 @@
   * Makes you speak like you're drunk
   */
 /proc/slur(n)
-	var/phrase = strip_html_simple(n)
+	var/phrase = STRIP_HTML_SIMPLE(n, MAX_MESSAGE_LEN)
 	var/leng = length_char(phrase)
 	var/counter=length_char(phrase)
 	var/newphrase=""
@@ -128,21 +128,21 @@
 				newletter+="[newletter]"
 			if(20)
 				newletter+="[newletter][newletter]"
-		if(rand(1,100)==100)
-			newletter= "ඞ" //amogus
+			else
+				;;
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
 /// Makes you talk like you got cult stunned, which is slurring but with some dark messages
 /proc/cultslur(n) // Inflicted on victims of a stun talisman
-	var/phrase = strip_html_simple(n)
+	var/phrase = STRIP_HTML_SIMPLE(n,MAX_MESSAGE_LEN)
 	var/leng = length_char(phrase)
 	var/counter=length_char(phrase)
 	var/newphrase=""
 	var/newletter=""
 	while(counter>=1)
 		newletter=copytext_char(phrase,(leng-counter)+1,(leng-counter)+2)
-		if(rand(1,2)==2)
+		if(prob(50))
 			if(lowertext(newletter)=="o")
 				newletter="u"
 			if(lowertext(newletter)=="t")
@@ -155,7 +155,7 @@
 				newletter=" NAR "
 			if(lowertext(newletter)=="s")
 				newletter=" SIE "
-		if(rand(1,4)==4)
+		if(prob(25))
 			if(newletter==" ")
 				newletter=" no hope... "
 			if(newletter=="H")
@@ -172,12 +172,14 @@
 				newletter="nglu"
 			if(5)
 				newletter="glor"
+			else
+				;;
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
 ///Adds stuttering to the message passed in
 /proc/stutter(n)
-	var/te = strip_html_simple(n)
+	var/te = STRIP_HTML_SIMPLE(n,MAX_MESSAGE_LEN)
 	var/t = ""//placed before the message. Not really sure what it's for.
 	n = length_char(n)//length_char of the entire word
 	var/p = null
@@ -381,28 +383,23 @@
 		if(o_intent)
 			o_intent.afterchange()
 	else
-		var/obj/item/Masteritem = get_active_held_item()
 		if(numb)
 			if(numb > possible_a_intents.len)
 				return
 			else
 				if(active_hand_index == 1)
-					if(!Masteritem)
-						l_ua_index = numb
+					l_ua_index = numb
 					l_index = numb
 				else
-					if(!Masteritem)
-						r_ua_index = numb
+					r_ua_index = numb
 					r_index = numb
 				a_intent = possible_a_intents[numb]
 		else
 			if(active_hand_index == 1)
-				if(!Masteritem)
-					l_ua_index = numb
+				l_ua_index = numb
 				l_index = numb
 			else
-				if(!Masteritem)
-					r_ua_index = numb
+				r_ua_index = numb
 				r_index = numb
 			a_intent = null
 		if(a_intent)
@@ -560,7 +557,7 @@
 	if(isliving(src))
 		L = src
 	var/client/client = L.client
-	if(L.IsSleeping())
+	if(L.IsSleeping() || L.surrendering)
 		if(cmode)
 			playsound_local(src, 'sound/misc/comboff.ogg', 100)
 			SSdroning.play_area_sound(get_area(src), client)
@@ -788,7 +785,7 @@
 	for(var/mob/dead/observer/O in GLOB.player_list)
 		if(!notify_suiciders && (O in GLOB.suicided_mob_list))
 			continue
-		if (ignore_key && O.ckey in GLOB.poll_ignore[ignore_key])
+		if (ignore_key && (O.ckey in GLOB.poll_ignore[ignore_key]))
 			continue
 		var/orbit_link
 		if (source && action == NOTIFY_ORBIT)
@@ -981,8 +978,10 @@
 			used_title = advjob
 	else if(job)
 		var/datum/job/J = SSjob.GetJob(job)
+		if(!J)
+			return "unknown"
 		used_title = J.title
-		if(J.f_title && (pronouns == SHE_HER))
+		if(J.f_title && (pronouns == SHE_HER || pronouns == THEY_THEM_F))
 			used_title = J.f_title
 		if(J.advjob_examine)
 			used_title = advjob

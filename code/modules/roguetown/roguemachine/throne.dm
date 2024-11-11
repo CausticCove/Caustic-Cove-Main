@@ -1,8 +1,8 @@
 GLOBAL_VAR(king_throne)
 
 /obj/structure/roguethrone
-	name = "throne of Caustic Cove"
-	desc = "A big throne, to hold the Lord's giant personality. Say 'help' with the crown on your head if you are confused."
+	name = "throne of Azure Peak"
+	desc = "A big throne, to hold the Lord's giant personality. Say 'secrets of the throat' with the crown on your head if you are confused."
 	icon = 'icons/roguetown/misc/96x96.dmi'
 	icon_state = "throne"
 	density = FALSE
@@ -25,13 +25,12 @@ GLOBAL_VAR(king_throne)
 	M.reset_offsets("bed_buckle")
 
 /obj/structure/roguethrone/Initialize()
-	..()
+	. = ..()
 	if(GLOB.king_throne == null)
 		GLOB.king_throne = src
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
+	GLOB.lordcolor += src
 
 /obj/structure/roguethrone/Destroy()
 	if(GLOB.king_throne == src)
@@ -70,7 +69,7 @@ GLOBAL_VAR(king_throne)
 	if(rebel_leader_sit_time >= REBEL_THRONE_TIME && !notified_rebel_able)
 		notified_rebel_able = TRUE
 		to_chat(user, span_notice("That's it - time to announce our victory!"))
-	
+
 /obj/structure/roguethrone/lordcolor(primary,secondary)
 	if(!primary || !secondary)
 		return
@@ -80,4 +79,3 @@ GLOBAL_VAR(king_throne)
 	M = mutable_appearance(icon, "throne_secondary", -(layer+0.1))
 	M.color = secondary
 	add_overlay(M)
-	GLOB.lordcolor -= src

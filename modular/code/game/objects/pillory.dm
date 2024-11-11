@@ -78,8 +78,8 @@
 			to_chat(user, span_warning("Wrong key."))
 			playsound(src, 'sound/foley/doors/lockrattle.ogg', 100)
 			return
-	if(istype(P, /obj/item/keyring))
-		var/obj/item/keyring/K = P
+	if(istype(P, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = P
 		for(var/obj/item/roguekey/KE in K.keys)
 			if(KE.lockid in lockid)
 				togglelock(user)
@@ -161,7 +161,7 @@
 	update_icon()
 	..()
 
-/obj/structure/pillory/unbuckle_mob(mob/living/user)
+/obj/structure/pillory/unbuckle_mob(mob/living/user, force=FALSE)
 	if(latched)
 		if(user.STASTR >= 18)
 			if(do_after(user, 25))

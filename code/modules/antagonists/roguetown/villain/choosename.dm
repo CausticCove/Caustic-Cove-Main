@@ -6,7 +6,8 @@
 	if(!stat)
 		if(job)
 			var/datum/job/j = SSjob.GetJob(job)
-			j.current_positions--
+			if(!j.antag_job)
+				j.current_positions--
 		mob_timers["mirrortime"] = world.time
 		var/begin_time = world.time
 		var/new_name = input(src, "What should your [input] name be?", "MASK")
@@ -23,6 +24,7 @@
 		else
 			to_chat(src, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ', . and ,.</font>")
 			return
+	GLOB.chosen_names -= old_name
 	GLOB.chosen_names += real_name
 	if(mind.special_role == "Vampire Lord")
 		if(gender == FEMALE)

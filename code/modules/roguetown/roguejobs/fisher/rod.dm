@@ -27,32 +27,28 @@
 
 
 /obj/item/fishingrod/attackby(obj/item/I, mob/user, params)
-	if(!baited)
-		if(I.isbait) // Don't use items that aren't bait
-			user.visible_message("<span class='notice'>[user] hooks something to the line.</span>", \
-								"<span class='notice'>I hook [I] to my line.</span>")
-			playsound(src.loc, 'sound/foley/pierce.ogg', 50, FALSE)
-			if(istype(I,/obj/item/natural/worms))
-				var/obj/item/natural/worms/W = I
-				if(W.amt > 1)
-					W.amt--
-					var/obj/item/natural/worms/N = new W.type(src)
-					baited = N
-				else
-					W.forceMove(src)
-					baited = W
-			else
-				I.forceMove(src)
-				baited = I
-			update_icon()
-			return
-		else
-			to_chat(user, "<span class='notice'>This isn't suitable as bait...</span>")
-			return
-	else
-		to_chat(user, "<span class='warning'>The rod already has bait on it!</span>")
+	if(baited)
+		to_chat(user, span_warning("The rod already has bait on it!"))
 		return
-	. = ..()
+	if(!I.isbait) // Don't use items that aren't bait
+		to_chat(user, span_notice("This isn't suitable as bait..."))
+		return
+	user.visible_message(span_notice("[user] hooks something to the line."), \
+						span_notice("I hook [I] to my line."))
+	playsound(src.loc, 'sound/foley/pierce.ogg', 50, FALSE)
+	if(istype(I,/obj/item/natural/worms))
+		var/obj/item/natural/worms/W = I
+		if(W.amt > 1)
+			W.amt--
+			var/obj/item/natural/worms/N = new W.type(src)
+			baited = N
+		else
+			W.forceMove(src)
+			baited = W
+	else
+		I.forceMove(src)
+		baited = I
+	update_icon()
 
 /obj/item/fishingrod/getonmobprop(tag)
 	. = ..()
@@ -79,7 +75,8 @@
 				user.visible_message("<span class='warning'>[user] casts a line!</span>", \
 									"<span class='notice'>I cast a line.</span>")
 				playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
-				ft -= (sl * 20) //Instant at legendary, every skill lvl is -2 seconds
+				ft -= (sl * 20) //every skill lvl is -2 seconds
+				ft = max(20,ft) //min of 2 seconds
 				if(do_after(user,ft, target = target))
 					if(baited)
 						var/bp = baited.baitpenalty // Penalty to fishing chance based on how good bait is. Lower is better.

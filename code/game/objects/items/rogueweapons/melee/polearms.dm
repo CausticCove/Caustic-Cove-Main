@@ -54,6 +54,7 @@
 	bigboy = TRUE
 	gripsprite = TRUE
 	associated_skill = /datum/skill/combat/polearms
+	resistance_flags = FLAMMABLE
 
 /obj/item/rogueweapon/woodstaff/getonmobprop(tag)
 	. = ..()
@@ -94,6 +95,10 @@
 			if("wielded")
 				return list("shrink" = 0.6,"sx" = 4,"sy" = -2,"nx" = -3,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
 
+/obj/item/rogueweapon/woodstaff/naledi
+	name = "naledian warstaff"
+	desc = "A staff carrying the crescent moon of Psydon's knowledge, as well as the black and gold insignia of the war scholars."
+	icon_state = "naledistaff"
 
 /obj/item/rogueweapon/spear
 	force = 18
@@ -122,6 +127,7 @@
 	wdefense = 5
 	thrown_bclass = BCLASS_STAB
 	throwforce = 25
+	resistance_flags = FLAMMABLE
 
 /obj/item/rogueweapon/spear/getonmobprop(tag)
 	. = ..()
@@ -312,6 +318,15 @@
 	swingdelay = 12
 	clickcd = 14
 
+/obj/item/rogueweapon/spear/bronze
+	name = "Bronze Spear"
+	desc = "A spear forged of bronze. Much more durable than a regular spear."
+	icon_state = "bronzespear"
+	max_blade_int = 200
+	smeltresult = /obj/item/ingot/bronze
+	smelt_bar_num = 2
+
+
 /obj/item/rogueweapon/greatsword
 	force = 12
 	force_wielded = 30
@@ -334,6 +349,7 @@
 	associated_skill = /datum/skill/combat/swords
 	max_blade_int = 300
 	wdefense = 5
+	smelt_bar_num = 3
 
 /obj/item/rogueweapon/greatsword/getonmobprop(tag)
 	. = ..()
@@ -352,6 +368,7 @@
 	desc = "This is much longer than a common greatsword, and well balanced too!"
 	icon_state = "zwei"
 	smeltresult = /obj/item/ingot/iron
+	smelt_bar_num = 3
 	max_blade_int = 200
 	wdefense = 4
 
@@ -364,12 +381,19 @@
 /obj/item/rogueweapon/greatsword/grenz
 	name = "steel zweihander"
 	icon_state = "steelzwei"
+	smeltresult = /obj/item/ingot/steel
+	smelt_bar_num = 3
 
-/obj/item/rogueweapon/greatsword/estoc
+/obj/item/rogueweapon/estoc
 	name = "estoc"
 	desc = "A sword possessed of a quite long and tapered blade that is intended to be thrust between the \
 	gaps in an opponent's armor. The hilt is wrapped tight in black leather."
 	icon_state = "estoc"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
 	force = 12
 	force_wielded = 25
 	possible_item_intents = list(
@@ -382,9 +406,18 @@
 		/datum/intent/sword/chop,
 		/datum/intent/sword/strike,
 	)
+	bigboy = TRUE
+	gripsprite = TRUE
+	wlength = WLENGTH_GREAT
+	w_class = WEIGHT_CLASS_BULKY
 	minstr = 8
+	smeltresult = /obj/item/ingot/steel
+	associated_skill = /datum/skill/combat/swords
+	max_blade_int = 300
+	wdefense = 5
+	smelt_bar_num = 2
 
-/obj/item/rogueweapon/greatsword/estoc/getonmobprop(tag)
+/obj/item/rogueweapon/estoc/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)

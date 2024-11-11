@@ -249,25 +249,27 @@
 //				if(S && H && S.clothing_flags & LAVAPROTECT && H.clothing_flags & LAVAPROTECT)
 //					return
 				//make this acid
-//				var/shouldupdate = FALSE
-//				var/lethality = prob(95)
-//				for(var/obj/item/bodypart/B in C.bodyparts)
-//					if(!B.skeletonized && B.is_organic_limb())
-//						B.skeletonize(lethality)
-//						shouldupdate = TRUE
-//				if(!lethality)
-//					ADD_TRAIT(C, TRAIT_NOLIMBDISABLE, "[type]")
-//				if(shouldupdate)
-//					if(ishuman(C))
-//						var/mob/living/carbon/human/H = C
-//						qdel(H.underwear)
-//					C.unequip_everything()
-//					C.update_body()
+/***
+				var/shouldupdate = FALSE
+				var/lethality = prob(95)
+				for(var/obj/item/bodypart/B in C.bodyparts)
+					if(!B.skeletonized && B.is_organic_limb())
+						B.skeletonize(lethality)
+						shouldupdate = TRUE
+				if(!lethality)
+					ADD_TRAIT(C, TRAIT_NOLIMBDISABLE, "[type]")
+				if(shouldupdate)
+					if(ishuman(C))
+						var/mob/living/carbon/human/H = C
+						qdel(H.underwear)
+					C.unequip_everything()
+					C.update_body()
 //				C.dust(drop_items = TRUE)
-//				continue
+				continue
 
 //			if("lava" in L.weather_immunities)
 //				continue
+***/
 
 			L.adjustFireLoss(10) //would have higher, but I wanted to give prey their fanservice
 			playsound(src, 'modular_causticcove/sound/misc/bigmelt.ogg', 100, FALSE)

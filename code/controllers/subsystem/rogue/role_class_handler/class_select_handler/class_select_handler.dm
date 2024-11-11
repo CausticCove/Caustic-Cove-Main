@@ -63,13 +63,9 @@
 
 	//classes we rolled, basically you get a datum followed by a number in here on how many times you rerolled it.
 	var/list/rolled_classes = list()
-	// The register id we use- CC EDIT
-	var/register_id = null	//CC Edit
 
 // The normal route for first use of this list.
 /datum/class_select_handler/proc/initial_setup()
-	if(register_id)
-		SSrole_class_handler.add_class_register_listener(register_id, linked_client.mob)
 	assemble_the_CLASSES()
 	second_step()
 
@@ -81,8 +77,6 @@
 	browser_slop()
 
 /datum/class_select_handler/Destroy()
-	if(register_id)	//CC Edit
-		SSrole_class_handler.remove_class_register_listener(register_id, linked_client.mob)	// CC Edit
 	ForceCloseMenus() // force menus closed
 	// Cleanup anything holding references, aka these lists holding refs to class datums and the other two
 	linked_client = null
@@ -130,7 +124,7 @@
 				if(attempts > local_insert_sortlist.len)
 					attempts = local_insert_sortlist.len
 
-				local_insert_sortlist = shuffle(local_insert_sortlist)
+				local_insert_sortlist = sortList(local_insert_sortlist)
 				for(var/i in 1 to attempts)
 					rolled_classes[local_insert_sortlist[i]] = 0
 
@@ -205,7 +199,7 @@
 		rolled_classes[pick(possible_list)] = 0
 
 	if(cur_picked_class == filled_class)
-		if(special_session_queue && cur_picked_class in special_session_queue)
+		if(special_session_queue && (cur_picked_class in special_session_queue))
 			special_selected = FALSE
 		cur_picked_class = null
 

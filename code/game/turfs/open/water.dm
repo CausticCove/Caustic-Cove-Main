@@ -224,7 +224,7 @@
 
 /turf/open/water/bath
 	name = "water"
-	desc = "Faintly yellow colored.. Suspicious."
+	desc = "Soothing water, although don't drink the soap."
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "bathtileW"
 	water_level = 2
@@ -333,12 +333,11 @@
 	dir = pick(GLOB.cardinals)
 	.  = ..()
 
-
 /turf/open/water/river
 	name = "river"
 	desc = "Crystal clear water! Flowing swiflty along the river."
-	icon_state = "rivermove"
 	icon = 'icons/turf/roguefloor.dmi'
+	icon_state = "rivermove"
 	water_level = 3
 	slowdown = 5
 	wash_in = TRUE
@@ -395,6 +394,7 @@
 	swim_skill = TRUE
 	wash_in = FALSE
 
+	
 /turf/open/water/acid
 	name = "diluted acid"
 	desc = "A foul smelling depth of less-than acid."
@@ -410,3 +410,14 @@
 /turf/open/water/acid/Initialize()
 	.  = ..()
 	icon_state = "acid"
+
+/turf/open/water/pond
+	name = "pond"
+	desc = "Still and idyllic water that flows through meadows."
+	icon_state = "pond"
+	icon = 'icons/turf/roguefloor.dmi'
+	water_level = 3
+	slowdown = 3
+	swim_skill = TRUE
+	wash_in = TRUE
+	water_reagent = /datum/reagent/water

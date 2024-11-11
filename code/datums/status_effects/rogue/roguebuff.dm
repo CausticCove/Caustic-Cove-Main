@@ -28,7 +28,7 @@
 /datum/status_effect/buff/druqks
 	id = "druqks"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("endurance" = 3,"speed" = 3,"fortune" = -5)
+	effectedstats = list("intelligence" = 5,"speed" = 3,"fortune" = -5)
 	duration = 10 SECONDS
 
 /datum/status_effect/buff/druqks/on_apply()
@@ -64,7 +64,7 @@
 /datum/status_effect/buff/ozium
 	id = "ozium"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
-	effectedstats = list("speed" = -99)
+	effectedstats = list("speed" = -5, "perception" = 2)
 	duration = 30 SECONDS
 
 /datum/status_effect/buff/ozium/on_apply()
@@ -185,7 +185,7 @@
 /datum/status_effect/buff/darkvision
 	id = "darkvision"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/darkvision
-	duration = 1 HOURS
+	duration = 15 MINUTES
 
 /datum/status_effect/buff/darkvision/on_apply()
 	. = ..()
@@ -229,4 +229,95 @@
 /datum/status_effect/buff/longstrider/on_remove()
 	. = ..()
 	to_chat(owner, span_warning("The rough floors slow my travels once again."))
+	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
+
+
+/atom/movable/screen/alert/status_effect/buff/guardbuffone
+	name = "Vigilant Guardsman"
+	desc = "My home. I watch vigilantly and respond swiftly."
+	icon_state = "buff"
+
+/datum/status_effect/buff/guardbuffone
+	id = "guardbuffone"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/guardbuffone
+	effectedstats = list("constitution" = 1,"endurance" = 1, "speed" = 1, "perception" = 3) //if they can't figure out how to ply this for winning chances i'm going to sob openly
+	duration = 50000 //essentially permanent, removes when we're out of the area
+
+/datum/status_effect/buff/guardbuffone/process()
+
+	.=..()
+	var/area/rogue/our_area = get_area(owner)
+	if(!(our_area.town_area))
+		owner.remove_status_effect(/datum/status_effect/buff/guardbuffone)
+
+/atom/movable/screen/alert/status_effect/buff/healing
+	name = "Healing Miracle"
+	desc = "Divine intervention relieves me of my ailments."
+	icon_state = "buff"
+
+/datum/status_effect/buff/healing
+	id = "healing"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/healing
+	duration = 10 SECONDS
+	var/healing_on_tick = 1
+
+/datum/status_effect/buff/healing/tick()
+	var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/heal(get_turf(owner))
+	H.color = "#FF0000"
+	var/list/wCount = owner.get_wounds()
+	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
+		owner.blood_volume = min(owner.blood_volume+10, BLOOD_VOLUME_NORMAL)
+	if(wCount.len > 0)
+		owner.heal_wounds(healing_on_tick)
+		owner.update_damage_overlays()
+	owner.adjustBruteLoss(-healing_on_tick, 0)
+	owner.adjustFireLoss(-healing_on_tick, 0)
+	owner.adjustOxyLoss(-healing_on_tick, 0)
+	owner.adjustToxLoss(-healing_on_tick, 0)
+	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing_on_tick)
+	owner.adjustCloneLoss(-healing_on_tick, 0)
+
+/atom/movable/screen/alert/status_effect/buff/fortify
+	name = "Fortifying Miracle"
+	desc = "Divine intervention bolsters me and aids my recovery."
+	icon_state = "buff"
+
+/datum/status_effect/buff/fortify //Increases all healing while it lasts.
+	id = "fortify"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/fortify
+	duration = 1 MINUTES
+
+/datum/status_effect/buff/fortitude
+	id = "fortitude"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/fortitude
+	duration = 1 MINUTES
+
+/datum/status_effect/buff/fortitude/on_apply()
+	. = ..()
+	to_chat(owner, span_warning("My body feels lighter..."))
+	ADD_TRAIT(owner, TRAIT_FORTITUDE, MAGIC_TRAIT)
+
+/datum/status_effect/buff/fortitude/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("The weight of the world rests upon my shoulders once more."))
+	REMOVE_TRAIT(owner, TRAIT_FORTITUDE, MAGIC_TRAIT)
+
+/atom/movable/screen/alert/status_effect/buff/guidance
+	name = "Guidance"
+	desc = "Arcyne assistance guides my hands."
+	icon_state = "buff"
+
+/datum/status_effect/buff/guidance
+	id = "guidance"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/guidance
+	duration = 1 MINUTES
+
+/datum/status_effect/buff/guidance/on_apply()
+	. = ..()
+	to_chat(owner, span_warning("I have better control over my accuracy!"))
+	ADD_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
+
+/datum/status_effect/buff/guidance/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("My feeble mind muddies my warcraft once more."))
 	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)

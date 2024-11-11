@@ -117,7 +117,7 @@
 			healing -= 0.1
 			break //Only count the first bedsheet
 		if(health_ratio > 0.8)
-			owner.adjustToxLoss(healing * 0.5, TRUE, TRUE)
+			owner.adjustToxLoss(healing * 0.5, FALSE, TRUE)
 		owner.adjustStaminaLoss(healing)
 	if(human_owner && human_owner.drunkenness)
 		human_owner.drunkenness *= 0.997 //reduce drunkenness by 0.3% per tick, 6% per 2 seconds
@@ -647,3 +647,15 @@
 		to_chat(owner, fake_msg)
 
 	msg_stage++
+
+/// Ravox Curses, Ported from Ratwood
+/datum/status_effect/debuff/ravox_burden
+	id = "ravox_burden"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ravox_burden
+	effectedstats = list("speed" = -2, "endurance" = -3)
+	duration = 15 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/ravox_burden
+	name = "Ravox's Burden"
+	desc = "Some divine power is straining my mind!"
+	icon_state = "muscles" 

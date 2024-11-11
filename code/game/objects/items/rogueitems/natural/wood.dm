@@ -4,6 +4,7 @@
 	desc = "A big tree log. It's very heavy, and huge."
 	icon_state = "log"
 	blade_dulling = DULLING_CUT
+	attacked_sound = 'sound/misc/woodhit.ogg'
 	max_integrity = 30
 	static_debris = list(/obj/item/grown/log/tree/small = 2)
 	obj_flags = CAN_BE_HIT
@@ -13,11 +14,13 @@
 	possible_item_intents = list(/datum/intent/hit)
 	obj_flags = CAN_BE_HIT
 	w_class = WEIGHT_CLASS_HUGE
+	var/quality = SMELTERY_LEVEL_NORMAL // For it not to ruin recipes that need it
 
 /obj/item/grown/log/tree/small
 	name = "small log"
 	desc = "Smaller log that came from a larger log. Suitable for building."
 	icon_state = "logsmall"
+	attacked_sound = 'sound/misc/woodhit.ogg'
 	max_integrity = 30
 	static_debris = list(/obj/item/grown/log/tree/stick = 3)
 	firefuel = 20 MINUTES
@@ -27,7 +30,7 @@
 	smeltresult = /obj/item/rogueore/coal
 
 /obj/item/grown/log/tree/bowpartial
-	name = "unstrung bow"
+	name = "crude bowstave"
 	desc = "A partially completed bow, still waiting to be strung."
 	icon_state = "bowpartial"
 	max_integrity = 30
@@ -36,6 +39,18 @@
 	gripped_intents = null
 	w_class = WEIGHT_CLASS_BULKY
 	smeltresult = /obj/item/rogueore/coal
+
+/obj/item/grown/log/tree/bowpartial/recurve
+	name = "recurve bowstave"
+	desc = "An incomplete recurve awaiting stringing."
+	icon = 'icons/roguetown/items/64x.dmi'
+	icon_state = "recurve_bowstave"
+
+/obj/item/grown/log/tree/bowpartial/longbow
+	name = "long bowstave"
+	desc = "An incomplete longbow awaiting its string."
+	icon = 'icons/roguetown/items/64x.dmi'
+	icon_state = "long_bowstave"
 
 /obj/item/grown/log/tree/stick
 	name = "stick"
@@ -62,6 +77,8 @@
 		if(prob(prob2break))
 			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
 			qdel(src)
+			if (L.alpha == 0 && L.rogue_sneaking) // not anymore you're not
+				L.update_sneak_invis(TRUE)
 			L.consider_ambush()
 
 /obj/item/grown/log/tree/stick/Initialize()
@@ -117,6 +134,7 @@
 	blade_dulling = 0
 	max_integrity = 20
 	static_debris = null
+	tool_behaviour = TOOL_IMPROVISED_RETRACTOR
 	obj_flags = null
 	w_class = WEIGHT_CLASS_SMALL
 	twohands_required = FALSE

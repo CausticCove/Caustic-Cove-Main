@@ -200,6 +200,13 @@
 	color_key_names = list("Tail", "Inner")
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/australian_shepherd
+	name = "Australian Shepherd"
+	icon_state = "australianshepherd"
+	color_keys = 2
+	color_key_names = list("Tail", "Inner")
+	can_wag = TRUE
+
 /datum/sprite_accessory/tail/skunk
 	name = "Skunk"
 	icon_state = "skunk"
@@ -334,3 +341,45 @@
 	icon_state = "hearttail"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 	can_wag = TRUE
+
+
+//TAUR BULLSHIT HELP
+
+/datum/sprite_accessory/tail/taur/snake
+	name = "Snake Taur"
+	icon = 'icons/mob/sprite_accessory/tails/naga.dmi'
+	icon_state = "naga_s"
+
+/datum/sprite_accessory/tail/taur/wolf
+	name = "Wolf Taur"
+	icon = 'icons/mob/sprite_accessory/tails/wolf.dmi'
+	icon_state = "wolf_s"
+
+/datum/sprite_accessory/tail/taur/spider
+	name = "Drider"
+	icon = 'icons/mob/sprite_accessory/tails/spider.dmi'
+	icon_state = "spider_s"
+
+/datum/sprite_accessory/tail/taur/feline
+	name = "Feline Taur"
+	icon = 'icons/mob/sprite_accessory/tails/feline.dmi'
+	icon_state = "feline_s"
+
+/datum/sprite_accessory/tail/taur/fatsnake
+	name = "Fat Snake Taur"
+	icon = 'icons/mob/sprite_accessory/tails/fatnaga.dmi'
+	icon_state = "fatnaga_s"
+
+/datum/sprite_accessory/tail/taur/sect
+	name = "Bug Taur"
+	icon = 'icons/mob/sprite_accessory/tails/sectdrone.dmi'
+	icon_state = "sect_drone"
+
+/datum/sprite_accessory/tail/taur/fatsect
+	name = "Bug Taur MEGA"
+	icon = 'icons/mob/sprite_accessory/tails/fat_sect.dmi'
+	icon_state = "fat_sect_drone"
+
+/datum/sprite_accessory/tail/taur/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+    generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_TAUR, OFFSET_TAUR_F)
+

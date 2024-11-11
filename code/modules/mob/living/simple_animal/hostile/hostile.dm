@@ -210,6 +210,10 @@
 
 
 /mob/living/simple_animal/hostile/proc/Found(atom/A)//This is here as a potential override to pick a specific target if available
+	if (isliving(A))
+		var/mob/living/living_target = A
+		if(living_target.alpha == 0 && living_target.rogue_sneaking) // is our target hidden? if they are, attempt to detect them once
+			return npc_detect_sneak(living_target, simple_detect_bonus)
 	return
 
 /mob/living/simple_animal/hostile/proc/PickTarget(list/Targets)//Step 3, pick amongst the possible, attackable targets
@@ -353,8 +357,8 @@
 //			else
 //				if(FindHidden())
 //					return 1
-	LoseTarget()
-	return 0
+//	LoseTarget()
+//	return 0
 
 /mob/living/simple_animal/hostile/proc/Goto(target, delay, minimum_distance)
 	if(target == src.target)
@@ -521,7 +525,7 @@
 			O.climb_structure(src)
 			break
 
-mob/living/simple_animal/hostile/proc/DestroySurroundings() // for use with megafauna destroying everything around them
+/mob/living/simple_animal/hostile/proc/DestroySurroundings() // for use with megafauna destroying everything around them
 	if(environment_smash)
 		EscapeConfinement()
 		for(var/dir in GLOB.cardinals)

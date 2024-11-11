@@ -47,6 +47,8 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		player = character.client
 	apply_charflaw_equipment(character, player)
 	apply_prefs_special(character, player)
+	if(player.prefs.loadout)
+		character.mind.special_items[player.prefs.loadout.name] = player.prefs.loadout.path
 
 /proc/apply_charflaw_equipment(mob/living/carbon/human/character, client/player)
 	if(character.charflaw)
@@ -139,7 +141,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	return pickweight(eligible_weight)
 
 /proc/apply_special_trait(mob/living/carbon/human/character, trait_type, silent)
-	var/datum/special_trait/special = SPECIAL_TRAIT(trait_type)
-	special.on_apply(character, silent)
+	character.add_special_trait(trait_type) //What am i doing?
+	var/datum/special_trait/special = GLOB.special_traits[trait_type]
 	if(!silent && special.greet_text)
 		to_chat(character, special.greet_text)

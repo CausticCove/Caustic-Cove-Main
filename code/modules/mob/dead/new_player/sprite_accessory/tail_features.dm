@@ -69,3 +69,38 @@
 /datum/sprite_accessory/tail_feature/vox_marking/stripe
 	name = "Stripe"
 	icon_state = "stripe"
+
+//TAUR BULLSHIT MARKINGS AAAAAAAAAAAA
+/datum/sprite_accessory/tail_feature/taur/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+    generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_TAUR, OFFSET_TAUR_F)
+
+
+/datum/sprite_accessory/tail_feature/taur/sect
+	name = "Bug Taur Markings"
+	icon = 'icons/mob/sprite_accessory/tail_features/sect_markings.dmi'
+	icon_state = "sect_drone_markings"
+
+/datum/sprite_accessory/tail_feature/taur/megasect
+	name = "MEGA Bug Taur Markings"
+	icon = 'icons/mob/sprite_accessory/tail_features/fat_sect_markings.dmi'
+	icon_state = "fat_sect_drone_markings"
+
+/datum/sprite_accessory/tail_feature/taur/naga
+	name = "Snake Markings"
+	icon = 'icons/mob/sprite_accessory/tail_features/naga_markings.dmi'
+	icon_state = "naga_markings"
+
+/datum/sprite_accessory/tail_feature/taur/fatnaga
+	name = "Fat Snake Markings"
+	icon = 'icons/mob/sprite_accessory/tail_features/fatnaga_markings.dmi'
+	icon_state = "fatnaga_markings"
+
+/datum/sprite_accessory/tail_feature/taur/feline
+	name = "stupid cattaur markings"
+	icon = 'icons/mob/sprite_accessory/tail_features/feline_markings.dmi'
+	icon_state = "feline_markings"
+
+/datum/sprite_accessory/tail_feature/taur/wolf
+	name = "stupid wolftaur markings"
+	icon = 'icons/mob/sprite_accessory/tail_features/wolf_markings.dmi'
+	icon_state = "wolf_markings"

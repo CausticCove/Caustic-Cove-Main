@@ -39,7 +39,7 @@
 /datum/special_trait/deadened
 	name = "Deadened"
 	greet_text = span_notice("Ever since <b>it</b> happened, I've never been able to feel anything. Inside or out")
-	weight = 25
+	weight = 50
 
 /datum/special_trait/deadened/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOMOOD, "[type]")
@@ -72,7 +72,7 @@
 
 /datum/special_trait/night_owl
 	name = "Night Owl"
-	greet_text = span_notice("I've always preferred Noc over her sister")
+	greet_text = span_notice("I've always preferred Noc over his other half.")
 	weight = 100
 
 /datum/special_trait/night_owl/on_apply(mob/living/carbon/human/character, silent)
@@ -90,7 +90,7 @@
 /datum/special_trait/duelist
 	name = "Swordmaster Apprentice"
 	greet_text = span_notice("I was the student of a legendary sword master, my skill is rivalled by few! I've also hidden a rapier.")
-	weight = 50
+	weight = 25
 
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
 	character.cmode_music = 'sound/music/combat_duelist.ogg'
@@ -101,7 +101,7 @@
 /datum/special_trait/eagle_eyed
 	name = "Eagle Eyed"
 	greet_text = span_notice("With my sharp aim I could always hit distant targets, I've also hidden a crossbow and some bolts.")
-	weight = 50
+	weight = 25
 
 /datum/special_trait/eagle_eyed/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("perception", 2)
@@ -155,7 +155,7 @@
 
 /datum/special_trait/arsonist
 	name = "Arsonist"
-	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebobms")
+	greet_text = span_notice("I like seeing things combust and burn. I have hidden around two firebombs.")
 	weight = 100
 
 /datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
@@ -166,7 +166,7 @@
 /datum/special_trait/pineapple
 	name = "The safeword is \"Pineapple\""
 	greet_text = span_notice("I enjoy whipping people until they squirm and whine, their pain makes my pleasure. I also have a hidden a whip")
-	weight = 50
+	weight = 25
 
 /datum/special_trait/pineapple/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Whip"] = /obj/item/rogueweapon/whip
@@ -281,6 +281,7 @@
 
 /datum/special_trait/swift/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DODGEEXPERT, "[type]")
+	ADD_TRAIT(character, TRAIT_GOODRUNNER, "[type]")
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 6, TRUE)
 	character.change_stat("speed", 3)
 
@@ -357,7 +358,7 @@
 	name = "Known Heretic"
 	greet_text = span_boldwarning("I've been denounced by the church for either reasons legitimate or not!")
 	req_text = "Non-church role"
-	weight = 100
+	weight = 20
 	restricted_jobs = list(CHURCH_ROLES)
 
 /datum/special_trait/hussite/on_apply(mob/living/carbon/human/character, silent)
@@ -366,7 +367,7 @@
 /datum/special_trait/bounty
 	name = "Hunted Man"
 	greet_text = span_boldwarning("Someone put a bounty on my head!")
-	weight = 100
+	weight = 20
 
 /datum/special_trait/bounty/on_apply(mob/living/carbon/human/character, silent)
 	var/reason = ""
@@ -404,7 +405,7 @@
 /datum/special_trait/outlaw
 	name = "Known Outlaw"
 	greet_text = span_boldwarning("Whether for crimes I did or was accused of, I have been declared an outlaw!")
-	weight = 100
+	weight = 20
 
 /datum/special_trait/outlaw/on_apply(mob/living/carbon/human/character, silent)
 	make_outlaw(character.real_name, TRUE)
@@ -421,7 +422,7 @@
 /datum/special_trait/unlucky
 	name = "Unlucky"
 	greet_text = span_boldwarning("Ever since you knocked over that glass vase, you just feel... off")
-	weight = 100
+	weight = 25
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
 	character.STALUC = rand(1, 10)
@@ -434,14 +435,6 @@
 
 /datum/special_trait/jesterphobia/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_JESTERPHOBIA, "[type]")
-
-/datum/special_trait/xenophobic
-	name = "Xenophobic"
-	greet_text = span_boldwarning("Lesser races pollute our land")
-	weight = 200
-
-/datum/special_trait/xenophobic/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_XENOPHOBIC, "[type]")
 
 /datum/special_trait/wild_night
 	name = "Wild Night"
@@ -456,7 +449,7 @@
 /datum/special_trait/atrophy
 	name = "Atrophy"
 	greet_text = span_boldwarning("When growing up I could barely feed myself... this left me weak and fragile")
-	weight = 200
+	weight = 25
 
 /datum/special_trait/atrophy/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", -2)
@@ -466,7 +459,7 @@
 /datum/special_trait/lazy
 	name = "Lazy"
 	greet_text = span_boldwarning("I don't care, never did")
-	weight = 200
+	weight = 50
 
 /datum/special_trait/lazy/on_apply(mob/living/carbon/human/character)
 	character.change_stat("strength", -1)
@@ -565,8 +558,26 @@
 	greet_text = span_notice("I'm sick of working as an underling, I will start my own trade emporium. I've got my hands on a hidden merchant key and a curious magical device")
 	req_text = "Be a Shophand"
 	allowed_jobs = list(/datum/job/roguetown/shophand)
-	weight = 50
+	weight = 100
 
 /datum/special_trait/illicit_merchant/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["Merchant Key"] = /obj/item/roguekey/merchant
 	character.mind.special_items["GOLDFACE Gem"] = /obj/item/gem_device/goldface
+
+/datum/special_trait/cursed
+	name = "Cursed"
+	greet_text = span_boldwarning("...I keep experiencing vivid hallucinations, What is happening here?")
+	weight = 25
+	var/atom/movable/screen/fullscreen/maniac/hallucinations
+
+/datum/special_trait/cursed/on_apply(mob/living/carbon/human/character, silent)
+	ADD_TRAIT(character, TRAIT_SCHIZO_AMBIENCE, "[name]")
+	hallucinations = character.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
+
+
+/datum/special_trait/cursed/on_life(mob/living/carbon/human/owner)
+	. = ..()
+	handle_maniac_visions(owner, hallucinations)
+	handle_maniac_hallucinations(owner)
+	handle_maniac_floors(owner)
+	handle_maniac_walls(owner)

@@ -92,7 +92,15 @@ GLOBAL_LIST_INIT(freqtospan, list(
 					arrowpart = " ⇘"
 			if(istype(speaker, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = speaker
-				namepart = "Unknown [(H.voice_type == VOICE_TYPE_FEM) ? "Woman" : "Man"]"
+				var/appellation
+				switch(H.voice_type)
+					if(VOICE_TYPE_FEM)
+						appellation = "Woman"
+					if(VOICE_TYPE_MASC)
+						appellation = "Man"
+					else
+						appellation = "Person"
+				namepart = "Unknown [appellation]"
 			else
 				namepart = "Unknown"
 			spanpart1 = "<span class='smallyell'>"
@@ -168,10 +176,6 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 /proc/get_radio_name(freq)
 	return freq
-	var/returntext = GLOB.reverseradiochannels["[freq]"]
-	if(returntext)
-		return returntext
-	return "[copytext_char("[freq]", 1, 4)].[copytext_char("[freq]", 4, 5)]"
 
 /proc/attach_spans(input, list/spans)
 	return "[message_spans_start(spans)][input]</span>"

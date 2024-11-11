@@ -60,11 +60,12 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	ROLE_PAI))
 
 GLOBAL_LIST_INIT(noble_positions, list(
-	"Monarch",
+	"Grand Duke",
 	"Consort",
 	"Prince",
+	"Hand",
 	"Guard Captain",
-	"Sheriff",
+	"Marshal",
 	"Councillor",
 	"Steward",
 	"Royal Guard",
@@ -79,7 +80,7 @@ GLOBAL_LIST_INIT(courtier_positions, list(
 
 GLOBAL_LIST_INIT(garrison_positions, list(
 	"Watchman",
-	"Bog Guard",
+	"Warden",
 	"Bog Master",
 	"Man at Arms",
 	"Dungeoneer",
@@ -98,21 +99,21 @@ GLOBAL_LIST_INIT(church_positions, list(
 
 GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Merchant",
-	"Barkeep",
+	"Innkeeper",
 	"Archivist",
 	"Blacksmith",
 	"Armorer",
 	"Weaponsmith",
 	"Tailor",
 	"Alchemist",
-	"Mason",
+	"Artificer",
 	"Scribe",
-	"Village Elder",
+	"Town Elder",
+	"Bathmaster",
 ))
 
 GLOBAL_LIST_INIT(peasant_positions, list(
 	"Soilson",
-	"Butcher",
 	"Cook",
 	"Lunatic",
 	"Miner",
@@ -122,12 +123,14 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Towner",
 	"Grabber",
 	"Nightmaster",
+	"Tavern Knave",
 	"Bath Swain",
 	"Docker",
 	"Prisoner",
 	"Beggar",
 	"Adventurer",
 	"Pilgrim",
+	"Bandit",
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
@@ -254,3 +257,5 @@ GLOBAL_PROTECT(exp_specialmap)
 	job = chef_expand.Replace(job, "cook")
 	job = borg_expand.Replace(job, "cyborg")
 	return job
+
+

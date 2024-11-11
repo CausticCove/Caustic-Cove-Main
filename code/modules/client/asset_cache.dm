@@ -369,7 +369,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 				continue
 			asset = fcopy_rsc(asset) //dedupe
 			var/prefix2 = (directions.len > 1) ? "[dir2text(direction)]." : ""
-			var/asset_name = sanitize_filename("[prefix].[prefix2][icon_state_name].png")
+			var/asset_name = SANITIZE_FILENAME("[prefix].[prefix2][icon_state_name].png")
 			if (generic_icon_names)
 				asset_name = "[generate_asset_name(asset)].png"
 
@@ -591,7 +591,8 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"orc.ttf" = 'interface/fonts/languages/orc.ttf',
 		"sand.ttf" = 'interface/fonts/languages/sand.ttf',
 		"undead.ttf" = 'interface/fonts/languages/undead.ttf',
-		"draconic.ttf" = 'interface/fonts/languages/draconic.ttf'
+		"draconic.ttf" = 'interface/fonts/languages/draconic.ttf',
+		"lupian.ttf" = 'interface/fonts/languages/lupian.ttf'
 	)
 
 /datum/asset/spritesheet/goonchat

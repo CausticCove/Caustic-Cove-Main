@@ -34,8 +34,8 @@
 		else
 			to_chat(user, span_warning("Wrong key."))
 			return
-	if(istype(P, /obj/item/keyring))
-		var/obj/item/keyring/K = P
+	if(istype(P, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = P
 		for(var/obj/item/roguekey/KE in K.keys)
 			if(KE.lockid == "nightman")
 				locked = !locked
@@ -59,8 +59,9 @@
 			if(drugrade_flags & DRUGRADE_MONEYB)
 				amt = recent_payments * 0.50
 			recent_payments = 0
-			send_ooc_note("<b>Income from PURITY:</b> [amt]", job = "Nightmaster")
+			send_ooc_note("<b>Income from PURITY:</b> [amt]", job = "Bathmaster")
 			secret_budget += amt
+			last_payout = world.time
 
 /obj/structure/roguemachine/drugmachine/Topic(href, href_list)
 	. = ..()
@@ -72,7 +73,7 @@
 		var/mob/M = usr
 		var/O = text2path(href_list["buy"])
 		if(held_items[O]["PRICE"])
-			var/tax_amt = round(SStreasury.tax_value * held_items[O]["PRICE"])
+			var/tax_amt = FLOOR(SStreasury.tax_value * held_items[O]["PRICE"], 1)
 			var/full_price = held_items[O]["PRICE"] + tax_amt
 			if(drugrade_flags & DRUGRADE_NOTAX)
 				full_price = held_items[O]["PRICE"]
@@ -177,7 +178,7 @@
 
 
 	var/mob/living/carbon/human/H = user
-	if(H.job == "Nightmaster")
+	if(H.job == "Bathmaster")
 		if(canread)
 			contents = "<a href='?src=[REF(src)];secrets=1'>Secrets</a>"
 		else
@@ -186,7 +187,7 @@
 	contents += "</center>"
 
 	for(var/I in held_items)
-		var/price = held_items[I]["PRICE"] + (SStreasury.tax_value * held_items[I]["PRICE"])
+		var/price = FLOOR(held_items[I]["PRICE"] + (SStreasury.tax_value * held_items[I]["PRICE"]), 1)
 		var/namer = held_items[I]["NAME"]
 		if(!price)
 			price = "0"
@@ -229,7 +230,7 @@
 	START_PROCESSING(SSroguemachine, src)
 	update_icon()
 	held_items[/obj/item/reagent_containers/powder/spice] = list("PRICE" = rand(41,55),"NAME" = "chuckledust")
-	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(25,47),"NAME" = "ozium")
+	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(6,15),"NAME" = "ozium")
 	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(13,25),"NAME" = "moondust")
 	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = rand(12,18),"NAME" = "swampweed zig")
 	held_items[/obj/item/clothing/mask/cigarette/rollie/nicotine] = list("PRICE" = rand(5,10),"NAME" = "zig")

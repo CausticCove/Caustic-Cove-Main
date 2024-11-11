@@ -6,7 +6,7 @@
 	force = 0
 	throwforce = 0
 	obj_flags = null
-	color = "#454032"
+	color = "#575e4a"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH
@@ -17,8 +17,14 @@
 	bundletype = /obj/item/natural/bundle/fibers
 
 /obj/item/natural/fibers/attack_right(mob/user)
+	var/is_legendary = FALSE
+	if(user.mind.get_skill_level(/datum/skill/labor/farming) == SKILL_LEVEL_LEGENDARY) //check if the user has legendary farming skill
+		is_legendary = TRUE //they do
+	var/work_time = 1 SECONDS //time to gather fibers
+	if(is_legendary)
+		work_time = 2 //if legendary skill, the move_after is fast, 0.2 seconds
 	to_chat(user, span_warning("I start to collect [src]..."))
-	if(move_after(user, 1 SECONDS, target = src))
+	if(move_after(user, work_time, target = src))
 		var/fibercount = 0
 		for(var/obj/item/natural/fibers/F in get_turf(src))
 			fibercount++
@@ -108,6 +114,24 @@
 	var/wet = 0
 	/// Effectiveness when used as a bandage, how much bloodloss we can tampon
 	var/bandage_effectiveness = 0.9
+
+/obj/item/natural/cloth/attack_right(mob/user)
+	to_chat(user, span_warning("I start to collect [src]..."))
+	if(move_after(user, 1 SECONDS, target = src))
+		var/clothcount = 0
+		for(var/obj/item/natural/cloth/F in get_turf(src))
+			clothcount++
+		while(clothcount > 0)
+			if(clothcount == 1)
+				new /obj/item/natural/cloth(get_turf(user))
+				clothcount--
+			else if(clothcount >= 2)
+				var/obj/item/natural/bundle/cloth/B = new(get_turf(user))
+				B.amount = clamp(clothcount, 2, 10)
+				B.update_bundle()
+				clothcount -= clamp(clothcount, 2, 10)
+		for(var/obj/item/natural/cloth/F in get_turf(src))
+			qdel(F)
 
 /obj/item/natural/cloth/examine(mob/user)
 	. = ..()
@@ -227,6 +251,8 @@
 		if(prob(prob2break))
 			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
 			qdel(src)
+			if (L.alpha == 0 && L.rogue_sneaking) // not anymore you're not
+				L.update_sneak_invis(TRUE)
 			L.consider_ambush()
 
 /obj/item/natural/bundle/fibers
@@ -238,7 +264,7 @@
 	throwforce = 0
 	maxamount = 6
 	obj_flags = null
-	color = "#454032"
+	color = "#575e4a"
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH

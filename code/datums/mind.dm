@@ -88,6 +88,8 @@
 
 	var/datum/sleep_adv/sleep_adv = null
 
+	var/mugshot_set = FALSE
+
 /datum/mind/New(key)
 	src.key = key
 	soulOwner = src
@@ -197,8 +199,7 @@
 	var/datum/mind/M = person
 	var/mob/living/carbon/human/H = current
 	if(M.known_people && istype(H))
-		if(M.known_people[H.real_name])
-			M.known_people[H.real_name] = null
+		M.known_people -= H.real_name
 
 
 /datum/mind/proc/unknow_all_people()
@@ -912,14 +913,14 @@
 	spell_list += S
 	S.action.Grant(current)
 
-/datum/mind/proc/check_learnspell(obj/effect/proc_holder/spell/S)
+/datum/mind/proc/check_learnspell()
 	if(!has_spell(/obj/effect/proc_holder/spell/self/learnspell)) //are we missing the learning spell?
 		if((spell_points - used_spell_points) > 0) //do we have points?
 			AddSpell(new /obj/effect/proc_holder/spell/self/learnspell(null)) //put it in
 			return
 
 	if((spell_points - used_spell_points) <= 0) //are we out of points?
-		RemoveSpell(S) //bye bye spell
+		RemoveSpell(/obj/effect/proc_holder/spell/self/learnspell) //bye bye spell
 		return
 	return
 

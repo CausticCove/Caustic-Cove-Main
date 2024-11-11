@@ -79,6 +79,20 @@
 	icon_state = "goblet"
 	layer = ABOVE_MOB_LAYER
 
+/obj/structure/fluff/walldeco/barbersign
+	name = "sign"
+	desc = "The iconic swirl of the barber surgeon."
+	icon = 'icons/roguetown/misc/tallstructure.dmi'
+	icon_state = "barbersign"
+	layer = ABOVE_MOB_LAYER
+
+/obj/structure/fluff/walldeco/barbersignreverse
+	name = "sign"
+	desc = "The iconic swirl of the barber surgeon."
+	icon = 'icons/roguetown/misc/tallstructure.dmi'
+	icon_state = "barbersignflip"
+	layer = ABOVE_MOB_LAYER
+
 /obj/structure/fluff/walldeco/sparrowflag
 	name = "sparrow flag"
 	desc = ""
@@ -94,10 +108,10 @@
 	desc = ""
 	icon_state = "serpent"
 
-/obj/structure/fluff/walldeco/masonflag
-	name = "mason's guild"
+/obj/structure/fluff/walldeco/artificerflag
+	name = "Artificer's Guild"
 	desc = ""
-	icon_state = "mason"
+	icon_state = "artificer"
 
 /obj/structure/fluff/walldeco/maidendrape
 	name = "black drape"
@@ -179,16 +193,15 @@
 	..()
 
 /obj/structure/fluff/walldeco/customflag
-	name = "Caustic Cove flag"
+	name = "Azure Peak flag"
 	desc = ""
 	icon_state = "wallflag"
 
 /obj/structure/fluff/walldeco/customflag/Initialize()
-	..()
+	. = ..()
 	if(GLOB.lordprimary)
 		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
+	GLOB.lordcolor += src
 
 /obj/structure/fluff/walldeco/customflag/Destroy()
 	GLOB.lordcolor -= src
@@ -203,7 +216,6 @@
 	M = mutable_appearance(icon, "wallflag_secondary", -(layer+0.1))
 	M.color = secondary
 	add_overlay(M)
-	GLOB.lordcolor -= src
 
 /obj/structure/fluff/walldeco/moon
 	name = "banner"
@@ -242,3 +254,80 @@
 /obj/structure/fluff/walldeco/med6
 	name = "diagram"
 	icon_state = "medposter6"
+
+/obj/structure/fluff/walldeco/alarm
+	name = ""
+	icon_state = "alarm"
+	pixel_y = 32
+	var/stop_yapping = 0
+	var/onoff = 0
+
+/obj/structure/fluff/walldeco/alarm/attack_hand(mob/living/user)
+
+	user.changeNext_move(CLICK_CD_MELEE)
+
+	if(!(HAS_TRAIT(user, TRAIT_NOBLE)))
+		playsound(src, 'sound/misc/machineno.ogg', 100, TRUE, -1)
+		return
+
+	else
+
+		playsound(src, 'sound/misc/bug.ogg', 100, FALSE, -1)
+		if(onoff == 0)
+			onoff = 1
+			icon_state = "face"
+		if(onoff == 1)
+			onoff = 0
+			icon_state = "alarm"
+		else
+			onoff = 0
+			icon_state = "alarm"
+
+/obj/structure/fluff/walldeco/alarm/Crossed(mob/living/user)
+
+	if(stop_yapping == 1)
+		return
+
+	if(ishuman(user)) //are we a person?
+		var/mob/living/carbon/human/HU = user
+
+		if(HU.anti_magic_check()) //are we shielded?
+			return
+
+		if(!(HU in SStreasury.bank_accounts)) //first off- do we not have an account? we'll ALWAYS scream if that's the case
+			playsound(loc, 'sound/misc/gold_license.ogg', 100, TRUE, -1)
+			say("UNKNOWN PERSON IN SECURE AREA- ARRETZ-VOUZ!!")
+			stop_yapping = 1
+			sleep(60)
+			stop_yapping = 0
+			return
+
+		if(HAS_TRAIT(user, TRAIT_NOBLE))
+			stop_yapping = 1
+			icon_state = "face"
+			sleep(200)
+			stop_yapping = 0
+			icon_state = "alarm"
+			return
+
+		if((HU in SStreasury.bank_accounts)) //do we not have an account?
+			playsound(loc, 'sound/misc/gold_menu.ogg', 100, TRUE, -1)
+			say("Layman [user.real_name] logged entering secure area.")
+			stop_yapping = 1
+			sleep(60)
+			stop_yapping = 0
+			return
+
+		else //?????
+			playsound(loc, 'sound/misc/gold_license.ogg', 100, TRUE, -1)
+			say("UNAUTHORIZED PERSON IN SECURE AREA- ARRETZ-VOUZ!!")
+			stop_yapping = 1
+			sleep(60)
+			stop_yapping = 0
+
+	else
+		playsound(loc, 'sound/misc/gold_license.ogg', 100, TRUE, -1)
+		say("UNKNOWN CREATURE IN SECURE AREA- ARRETZ-VOUS!!")
+		stop_yapping = 1
+		sleep(60)
+		stop_yapping = 0
