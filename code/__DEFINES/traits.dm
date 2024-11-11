@@ -172,7 +172,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others."),
 	//Hearthstone Port
 	TRAIT_MALUMSGRACE = "Malum is my muse.",
-	TRAIT_ABYSSORS_BLESSING = span_info("I feel like I can course through water with ease... Yet, my body tires faster than I remembered.")
+	TRAIT_ABYSSORS_BLESSING = span_info("I feel like I can course through water with ease... Yet, my body tires faster than I remembered."),
   //Caustic Changes
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_FORTITUDE = span_info("The typical drain I feel from day to day life is lessened, my athleticism greater."),
