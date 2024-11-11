@@ -425,7 +425,19 @@
 	if(HAS_TRAIT(user, TRAIT_STRONGBITE))
 		damage = damage*2
 	C.next_attack_msg.Cut()
-	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
+	
+	//Bite delay for zombie antags to prevent swift bite spam on neck/face for crits. var/bitecd could also be used on other mobs in future.
+	var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
+	var/bitecd = TRUE
+	if(zombie_antag)
+		if(zombie_antag.last_bite >= world.time)
+			to_chat(user, span_warning("I can't bite yet!"))
+			bitecd = FALSE
+			return FALSE
+		zombie_antag.last_bite = (world.time + 100)
+		bitecd = TRUE
+
+	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block) && bitecd == TRUE)
 		playsound(C.loc, "smallslash", 100, FALSE, -1)
 		var/datum/wound/caused_wound = limb_grabbed.bodypart_attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed, crit_message = TRUE)
 		if(user.mind)
@@ -433,9 +445,7 @@
 				caused_wound?.werewolf_infect_attempt()
 				if(prob(30))
 					user.werewolf_feed(C)
-			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
 			if(zombie_antag)
-				zombie_antag.last_bite = world.time
 				var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie)
 				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
 					user.mind.adjust_triumphs(1)

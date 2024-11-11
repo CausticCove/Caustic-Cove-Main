@@ -104,6 +104,9 @@
 	var/mob/M = user.mob
 	if(!isliving(M))
 		return
+	if(HAS_TRAIT(M, TRAIT_NORUN))
+		to_chat(M, span_warning("My joints have weakened too much for running!"))
+		return
 	if(M.m_intent == MOVE_INTENT_RUN)
 		M.toggle_rogmove_intent(MOVE_INTENT_WALK)
 	else

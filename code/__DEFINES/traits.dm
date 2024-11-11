@@ -167,7 +167,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others."),
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_FORTITUDE = span_info("The typical drain I feel from day to day life is lessened, my athleticism greater."),
-	TRAIT_GUIDANCE = span_info("Arcyne assistance guides my weapons.")
+	TRAIT_GUIDANCE = span_info("Arcyne assistance guides my weapons."),
+	TRAIT_DECAYEDHANDS = span_warning("My hands have decayed for far too long, I do not have the dexterity to pick up items.")
 ))
 
 // trait accessor defines
@@ -338,6 +339,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PARALYSIS	"paralysis" //Used for limb-based paralysis and full body paralysis
 #define TRAIT_BRITTLE "brittle" //The limb is more susceptible to fractures
 #define TRAIT_FINGERLESS "fingerless" //The limb has no fingies
+#define TRAIT_DECAYEDHANDS "decayed_hands" //Hands are decayed, can't use.
 
 //item traits
 #define TRAIT_NODROP            "nodrop"
