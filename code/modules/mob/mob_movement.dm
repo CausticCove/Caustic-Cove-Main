@@ -567,8 +567,6 @@
 	set name = "toggle-walk-run"
 	set hidden = TRUE
 	set instant = TRUE
-	if(mob)
-		mob.toggle_move_intent(usr)
 
 /**
   * Toggle the move intent of the mob
@@ -578,11 +576,7 @@
 /mob/proc/toggle_move_intent(mob/user)
 	if(m_intent == MOVE_INTENT_RUN)
 		m_intent = MOVE_INTENT_WALK
-	else
-		if(!HAS_TRAIT(user, TRAIT_NORUN))
-			m_intent = MOVE_INTENT_RUN
-		else
-			to_chat(user, span_warning("My joints have decayed too much for running!"))
+
 	if(hud_used && hud_used.static_inventory)
 		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_icon()
@@ -633,6 +627,9 @@
 		if(MOVE_INTENT_RUN)
 			if(isliving(src))
 				var/mob/living/L = src
+				if(HAS_TRAIT(src, TRAIT_NORUN))
+					to_chat(src, span_warning("My joints have weakened too much for running!"))
+					return
 				if(L.rogfat >= L.maxrogfat)
 					return
 				if(L.rogstam <= 0)

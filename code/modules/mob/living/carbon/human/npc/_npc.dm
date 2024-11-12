@@ -242,10 +242,11 @@
 	if(L == src)
 		return FALSE
 
+
 	if (L.alpha == 0 && L.rogue_sneaking)
 		return FALSE
 
-	if(!is_in_zweb(src.z,L.z))
+	if(!is_in_zweb(src, L))
 		return FALSE
 
 	if(L.stat == DEAD)

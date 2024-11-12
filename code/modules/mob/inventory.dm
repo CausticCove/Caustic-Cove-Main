@@ -146,6 +146,10 @@
 		return FALSE
 	if(!has_hand_for_held_index(hand_index))
 		return FALSE
+	//To prevent zombies from grabbing items.
+	if(HAS_TRAIT(src, TRAIT_DECAYEDHANDS) && !istype(I, /obj/item/grabbing))
+		to_chat(src, span_warning(pick("...Huh?", "My fingers twitch...", "I can't pick it up...")))
+		return FALSE
 	return !held_items[hand_index]
 
 /mob/proc/put_in_hand(obj/item/I, hand_index, forced = FALSE, ignore_anim = TRUE)
