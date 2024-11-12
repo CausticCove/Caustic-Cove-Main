@@ -315,9 +315,9 @@
 /datum/status_effect/buff/guidance/on_apply()
 	. = ..()
 	to_chat(owner, span_warning("I have better control over my accuracy!"))
-	ADD_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
+	ADD_TRAIT(owner, TRAIT_GUIDANCE, MAGIC_TRAIT)
 
 /datum/status_effect/buff/guidance/on_remove()
 	. = ..()
 	to_chat(owner, span_warning("My feeble mind muddies my warcraft once more."))
-	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_GUIDANCE, MAGIC_TRAIT)
