@@ -344,6 +344,8 @@
 
 
 //TAUR BULLSHIT HELP
+/datum/sprite_accessory/tail/taur
+	relevant_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
 
 /datum/sprite_accessory/tail/taur/snake
 	name = "Snake Taur"
