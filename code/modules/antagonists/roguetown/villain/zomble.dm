@@ -37,6 +37,7 @@
 		TRAIT_NOBREATH,
 		TRAIT_TOXIMMUNE,
 		TRAIT_CHUNKYFINGERS,
+		TRAIT_DECAYEDHANDS,
 		TRAIT_NOSLEEP,
 		TRAIT_BASHDOORS,
 		TRAIT_SPELLCOCKBLOCK,
@@ -73,7 +74,6 @@
 	if(zombie)
 		var/obj/item/bodypart/head = zombie.get_bodypart(BODY_ZONE_HEAD)
 		if(!head)
-			qdel(src)
 			return
 	zombie_start = world.time
 	was_i_undead = zombie.mob_biotypes & MOB_UNDEAD
@@ -143,11 +143,9 @@
 /datum/antagonist/zombie/proc/transform_zombie()
 	var/mob/living/carbon/human/zombie = owner.current
 	if(!zombie)
-		qdel(src)
 		return
 	var/obj/item/bodypart/head = zombie.get_bodypart(BODY_ZONE_HEAD)
 	if(!head)
-		qdel(src)
 		return
 	revived = TRUE //so we can die for real later
 	zombie.add_client_colour(/datum/client_colour/monochrome)
@@ -186,11 +184,13 @@
 
 
 	// This is the original first commit values for it, aka 5-7
-	zombie.STASPD = rand(5,7)
-
+	zombie.STASPD = zombie.STASPD - rand(4,8)
+	zombie.STASTR = zombie.STASTR - rand(4,8)
 	zombie.STAINT = 1
-	last_bite = world.time
+
+	last_bite = (world.time + 100)
 	has_turned = TRUE
+	
 	// Drop your helm and gorgies boy you won't need it anymore!!!
 	var/static/list/removed_slots = list(
 		SLOT_HEAD,
@@ -225,13 +225,10 @@
 		return
 	var/obj/item/bodypart/head = zombie.get_bodypart(BODY_ZONE_HEAD)
 	if(!head)
-		qdel(src)
 		return
 	if(zombie.stat != DEAD && !infected_wake)
-		qdel(src)
-		return
+		return 
 	if(istype(zombie.loc, /obj/structure/closet/dirthole) || istype(zombie.loc, /obj/structure/closet/crate/coffin))
-		qdel(src)
 		return
 
 
@@ -249,8 +246,8 @@
 	zombie.reload_fullscreen()
 	transform_zombie()
 	if(zombie.stat >= DEAD)
-		//could not revive
-		qdel(src)
+		//could not revive, but lets not delete their body. Will probably need testing.
+		return
 
 /mob/living/carbon/human/proc/zombie_seek()
 	set name = "Seek Brains"
@@ -262,21 +259,24 @@
 		return FALSE
 	var/closest_dist
 	var/the_dir
-	for(var/mob/living/carbon/human/humie as anything in GLOB.human_list)
-		if(humie == src)
-			continue
-		if(humie.mob_biotypes & MOB_UNDEAD)
-			continue
-		if(humie.stat >= DEAD)
-			continue
-		var/total_distance = get_dist(src, humie)
-		if(!closest_dist)
-			closest_dist = total_distance
-			the_dir = get_dir(src, humie)
-		else
-			if(total_distance < closest_dist)
+	//Skill of the zombies detection speed is based on their perception to a max of 300 delay.
+	playsound(src, 'modular_causticcove/sound/mobs/zombies/zombiesniffs3.ogg', 70, TRUE, 1)
+	if(do_after(src, min(200, (6 / (src.STAPER/100))), FALSE, src))
+		for(var/mob/living/carbon/human/humie as anything in GLOB.human_list)
+			if(humie == src)
+				continue
+			if(humie.mob_biotypes & MOB_UNDEAD)
+				continue
+			if(humie.stat >= DEAD)
+				continue
+			var/total_distance = get_dist(src, humie)
+			if(!closest_dist)
 				closest_dist = total_distance
 				the_dir = get_dir(src, humie)
+			else
+				if(total_distance < closest_dist)
+					closest_dist = total_distance
+					the_dir = get_dir(src, humie)
 	if(!closest_dist)
 		to_chat(src, span_warning("I failed to smell anything..."))
 		return FALSE
@@ -312,8 +312,11 @@
 		return
 	to_chat(src, span_danger("I feel horrible... REALLY horrible..."))
 	mob_timers["puke"] = world.time
-	vomit(1, blood = TRUE, stun = FALSE)
-	addtimer(CALLBACK(src, PROC_REF(wake_zombie)), 1 MINUTES)
+	
+	//Blood vomit with distance to show that they're very fucked.
+	vomit(1, blood = TRUE, stun = TRUE, distance = 2)
+	emote("groan")
+	addtimer(CALLBACK(src, PROC_REF(wake_zombie)), (1 MINUTES + ((0.2 * src.STACON) MINUTES)))
 	return zombie_antag
 
 /mob/living/carbon/human/proc/wake_zombie()
@@ -323,6 +326,6 @@
 	flash_fullscreen("redflash3")
 	to_chat(src, span_danger("It hurts... Is this really the end for me?"))
 	emote("scream") // heres your warning to others bro
-	Knockdown(1)
+	Knockdown(3)
 	zombie_antag.wake_zombie(TRUE)
 	return TRUE
