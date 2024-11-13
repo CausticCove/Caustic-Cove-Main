@@ -45,17 +45,17 @@
 				var/mob/living/carbon/human/bloodletter = M
 				var/mob/living/carbon/human/bloodcollector = user
 				if((get_location_accessible(M, BODY_ZONE_PRECISE_L_HAND) || get_location_accessible(M, BODY_ZONE_PRECISE_L_HAND)) && bloodletter.get_bleed_rate())
-					for(var/i in 1 to 10)
-						if(do_after(bloodcollector, 20, target = bloodletter))
-							var/obj/item/bodypart/handR = bloodletter.get_bodypart(check_zone(BODY_ZONE_PRECISE_R_HAND))
-							var/obj/item/bodypart/handL = bloodletter.get_bodypart(check_zone(BODY_ZONE_PRECISE_L_HAND))
-							if(reagents.total_volume < volume)
+					if(reagents.total_volume < volume)
+						for(var/i in 1 to 10)
+							if(do_after(bloodcollector, 20, target = bloodletter))
+								var/obj/item/bodypart/handR = bloodletter.get_bodypart(check_zone(BODY_ZONE_PRECISE_R_HAND))
+								var/obj/item/bodypart/handL = bloodletter.get_bodypart(check_zone(BODY_ZONE_PRECISE_L_HAND))
 								if(handR.has_wound(/datum/wound/slash) || handL.has_wound(/datum/wound/slash))
 									bloodletter.blood_volume -= 5
 									reagents.add_reagent(/datum/reagent/blood, 5)
 									user.visible_message(span_warning("[bloodcollector] collects the blood of [bloodletter] using \the [src]."), span_warning("I collect the blood of [bloodletter] using \the [src]."))
-							else
-								to_chat(user, span_warning("\The [src] is full."))
+					else
+						to_chat(user, span_warning("\The [src] is full."))
 
 			if(ishuman(M))
 				var/mob/living/carbon/human/humanized = M

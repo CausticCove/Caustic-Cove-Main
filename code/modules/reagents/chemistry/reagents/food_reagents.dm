@@ -54,6 +54,9 @@
 	if(prob(50))
 		M.heal_bodypart_damage(brute_heal,burn_heal, 0)
 		. = 1
+	if(ishuman(M))
+		if(M.blood_volume < BLOOD_VOLUME_SAFE)
+			M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_SAFE)
 	..()
 
 /datum/reagent/consumable/nutriment/on_new(list/supplied_data)
@@ -100,6 +103,9 @@
 /datum/reagent/consumable/nutriment/vitamin/on_mob_life(mob/living/carbon/M)
 	if(M.satiety < 600)
 		M.satiety += 30
+	if(ishuman(M))
+		if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+			M.blood_volume = min(M.blood_volume+25, BLOOD_VOLUME_NORMAL)
 	. = ..()
 
 /datum/reagent/consumable/cooking_oil
