@@ -77,6 +77,18 @@
 		/obj/item/clothing/head/peaceflower = 1)
 	craftdiff = 3
 
+/datum/crafting_recipe/roguetown/alchemy/bloodhealthpot
+	name = "Blood Infused Healing Potion"
+	result = list(/obj/item/reagent_containers/glass/bottle/rogue/bloodhealthpot)
+	reqs = list(
+		/obj/item/reagent_containers/glass/bottle = 1,
+		/obj/item/reagent_containers/powder/sublimate = 1,
+		/datum/reagent/blood = 20,
+		/datum/reagent/water = 20,
+		/obj/item/rogueore/gold = 1
+	)
+	craftdiff = 4
+
 //////////////////////
 //IMBUEMENT CRAFTING//
 //////////////////////

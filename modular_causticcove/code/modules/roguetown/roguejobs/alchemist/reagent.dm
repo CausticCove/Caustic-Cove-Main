@@ -150,6 +150,61 @@
 		M.adjustFireLoss(burndmg, 0)
 	..()
 	. = 1
+
+/datum/reagent/medicine/bloodhealthpot
+	name = "Blood Infused Health Potion"
+	description = "Greater healing, at a price."
+	color = "#a30000"
+	taste_description = "red iron"
+
+	//Very easy to overdose. Drink with caution.
+	overdose_threshold = 45
+
+	//Lasts 50% longer than a normal health pot
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	alpha = 255
+
+/datum/reagent/medicine/bloodhealthpot/on_mob_life(mob/living/carbon/M)
+	//Cannot consume this with normal health pots.
+	if(M.reagents.has_reagent(/datum/reagent/medicine/healthpot || /datum/reagent/medicine/healthpotnew))
+		M.adjustBruteLoss(5)
+		//Essentially quadrouple the speed at which it purges from the body as to not perma kill someone for too long.
+		holder.remove_reagent(/datum/reagent/medicine/bloodhealthpot, 1.75)
+		//Also remove these.
+		holder.remove_reagent(/datum/reagent/medicine/healthpot, 1)
+		holder.remove_reagent(/datum/reagent/medicine/healthpotnew, 1)
+		if(prob(10))
+			to_chat(M, span_warning(pick("I can taste iron in the back of my throat...", "I can feel my organs twisting...", "My bones hurt...")))
+		return
+
+	var/list/wCount = M.get_wounds()
+	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+		M.blood_volume = min(M.blood_volume+75, BLOOD_VOLUME_MAXIMUM)
+	else
+		//can overfill you with blood, but at a slower rate
+		M.blood_volume = min(M.blood_volume+20, BLOOD_VOLUME_MAXIMUM)
+	if(wCount.len > 0)
+		//This potion is great at fixing blood loss. However, not so much at fixing damage.
+		M.heal_wounds(2)
+		M.update_damage_overlays()
+	M.adjustBruteLoss(-0.6*REM, 0)
+	M.adjustFireLoss(-0.6*REM, 0)
+	M.adjustOxyLoss(-0.6, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.6*REM)
+	M.adjustCloneLoss(-0.6*REM, 0)
+
+/datum/reagent/medicine/bloodhealthpot/overdose_process(mob/living/M)
+	//Overdosing has the same effect as mixing the potions, you're essentially bloating from the inside out with blood.
+	if(M.reagents.has_reagent(/datum/reagent/medicine/healthpot || /datum/reagent/medicine/healthpotnew))
+		M.adjustBruteLoss(5)
+		//Essentially quadrouple the speed at which it purges from the body as to not perma kill someone for too long.
+		holder.remove_reagent(/datum/reagent/medicine/bloodhealthpot, 1.75)
+		//Also remove these.
+		holder.remove_reagent(/datum/reagent/medicine/healthpot, 1)
+		holder.remove_reagent(/datum/reagent/medicine/healthpotnew, 1)
+		if(prob(10))
+			to_chat(M, span_warning(pick("I can taste iron in the back of my throat...", "I can feel my organs twisting...", "My bones hurt...")))
+
 //////////////////
 //EFFECT POTIONS//
 //////////////////

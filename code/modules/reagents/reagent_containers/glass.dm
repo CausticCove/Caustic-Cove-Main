@@ -54,6 +54,9 @@
 									bloodletter.blood_volume -= 5
 									reagents.add_reagent(/datum/reagent/blood, 5)
 									user.visible_message(span_warning("[bloodcollector] collects the blood of [bloodletter] using \the [src]."), span_warning("I collect the blood of [bloodletter] using \the [src]."))
+								else
+									to_chat(user, span_warning("The hand is not bleeding. Make an incision."))
+									break
 					else
 						to_chat(user, span_warning("\The [src] is full."))
 

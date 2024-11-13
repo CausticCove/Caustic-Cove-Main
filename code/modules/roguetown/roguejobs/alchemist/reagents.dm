@@ -13,7 +13,7 @@
 		M.reagents.remove_reagent(/datum/reagent/medicine/healthpot, 2) //No overhealing.
 	var/list/wCount = M.get_wounds()
 	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
-		M.blood_volume = min(M.blood_volume+50, BLOOD_VOLUME_MAXIMUM)
+		M.blood_volume = min(M.blood_volume+25, BLOOD_VOLUME_MAXIMUM)
 	else
 		//can overfill you with blood, but at a slower rate
 		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)

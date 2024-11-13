@@ -28,6 +28,9 @@
 /obj/item/reagent_containers/glass/bottle/rogue/virilitypot
 	list_reagents = list(/datum/reagent/medicine/virilitypot = 40)
 
+/obj/item/reagent_containers/glass/bottle/rogue/bloodhealthpot
+	list_reagents = list(/datum/reagent/medicine/bloodhealthpot = 40)
+
 //////////////
 //IMBUEMENTS//
 //////////////
