@@ -35,7 +35,26 @@
 	if(iscarbon(owner))
 		REMOVE_TRAIT(owner, TRAIT_ABYSSORS_BLESSING, TRAIT_GENERIC)
 	. = ..()
-	
+
+/datum/status_effect/buff/fyritiusbuff
+	id = "fyritiusbuff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/fyritiusbuff
+	duration = 3 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/fyritiusbuff
+	name = "Fyrite Brew"
+	desc = ""
+	icon_state = "buff"
+
+/datum/status_effect/buff/fyritiusbuff/on_apply()  //Please if we can add some sort of icon or effect on players do help, I don't know how sprites work haha
+	if(iscarbon(owner))
+		ADD_TRAIT(owner, TRAIT_FLAMING_TOUCH, TRAIT_GENERIC)
+	. = ..()
+
+/datum/status_effect/buff/fyritiusbuff/on_remove()
+	if(iscarbon(owner))
+		REMOVE_TRAIT(owner, TRAIT_FLAMING_TOUCH, TRAIT_GENERIC)
+	. = ..()
 
 ////////////////
 //POTION BUFFS//

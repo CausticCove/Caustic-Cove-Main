@@ -92,7 +92,8 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		//Hearthstone Port
 		"TRAIT_MALUMSGRACE" = TRAIT_MALUMSGRACE,
 		//Caustic Changes
-		"TRAIT_ABYSSORS_BLESSING" = TRAIT_ABYSSORS_BLESSING // NOT To be confused with Abyssors Swim! You will still fatigue in water!
+		"TRAIT_ABYSSORS_BLESSING" = TRAIT_ABYSSORS_BLESSING, // NOT To be confused with Abyssors Swim! You will still fatigue in water!
+		"TRAIT_FLAMING_TOUCH" = TRAIT_FLAMING_TOUCH
 		
 	),
 	/obj/item/bodypart = list(

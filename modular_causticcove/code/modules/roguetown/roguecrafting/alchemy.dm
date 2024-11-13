@@ -25,6 +25,17 @@
 	)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/alchemy/fyritiusbrew
+	name = "Fyritius Brew"
+	result = list(/obj/item/reagent_containers/glass/bottle/rogue/fyritiusbrew)
+	reqs = list(
+		/obj/item/reagent_containers/glass/bottle = 1,
+		/obj/item/reagent_containers/powder/sublimate = 1,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 2,
+		/obj/item/rogueore/coal = 2
+	)
+	craftdiff = 1
+
 ///////////////////
 //POTION CRAFTING//
 ///////////////////

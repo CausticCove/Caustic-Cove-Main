@@ -9,6 +9,9 @@
 /obj/item/reagent_containers/glass/bottle/rogue/abyssorbrew
 	list_reagents = list(/datum/reagent/medicine/abyssorbrew = 20)
 
+/obj/item/reagent_containers/glass/bottle/rogue/fyritiusbrew
+	list_reagents = list(/datum/reagent/medicine/fyritiusbrew = 20)
+	
 ///////////
 //POTIONS//
 ///////////

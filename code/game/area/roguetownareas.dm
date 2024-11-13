@@ -509,6 +509,13 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 
+/area/rogue/indoors/town/alchemist
+	name = "Alchemist"
+	icon_state = "physician"
+	droning_sound = 'sound/music/area/sargoth.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+
 /area/rogue/indoors/town/bath
 	name = "Baths"
 	icon_state = "bath"

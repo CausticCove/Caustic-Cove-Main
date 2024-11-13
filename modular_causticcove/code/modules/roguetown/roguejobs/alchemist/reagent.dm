@@ -16,7 +16,7 @@
 	name = "Ravox Brew"
 	description = "Increases one's strength, but... at what cost?"
 	reagent_state = LIQUID
-	color = "#e03400"
+	color = "#802e15"
 	taste_description = "broiling rage"
 	overdose_threshold = 19
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
@@ -25,7 +25,7 @@
 /datum/reagent/medicine/ravoxbrew/overdose_process(mob/living/M)
 	M.apply_status_effect(/datum/status_effect/buff/ravoxbuff)
 	if(holder.has_reagent(/datum/reagent/medicine/ravoxbrew))
-		M.reagents.add_reagent(/datum/reagent/berrypoison, 5)
+		M.reagents.add_reagent(/datum/reagent/berrypoison, 1.5)
 		holder.remove_reagent(/datum/reagent/medicine/ravoxbrew, 20)
 	. = ..()
 
@@ -49,6 +49,27 @@
 	M.apply_status_effect(/datum/status_effect/buff/abyssorbuff)
 	if(holder.has_reagent(/datum/reagent/medicine/abyssorbrew))
 		holder.remove_reagent(/datum/reagent/medicine/abyssorbrew, 20)
+	. = ..()
+
+/datum/reagent/medicine/fyritiusbrew
+	name = "Fyritius Brew"
+	description = "Burn all who oppose you, and watch your skin pop with rage..."
+	reagent_state = LIQUID
+	color = "#ff4800"
+	taste_description = "flames itself"
+	overdose_threshold = 19
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
+	alpha = 255
+
+/datum/reagent/medicine/fyritiusbrew/overdose_process(mob/living/M)
+	//Make sure to not accidentally apply this trait twice.
+	if(HAS_TRAIT(M, TRAIT_FLAMING_TOUCH))
+		if(holder.has_reagent(/datum/reagent/medicine/fyritiusbrew))
+			holder.remove_reagent(/datum/reagent/medicine/fyritiusbrew, 20)
+		return
+	M.apply_status_effect(/datum/status_effect/buff/fyritiusbuff)
+	if(holder.has_reagent(/datum/reagent/medicine/fyritiusbrew))
+		holder.remove_reagent(/datum/reagent/medicine/fyritiusbrew, 20)
 	. = ..()
 
 ///////////////////
