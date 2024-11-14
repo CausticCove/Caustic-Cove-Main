@@ -1150,6 +1150,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, span_warning("I don't want to harm [target]!"))
 		return FALSE
+
+	if(HAS_TRAIT(user, TRAIT_FLAMING_TOUCH))
+		user.adjustFireLoss(10)
+		if(prob(20))
+			to_chat(user, span_warning("My arms burn!!!"))
+
 	if(target.check_block())
 		target.visible_message(span_warning("[target] blocks [user]'s attack!"), \
 						span_danger("I block [user]'s attack!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
@@ -1226,6 +1232,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			nodmg = TRUE
 			target.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 		else
+
+			if(HAS_TRAIT(user, TRAIT_FLAMING_TOUCH))
+				target.adjustFireLoss(10)
+				to_chat(target, span_danger("Flames from their fists cling to me!"))
+
 			affecting.bodypart_attacked_by(user.used_intent.blade_class, damage, user, selzone, crit_message = TRUE)
 		log_combat(user, target, "punched")
 

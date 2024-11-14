@@ -18,7 +18,7 @@
 	icon = 'modular/Neu_Food/icons/food.dmi'
 	desc = ""
 	slices_num = 0
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
 	foodtype = GRAIN
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	cooktime = 30 SECONDS

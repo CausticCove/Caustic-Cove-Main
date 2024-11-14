@@ -9,7 +9,7 @@
 
 /*	..................   Pepper steak   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/peppersteak
-	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE, /datum/reagent/consumable/nutriment/vitamin = (MEAL_MEAGRE/3))
 	tastes = list("steak" = 1, "pepper" = 1)
 	name = "peppersteak"
 	desc = "Roasted flesh flanked with a generous coating of ground pepper for intense flavor."
@@ -38,7 +38,7 @@
 	desc = "Roasted flesh garnished with tender fried onions. Fragrant and slathered with juices of both ingredients to a perfect mouth-watering sauce."
 	icon_state = "onionsteak"
 	tastes = list("steak" = 1, "onions" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS, /datum/reagent/consumable/nutriment/vitamin = (SNACK_NUTRITIOUS/3))
 	foodtype = MEAT
 	warming = 5 MINUTES
 	rotprocess = SHELFLIFE_DECENT
@@ -59,7 +59,7 @@
 
 /*	.................   Wiener Cabbage   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/wienercabbage
-	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE, /datum/reagent/consumable/nutriment/vitamin = (MEAL_MEAGRE/3))
 	tastes = list("savory sausage" = 1, "cabbage" = 1)
 	name = "wiener on cabbage"
 	desc = "A rich and heavy meal, a perfect ration for a soldier on the march."
@@ -83,7 +83,7 @@
 
 /*	.................   Wiener & Fried potato   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotato
-	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE, /datum/reagent/consumable/nutriment/vitamin = (MEAL_MEAGRE/3))
 	tastes = list("savory sausage" = 1, "potato" = 1)
 	name = "wiener on tato"
 	desc = "Stout and nourishing."
@@ -136,7 +136,7 @@
 
 /*	.................   Wiener & Fried onions   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/wieneronions
-	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE, /datum/reagent/consumable/nutriment/vitamin = (MEAL_MEAGRE/3))
 	tastes = list("savory sausage" = 1, "fried onions" = 1)
 	name = "wiener and onions"
 	desc = "Stout and flavourful."
@@ -190,7 +190,7 @@
 
 /*	.................   Wiener & potato & onions   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions
-	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE, /datum/reagent/consumable/nutriment/vitamin = (MEAL_MEAGRE/3))
 	tastes = list("savory sausage" = 1, "potato" = 1)
 	name = "wiener meal"
 	desc = "Stout and nourishing."
@@ -213,7 +213,7 @@
 
 /*	.................   Frybird & Tato   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/frybirdtato
-	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE, /datum/reagent/consumable/nutriment/vitamin = (MEAL_MEAGRE/3))
 	tastes = list("frybird" = 1, "tato" = 1)
 	name = "frybird with a tato"
 	desc = "Hearty, comforting and rich - Alleged favorite dish of Ravox."
@@ -237,7 +237,7 @@
 
 /*	.................   Valerian Omelette   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/tiberian
-	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE, /datum/reagent/consumable/nutriment/vitamin = (MEAL_MEAGRE/3))
 	tastes = list("fried cackleberries" = 1, "cheese" = 1)
 	name = "valerian omelette"
 	desc = "Fried cackleberries on a bed of half-melted cheese, a dish from distant lands."
@@ -315,7 +315,7 @@
 	icon_state = "roastchicken"
 	tastes = list("tasty birdmeat" = 1)
 	cooked_type = null
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE, /datum/reagent/consumable/nutriment/vitamin = (MEAL_MEAGRE/3))
 	rotprocess = SHELFLIFE_DECENT
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/attackby(obj/item/I, mob/user, params)

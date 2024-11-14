@@ -39,7 +39,7 @@
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "raisins5"
 	bitesize = 5
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR, /datum/reagent/consumable/nutriment/vitamin = (SNACK_POOR/3))
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("dried fruit" = 1)
 	foodtype = GRAIN
@@ -145,7 +145,7 @@
 	slices_num = 4
 	bitesize = 5
 	slice_batch = FALSE
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS, /datum/reagent/consumable/nutriment/vitamin = (SNACK_NUTRITIOUS/3))
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice
 	tastes = list("salted meat" = 1)
 	rotprocess = null
@@ -175,7 +175,7 @@
 	name = "salumoi"
 	icon_state = "salumoi_slice"
 	fried_type = null
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR, /datum/reagent/consumable/nutriment/vitamin = (SNACK_POOR/3))
 	bitesize = 1
 	tastes = list("salted meat" = 1)
 
@@ -190,7 +190,7 @@
 	slice_path = null
 	tastes = list("salted meat" = 1)
 	rotprocess = null
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS, /datum/reagent/consumable/nutriment/vitamin = (SNACK_NUTRITIOUS/3))
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/coppiette/On_Consume(mob/living/eater)
 	..()
@@ -215,7 +215,7 @@
 	slice_path = null
 	tastes = list("salted meat" = 1)
 	rotprocess = null
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS, /datum/reagent/consumable/nutriment/vitamin = (SNACK_NUTRITIOUS/3))
 	dropshrink = 0.6
 
 /obj/item/reagent_containers/food/snacks/rogue/saltfish/CheckParts(list/parts_list, datum/crafting_recipe/R)
@@ -227,7 +227,7 @@
 /obj/item/reagent_containers/food/snacks/fat/salo
 	name = "salo"
 	icon_state = "salo4"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY, /datum/reagent/consumable/nutriment/vitamin = (SNACK_CHUNKY/3))
 	bitesize = 4
 	slice_path = /obj/item/reagent_containers/food/snacks/fat/salo/slice
 	slices_num = 4
@@ -258,7 +258,7 @@
 	bitesize = 2
 	slices_num = FALSE
 	slice_path = FALSE
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR, /datum/reagent/consumable/nutriment/vitamin = (SNACK_POOR/3))
 
 
 
@@ -313,7 +313,7 @@
 	name = "stick of butter"
 	desc = ""
 	icon_state = "butter6"
-	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTER_NUTRITION)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTER_NUTRITION, /datum/reagent/consumable/nutriment/vitamin = (BUTTER_NUTRITION/3))
 	foodtype = DAIRY
 	slice_path = /obj/item/reagent_containers/food/snacks/butterslice
 	slices_num = 6
@@ -347,7 +347,7 @@
 	name = "butter"
 	desc = ""
 	foodtype = DAIRY
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/vitamin = 2)
 
 
 /*	............   Making fresh cheese   ................ */
@@ -485,7 +485,7 @@
 	name = "fresh cheese"
 	icon_state = "freshcheese"
 	bitesize = 1
-	list_reagents = list(/datum/reagent/consumable/nutriment = FRESHCHEESE_NUTRITION)
+	list_reagents = list(/datum/reagent/consumable/nutriment = FRESHCHEESE_NUTRITION, /datum/reagent/consumable/nutriment/vitamin = (FRESHCHEESE_NUTRITION/3))
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("cheese" = 1)
 	foodtype = GRAIN
@@ -498,7 +498,7 @@
 	name = "wheel of cheese"
 	icon_state = "cheesewheel"
 	bitesize = 6
-	list_reagents = list(/datum/reagent/consumable/nutriment = FRESHCHEESE_NUTRITION*4)
+	list_reagents = list(/datum/reagent/consumable/nutriment = FRESHCHEESE_NUTRITION*4, /datum/reagent/consumable/nutriment/vitamin = (FRESHCHEESE_NUTRITION/3)*4)
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("cheese" = 1)
 	eat_effect = null
@@ -520,7 +520,7 @@
 	name = "wedge of cheese"
 	icon_state = "cheese_wedge"
 	bitesize = 3
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT, /datum/reagent/consumable/nutriment/vitamin = (SNACK_DECENT/3))
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("cheese" = 1)
 	eat_effect = null

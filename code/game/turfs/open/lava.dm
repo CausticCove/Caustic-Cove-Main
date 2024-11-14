@@ -241,8 +241,8 @@
 				if("lava" in live.weather_immunities)
 					continue
 
-			if(iscarbon(L))
-				var/mob/living/carbon/C = L
+//			if(iscarbon(L))
+//				var/mob/living/carbon/C = L
 //				var/obj/item/clothing/S = C.get_item_by_slot(SLOT_ARMOR)
 //				var/obj/item/clothing/H = C.get_item_by_slot(SLOT_HEAD)
 

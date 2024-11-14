@@ -220,7 +220,7 @@
 
 /obj/item/reagent_containers/powder/moondust
 	name = "moondust"
-	desc = ""
+	desc = "Known to have magical properties in the world of the Arcyne. Also a great way to get high."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "moondust"
 	possible_transfer_amounts = list()
@@ -259,7 +259,7 @@
 
 /obj/item/reagent_containers/powder/moondust_purest
 	name = "moondust"
-	desc = ""
+	desc = "The finest form of Moondust. Known of aiding creation of the strongest of potions out there, resented for how intoxicating it is alone."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "moondust_purest"
 	possible_transfer_amounts = list()

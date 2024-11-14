@@ -53,7 +53,7 @@
 	animal_species = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
 						/obj/item/reagent_containers/food/snacks/fat = 2,
-						/obj/item/natural/hide = 4, /obj/item/natural/bundle/bone/full =1)
+						/obj/item/natural/hide = 4, /obj/item/natural/bundle/bone/full = 1, /obj/item/natural/alchemy/antler = 1)
 	base_intents = list(/datum/intent/simple/headbutt)
 	health = 156
 	maxHealth = 156

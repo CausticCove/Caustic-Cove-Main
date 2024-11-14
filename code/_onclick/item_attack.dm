@@ -76,6 +76,11 @@
 		to_chat(user, span_warning("I don't want to harm other living beings!"))
 		return
 
+	if(HAS_TRAIT(user, TRAIT_FLAMING_TOUCH))
+		user.adjustFireLoss(5)
+		if(prob(20))
+			to_chat(user, span_warning("My arms bristle with heat!"))
+
 	M.lastattacker = user.real_name
 	M.lastattackerckey = user.ckey
 	if(M.mind)
@@ -135,6 +140,10 @@
 			if(!user.used_intent.swingdelay)
 				user.do_attack_animation(M, visual_effect_icon = user.used_intent.animname)
 		return
+
+	if(HAS_TRAIT(user, TRAIT_FLAMING_TOUCH))
+		M.adjustFireLoss(10)
+		to_chat(M, span_danger("Flames from their arms lurch to me!"))
 
 	if(user.zone_selected == BODY_ZONE_PRECISE_R_INHAND)
 		var/offh = 0
@@ -288,7 +297,10 @@
 				return 0
 			var/mob/living/miner = user
 			var/mineskill = miner.mind.get_skill_level(/datum/skill/labor/mining)
-			newforce = newforce * (8+(mineskill*1.5))
+			if(miner.has_status_effect(/datum/status_effect/buff/mfire)) // Malum's fire buff.
+				newforce = newforce * (8+(mineskill*1.5)*2)
+			else
+				newforce = newforce * (8+(mineskill*1.5))
 			shake_camera(user, 1, 1)
 			miner.mind.add_sleep_experience(/datum/skill/labor/mining, (miner.STAINT*0.2))
 

@@ -285,3 +285,16 @@
 		held_items[P]["NAME"] = P.name
 		held_items[P]["PRICE"] = 10
 	update_icon()
+
+
+/obj/structure/roguemachine/vendor/alchemist
+	keycontrol = "alchemist"
+
+/obj/structure/roguemachine/vendor/alchemist/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/reagent_containers/glass/bottle/rogue/ravoxbrew, /obj/item/reagent_containers/glass/bottle/rogue/abyssorbrew, /obj/item/reagent_containers/glass/bottle/rogue/fyritiusbrew))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 40
+	update_icon()

@@ -234,6 +234,9 @@
 
 /datum/reagent/water/blessed/on_mob_life(mob/living/carbon/M)
 	. = ..()
+	if(ishuman(M))
+		if(M.blood_volume < BLOOD_VOLUME_SAFE)
+			M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_SAFE)
 	if (M.mob_biotypes & MOB_UNDEAD)
 		M.adjustFireLoss(0.5*REM)
 	else

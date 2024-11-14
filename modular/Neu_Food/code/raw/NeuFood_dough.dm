@@ -275,7 +275,7 @@
 	name = "hardtack"
 	desc = "Very, very hard and dry."
 	icon_state = "tack6"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT, /datum/reagent/consumable/nutriment/vitamin = (SNACK_DECENT/3))
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("spelt" = 1)
 	bitesize = 6
@@ -302,7 +302,7 @@
 	icon_state = "loaf6"
 	slices_num = 6
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/breadslice
-	list_reagents = list(/datum/reagent/consumable/nutriment = DOUGH_NUTRITION)
+	list_reagents = list(/datum/reagent/consumable/nutriment = DOUGH_NUTRITION, /datum/reagent/consumable/nutriment/vitamin = (DOUGH_NUTRITION/3))
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("bread" = 1)
 	slice_batch = FALSE
@@ -402,12 +402,12 @@
 	name = "buttered toast"
 	icon_state = "toast_butter"
 	tastes = list("butter" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT, /datum/reagent/consumable/nutriment/vitamin = (SNACK_DECENT/3))
 
 // -------------- BREAD WITH FOOD ON IT (not american sandwich) -----------------
 /obj/item/reagent_containers/food/snacks/rogue/sandwich
 	desc = "A delightful piece of heaven, in every slice."
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS, /datum/reagent/consumable/nutriment/vitamin = (SNACK_NUTRITIOUS/3))
 	rotprocess = 30 MINUTES
 	eat_effect = /datum/status_effect/buff/foodbuff
 
@@ -442,7 +442,7 @@
 	name = "bun"
 	desc = "Portable, quaint and entirely consumable"
 	icon_state = "bun"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT, /datum/reagent/consumable/nutriment/vitamin = (SNACK_DECENT/3))
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("bread" = 1)
 	bitesize = 2
@@ -479,7 +479,7 @@
 	name = "fresh cheese bun"
 	desc = "A treat from the Grenzelhoft kitchen."
 	icon_state = "cheesebun"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION+FRESHCHEESE_NUTRITION)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION+FRESHCHEESE_NUTRITION, /datum/reagent/consumable/nutriment/vitamin = (SMALLDOUGH_NUTRITION+FRESHCHEESE_NUTRITION/3))
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("crispy bread and cream cheese" = 1)
 	foodtype = GRAIN | DAIRY
@@ -490,7 +490,7 @@
 	name = "frybread"
 	desc = "Flatbread fried at high heat with butter to give it a crispy outside. Staple of the elven kitchen."
 	icon_state = "frybread"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT, /datum/reagent/consumable/nutriment/vitamin = (SNACK_DECENT/3))
 	tastes = list("crispy bread with a soft inside" = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
@@ -501,7 +501,7 @@
 	name = "pastry"
 	desc = "Favored among children and sweetlovers."
 	icon_state = "pastry"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT, /datum/reagent/consumable/nutriment/vitamin = (SNACK_DECENT/3))
 	tastes = list("crispy butterdough" = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
@@ -522,7 +522,7 @@
 	desc = "A treat made for a wretched dog like you."
 	icon_state = "biscuit"
 	filling_color = "#F0E68C"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT+SNACK_POOR)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT+SNACK_POOR, /datum/reagent/consumable/nutriment/vitamin = (SNACK_DECENT+SNACK_POOR/3))
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
 	tastes = list("crispy butterdough" = 1, "raisins" = 1)
@@ -541,7 +541,7 @@
 	name = "prezzel"
 	desc = "The next best thing since sliced bread, naturally, made by a dwarf."
 	icon_state = "prezzel"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT, /datum/reagent/consumable/nutriment/vitamin = (SNACK_DECENT/3))
 	tastes = list("crispy butterdough" = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
@@ -553,7 +553,7 @@
 	name = "half-done raisin dough"
 	desc = "Add more raisins!"
 	icon_state = "dough_raisin"
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = 30 MINUTES
 
@@ -581,7 +581,7 @@
 	icon_state = "raisinbreaduncooked"
 	slices_num = 0
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/raisinbread
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = 30 MINUTES
 
@@ -591,7 +591,7 @@
 	icon_state = "raisinbread6"
 	slices_num = 6
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice
-	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_AVERAGE)
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_AVERAGE, /datum/reagent/consumable/nutriment/vitamin = (MEAL_AVERAGE/3))
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("bread" = 1,"dried fruit" = 1)
 	slice_batch = FALSE
@@ -622,7 +622,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice
 	name = "raisin loaf slice"
 	icon_state = "raisinbread_slice"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT-1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT-1, /datum/reagent/consumable/nutriment/vitamin = (SNACK_DECENT/3)-1)
 	w_class = WEIGHT_CLASS_NORMAL
 	cooked_type = null
 	tastes = list("spelt" = 1,"dried fruit" = 1)
@@ -636,7 +636,7 @@
 	name = "cake base"
 	desc = "With this sweet thing, you shall make them sing."
 	icon_state = "cake"
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY
 	rotprocess = SHELFLIFE_LONG
@@ -677,7 +677,7 @@
 	icon_state = "honeycakeuncook"
 	slices_num = 0
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/hcake
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY | SUGAR
 	rotprocess = SHELFLIFE_DECENT
@@ -688,7 +688,7 @@
 	icon_state = "honeycake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/hcakeslice
-	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 48, /datum/reagent/consumable/nutriment/vitamin = (48/3))
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("cake"=1, "delicious honeyfrosting"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
@@ -702,7 +702,7 @@
 	name = "zybantine cake slice"
 	icon_state = "honeycakeslice"
 	slices_num = 0
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT, /datum/reagent/consumable/nutriment/vitamin = (SNACK_DECENT/3))
 	w_class = WEIGHT_CLASS_NORMAL
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
@@ -713,7 +713,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/hcakeslice/plated
 	icon_state = "honeycakeslice_plated"
 	rotprocess = SHELFLIFE_EXTREME
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
 	trash = /obj/item/cooking/platter
 
 // -------------- CHEESECAKE -----------------
@@ -723,7 +723,7 @@
 	icon_state = "cheesecakeuncook"
 	slices_num = 0
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/ccake
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
 	foodtype = GRAIN | DAIRY | SUGAR
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
@@ -734,7 +734,7 @@
 	icon_state = "cheesecake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/ccakeslice
-	list_reagents = list(/datum/reagent/consumable/nutriment = 48)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 48, /datum/reagent/consumable/nutriment/vitamin = (48/3))
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("cake"=1, "creamy cheese"=1)
 	foodtype = GRAIN | DAIRY | SUGAR
@@ -748,7 +748,7 @@
 	name = "cheesecake slice"
 	icon_state = "cheesecake_slice"
 	slices_num = 0
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT, /datum/reagent/consumable/nutriment/vitamin = (SNACK_DECENT/3))
 	w_class = WEIGHT_CLASS_NORMAL
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR

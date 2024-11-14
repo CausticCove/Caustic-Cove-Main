@@ -18,6 +18,14 @@
 				new S.mill_result(get_turf(loc))
 				qdel(S)
 			return
+	if(istype(W, /obj/item/roguegem))
+		var/obj/item/roguegem/G = W
+		if(G.mill_result)
+			playsound(get_turf(user), 'modular/Neu_Food/sound/milling.ogg', 100, TRUE, -1)
+			if(do_after(user, 30, target = src))
+				new G.mill_result(get_turf(loc))
+				qdel(G)
+			return
 	if(istype(W, /obj/item/natural/stone))
 		playsound(get_turf(user), 'modular/Neu_Food/sound/milling.ogg', 100, TRUE, -1)
 		if(do_after(user, 10, target = src))

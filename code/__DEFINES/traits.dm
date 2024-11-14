@@ -96,6 +96,12 @@
 #define TRAIT_LEPROSY "Leprosy"
 #define TRAIT_NUDE_SLEEPER "Nude Sleeper"
 
+//Hearthstone Port
+#define TRAIT_MALUMSGRACE "Malum's Grace"
+//Caustic Additions
+#define TRAIT_ABYSSORS_BLESSING "Abyssor's Blessing"
+#define TRAIT_FLAMING_TOUCH "Flaming Touch"
+
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
 	TRAIT_GUARDSMAN = span_info("I am vigilant in my duties. In the town of Azure Peak, my abilities are sharper due to my routine and familiarity."),
@@ -165,9 +171,14 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CABAL = span_info("In secret, I have studied the ways of Her ascension, and know of others of the Cabal."),
 	TRAIT_HORDE = span_info("BY BLOOD AND BONE, I AM OF GRAGGAR'S ANOINTED! I FEEL THE STRENGTH IN OTHERS WHO ARE THE SAME."),
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others."),
+//Hearthstone Port
+	TRAIT_MALUMSGRACE = "Malum is my muse.",
+  //Caustic Changes
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_FORTITUDE = span_info("The typical drain I feel from day to day life is lessened, my athleticism greater."),
 	TRAIT_GUIDANCE = span_info("Arcyne assistance guides my weapons."),
+	TRAIT_ABYSSORS_BLESSING = span_info("I feel like I can course through water with ease... Yet, my body tires faster than I remembered."),
+	TRAIT_FLAMING_TOUCH = span_info("My arms surge with flames, each strike I deal burns my enemies at cost of my own health!"),
 	TRAIT_DECAYEDHANDS = span_warning("My hands have decayed for far too long, I do not have the dexterity to pick up items.")
 ))
 
