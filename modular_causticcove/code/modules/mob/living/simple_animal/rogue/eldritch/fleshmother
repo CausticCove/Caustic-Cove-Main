@@ -11,6 +11,7 @@
 	turns_per_move = 3
 	see_in_dark = 1
 	move_to_delay = 6
+	pixel_x = -16
 	base_intents = list(/datum/intent/simple/headbutt)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
 						/obj/item/natural/hide = 4,
@@ -29,8 +30,8 @@
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
 	//Protect the babies!
-	health = 133
-	maxHealth = 133
+	health = 166
+	maxHealth = 166
 	STACON = 16
 	STAEND = 16
 	STASTR = 5
@@ -63,6 +64,7 @@
 	icon_living = "goliath_baby"
 	icon_dead = "goliath_baby_dead"
 	var/icon_crying = "goliath_baby_cry"
+	var/icon_enraged = "goliath_baby_enraged"
 	gender = FEMALE
 	emote_hear = null	
 	emote_see = null
@@ -102,10 +104,10 @@
 	duration = 10
 
 
-//Make sure we aren't doing the same as the mother.
+//Make sure we aren't doing the same as the mother and gib upon death immediately.
 /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother_bab/death(gibbed)
-	gib()
 	. = ..()
+	gib()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother_bab/Initialize()
 	for(var/mob/living/simple_animal/D in range(2, get_turf(src)))
@@ -116,15 +118,30 @@
 
 //Cry if we see mother is dead
 /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother_bab/proc/cry_sequence()
-	toggle_ai(AI_OFF)
-	icon_state = icon_crying
-	src.emote("cry")
-	spawn(60)
-		if(src.stat == CONSCIOUS)
-			toggle_ai(AI_ON)
-			icon_state = icon_living
-			src.emote("growl")
-			visible_message("Angry chirps can be heard!")
+	if(prob(66))
+		toggle_ai(AI_OFF)
+		icon_state = icon_crying
+		emote("cry")
+		spawn(60)
+			if(stat == CONSCIOUS)
+				toggle_ai(AI_ON)
+				icon_state = icon_living
+				emote("growl")
+				visible_message("Angry chirps can be heard!")
+				//Momma's dead?! I'M GONNA FUCKING KILL YOU!!! (+5 damage bonus)
+				melee_damage_lower = 10
+				melee_damage_upper = 20
+				name = "Upset Beastie"
+				if(prob(3))
+					//Main character syndrome. Huge damage, be afraid. But less dodge chance.
+					visible_message(span_warningbig("A GUTTERAL CRY CAN BE HEARD!!!"))
+					melee_damage_lower = 20
+					melee_damage_upper = 40
+					defprob = 25
+					icon_state = icon_enraged
+					name = "Enraged Beastie"
+					desc = "It's a beautiful day outside. Birds are screeching, flowers are wilting... on days like these, adventurers like you... Should be burning in hell."
+	else
 
 //Spawn the beasties around the mother, make sure it's not in a wall
 /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother/death(gibbed)
@@ -134,7 +151,7 @@
 		if(isfloorturf(T))
 			turfs += T
 	for(var/i in 1 to rand(1,6))
-		spawn(rand(20, 120))
+		spawn(rand(0, 60))
 			spawn_location = pick(turfs)
 			new /obj/effect/temp_visual/beastie_spawn_location(pick(spawn_location))
 			playsound(spawn_location, 'modular_causticcove/sound/mobs/eldritch/egghatching.ogg', 100, TRUE)
