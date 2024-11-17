@@ -3640,4 +3640,5 @@
 #include "modular_causticcove\code\modules\roguetown\roguecrafting\alchemy.dm"
 #include "modular_causticcove\code\modules\roguetown\roguejobs\alchemist\containers.dm"
 #include "modular_causticcove\code\game\area\objects\items\rogueitems\natural\animals.dm"
+#include "modular_causticcove\code\modules\mob\living\simple_animal\rogue\eldritch\fleshmother"
 // END_INCLUDE
