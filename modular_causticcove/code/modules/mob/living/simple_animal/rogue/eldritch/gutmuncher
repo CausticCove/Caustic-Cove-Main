@@ -1,0 +1,103 @@
+/mob/living/simple_animal/hostile/retaliate/rogue/gutmuncher
+	icon = 'modular_causticcove/icons/monsters/64x64monsters.dmi'
+	name = "Gut Muncher"
+	icon_state = "wendigo_noblood"
+	var/icon_half_hp = "wendigo"
+	icon_living = "broodmother"
+	icon_dead = "wendigo_dead"
+	gender = MALE
+	emote_hear = null	
+	emote_see = null
+	speak_chance = 1
+	turns_per_move = 3
+	see_in_dark = 12
+	move_to_delay = 4
+	pixel_x = -16
+	base_intents = list(/datum/intent/simple/claw)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
+						/obj/item/natural/hide = 4,
+						/obj/item/natural/fur = 4,
+						/obj/item/natural/bone = 4,
+						/obj/item/natural/alchemy/antler = 2)
+	faction = list("wendigo")
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST|MOB_EPIC
+	//We attack very fast and deal damage by exhausting our opponents. They must learn how to fight against speed
+	melee_damage_lower = 10
+	melee_damage_upper = 15
+	vision_range = 9
+	//We are deranged hunters who will feast on anyone, and anything.
+	aggro_vision_range = 12
+	environment_smash = ENVIRONMENT_SMASH_NONE
+	retreat_distance = 0
+	minimum_distance = 0
+	milkies = FALSE
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	footstep_type = FOOTSTEP_MOB_BAREFOOT
+	pooptype = null
+	health = 500
+	maxHealth = 500
+	STACON = 13
+	STAEND = 13
+	STASTR = 18
+	STASPD = 6
+	deaggroprob = 0
+	simple_detect_bonus = 20
+	defprob = 10
+	//Blocking an attack against this thing is like hitting a rock with all of your might.
+	defdrain = 50
+	//We are a major threat.
+	del_on_deaggro = 9999 SECONDS
+	//We never back down from our prey.
+	retreat_health = 0
+	food = 0
+	attack_sound = list('sound/blank.ogg')
+	dodgetime = 66
+	aggressive = 1
+//	stat_attack = UNCONSCIOUS
+	var/stagetwo
+	var/allow_ability = 0
+	var/ability_cd = 5
+
+/mob/living/simple_animal/hostile/retaliate/rogue/gutmuncher/proc/enter_stage_two()
+	if(do_after(src, 30))
+		move_to_delay = 2
+		turns_per_move = 1
+		//We heal to full now! Effective total HP roughly 750.
+		health = 500
+		playsound(src, 'modular_causticcove/sound/mobs/gut_mucher_stage_two.ogg', 100, TRUE)
+		allow_ability = TRUE
+		toggle_ai(AI_ON)
+
+/mob/living/simple_animal/hostile/retaliate/rogue/gutmuncher/proc/rend_ability()
+	ability_cd = 20
+	var/list/targets = oview(1, src)
+	var/target
+	visible_message(span_warningbig("The [src] pins [target] to the ground!"))
+	for(var/mob/living/T in targets)
+		targets += T
+	
+	if(allow_ability)
+		target = pick(targets)
+		face_atom(T)
+		T.Stun(80)
+		T.emote("scream")
+		for(var/i in 1 to 12)
+			if(do_after(src, 5))
+				T.attack_animal(src)
+				if(i == 12)
+					toggle_ai(AI_ON)
+		targets = list()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/gutmuncher/Life()
+	. = ..()
+	if(health < (maxHealth/2) && !stagetwo)
+		toggle_ai(AI_OFF)
+		stagetwo++
+		icon_state = icon_half_hp
+		enter_stage_two()
+	if(prob(10))
+		if(ability_cd <= 0 && allow_ability)
+			rend_ability()
+			toggle_ai(AI_OFF)
+	ability_cd--
+

@@ -41,7 +41,7 @@
 	defprob = 33
 	defdrain = 30
 	del_on_deaggro = 120 SECONDS
-	retreat_health = 0.5
+	retreat_health = 0.6
 	food = 0
 	attack_sound = list('sound/blank.ogg')
 	dodgetime = 66

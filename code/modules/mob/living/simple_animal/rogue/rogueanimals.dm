@@ -103,7 +103,7 @@
 			return TRUE
 	return FALSE
 
-/mob/living/simple_animal/hostile/retaliate/rogue/proc/eat_bodies()
+/mob/living/simple_animal/hostile/retaliate/rogue/proc/rend_bodies()
 	var/mob/living/L
 //	var/list/around = view(aggro_vision_range, src)
 	var/list/around = hearers(1, src)
@@ -111,7 +111,7 @@
 	if(stat)
 		return
 	for(var/mob/living/eattarg in around)
-		if(eattarg.stat != CONSCIOUS)
+		if(eattarg.stat == CONSCIOUS)
 			foundfood += eattarg
 			L = eattarg
 			if(src.Adjacent(L))
@@ -136,14 +136,14 @@
 						limb = C.get_bodypart(BODY_ZONE_CHEST)
 						if(limb)
 							if(!limb.dismember())
-								C.gib()
+								C.death()
 							return TRUE
 				else
 					if(attack_sound)
 						playsound(src, pick(attack_sound), 100, TRUE, -1)
 					src.visible_message(span_danger("[src] starts to rip apart [L]!"))
 					if(do_after(src,100, target = L))
-						L.gib()
+						L.death()
 						return TRUE
 	for(var/mob/living/eattarg in foundfood)
 		var/turf/T = get_turf(eattarg)
