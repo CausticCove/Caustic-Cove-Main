@@ -19,7 +19,7 @@
 	var/mob/living/carbon/human/C = owner
 	var/atom/movable/screen/fullscreen/maniac/hallucinations
 	//Check if it has the status effect to prevent runtiming NULL
-	if(has_status_effect(/datum/status_effect/buff/induced_insanity))
+	if(C.has_status_effect(/datum/status_effect/buff/induced_insanity))
 		hallucinations = owner.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
 	if(istype(C, /mob/living/carbon/human))
 		handle_maniac_visions(C, hallucinations)

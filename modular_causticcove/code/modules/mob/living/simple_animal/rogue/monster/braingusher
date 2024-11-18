@@ -13,7 +13,7 @@
 	move_to_delay = 4
 	base_intents = list(/datum/intent/unarmed/claw)
 	butcher_results = list(/obj/item/reagent_containers/powder/moondust = 3)
-	faction = list("abomination")
+	faction = list("hallucination")
 	mob_biotypes = MOB_BEAST
 	melee_damage_lower = 1
 	melee_damage_upper = 10
@@ -43,7 +43,6 @@
 	dodgetime = 9999
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
-	var/has_summoned = FALSE
 
 //We make people a little crazy...
 /mob/living/simple_animal/hostile/retaliate/rogue/eldritch_abomination/AttackingTarget()
@@ -55,11 +54,11 @@
 			L.Knockdown(20)
 			L.emote("laugh")
 			L.apply_status_effect(/datum/status_effect/buff/induced_insanity)
-	if(prob(25) && !has_summoned)
-		has_summoned = TRUE
-		new /mob/living/simple_animal/hostile/retaliate/rogue/eldritch_abomination(src)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/eldritch_abomination/death(gibbed)
+	//How many are there...?!
+	if(prob(25))
+		new /mob/living/simple_animal/hostile/retaliate/rogue/eldritch_abomination(src)
 	playsound(src, 'sound/misc/zizo.ogg', 75, TRUE)
 	new /obj/item/reagent_containers/powder/moondust(src)
 	. = ..()
