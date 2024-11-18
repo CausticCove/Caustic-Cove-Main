@@ -58,7 +58,7 @@
 	var/allow_ability = 0
 	var/ability_cd = 0
 
-/mob/living/simple_animal/hostile/retaliate/rogue/gutmuncher/Initialize()
+/mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_BASHDOORS, TRAIT_GENERIC)
@@ -72,7 +72,7 @@
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	
-/mob/living/simple_animal/hostile/retaliate/rogue/gutmuncher/proc/enter_stage_two()
+/mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/proc/enter_stage_two()
 	src.move_to_delay = 2
 	src.turns_per_move = 1
 	//We heal to full now! Effective total HP roughly 750.
@@ -80,7 +80,7 @@
 	playsound(src, 'modular_causticcove/sound/mobs/gut_mucher_stage_two.ogg', 100, TRUE)
 	src.allow_ability = TRUE
 
-/mob/living/simple_animal/hostile/retaliate/rogue/gutmuncher/proc/rend_ability()
+/mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/proc/rend_ability()
 	ability_cd = 10
 	var/list/targets = oview(1, src)
 	for(var/mob/living/T in targets)
@@ -97,7 +97,7 @@
 					T.emote("scream")
 		targets = list()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/gutmuncher/Life()
+/mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/Life()
 	. = ..()
 	if(health <= (maxHealth/2) && !stagetwo)
 		src.stagetwo++
