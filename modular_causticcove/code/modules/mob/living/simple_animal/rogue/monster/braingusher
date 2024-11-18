@@ -26,12 +26,12 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
-	health = 50
-	maxHealth = 50
+	health = 35
+	maxHealth = 35
 	STACON = 7
 	STAEND = 7
 	STASTR = 5
-	STASPD = 20
+	STASPD = 15
 	deaggroprob = 33
 	simple_detect_bonus = 20
 	defprob = 40
@@ -45,21 +45,25 @@
 //	stat_attack = UNCONSCIOUS
 
 //We make people a little crazy...
-/mob/living/simple_animal/hostile/retaliate/rogue/eldritch_abomination/AttackingTarget()
+/mob/living/simple_animal/hostile/retaliate/rogue/braingusher/AttackingTarget()
 	. = ..()
 	if(isliving(target))
-		var/mob/living/carbon/human/L = target
+		var/mob/living/carbon/L = target
 		//Lie down and FACE YOUR FEARS!!! In other words, attack while prone.
-		if((L.mobility_flags & MOBILITY_STAND))
+		if((L.mobility_flags & MOBILITY_STAND) && !L.has_status_effect(/datum/status_effect/buff/induced_insanity))
 			L.Knockdown(20)
 			L.emote("laugh")
 			L.apply_status_effect(/datum/status_effect/buff/induced_insanity)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/eldritch_abomination/death(gibbed)
+/mob/living/simple_animal/hostile/retaliate/rogue/braingusher/death(gibbed)
 	//How many are there...?!
-	if(prob(25))
-		new /mob/living/simple_animal/hostile/retaliate/rogue/eldritch_abomination(src)
-	playsound(src, 'sound/misc/zizo.ogg', 75, TRUE)
-	new /obj/item/reagent_containers/powder/moondust(src)
 	. = ..()
-	qdel(src)
+	if(prob(25))
+		new /mob/living/simple_animal/hostile/retaliate/rogue/braingusher(src)
+		playsound(src, 'sound/misc/zizo.ogg', 75, TRUE)
+		qdel(src)
+		return
+	else
+		playsound(src, 'sound/misc/zizo.ogg', 25, FALSE)
+		new /obj/item/reagent_containers/powder/moondust(src)
+		qdel(src)
