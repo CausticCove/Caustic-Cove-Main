@@ -1,6 +1,6 @@
-/mob/living/simple_animal/hostile/retaliate/rogue/braingusher
+/mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast
 	icon = 'modular_causticcove/icons/monsters/lavaland_monsters.dmi'
-	name = "brain gusher"
+	name = "brain gusher beast"
 	icon_state = "curseblob"
 	icon_living = "curseblob"
 	icon_dead = null

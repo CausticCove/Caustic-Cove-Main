@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/retaliate/rogue/gutmuncher
+/mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast
 	icon = 'modular_causticcove/icons/monsters/64x64monsters.dmi'
 	name = "wendigo beast"
 	icon_state = "wendigo_noblood"
