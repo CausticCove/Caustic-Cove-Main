@@ -53,6 +53,7 @@
 	attack_sound = list('sound/blank.ogg')
 	dodgetime = 66
 	aggressive = 1
+	bleedsuppress = 9999
 //	stat_attack = UNCONSCIOUS
 	var/stagetwo = 0
 	var/allow_ability = 0
@@ -82,6 +83,7 @@
 
 //This ability is fucked. I know it's fucked. But I cannot for the life of me figure out how to lock them in place.
 /mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/proc/rend_ability()
+	toggle_ai(AI_OFF)
 	ability_cd = 20
 	var/list/targets = oview(1, src)
 	for(var/mob/living/T in targets)
@@ -97,6 +99,7 @@
 				if(prob(50))
 					T.emote("scream")
 		targets = list()
+		toggle_ai(AI_ON)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/Life()
 	. = ..()
@@ -108,8 +111,13 @@
 		if(src.ability_cd <= 0 && src.allow_ability)
 			rend_ability()
 	ability_cd--
+	//Fuck bleed, this thing is FULLY immune to bleed.
+	if(src.blood_volume < BLOOD_VOLUME_NORMAL)
+		src.blood_volume += 100
+		src.bleed_rate = 0
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/AttackingTarget()
 	. = ..()
 	if(prob(50))
 		src.adjustBruteLoss(-5)
+		src.blood_volume += 10
