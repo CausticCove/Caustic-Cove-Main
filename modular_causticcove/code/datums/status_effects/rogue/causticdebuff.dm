@@ -26,4 +26,3 @@
 		handle_maniac_hallucinations(C)
 		handle_maniac_floors(C)
 		handle_maniac_walls(C)
-	else
