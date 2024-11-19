@@ -18,8 +18,8 @@
 						/obj/item/natural/fur = 1)
 	faction = list("eldritch")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST|MOB_EPIC
-	melee_damage_lower = 9
-	melee_damage_upper = 19
+	melee_damage_lower = 15
+	melee_damage_upper = 30
 	vision_range = 5
 	aggro_vision_range = 6
 	environment_smash = ENVIRONMENT_SMASH_NONE
@@ -27,32 +27,32 @@
 	minimum_distance = 0
 	milkies = FALSE
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
-	footstep_type = FOOTSTEP_MOB_BAREFOOT
+	footstep_type = FOOTSTEP_MOB_HEAVY
 	pooptype = null
 	//Protect the babies!
-	health = 166
-	maxHealth = 166
+	health = 300
+	maxHealth = 300
 	STACON = 16
 	STAEND = 16
-	STASTR = 5
-	STASPD = 4
+	STASTR = 10
+	STASPD = 6
 	deaggroprob = 33
 	simple_detect_bonus = 20
-	defprob = 33
-	defdrain = 30
+	defprob = 0
+	defdrain = 25
 	del_on_deaggro = 120 SECONDS
-	retreat_health = 0.6
+	retreat_health = 0.2
 	food = 0
-	attack_sound = list('sound/blank.ogg')
+	attack_sound = list('modular_causticcove/sound/mobs/eldritch/beast_mother_headbutt_1.ogg', 'modular_causticcove/sound/mobs/eldritch/beast_mother_headbutt_2.ogg', 'modular_causticcove/sound/mobs/eldritch/beast_mother_headbutt_3.ogg')
 	dodgetime = 66
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
 
 /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother_bab
-//Wee little babs.
+//Wee little babs. The ideal form of killing them is to be on swift intent to take them out. Brute force will be punishing.
 	name = "Beastie"
-	health = 15
-	maxHealth = 15
+	health = 30
+	maxHealth = 30
 	STACON = 3
 	STAEND = 3
 	STASTR = 2
@@ -84,16 +84,16 @@
 	minimum_distance = 0
 	milkies = FALSE
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
-	footstep_type = FOOTSTEP_MOB_BAREFOOT
+	footstep_type = FOOTSTEP_MOB_CLAW
 	pooptype = null
 	deaggroprob = 33
 	simple_detect_bonus = 20
-	defprob = 50
-	defdrain = 10
+	defprob = 66
+	defdrain = 5
 	del_on_deaggro = 120 SECONDS
 	retreat_health = 0.5
 	food = 0
-	attack_sound = list('sound/blank.ogg')
+	attack_sound = list('modular_causticcove/sound/mobs/eldritch/beast_bab_attack_1.ogg', 'modular_causticcove/sound/mobs/eldritch/beast_bab_attack_2.ogg', 'modular_causticcove/sound/mobs/eldritch/beast_bab_attack_3.ogg' )
 	dodgetime = 20
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
@@ -111,7 +111,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother_bab/Initialize()
 	for(var/mob/living/simple_animal/D in range(2, get_turf(src)))
-		if(istype(D, /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother) && prob(77))
+		if(istype(D, /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother))
 			if(D.stat == DEAD)
 				cry_sequence()
 	. = ..()
@@ -122,7 +122,7 @@
 		toggle_ai(AI_OFF)
 		icon_state = icon_crying
 		emote("cry")
-		spawn(60)
+		spawn(25)
 			if(stat == CONSCIOUS)
 				toggle_ai(AI_ON)
 				icon_state = icon_living
@@ -132,12 +132,16 @@
 				melee_damage_lower = 10
 				melee_damage_upper = 20
 				name = "Upset Beastie"
-				if(prob(3))
-					//Main character syndrome. Huge damage, be afraid. But less dodge chance.
+				if(prob(2))
+					//Main character syndrome. Huge damage, be afraid. Sans undertale.
 					visible_message(span_warningbig("A GUTTERAL CRY CAN BE HEARD!!!"))
-					melee_damage_lower = 20
+					playsound(src, 'modular_causticcove/sound/mobs/eldritch/enraged_notifier.ogg', 100, FALSE)
+					melee_damage_lower = 30
 					melee_damage_upper = 40
-					defprob = 25
+					health = 75
+					maxHealth = 75
+					defprob = 80
+					dodgetime = 10
 					icon_state = icon_enraged
 					name = "Enraged Beastie"
 					desc = "It's a beautiful day outside. Birds are screeching, flowers are wilting... on days like these, adventurers like you... Should be burning in hell."
@@ -145,18 +149,19 @@
 
 //Spawn the beasties around the mother, make sure it's not in a wall
 /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother/death(gibbed)
- var/list/turfs = list()
- var/spawn_location 
+	var/list/turfs = list()
+	var/spawn_location 
 	for(var/turf/T in view(1, get_turf(src)))
 		if(isfloorturf(T))
 			turfs += T
-	for(var/i in 1 to rand(1,6))
+	for(var/i in 1 to rand(3,7))
 		spawn(rand(0, 60))
 			spawn_location = pick(turfs)
 			new /obj/effect/temp_visual/beastie_spawn_location(pick(spawn_location))
-			playsound(spawn_location, 'modular_causticcove/sound/mobs/eldritch/egghatching.ogg', 100, TRUE)
+			playsound(spawn_location, 'modular_causticcove/sound/mobs/eldritch/egghatching.ogg', 100, FALSE)
 			spawn(10)
 				new /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother_bab(pick(spawn_location))
 	. = ..()
+	playsound(src, 'modular_causticcove/sound/mobs/eldritch/beast_mother_death_shedding.ogg', 100, FALSE)
 	
 

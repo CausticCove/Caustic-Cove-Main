@@ -34,8 +34,8 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
-	health = 500
-	maxHealth = 500
+	health = 750
+	maxHealth = 750
 	STACON = 13
 	STAEND = 13
 	STASTR = 18
@@ -75,13 +75,14 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/proc/enter_stage_two()
 	src.move_to_delay = 2
 	src.turns_per_move = 1
-	//We heal to full now! Effective total HP roughly 750.
-	src.health = 500
+	//We heal to full now! Effective total HP roughly 750. Fire damage is permanent.
+	src.adjustBruteLoss(-maxHealth)
 	playsound(src, 'modular_causticcove/sound/mobs/gut_mucher_stage_two.ogg', 100, TRUE)
 	src.allow_ability = TRUE
 
+//This ability is fucked. I know it's fucked. But I cannot for the life of me figure out how to lock them in place.
 /mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/proc/rend_ability()
-	ability_cd = 10
+	ability_cd = 20
 	var/list/targets = oview(1, src)
 	for(var/mob/living/T in targets)
 		visible_message(span_warningbig("The [src] pins [T] to the ground!"))
@@ -91,9 +92,9 @@
 		for(var/i in 1 to 12)
 			if(do_after(src, 3))
 				T.attack_animal(src)
-				health += 20
+				src.adjustBruteLoss(-10)
 				src.blood_volume += 20
-				if(prob(25))
+				if(prob(50))
 					T.emote("scream")
 		targets = list()
 
@@ -107,3 +108,8 @@
 		if(src.ability_cd <= 0 && src.allow_ability)
 			rend_ability()
 	ability_cd--
+
+/mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/AttackingTarget()
+	. = ..()
+	if(prob(50))
+		src.adjustBruteLoss(-5)

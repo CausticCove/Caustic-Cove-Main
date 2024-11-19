@@ -8,11 +8,11 @@
 	emote_hear = null	
 	emote_see = null
 	speak_chance = 1
-	turns_per_move = 4
+	turns_per_move = 1
 	see_in_dark = 1
-	move_to_delay = 4
+	move_to_delay = 1
 	base_intents = list(/datum/intent/unarmed/claw)
-	butcher_results = list(/obj/item/reagent_containers/powder/moondust = 3)
+	butcher_results = list(/obj/item/reagent_containers/powder/moondust = 1)
 	faction = list("hallucination")
 	mob_biotypes = MOB_BEAST
 	melee_damage_lower = 1
@@ -26,15 +26,15 @@
 	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
-	health = 35
-	maxHealth = 35
+	health = 20
+	maxHealth = 20
 	STACON = 7
 	STAEND = 7
 	STASTR = 5
 	STASPD = 15
-	deaggroprob = 33
+	deaggroprob = 0
 	simple_detect_bonus = 20
-	defprob = 40
+	defprob = 0
 	defdrain = 0
 	del_on_deaggro = 120 SECONDS
 	retreat_health = 0
@@ -43,6 +43,18 @@
 	dodgetime = 9999
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
+	var/summoned = FALSE
+/mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_BASHDOORS, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOSTINK, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 
 //We make people a little crazy...
 /mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast/AttackingTarget()
@@ -54,16 +66,13 @@
 			L.Knockdown(20)
 			L.emote("laugh")
 			L.apply_status_effect(/datum/status_effect/buff/induced_insanity)
+				//How many are there?!!
+			if(prob(25) && !summoned)
+				new /mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast(L.loc)
+				playsound(src, 'sound/misc/zizo.ogg', 100, TRUE)
+				summoned = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast/death(gibbed)
-	//How many are there...?!
 	. = ..()
-	if(prob(25))
-		new /mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast(src)
-		playsound(src, 'sound/misc/zizo.ogg', 75, TRUE)
-		qdel(src)
-		return
-	else
-		playsound(src, 'sound/misc/zizo.ogg', 25, FALSE)
-		new /obj/item/reagent_containers/powder/moondust(src)
-		qdel(src)
+	playsound(src, 'sound/misc/zizo.ogg', 50, TRUE)
+	qdel(src)
