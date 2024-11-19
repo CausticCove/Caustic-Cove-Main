@@ -45,7 +45,7 @@
 //	stat_attack = UNCONSCIOUS
 
 //We make people a little crazy...
-/mob/living/simple_animal/hostile/retaliate/rogue/braingusher/AttackingTarget()
+/mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast/AttackingTarget()
 	. = ..()
 	if(isliving(target))
 		var/mob/living/carbon/L = target
@@ -55,11 +55,11 @@
 			L.emote("laugh")
 			L.apply_status_effect(/datum/status_effect/buff/induced_insanity)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/braingusher/death(gibbed)
+/mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast/death(gibbed)
 	//How many are there...?!
 	. = ..()
 	if(prob(25))
-		new /mob/living/simple_animal/hostile/retaliate/rogue/braingusher(src)
+		new /mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast(src)
 		playsound(src, 'sound/misc/zizo.ogg', 75, TRUE)
 		qdel(src)
 		return
