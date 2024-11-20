@@ -188,7 +188,7 @@
 		gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
-	cloak = /obj/item/clothing/cloak/raincloak/rogue
+	cloak = /obj/item/clothing/cloak/half
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
@@ -201,7 +201,6 @@
 	H.change_stat("speed", 2)
 	H.change_stat("intelligence", 3)
 	H.visible_message(span_info("I’m not just a thief. I'm a master of illusion and deception. One moment, I'm a harmless vagabond. The next, I'm a blur of motion, leaving my pursuers bewildered and outwitted."))
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
 	if(H.mind)
 		H.mind.adjust_spellpoints(1)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)

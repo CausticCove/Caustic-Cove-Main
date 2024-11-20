@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/amazon
 	category_tags = list(CTAG_ADVENTURER)
 
-	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STEELHEARTED)
+	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STEELHEARTED, TRAIT_DEATHBYSNOOSNOO)
 	cmode_music = 'sound/music/combat_gronn.ogg'
 
 /datum/outfit/job/roguetown/adventurer/amazon/pre_equip(mob/living/carbon/human/H)
