@@ -205,6 +205,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/sheathe_sound // played when item is placed on hip_r or hip_l, the belt side slots
 
 	var/visual_replacement //Path. For use in generating dummies for one-off items that would break the game like the crown.
+	
+	//is it an improvised weapon?
+	var/improvised = FALSE
 
 /obj/item/Initialize()
 	. = ..()

@@ -44,8 +44,7 @@
 #define TRAIT_TRAINED_SMITH "Trained Smith"
 #define TRAIT_GUARDSMAN "Vigilant Guardsman"
 #define TRAIT_KNIGHTSMAN "Royal Defiance"
-#define TRAIT_GOODRUNNER "Good Runner"
-#define TRAIT_DEATHBYSNOOSNOO "Bed Breaker" // double sex damage (requires strong intent)
+#define TRAIT_GOODRUNNER "Good Runner"	
 
 
 
@@ -100,6 +99,11 @@
 
 //Hearthstone Port
 #define TRAIT_MALUMSGRACE "Malum's Grace"
+#define TRAIT_STRONGTHROW "Strong Throw" // 1.5x throw distance and force
+#define TRAIT_MARTIALARTIST "Martial Artist" //more unarmed combat options
+#define TRAIT_PUGILIST "Pugilist" //more punch damage
+#define TRAIT_DEATHBYSNOOSNOO "Bed Breaker" // double sex damage (requires strong intent)
+
 //Caustic Additions
 #define TRAIT_ABYSSORS_BLESSING "Abyssor's Blessing"
 #define TRAIT_FLAMING_TOUCH "Flaming Touch"
@@ -160,7 +164,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
 	TRAIT_PERFECT_TRACKER = span_info("I am the perfect tracker. No tracks will deceive my eyes, nor will they hide their secrets from me."),//Hearthstone port.
 	TRAIT_NOCSIGHT = span_info("Noc blesses my eyes to be unburdened by the night."), //Hearthstone change.
-	TRAIT_CIVILIZEDBARBARIAN = span_info("Your fists are heavier."),
+	TRAIT_CIVILIZEDBARBARIAN = span_info("My fists are heavier and Improvised weapons are my specialty."),
 	TRAIT_COMICSANS = span_sans("I am cursed with a odd voice."),
 	TRAIT_SQUIRE_REPAIR = span_info("I know my way around my Master's tools."),
 	TRAIT_WATERBREATHING = span_info("I do not drown in bodies of water."),
@@ -176,6 +180,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 //Hearthstone Port
 	TRAIT_MALUMSGRACE = span_info("Malum is my muse."),
 	TRAIT_DEATHBYSNOOSNOO = span_bloody("It's an unlucky thing to share my bed, I can break pelvis with strong intent."),
+	TRAIT_STRONGTHROW = span_info("My throws are mighty!"),
+	TRAIT_MARTIALARTIST = span_info("I have better kicks."),
+	TRAIT_PUGILIST = span_info("I have stronger punches."),
   //Caustic Changes
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_FORTITUDE = span_info("The typical drain I feel from day to day life is lessened, my athleticism greater."),
