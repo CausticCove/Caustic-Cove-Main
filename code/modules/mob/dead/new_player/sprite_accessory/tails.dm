@@ -342,6 +342,14 @@
 	color_key_defaults = list(KEY_SKIN_COLOR)
 	can_wag = TRUE
 
+//Additional Tails
+
+/datum/sprite_accessory/tail/largedragon
+	name = "Large Dragon"
+	icon = 'icons/mob/sprite_accessory/tails/large dragon tail.dmi'
+	icon_state = "big_liz"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+	can_wag = TRUE
 
 //TAUR BULLSHIT HELP
 /datum/sprite_accessory/tail/taur
@@ -381,6 +389,13 @@
 	name = "Bug Taur MEGA"
 	icon = 'icons/mob/sprite_accessory/tails/fat_sect.dmi'
 	icon_state = "fat_sect_drone"
+
+/datum/sprite_accessory/tail/taur/orcamerm
+	name = "Nefarious Fish (Orca)"
+	icon = 'icons/mob/sprite_accessory/tails/orca.dmi'
+	icon_state = "orcamermaid_s"
+
+
 
 /datum/sprite_accessory/tail/taur/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
     generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_TAUR, OFFSET_TAUR_F)
