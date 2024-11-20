@@ -249,6 +249,13 @@
 	created_item = /obj/item/rogueweapon/mace/goden/steel
 	craftdiff = 3
 
+/datum/anvil_recipe/weapons/javelin
+	name = "Javelin (+1 Small Log)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/spear/javelin
+	craftdiff = 2
+
 
 /// UPGRADED WEAPONS
 

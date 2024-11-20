@@ -237,3 +237,4 @@
 		STR.max_items = 14
 		STR.not_while_equipped = TRUE
 		STR.allow_dump_out = TRUE
+
