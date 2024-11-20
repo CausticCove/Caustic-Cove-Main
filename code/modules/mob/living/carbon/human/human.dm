@@ -1190,6 +1190,9 @@
 /mob/living/carbon/human/proc/has_belly()
 	return getorganslot(ORGAN_SLOT_BELLY)
 
+/mob/living/carbon/human/proc/has_butt()
+	return getorganslot(ORGAN_SLOT_BUTT)
+
 /mob/living/carbon/human/proc/is_fertile()
 	var/obj/item/organ/vagina/vagina = getorganslot(ORGAN_SLOT_VAGINA)
 	return vagina.fertility

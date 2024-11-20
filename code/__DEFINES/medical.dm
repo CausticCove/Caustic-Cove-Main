@@ -63,6 +63,8 @@
 #define ORGAN_SLOT_BREASTS "breasts"
 #define ORGAN_SLOT_VAGINA "vagina"
 #define ORGAN_SLOT_BELLY "belly"
+#define ORGAN_SLOT_BUTT "butt"
+
 
 #define BODYPART_FEATURE_HAIR "hair"
 #define BODYPART_FEATURE_FACIAL_HAIR "facehair"
