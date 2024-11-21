@@ -14,7 +14,7 @@
 	var/observer_privilege = isobserver(user)
 	var/t_He = p_they(TRUE)
 	var/t_his = p_their()
-//	var/t_him = p_them()
+	var/t_him = p_them()
 	var/t_has = p_have()
 	var/t_is = p_are()
 	var/obscure_name = FALSE
@@ -494,6 +494,11 @@
 	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
 	for(var/line in lines)
 		. += span_info(line)
+
+	// for underwears that don't cover from the rear, genital descriptions are still showns
+	if(src.BehindAtom(user, src.dir) && src.underwear.covers_rear == FALSE && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))
+		. += span_info("[t_his] underwear doesn't cover [t_him] from behind.")
+		. += span_info(build_coalesce_description(src.get_extra_mob_descriptors(), src, list(2, 3, 5), "%THEY% %DESC1%, %DESC2% and %DESC3%."))
 
 	var/trait_exam = common_trait_examine()
 	if(!isnull(trait_exam))

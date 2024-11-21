@@ -16,6 +16,9 @@
 	var/covers_breasts = FALSE
 	sewrepair = TRUE
 
+	///Whether this underwear covers the rear. If it doesn't, genital information may still be shown in certain circumstances
+	var/covers_rear = TRUE
+
 /obj/item/undies/attack(mob/M, mob/user, def_zone)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -43,3 +46,10 @@
 	name = "leotard"
 	icon_state = "leotard"
 	covers_breasts = TRUE
+
+/obj/item/undies/loincloth
+	name = "loincloth"
+	icon_state = "briefs"
+	covers_breasts = TRUE
+	covers_rear = FALSE
+	desc = "An absolute necessity. Slightly less effective."

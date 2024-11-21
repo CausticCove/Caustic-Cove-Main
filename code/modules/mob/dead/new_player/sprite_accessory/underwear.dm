@@ -5,6 +5,8 @@
 	var/underwear_type
 	///Whether this underwear includes a top (Because gender = FEMALE doesn't actually apply here.). Hides breasts, nothing more.
 	var/hides_breasts = FALSE
+	///Whether this underwear covers the rear. If it doesn't, genital information may still be shown in certain circumstances
+	var/covers_rear = TRUE
 
 /datum/sprite_accessory/underwear/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_UNDIES, OFFSET_UNDIES_F)
@@ -48,3 +50,9 @@
 	if(owner.gender == MALE)
 		return "male_leotard"
 	return "female_leotard"
+
+/datum/sprite_accessory/underwear/loincloth
+	name = "Briefs"
+	icon_state = "male_reg"
+	underwear_type = /obj/item/undies/loincloth
+	covers_rear = FALSE
