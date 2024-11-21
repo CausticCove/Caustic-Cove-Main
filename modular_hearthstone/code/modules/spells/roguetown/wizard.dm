@@ -217,7 +217,16 @@
 		/obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e,
 		/obj/effect/proc_holder/spell/invoked/frostbite5e,
 		/obj/effect/proc_holder/spell/invoked/guidance,
-		/obj/effect/proc_holder/spell/invoked/fortitude
+		/obj/effect/proc_holder/spell/invoked/fortitude,
+		/obj/effect/proc_holder/spell/self/bladeward5e,
+		/obj/effect/proc_holder/spell/invoked/boomingblade5e,
+		/obj/effect/proc_holder/spell/aoe_turf/conjure/createbonfire5e,
+		/obj/effect/proc_holder/spell/invoked/projectile/firebolt5e,
+		/obj/effect/proc_holder/spell/targeted/lightninglure5e,
+		/obj/effect/proc_holder/spell/invoked/magicstone5e,
+		/obj/effect/proc_holder/spell/invoked/mending5e,
+		/obj/effect/proc_holder/spell/self/primalsavagery5e,
+		/obj/effect/proc_holder/spell/invoked/projectile/rayoffrost5e
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]

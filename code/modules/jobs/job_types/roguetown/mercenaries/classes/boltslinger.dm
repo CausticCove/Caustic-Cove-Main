@@ -2,19 +2,9 @@
 	name = "Boltslinger"
 	tutorial = "A cutthroat and a soldier of fortune, your mastery of the crossbow has brought you to many battlefields, all in pursuit of mammon."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Dark Elf",
-		"Aasimar"
-	)
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/boltslinger
 	category_tags = list(CTAG_MERCENARY)
-	maximum_possible_slots = 5
-
 
 /datum/outfit/job/roguetown/mercenary/boltslinger/pre_equip(mob/living/carbon/human/H)
 	..()
