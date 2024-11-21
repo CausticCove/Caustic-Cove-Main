@@ -238,3 +238,10 @@
 		STR.not_while_equipped = TRUE
 		STR.allow_dump_out = TRUE
 
+/obj/item/storage/belt/rogue/pouch/ammo/PopulateContents()
+	new /obj/item/ammo_casing/caseless/lead(src)
+	new /obj/item/ammo_casing/caseless/lead(src)
+	new /obj/item/ammo_casing/caseless/lead(src)
+	new /obj/item/ammo_casing/caseless/runelock(src)
+	new /obj/item/ammo_casing/caseless/runelock(src)
+	new /obj/item/ammo_casing/caseless/runelock(src)	

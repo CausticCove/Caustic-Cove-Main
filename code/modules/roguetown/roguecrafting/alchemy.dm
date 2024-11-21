@@ -195,3 +195,11 @@
 	reqs = list(/obj/item/roguegem/diamond = 2, /obj/item/rogueore/iron = 1, /obj/item/rogueore/coal = 1)
 	craftdiff = 6
 	verbage_simple = "transmute"
+
+//GUN STUFF
+
+/datum/crafting_recipe/roguetown/alchemy/powderflask
+	name = "Powder Flask"
+	result = list(/obj/item/powderflask)
+	reqs = list(/obj/item/ash = 2, /obj/item/rogueore/coal = 2, /obj/item/natural/hide = 1)
+	craftdiff = 2
