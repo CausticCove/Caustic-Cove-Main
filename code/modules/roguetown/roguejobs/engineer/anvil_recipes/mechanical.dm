@@ -45,3 +45,68 @@
 	additional_items = list(/obj/item/ingot/bronze, /obj/item/roguegear, /obj/item/roguegear)
 	created_item = /obj/item/bodypart/r_arm/prosthetic/bronzeright
 	craftdiff = 4
+
+//------------- FIREARMS AND AMMO -------------------
+
+/datum/anvil_recipe/engineering/bronze/guns/pistol
+	name = "Arquebus Pistol"
+	req_bar = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/roguegear, /obj/item/grown/log/tree/small)
+	created_item = /obj/item/gun/ballistic/arquebus_pistol
+	craftdiff = 4
+
+/datum/anvil_recipe/engineering/bronze/guns/arquebus
+	name = "Arquebus Gun "
+	req_bar = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/roguegear, /obj/item/ingot/bronze, /obj/item/ingot/bronze, /obj/item/grown/log/tree/small)
+	created_item = /obj/item/gun/ballistic/arquebus
+	craftdiff = 5
+
+/datum/anvil_recipe/engineering/bronze/guns/handgonne
+	name = "Handgonne"
+	req_bar = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/roguegear, /obj/item/ingot/bronze, /obj/item/ingot/bronze, /obj/item/grown/log/tree/small)
+	created_item = /obj/item/gun/ballistic/arquebus
+	craftdiff = 5
+
+/datum/anvil_recipe/engineering/bronze/guns/runelockgem
+	name = "Runelock (Gemerald)"
+	req_bar = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/roguegear, /obj/item/grown/log/tree/small, /obj/item/roguegem/green)
+	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
+	craftdiff = 5
+
+/datum/anvil_recipe/engineering/bronze/guns/runelockront
+	name = "Runelock (Rontz)"
+	req_bar = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/roguegear, /obj/item/grown/log/tree/small, /obj/item/roguegem)
+	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
+	craftdiff = 5
+
+/datum/anvil_recipe/engineering/bronze/guns/runelocktoper
+	name = "Runelock (Toper)"
+	req_bar = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/roguegear, /obj/item/grown/log/tree/small, /obj/item/roguegem/yellow)
+	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
+	craftdiff = 5
+
+/datum/anvil_recipe/engineering/bronze/guns/runelockblortz
+	name = "Runelock (Blortz)"
+	req_bar = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/roguegear, /obj/item/grown/log/tree/small, /obj/item/roguegem/blue)
+	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
+	craftdiff = 5
+
+/datum/anvil_recipe/engineering/bronze/guns/runelocksaffi
+	name = "Runelock (Saffira)"
+	req_bar = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/roguegear, /obj/item/grown/log/tree/small, /obj/item/roguegem/violet)
+	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
+	craftdiff = 5
+
+/datum/anvil_recipe/engineering/bronze/guns/runelockdorp
+	name = "Runelock (Dorpel)"
+	req_bar = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/roguegear, /obj/item/grown/log/tree/small, /obj/item/roguegem/diamond)
+	created_item = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
+	craftdiff = 5

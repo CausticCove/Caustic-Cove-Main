@@ -346,7 +346,7 @@
 
 /datum/sprite_accessory/tail/largedragon
 	name = "Large Dragon"
-	icon = 'icons/mob/sprite_accessory/tails/large dragon tail.dmi'
+	icon = 'icons/mob/sprite_accessory/tails/dragon_tail.dmi'
 	icon_state = "big_liz"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 	can_wag = TRUE
@@ -394,7 +394,6 @@
 	name = "Nefarious Fish (Orca)"
 	icon = 'icons/mob/sprite_accessory/tails/orca.dmi'
 	icon_state = "orcamermaid_s"
-
 
 
 /datum/sprite_accessory/tail/taur/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
