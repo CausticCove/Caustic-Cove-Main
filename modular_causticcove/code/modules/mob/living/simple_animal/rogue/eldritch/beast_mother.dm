@@ -151,7 +151,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/beast_mother/death(gibbed)
 	var/list/turfs = list()
 	var/spawn_location 
-	for(var/turf/T in view(1, get_turf(src)))
+	for(var/turf/T in dview(1, get_turf(src)))
 		if(isfloorturf(T))
 			turfs += T
 	for(var/i in 1 to rand(3,7))
