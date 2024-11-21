@@ -333,3 +333,8 @@
 	desc = "A peculiar icon of worship from a foreign land. Forming the three-progned Psydonite cross in a circular ring, this bracelet embodies the Naledian belief of Psydon's eternity."
 	icon_state = "psybracelet"
 	item_state = "null"
+
+/obj/item/clothing/neck/roguetown/mercmedal/anthrax
+	name = "petrified larvae charm"
+	desc = "The husk of a desiccated beespider larva, passed down within the ranks of those whose names have been struck from dark elven history. The old tyranny's uprooting would be their last act of true valor."
+	icon_state = "spider"

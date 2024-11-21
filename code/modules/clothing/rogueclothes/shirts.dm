@@ -357,3 +357,13 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+/obj/item/clothing/suit/roguetown/shirt/shadowshirt
+	name = "silk shirt"
+	desc = "A sleeveless shirt woven of glossy material."
+	icon_state = "shadowshirt"
+	item_state = "shadowshirt"
+	r_sleeve_status = SLEEVE_TORN
+	l_sleeve_status = SLEEVE_TORN
+	body_parts_covered = CHEST|VITALS
+	allowed_race = NON_DWARVEN_RACE_TYPES

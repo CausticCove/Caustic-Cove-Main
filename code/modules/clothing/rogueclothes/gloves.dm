@@ -80,6 +80,12 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 200
 
+/obj/item/clothing/gloves/roguetown/chain/iron/shadowgauntlets
+	name = "darkplate gauntlets"
+	desc = "Gauntlets with gilded fingers fashioned into talons. The tips are all too dull to be of harm."
+	icon_state = "shadowgauntlets"
+	allowed_race = NON_DWARVEN_RACE_TYPES
+
 //rogtodo sprites for this
 /obj/item/clothing/gloves/roguetown/plate
 	name = "plate gauntlets"
