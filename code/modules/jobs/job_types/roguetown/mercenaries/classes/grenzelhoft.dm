@@ -12,7 +12,7 @@
 
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
-	var/classes = list("Doppelsoldner","Halberdier")
+	var/classes = list("Doppelsoldner","Halberdier","Arquebusier")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -60,11 +60,32 @@
 			H.change_stat("constitution", 2)
 			H.change_stat("perception", 1)
 			r_hand = /obj/item/rogueweapon/halberd
+		if("Arquebusier")
+			H.set_blindness(0)
+			to_chat(H, span_warning("You are a Arquebusier from Grenzelhoft, a sharp eyed crackshot, using the latest innovations in technology."))
+			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.change_stat("strength", 1) //Worse melee fighter, in exchange for a powerful gun.
+			H.change_stat("endurance", 1)
+			H.change_stat("constitution", 1)
+			H.change_stat("perception", 2)
+			r_hand = /obj/item/gun/ballistic/handgonne
+			beltl = /obj/item/powderflask
+			backl = /obj/item/bulletpouch/bullet
 
 	//General gear regardless of class.
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/flashlight/flare/torch
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
@@ -74,7 +95,6 @@
 	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-
 	backpack_contents = list(/obj/item/roguekey/mercenary)
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
