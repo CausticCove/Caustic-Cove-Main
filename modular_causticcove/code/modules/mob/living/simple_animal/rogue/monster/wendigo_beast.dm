@@ -82,24 +82,36 @@
 	src.allow_ability = TRUE
 
 //This ability is fucked. I know it's fucked. But I cannot for the life of me figure out how to lock them in place.
+//WHY IS IT SO HARD TO STOP A MOB FROM FUCKING MOVING!!! IT WORKS!!!!!!!
 /mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/proc/rend_ability()
-	toggle_ai(AI_OFF)
 	ability_cd = 20
 	var/list/targets = oview(1, src)
 	for(var/mob/living/T in targets)
 		visible_message(span_warningbig("The [src] pins [T] to the ground!"))
 		face_atom(T)
 		T.Stun(90)
+		src.Stun(90) // Stop moving.
 		T.emote("scream")
 		for(var/i in 1 to 12)
-			if(do_after(src, 3))
+			if(do_after_mob(src, T, 3, TRUE))
+				//Stop moving during this sequence.
+				walk(src, 0)
+
 				T.attack_animal(src)
 				src.adjustBruteLoss(-10)
 				src.blood_volume += 20
+				if(prob(2))
+					var/obj/item/bodypart/limb
+					var/list/limb_list = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+					for(var/zone in limb_list)
+						limb = T.get_bodypart(zone)
+						if(limb)
+							limb.dismember()
+							visible_message(span_warningbig("\The [src] tears off [T]'s [limb.name]!!!"))
 				if(prob(50))
-					T.emote("scream")
+					T.emote("painscream")
+		new /obj/effect/gibspawner/generic(T.loc)
 		targets = list()
-		toggle_ai(AI_ON)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/Life()
 	. = ..()
@@ -107,9 +119,8 @@
 		src.stagetwo++
 		src.icon_state = icon_half_hp
 		enter_stage_two()
-	if(prob(25))
-		if(src.ability_cd <= 0 && src.allow_ability)
-			rend_ability()
+	if(src.ability_cd <= 0 && src.allow_ability)
+		rend_ability()
 	ability_cd--
 	//Fuck bleed, this thing is FULLY immune to bleed.
 	if(src.blood_volume < BLOOD_VOLUME_NORMAL)
@@ -119,5 +130,5 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/AttackingTarget()
 	. = ..()
 	if(prob(50))
-		src.adjustBruteLoss(-5)
+		src.adjustBruteLoss(-10)
 		src.blood_volume += 10

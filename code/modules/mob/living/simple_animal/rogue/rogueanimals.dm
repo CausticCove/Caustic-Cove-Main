@@ -121,7 +121,7 @@
 						playsound(src, pick(attack_sound), 100, TRUE, -1)
 					face_atom(C)
 					src.visible_message(span_danger("[src] starts to rip apart [C]!"))
-					if(do_after(src,100, target = L))
+					if(do_mob(src,100, target = L))
 						var/obj/item/bodypart/limb
 						var/list/limb_list = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 						for(var/zone in limb_list)

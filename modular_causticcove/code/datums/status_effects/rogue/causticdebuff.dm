@@ -6,7 +6,7 @@
 /datum/status_effect/buff/induced_insanity //What is... happening!?
 	id = "inducedinsanity"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/induced_insanity
-	effectedstats = list("strength" = -4, "perception" = -4, "constitution" = -4, "endurance" = -4, "speed" = -4, "fortune" = -4) 
+	effectedstats = list("strength" = -2, "perception" = -2, "constitution" = -1, "endurance" = -1, "speed" = -6, "fortune" = -6) 
 	duration = 1 MINUTES 
 
 /atom/movable/screen/alert/status_effect/buff/induced_insanity

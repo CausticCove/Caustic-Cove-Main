@@ -1,22 +1,22 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast
 	icon = 'modular_causticcove/icons/monsters/lavaland_monsters.dmi'
-	name = "brain gusher beast"
+	name = "DREAM bEastR"
 	icon_state = "curseblob"
-	icon_living = "curseblob"
+	icon_living = "curseblob"	
 	icon_dead = null
 	gender = NEUTER
 	emote_hear = null	
 	emote_see = null
 	speak_chance = 1
 	turns_per_move = 1
-	see_in_dark = 1
+	see_in_dark = 12
 	move_to_delay = 1
 	base_intents = list(/datum/intent/unarmed/claw)
 	butcher_results = list(/obj/item/reagent_containers/powder/moondust = 1)
 	faction = list("hallucination")
 	mob_biotypes = MOB_BEAST
 	melee_damage_lower = 1
-	melee_damage_upper = 10
+	melee_damage_upper = 5
 	vision_range = 12
 	aggro_vision_range = 12
 	environment_smash = ENVIRONMENT_SMASH_NONE
@@ -34,7 +34,8 @@
 	STASPD = 15
 	deaggroprob = 0
 	simple_detect_bonus = 20
-	defprob = 0
+	//Garunteed dodge on the first attack
+	defprob = 200
 	defdrain = 0
 	del_on_deaggro = 120 SECONDS
 	retreat_health = 0
@@ -44,6 +45,12 @@
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
 	var/summoned = FALSE
+	alpha = 88
+
+//The summoned form that comes from the original brain gusher to prevent infinite mob spawning
+/mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast/summoned
+	summoned = TRUE
+
 /mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
@@ -61,18 +68,20 @@
 	. = ..()
 	if(isliving(target))
 		var/mob/living/carbon/L = target
-		//Lie down and FACE YOUR FEARS!!! In other words, attack while prone.
-		if((L.mobility_flags & MOBILITY_STAND) && !L.has_status_effect(/datum/status_effect/buff/induced_insanity))
-			L.Knockdown(20)
+		//Jumpscare, then slow down, and become visible
+		move_to_delay = 3
+		turns_per_move = 3
+		alpha = 255
+		if(!L.has_status_effect(/datum/status_effect/buff/induced_insanity))
 			L.emote("laugh")
 			L.apply_status_effect(/datum/status_effect/buff/induced_insanity)
-				//How many are there?!!
-			if(prob(25) && !summoned)
-				new /mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast(L.loc)
-				playsound(src, 'sound/misc/zizo.ogg', 100, TRUE)
+			//How many are there?!! A total trickster beast
+			if(prob(50) && !summoned)
+				new /mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast/summoned(L.loc)
+				playsound(src, 'sound/misc/zizo.ogg', 100, FALSE)
 				summoned = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/brain_gusher_beast/death(gibbed)
 	. = ..()
-	playsound(src, 'sound/misc/zizo.ogg', 50, TRUE)
+	playsound(src, 'sound/misc/zizo.ogg', 75, TRUE)
 	qdel(src)
