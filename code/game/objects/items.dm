@@ -205,6 +205,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/sheathe_sound // played when item is placed on hip_r or hip_l, the belt side slots
 
 	var/visual_replacement //Path. For use in generating dummies for one-off items that would break the game like the crown.
+	
+	//is it an improvised weapon?
+	var/improvised = FALSE
+
+	//make my life easier... -ham
+	var/mob/living/item_owner
 
 /obj/item/Initialize()
 	. = ..()
@@ -622,6 +628,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			var/oldy = pixel_y
 			pixel_y = pixel_y+5
 			animate(src, pixel_y = oldy, time = 0.5)
+		SEND_SIGNAL(src, COMSIG_ITEM_DROPPED_TURF,user)
 	if(altgripped || wielded)
 		ungrip(user, FALSE)
 	item_flags &= ~IN_INVENTORY

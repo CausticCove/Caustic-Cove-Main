@@ -1,5 +1,5 @@
-GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_PENIS, ORGAN_SLOT_VAGINA, ORGAN_SLOT_TESTICLES),
-	BODY_ZONE_CHEST=list(ORGAN_SLOT_BREASTS))) //Vrell - If we want to do this to other organs down the line, we can just add their slots here.
+GLOBAL_LIST_INIT(moldable_organs, list(BODY_ZONE_PRECISE_GROIN=list(ORGAN_SLOT_PENIS, ORGAN_SLOT_VAGINA, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_BUTT),
+	BODY_ZONE_CHEST=list(ORGAN_SLOT_BREASTS, ORGAN_SLOT_BELLY))) //Vrell - If we want to do this to other organs down the line, we can just add their slots here.
 
 /datum/surgery/organ_manipulation
 	name = "Organ manipulation"

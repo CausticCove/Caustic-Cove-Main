@@ -47,6 +47,7 @@
 #define TRAIT_GOODRUNNER "Good Runner"
 
 
+
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //Will always find any tracks and analyzes them perfectly.
 #define TRAIT_NOCSIGHT "Blessing of Noc" // I can see just a bit more clearly in darkness.
@@ -98,6 +99,14 @@
 
 //Hearthstone Port
 #define TRAIT_MALUMSGRACE "Malum's Grace"
+#define TRAIT_STRONGTHROW "Strong Throw" // 1.5x throw distance and force
+#define TRAIT_MARTIALARTIST "Martial Artist" //more unarmed combat options
+#define TRAIT_PUGILIST "Pugilist" //more punch damage
+#define TRAIT_DEATHBYSNOOSNOO "Bed Breaker" // double sex damage (requires strong intent)
+#define TRAIT_WILDMAGIC "Wild Magic" //low chance for insane stuff to happen when casting
+#define TRAIT_FIENDKISS "Kiss of the Fiend" //after casting some spells, hurl a firebolt at the same location
+#define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
+
 //Caustic Additions
 #define TRAIT_ABYSSORS_BLESSING "Abyssor's Blessing"
 #define TRAIT_FLAMING_TOUCH "Flaming Touch"
@@ -158,7 +167,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
 	TRAIT_PERFECT_TRACKER = span_info("I am the perfect tracker. No tracks will deceive my eyes, nor will they hide their secrets from me."),//Hearthstone port.
 	TRAIT_NOCSIGHT = span_info("Noc blesses my eyes to be unburdened by the night."), //Hearthstone change.
-	TRAIT_CIVILIZEDBARBARIAN = span_info("Your fists are heavier."),
+	TRAIT_CIVILIZEDBARBARIAN = span_info("My fists are heavier and Improvised weapons are my specialty."),
 	TRAIT_COMICSANS = span_sans("I am cursed with a odd voice."),
 	TRAIT_SQUIRE_REPAIR = span_info("I know my way around my Master's tools."),
 	TRAIT_WATERBREATHING = span_info("I do not drown in bodies of water."),
@@ -169,17 +178,24 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DEATHSIGHT = span_info("I can feel when someone nearby draws the Undermaiden's attention."),
 	TRAIT_XYLIX = span_info("I know how to speak in code that only fellow tricksters can understand."),
 	TRAIT_CABAL = span_info("In secret, I have studied the ways of Her ascension, and know of others of the Cabal."),
-	TRAIT_HORDE = span_info("BY BLOOD AND BONE, I AM OF GRAGGAR'S ANOINTED! I FEEL THE STRENGTH IN OTHERS WHO ARE THE SAME."),
-	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others."),
+	TRAIT_HORDE = span_bloody("BY BLOOD AND BONE, I AM OF GRAGGAR'S ANOINTED! I FEEL THE STRENGTH IN OTHERS WHO ARE THE SAME."),
+	TRAIT_DEPRAVED = span_love("The languid scent of Her debauchery is known to me, and I can detect its sordid presence upon others."),
 //Hearthstone Port
-	TRAIT_MALUMSGRACE = "Malum is my muse.",
+	TRAIT_MALUMSGRACE = span_info("Malum is my muse."),
+	TRAIT_DEATHBYSNOOSNOO = span_bloody("It's an unlucky thing to share my bed, I can break pelvis with strong intent."),
+	TRAIT_STRONGTHROW = span_info("My throws are mighty!"),
+	TRAIT_MARTIALARTIST = span_info("I have better kicks."),
+	TRAIT_PUGILIST = span_info("I have stronger punches."),
+	TRAIT_WILDMAGIC = span_info("My magic sometimes has unexpected consequences."), 
+	TRAIT_FIENDKISS = span_info("When I cast projectile magic, the fiend also hurls a fire bolt at the same location."),
+	TRAIT_POISONBITE = span_info("My bites inject venom into my target."),
   //Caustic Changes
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_FORTITUDE = span_info("The typical drain I feel from day to day life is lessened, my athleticism greater."),
 	TRAIT_GUIDANCE = span_info("Arcyne assistance guides my weapons."),
 	TRAIT_ABYSSORS_BLESSING = span_info("I feel like I can course through water with ease... Yet, my body tires faster than I remembered."),
 	TRAIT_FLAMING_TOUCH = span_info("My arms surge with flames, each strike I deal burns my enemies at cost of my own health!"),
-	TRAIT_DECAYEDHANDS = span_warning("My hands have decayed for far too long, I do not have the dexterity to pick up items.")
+	TRAIT_DECAYEDHANDS = span_warning("My hands have decayed for far too long, I do not have the dexterity to pick up items."),
 ))
 
 // trait accessor defines

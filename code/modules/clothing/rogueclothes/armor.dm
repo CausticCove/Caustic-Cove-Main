@@ -172,6 +172,14 @@
 	desc = "A cuirass made of steel with a thin decorative gold plating. Lightweight and durable."
 	color = COLOR_ASSEMBLY_GOLD
 
+/obj/item/clothing/suit/roguetown/armor/plate/half/iron/shadowplate
+	name = "scourge breastplate"
+	desc = "More form over function, this armor is fit for demonstration of might rather than open combat. The aged gilding slowly tarnishes away."
+	icon_state = "shadowplate"
+	item_state = "shadowplate"
+	body_parts_covered = CHEST|GROIN
+	allowed_race = NON_DWARVEN_RACE_TYPES
+
 /obj/item/clothing/suit/roguetown/armor/plate/scale
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "scalemail"

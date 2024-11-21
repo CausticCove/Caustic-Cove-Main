@@ -454,3 +454,7 @@
 	icon_state = "shortnosed"
 	color_keys = 2
 	color_key_names = list("Snout", "Nose")
+
+/datum/sprite_accessory/snout/cownose
+	name = "Cow Nose"
+	icon_state = "cownose"

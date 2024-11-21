@@ -17,6 +17,7 @@
 	var/obj/item/natural/dirtclod/heldclod
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 50
+	improvised = TRUE
 
 /obj/item/rogueweapon/shovel/Destroy()
 	if(heldclod)

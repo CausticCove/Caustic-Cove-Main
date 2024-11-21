@@ -190,6 +190,9 @@
 	action_target.adjustOxyLoss(oxyloss_amt)
 
 /datum/sex_controller/proc/perform_sex_action(mob/living/carbon/human/action_target, arousal_amt, pain_amt, giving)
+	if(HAS_TRAIT(user, TRAIT_DEATHBYSNOOSNOO))
+		if(istype(user.rmb_intent, /datum/rmb_intent/strong))
+			pain_amt *= 2
 	action_target.sexcon.receive_sex_action(arousal_amt, pain_amt, giving, force, speed)
 
 /datum/sex_controller/proc/receive_sex_action(arousal_amt, pain_amt, giving, applied_force, applied_speed)
@@ -207,6 +210,14 @@
 	damage_from_pain(pain_amt)
 	try_do_moan(arousal_amt, pain_amt, applied_force, giving)
 	try_do_pain_effect(pain_amt, giving)
+
+/datum/sex_controller/proc/try_pelvis_crush(mob/living/carbon/human/target)
+	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
+		if(!target.has_wound(/datum/wound/fracture/groin))
+			if(prob(10)){
+				var/obj/item/bodypart/groin = target.get_bodypart(check_zone(BODY_ZONE_PRECISE_GROIN))
+				groin.add_wound(/datum/wound/fracture)
+			}
 
 /datum/sex_controller/proc/damage_from_pain(pain_amt)
 	if(pain_amt < PAIN_MINIMUM_FOR_DAMAGE)

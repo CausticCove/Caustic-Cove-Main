@@ -207,6 +207,12 @@
 /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	icon_state = "sdaggeralt"
 
+/obj/item/rogueweapon/huntingknife/idagger/steel/dirk
+	name = "fanged dagger"
+	desc = "A dagger modeled after the fang of an anthrax spider."
+	icon_state = "spiderdagger"
+	smeltresult = null
+
 /obj/item/rogueweapon/huntingknife/idagger/silver
 	name = "silver dagger"
 	desc = "This silver dagger can be the banishment of vampires and werewolves."
