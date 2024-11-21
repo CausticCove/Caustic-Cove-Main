@@ -9,6 +9,8 @@
 	var/help_verb
 	var/allow_temp_override = TRUE //if this martial art can be overridden by temporary martial arts
 	var/smashes_tables = FALSE //If the martial art smashes tables when performing table slams and head smashes
+	var/projectile_deflect = FALSE //If the martial art can avoid projectiles or not.
+
 
 /datum/martial_art/proc/disarm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	return FALSE
@@ -73,5 +75,11 @@
 	return
 
 ///Gets called when a projectile hits the owner. Returning anything other than BULLET_ACT_HIT will stop the projectile from hitting the mob.
-/datum/martial_art/proc/on_projectile_hit(mob/living/carbon/human/A, obj/projectile/P, def_zone)
-	return BULLET_ACT_HIT
+/datum/martial_art/proc/on_projectile_hit(mob/living/carbon/human/A, obj/projectile/P, def_zone) 
+	var/prob2defend = A.defprob + (A.STASPD * 15)
+	var/chance = prob(prob2defend)
+	if(projectile_deflect && chance)
+		A.visible_message("<span class='danger'>[A] dodges the projectile cleanly!</span>", "<span class='userdanger'>You dodge out of the way of the projectile!</span>")
+		return BULLET_ACT_FORCE_PIERCE //I mean, since martial arts aren't used, it's fine, i guess?
+	else
+		return BULLET_ACT_HIT

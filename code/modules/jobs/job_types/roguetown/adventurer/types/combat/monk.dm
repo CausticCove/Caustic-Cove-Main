@@ -39,6 +39,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.change_stat("strength", 3)
 		H.change_stat("endurance", 1)
-		H.change_stat("speed", 2)
+		H.change_stat("speed", 4)
 		H.change_stat("perception", -1)
 		ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_MARTIALARTIST, TRAIT_GENERIC)
+		H.mind.martial_art.projectile_deflect = TRUE

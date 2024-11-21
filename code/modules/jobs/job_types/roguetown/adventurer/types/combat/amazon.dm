@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/amazon
 	category_tags = list(CTAG_ADVENTURER)
 
-	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STEELHEARTED)
+	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_STEELHEARTED, TRAIT_DEATHBYSNOOSNOO, TRAIT_STRONGTHROW)
 	cmode_music = 'sound/music/combat_gronn.ogg'
 
 /datum/outfit/job/roguetown/adventurer/amazon/pre_equip(mob/living/carbon/human/H)
@@ -16,18 +16,21 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/rogueweapon/huntingknife
 	backl = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/javelinquiver
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -41,9 +44,11 @@
 		if("Spear")
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			r_hand = /obj/item/rogueweapon/spear
-	H.change_stat("strength", 2)
+	H.change_stat("strength", 3)
 	H.change_stat("intelligence", -2)
 	H.change_stat("constitution", 3)
 	H.change_stat("perception", 2)
 	H.change_stat("endurance", 2)
 	H.change_stat("speed", 1)
+	backpack_contents = list(/obj/item/restraints/legcuffs/bola, /obj/item/restraints/legcuffs/bola, /obj/item/restraints/legcuffs/bola)
+

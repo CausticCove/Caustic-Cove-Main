@@ -122,4 +122,5 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	pants = /obj/item/clothing/under/roguetown/tights/black
+	H.give_fightingstyle(TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

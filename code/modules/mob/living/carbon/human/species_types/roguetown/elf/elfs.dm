@@ -77,6 +77,7 @@
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human,
 		/datum/customizer/organ/belly/human,
+		/datum/customizer/organ/butt/human,
 		)
 	body_markings = list(
 	)

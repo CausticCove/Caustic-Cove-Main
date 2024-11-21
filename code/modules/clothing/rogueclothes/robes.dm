@@ -163,7 +163,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	boobed = TRUE
 	color = null
-	flags_inv = HIDEBOOB|HIDETAIL
+	flags_inv = HIDEBOOB|HIDETAIL|HIDEBUTT
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	resistance_flags = FIRE_PROOF
