@@ -44,7 +44,7 @@
 #define TRAIT_TRAINED_SMITH "Trained Smith"
 #define TRAIT_GUARDSMAN "Vigilant Guardsman"
 #define TRAIT_KNIGHTSMAN "Royal Defiance"
-#define TRAIT_GOODRUNNER "Good Runner"	
+#define TRAIT_GOODRUNNER "Good Runner"
 
 
 
@@ -103,6 +103,9 @@
 #define TRAIT_MARTIALARTIST "Martial Artist" //more unarmed combat options
 #define TRAIT_PUGILIST "Pugilist" //more punch damage
 #define TRAIT_DEATHBYSNOOSNOO "Bed Breaker" // double sex damage (requires strong intent)
+#define TRAIT_WILDMAGIC "Wild Magic" //low chance for insane stuff to happen when casting
+#define TRAIT_FIENDKISS "Kiss of the Fiend" //after casting some spells, hurl a firebolt at the same location
+#define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
 
 //Caustic Additions
 #define TRAIT_ABYSSORS_BLESSING "Abyssor's Blessing"
@@ -183,6 +186,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_STRONGTHROW = span_info("My throws are mighty!"),
 	TRAIT_MARTIALARTIST = span_info("I have better kicks."),
 	TRAIT_PUGILIST = span_info("I have stronger punches."),
+	TRAIT_WILDMAGIC = span_info("My magic sometimes has unexpected consequences."), 
+	TRAIT_FIENDKISS = span_info("When I cast projectile magic, the fiend also hurls a fire bolt at the same location."),
+	TRAIT_POISONBITE = span_info("My bites inject venom into my target."),
   //Caustic Changes
 	TRAIT_GOODRUNNER = span_info("I can run without breaking a sweat!"),
 	TRAIT_FORTITUDE = span_info("The typical drain I feel from day to day life is lessened, my athleticism greater."),

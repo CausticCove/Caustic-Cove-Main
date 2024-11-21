@@ -189,6 +189,12 @@
 		if(!apply_damage(dam2do, BRUTE, def_zone, armor_block, user))
 			nodmg = TRUE
 			next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
+		if(HAS_TRAIT(user, TRAIT_POISONBITE))
+			if(src.reagents)
+				var/poison = user.STACON/2
+				src.reagents.add_reagent(/datum/reagent/toxin/venom, poison/2)
+				src.reagents.add_reagent(/datum/reagent/medicine/soporpot, poison)
+				to_chat(user, span_warning("Your fangs inject venom into [src]!"))
 
 	var/datum/wound/caused_wound
 	if(!nodmg)
@@ -474,6 +480,8 @@
 		. = TRUE
 	if(interaction_flags_atom & INTERACT_ATOM_ATTACK_HAND)
 		. = _try_interact(user)
+	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND_RIGHT, user)
+
 
 //Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
 /atom/proc/_try_interact(mob/user)

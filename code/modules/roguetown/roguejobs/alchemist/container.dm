@@ -128,3 +128,9 @@
 /obj/item/reagent_containers/glass/bottle/rogue/beer/kgunplum
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/kgunplum = 48)
 	desc = "A bottle with a Golden Swan cork-seal. A reddish-golden alcohol made from a fruit commonly found on the Kazengun-isles. A favourite of the commoners."
+
+/obj/item/reagent_containers/glass/bottle/rogue/paralysispot
+	list_reagents = list(/datum/reagent/medicine/paralysispot = 45)
+	
+/obj/item/reagent_containers/glass/bottle/rogue/soporpot
+	list_reagents = list(/datum/reagent/medicine/soporpot = 45)

@@ -209,6 +209,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	//is it an improvised weapon?
 	var/improvised = FALSE
 
+	//make my life easier... -ham
+	var/mob/living/item_owner
+
 /obj/item/Initialize()
 	. = ..()
 	if(!pixel_x && !pixel_y && !bigboy)
@@ -625,6 +628,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			var/oldy = pixel_y
 			pixel_y = pixel_y+5
 			animate(src, pixel_y = oldy, time = 0.5)
+		SEND_SIGNAL(src, COMSIG_ITEM_DROPPED_TURF,user)
 	if(altgripped || wielded)
 		ungrip(user, FALSE)
 	item_flags &= ~IN_INVENTORY
