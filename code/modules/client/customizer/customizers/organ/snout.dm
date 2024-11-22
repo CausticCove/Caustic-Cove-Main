@@ -200,6 +200,8 @@
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
 		/datum/sprite_accessory/snout/shortnosed,
+		/datum/sprite_accessory/snout/front/cownose,
+		/datum/sprite_accessory/snout/cownose,
 		)
 
 /datum/customizer/organ/snout/akula

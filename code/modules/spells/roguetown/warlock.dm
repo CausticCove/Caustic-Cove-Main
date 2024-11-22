@@ -188,28 +188,27 @@
 
 /obj/effect/proc_holder/spell/self/findfamiliar/cast(mob/user = usr)
 	..()
-
 	var/familiars = list(
 		/mob/living/carbon/human/species/goblin/hell, //imp
 		/mob/living/simple_animal/hostile/retaliate/rogue/mossback, //psuedodragon
 		/mob/living/carbon/human/species/skeleton, //quasit(skeleton?)
-		/mob/living/simple_animal/shade //sprite
+		/mob/living/simple_animal/shade, //sprite
+		/mob/living/simple_animal/hostile/retaliate/rogue/wolf,
+		/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+		/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck
 		)
 	var/familiarchoice = input("Choose your familiar", "Available familiars") as anything in familiars
-
-	to_chat(user, span_notice("Trying to find familiar..."))
-	var/list/L = pollCandidatesForMob(
-		Question = "Do you want to play as [span_notice("[span_danger("[user.real_name]'s")] familiar")]?",
-		jobbanType = ROLE_PAI,
-		poll_time = 20 SECONDS,
-		ignore_category = POLL_IGNORE_SENTIENCE_POTION,
-	)
-	if(L.len > 0)
-		var/mob/chosen_one =  pick(L)
+	
+	var/list/candidates = pollCandidatesForMob("Do you want to play as someone's familiar?", ROLE_PAI, null, null, 100, POLL_IGNORE_SENTIENCE_POTION)
+	if(LAZYLEN(candidates))
+		var/mob/player = pick(candidates)
+		if(istype(player, /mob/dead/new_player))
+			var/mob/dead/new_player/N = player
+			N.close_spawn_windows()
 		fam = new familiarchoice(user.loc)
-		fam.key = chosen_one.key
+		fam.key = player.key
 		to_chat(user, span_notice("Your familiar appears..."))
-		chosen_one.mind.transfer_to(fam)
+		player.mind.transfer_to(fam)
 		fam.fully_replace_character_name(null, "[user]'s familiar")
 		fam.get_language_holder().omnitongue = TRUE //Grants omnitongue
 		var/valid_input_name = custom_name(user)
@@ -219,6 +218,7 @@
 	else	
 		to_chat(user, span_notice("You could not find a familiar..."))
 		revert_cast()
+
 
 /obj/effect/proc_holder/spell/self/findfamiliar/proc/custom_name(mob/awakener, var/mob/chosen_one, iteration = 1)
 	if(iteration > 5)
