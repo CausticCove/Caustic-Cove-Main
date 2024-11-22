@@ -94,8 +94,6 @@
 	playsound(src, 'modular_causticcove/sound/mobs/gut_mucher_stage_two.ogg', 100, TRUE)
 	src.allow_ability = TRUE
 
-//This ability is fucked. I know it's fucked. But I cannot for the life of me figure out how to lock them in place.
-//WHY IS IT SO HARD TO STOP A MOB FROM FUCKING MOVING!!! IT WORKS!!!!!!!
 /mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/proc/rend_ability()
 	ability_cd = 20
 	var/list/mob/living/chosen_target = list()
@@ -104,10 +102,10 @@
 			chosen_target += targets
 	if(LAZYLEN(chosen_target))
 		var/mob/living/T = pick(chosen_target)
-		visible_message(span_warningbig("\The [src] slams [T] into the ground!"))
+		prevent_goto_target = TRUE
+		visible_message(span_warningbig("\The [src] pins [T] into the ground!"))
 		face_atom(T)
 		T.Stun(90)
-		src.Stun(100) // Stop moving.
 		src.melee_damage_lower = 10
 		src.melee_damage_upper = 25
 		T.emote("scream")
@@ -115,8 +113,6 @@
 		//Attack the mob 12 times over the duration.
 		for(var/i in 1 to 12)
 			if(do_after_mob(src, T, 3, TRUE))
-				//Stop moving during this sequence.
-				walk(src, 0)
 				T.attack_animal(src)
 				src.adjustBruteLoss(-5)
 				src.blood_volume += 20
@@ -138,6 +134,8 @@
 		spawn(100)
 			src.melee_damage_lower = 30
 			src.melee_damage_upper = 45
+			prevent_goto_target = FALSE
+			turns_per_move = 1
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wendigo_beast/Life()
 	. = ..()
