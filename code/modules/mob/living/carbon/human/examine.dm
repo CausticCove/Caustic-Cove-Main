@@ -496,9 +496,11 @@
 		. += span_info(line)
 
 	// for underwears that don't cover from the rear, genital descriptions are still showns
-	if(src.BehindAtom(user, src.dir) && src.underwear.covers_rear == FALSE && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))
-		. += span_info("[t_his] underwear doesn't cover [t_him] from behind.")
-		. += span_info(build_coalesce_description(src.get_extra_mob_descriptors(), src, list(2, 3, 5), "%THEY% %DESC1%, %DESC2% and %DESC3%."))
+	if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN) && src.underwear)
+		//separate these conditions to not throw an error when no underwear is worn at all
+		if(user.InCone(src, turn(src.dir, 180)) && !src.underwear.covers_rear)
+			. += span_info("[t_his] underwear doesn't cover [t_him] from behind.")
+			. += span_info(build_coalesce_description(src.get_extra_mob_descriptors(), src, list(2, 3, 5), "%THEY% %DESC1%, %DESC2% and %DESC3%."))
 
 	var/trait_exam = common_trait_examine()
 	if(!isnull(trait_exam))
