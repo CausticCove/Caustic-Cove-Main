@@ -2,7 +2,7 @@
 	icon = 'icons/mob/sprite_accessory/genitals/penis.dmi'
 	color_keys = 2
 	color_key_names = list("Member", "Skin")
-	relevant_layers = list(BODY_BEHIND_LAYER,BODY_FRONT_FRONT_FRONT_LAYER)
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_FRONT_FRONT_LAYER)
 
 /datum/sprite_accessory/penis/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_BELT, OFFSET_BELT_F)
@@ -88,7 +88,7 @@
 /datum/sprite_accessory/testicles
 	icon = 'icons/mob/sprite_accessory/genitals/testicles.dmi'
 	color_key_name = "Sack"
-	relevant_layers = list(BODY_BEHIND_LAYER,BODY_FRONT_FRONT_LAYER)
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_FRONT_LAYER)
 
 /datum/sprite_accessory/testicles/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_BELT, OFFSET_BELT_F)

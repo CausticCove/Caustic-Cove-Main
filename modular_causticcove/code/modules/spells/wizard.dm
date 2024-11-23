@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/targeted/touch/sizespell
 	name = "Reduce/Grow Person"
-	desc = "A few basic tricks many apprentices use to practice basic manipulation of the arcyne."
+	desc = "A basic trick many apprentices would use to prank their master."
 	clothes_req = FALSE
 	drawmessage = "I prepare to perform a arcyne incantation."
 	dropmessage = "I release my arcyne focus."
@@ -108,7 +108,7 @@
 /datum/status_effect/buff/growth
 	id = "growth"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/growth
-	effectedstats = list("speed" = -2, "strength" = 3)
+	effectedstats = list("speed" = -3, "strength" = 3)
 	var/removable = FALSE
 
 /datum/status_effect/buff/growth/on_apply()
