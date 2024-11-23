@@ -119,9 +119,9 @@
 	target.update_transform()
 	target.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=4, movetypes=GROUND)
 	spawn(300) //is that how it work? i remember there being a better wait timer but i forgor, so i'm using this one
-	if(owner && istype(owner, /mob/living))
-		to_chat(owner, span_userdanger("<span class='big'>You feel like you might be able to return to your size now!</span>"))
-		removable = TRUE
+		if(owner && istype(owner, /mob/living))
+			to_chat(owner, span_userdanger("<span class='big'>You feel like you might be able to return to your size now!</span>"))
+			removable = TRUE
 
 /datum/status_effect/buff/growth/on_remove()
 	var/mob/living/target = owner
