@@ -249,6 +249,13 @@
 	created_item = /obj/item/rogueweapon/mace/goden/steel
 	craftdiff = 3
 
+/datum/anvil_recipe/weapons/javelin
+	name = "Javelin (+1 Small Log)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/spear/javelin
+	craftdiff = 2
+
 
 /// UPGRADED WEAPONS
 
@@ -414,3 +421,18 @@
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/roguegem)
 	created_item = /obj/item/rogueweapon/sword/long/blackflamb
 	craftdiff = 5
+
+//GUN AMMO
+
+/datum/anvil_recipe/weapons/iron/leadball
+	name = "Iron Balls (3x)"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/ammo_casing/caseless/lead
+	createditem_num = 3
+	i_type = "Ammo"
+
+/datum/anvil_recipe/weapons/iron/runeball
+	name = "Runic Ball"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/ammo_casing/caseless/runelock
+	i_type = "Ammo"

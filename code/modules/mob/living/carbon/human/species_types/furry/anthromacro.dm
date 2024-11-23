@@ -4,7 +4,7 @@
 /datum/species/anthromacro
 	name = "Goliath"
 	id = "anthromacro"
-	desc = "Some species of Wild-Kin hail from Graggarite touched bloodlines, and have the size, and temper to match. (ONLY WORKS FOR ADVENTURER AND PILGRIM!!!)"
+	desc = "Some species of Wild-Kin hail from Graggarite touched bloodlines, and have the size, and temper to match."
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
@@ -39,7 +39,7 @@
 		OFFSET_TAUR = list(-16,-1), OFFSET_TAUR_F = list(-16, -1),\
 		)
 
-	race_bonus = list(STAT_PERCEPTION = 1)
+	race_bonus = list(STAT_STRENGTH = 8, STAT_ENDURANCE = 8, STAT_CONSTITUTION = 8, STAT_SPEED = -14)
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
@@ -78,6 +78,7 @@
 		/datum/customizer/organ/testicles/anthro,
 		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/belly/animal,
+		/datum/customizer/organ/butt/animal,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/anthro,
 		)
@@ -132,6 +133,12 @@
 /datum/species/anthromacro/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
+
+/datum/species/anthromacro/after_creation(mob/living/carbon/C)
+	..()
+	C.transform = C.transform.Scale(2.25, 2.25)
+	C.transform = C.transform.Translate(0, (0.25 * 16))
+	C.update_transform()
 
 /datum/species/anthromacro/check_roundstart_eligible()
 	return TRUE

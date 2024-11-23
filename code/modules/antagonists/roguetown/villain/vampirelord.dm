@@ -34,12 +34,14 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	var/cache_hair
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/bat/batform //attached to the datum itself to avoid cloning memes, and other duplicates
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/gaseousform/gas
+	var/ashes = FALSE
+	var/is_solo = FALSE
 
 /datum/antagonist/vampirelord/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
 	if(istype(examined_datum, /datum/antagonist/vampirelord/lesser))
 		return span_boldnotice("A vampire spawn.")
 	if(istype(examined_datum, /datum/antagonist/vampirelord))
-		return span_boldnotice("A Vampire Lord!.")
+		return span_boldnotice("A Vampire Lord!")
 	if(istype(examined_datum, /datum/antagonist/zombie))
 		return span_boldnotice("Another deadite.")
 	if(istype(examined_datum, /datum/antagonist/skeleton))
@@ -79,8 +81,10 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	owner.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
 	owner.current.verbs |= /mob/living/carbon/human/proc/vampire_telepathy
 	vamp_look()
+	owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
+	if(is_solo)
+		return
 	if(isspawn)
-		owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
 		add_objective(/datum/objective/vlordserve)
 		finalize_vampire_lesser()
 		for(var/obj/structure/vampire/bloodpool/mansion in GLOB.vampire_objects)
@@ -98,7 +102,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		equip_lord()
 		addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "VAMPIRE LORD"), 5 SECONDS)
 		greet()
-	return ..()
 
 // OLD AND EDITED
 /datum/antagonist/vampirelord/proc/equip_lord()
@@ -333,7 +336,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	V.update_body_parts(redraw = TRUE)
 	V.mob_biotypes = MOB_UNDEAD
 	if(isspawn)
-		V.vampire_disguise()
+		V.vampire_disguise(src)
 
 /datum/antagonist/vampirelord/on_life(mob/user)
 	if(!user)
@@ -405,7 +408,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			for(var/obj/structure/vampire/portalmaker/S in GLOB.vampire_objects)
 				S.unlocked = TRUE
 			for(var/S in MOBSTATS)
-				owner.current.change_stat(S, 2)
+				if(!owner.special_role == "Lesser Vampire")
+					owner.current.change_stat(S, 2)
+
 			for(var/obj/structure/vampire/bloodpool/B in GLOB.vampire_objects)
 				B.nextlevel = VAMP_LEVEL_TWO
 			to_chat(owner, "<font color='red'>I am refreshed and have grown stronger. The visage of the bat is once again available to me. I can also once again access my portals.</font>")
@@ -418,7 +423,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			gas = new
 			owner.current.AddSpell(gas)
 			for(var/S in MOBSTATS)
-				owner.current.change_stat(S, 2)
+				if(!owner.special_role == "Lesser Vampire")
+					owner.current.change_stat(S, 2)
 			for(var/obj/structure/vampire/bloodpool/B in GLOB.vampire_objects)
 				B.nextlevel = VAMP_LEVEL_THREE
 			to_chat(owner, "<font color='red'>My power is returning. I can once again access my spells. I have also regained usage of my mist form.</font>")
@@ -431,7 +437,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			owner.current.RemoveSpell(/obj/effect/proc_holder/spell/targeted/transfix)
 			owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/transfix/master)
 			for(var/S in MOBSTATS)
-				owner.current.change_stat(S, 2)
+				if(!owner.special_role == "Lesser Vampire")
+					owner.current.change_stat(S, 2)
 			for(var/obj/structure/vampire/bloodpool/B in GLOB.vampire_objects)
 				B.nextlevel = VAMP_LEVEL_FOUR
 			to_chat(owner, "<font color='red'>My dominion over others minds and my own body returns to me. I am nearing perfection. The armies of the dead shall now answer my call.</font>")
@@ -1385,3 +1392,24 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				sleep(50)
 				L.Sleeping(300)
 
+/datum/antagonist/vampirelord/lesser/secret
+	name = "Lesser Vampire"
+	ashes = FALSE
+	is_solo = TRUE
+	confess_lines = list(
+		"THE CRIMSON CALLS!",
+		"THE SUN IS ENEMY!",
+	)
+
+/datum/antagonist/vampirelord/lesser/secret/on_gain()
+	. = ..()
+	owner.current.verbs -= /mob/living/carbon/human/proc/vampire_telepathy
+	REMOVE_TRAIT(owner.current, TRAIT_NOROGSTAM, "[type]")
+	REMOVE_TRAIT(owner.current, TRAIT_NOPAIN, "[type]")
+	REMOVE_TRAIT(owner.current, TRAIT_STRONGBITE, "[type]")
+
+/datum/antagonist/vampirelord/lesser/secret/roundend_report()
+	return
+
+/datum/antagonist/vampirelord/lesser/secret/move_to_spawnpoint()
+	return

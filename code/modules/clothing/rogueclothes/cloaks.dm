@@ -813,6 +813,9 @@
 /obj/item/clothing/cloak/raincloak/purple
 	color = CLOTHING_PURPLE
 
+/obj/item/clothing/cloak/raincloak/yellow
+	color = CLOTHING_YELLOW
+
 /obj/item/clothing/head/hooded/rainhood
 	name = "hood"
 	desc = "This one will shelter me from the weather and my identity too."
@@ -822,7 +825,7 @@
 	dynamic_hair_suffix = ""
 	edelay_type = 1
 	body_parts_covered = HEAD
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDETAIL
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDETAIL|HIDEBUTT
 	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/hooded/equipped(mob/user, slot)

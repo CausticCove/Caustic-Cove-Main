@@ -69,6 +69,7 @@
 		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/belly/animal,
 		/datum/customizer/organ/breasts/animal,
+		/datum/customizer/organ/butt/animal,
 		/datum/customizer/organ/vagina/animal,
 		/datum/customizer/organ/ears/anthro,
 		)
