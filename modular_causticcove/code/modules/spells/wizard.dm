@@ -77,7 +77,7 @@
 	target.pass_flags = PASSTABLE | PASSMOB
 	spawn(300) //is that how it work? i remember there being a better wait timer but i forgor
 		if(owner && istype(owner, /mob/living))
-			to_chat(owner, span_userdanger("<span class='big'>You feel like you might be able to return to your size now!</span>"))
+			to_chat(owner, span_userdanger("<span class='big'>You feel like you might be able to return to your size by pressing on the status effect!</span>"))
 			removable = TRUE
 
 /datum/status_effect/buff/shrinked/on_remove()
@@ -114,19 +114,17 @@
 /datum/status_effect/buff/growth/on_apply()
 	. = ..()
 	var/mob/living/target = owner
-	target.transform = target.transform.Scale(2.25, 2.25)
-	target.transform = target.transform.Translate(0, (0.25 * 16))
+	target.transform = target.transform.Scale(2, 2)
 	target.update_transform()
 	target.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=4, movetypes=GROUND)
 	spawn(300) //is that how it work? i remember there being a better wait timer but i forgor, so i'm using this one
 	if(owner && istype(owner, /mob/living))
-		to_chat(owner, span_userdanger("<span class='big'>You feel like you might be able to return to your size now!</span>"))
+		to_chat(owner, span_userdanger("<span class='big'>You feel like you might be able to return to your size now by pressing on the status effect!</span>"))
 		removable = TRUE
 
 /datum/status_effect/buff/growth/on_remove()
 	var/mob/living/target = owner
-	target.transform = target.transform.Scale(0.4, 0.4)
-	target.transform = target.transform.Translate(0, -(0.25 * 16))
+	target.transform = target.transform.Scale(0.5, 0.5)
 	target.update_transform()
 	target.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
 	. = ..()
@@ -139,9 +137,6 @@
 
 /atom/movable/screen/alert/status_effect/buff/growth/Click()
 	. = ..()
-	if(!.)
-		return
-
 	var/mob/living/L = usr
 	if(!istype(L)) // how though
 		return
