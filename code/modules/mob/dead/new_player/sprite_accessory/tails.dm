@@ -2,7 +2,7 @@
 	abstract_type = /datum/sprite_accessory/tail
 	icon = 'icons/mob/sprite_accessory/tails/tails.dmi'
 	color_key_name = "Tail"
-	relevant_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
+	relevant_layers = list(BODY_FRONT_FRONT_LAYER, BODY_BEHIND_LAYER)
 	var/can_wag = FALSE
 
 /datum/sprite_accessory/tail/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
@@ -31,7 +31,7 @@
 /datum/sprite_accessory/tail/cat
 	name = "Cat"
 	icon_state = "cat"
-	relevant_layers = list(BODY_FRONT_LAYER)
+	relevant_layers = list(BODY_FRONT_FRONT_LAYER)
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/monkey
@@ -342,10 +342,18 @@
 	color_key_defaults = list(KEY_SKIN_COLOR)
 	can_wag = TRUE
 
+//Additional Tails
+
+/datum/sprite_accessory/tail/largedragon
+	name = "Large Dragon"
+	icon = 'icons/mob/sprite_accessory/tails/dragon_tail.dmi'
+	icon_state = "big_liz"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+	can_wag = TRUE
 
 //TAUR BULLSHIT HELP
 /datum/sprite_accessory/tail/taur
-	relevant_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
+	relevant_layers = list(BODY_FRONT_FRONT_LAYER, BODY_BEHIND_LAYER)
 
 /datum/sprite_accessory/tail/taur/snake
 	name = "Snake Taur"
@@ -381,6 +389,12 @@
 	name = "Bug Taur MEGA"
 	icon = 'icons/mob/sprite_accessory/tails/fat_sect.dmi'
 	icon_state = "fat_sect_drone"
+
+/datum/sprite_accessory/tail/taur/orcamerm
+	name = "Nefarious Fish (Orca)"
+	icon = 'icons/mob/sprite_accessory/tails/orca.dmi'
+	icon_state = "orcamermaid_s"
+
 
 /datum/sprite_accessory/tail/taur/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
     generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_TAUR, OFFSET_TAUR_F)

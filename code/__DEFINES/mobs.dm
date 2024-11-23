@@ -308,6 +308,7 @@
 #define OFFSET_ARMOR "wear_armor"
 #define OFFSET_HANDS "hands"
 #define OFFSET_UNDIES "underwear"
+#define OFFSET_BUTT "butt"
 
 #define OFFSET_ID_F "wear_ringf"
 #define OFFSET_GLOVES_F "glovesf"

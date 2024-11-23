@@ -18,6 +18,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Cyclops (L)"=/datum/charflaw/noeyel,
 	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
 	"Wood Arm (L)"=/datum/charflaw/limbloss/arm_l,
+	"Cursed Blood (Vampire)"=/datum/charflaw/vampire,
 	"Random or No Flaw"=/datum/charflaw/randflaw,
 	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw
 	))
@@ -479,3 +480,14 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	for(var/atom/movable/content in movable.contents)
 		mammons += get_mammons_in_atom(content)
 	return mammons
+
+/datum/charflaw/vampire
+	name = "Cursed Blood (Vampire)"
+	desc = "You were gifted or cursed by Zizo, A lone vampire forced to roam the lands and drink blood to survive, albeit 'immortal'. Whether you are Ancient or a new vampire, you are no lord nor spawn, and you do not have any reason to antagonize the mortals beyond occasionally finding blood to keep you going. (This doesn't give you the rights to be a antag.)"
+
+/datum/charflaw/vampire/flaw_on_life(mob/user)
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	var/datum/antagonist/vampirelord/lesser/secret/new_vamp = new ()
+	H.mind.add_antag_datum(new_vamp)

@@ -1431,6 +1431,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
 			var/damage = user.get_punch_dmg() * 1.4
 			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT, damage = damage)
+			if(HAS_TRAIT(user, TRAIT_MARTIALARTIST))
+				damage *= 1.5
 			target.next_attack_msg.Cut()
 			var/nodmg = FALSE
 			if(!target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block))

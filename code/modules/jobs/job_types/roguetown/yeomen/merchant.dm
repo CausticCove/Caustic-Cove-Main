@@ -18,7 +18,7 @@
 	required = TRUE
 	round_contrib_points = 3
 
-	cmode_music = 'sound/music/combat_fancy.ogg'
+	cmode_music = 'sound/music/Grin.ogg'
 
 /datum/outfit/job/roguetown/merchant/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -38,6 +38,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 2, TRUE)
 		backpack_contents = /obj/item/rogueweapon/huntingknife/idagger/navaja
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 	neck = /obj/item/clothing/neck/roguetown/horus
@@ -46,8 +47,12 @@
 	pants = /obj/item/clothing/under/roguetown/tights/sailor
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/storage/keyring/merchant
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	beltr = /obj/item/bulletpouch
 	id = /obj/item/clothing/ring/gold
+	r_hand = /obj/item/gun/ballistic/arquebus_pistol
+	l_hand = /obj/item/powderflask
+	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/rich)
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 		H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()

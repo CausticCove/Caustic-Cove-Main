@@ -4,7 +4,7 @@
 /datum/species/demimacro
 	name = "Half-Giants"
 	id = "demimacro"
-	desc = "Similar to Goliaths, these beasts trace their lineage to graggarite roots. They may be a tad more friendly however. Just a bit. (ONLY WORKS WITH ADVENTURERS AND PILGRIMS)"
+	desc = "Similar to Goliaths, these beasts trace their lineage to graggarite roots. They may be a tad more friendly however. Just a bit."
 	skin_tone_wording = "Ancestry"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,MUTCOLORS_PARTSONLY)
@@ -36,7 +36,7 @@
 		OFFSET_TAUR = list(-16,-1), OFFSET_TAUR_F = list(-16, -1),\
 		)
 
-	race_bonus = list(STAT_PERCEPTION = 1)
+	race_bonus = list(STAT_STRENGTH = 8, STAT_ENDURANCE = 8, STAT_CONSTITUTION = 8, STAT_SPEED = -14)
 	enflamed_icon = "widefire"
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
@@ -57,6 +57,7 @@
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		/datum/customizer/organ/belly/human,
+		/datum/customizer/organ/butt/human,
 		/datum/customizer/organ/tail_feature/anthro,
 		)
 	body_marking_sets = list(
@@ -95,6 +96,12 @@
 /datum/species/demimacro/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
+
+/datum/species/demimacro/after_creation(mob/living/carbon/C)
+	..()
+	C.transform = C.transform.Scale(2.25, 2.25)
+	C.transform = C.transform.Translate(0, (0.25 * 16))
+	C.update_transform()
 
 /datum/species/demimacro/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST

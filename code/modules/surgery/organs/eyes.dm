@@ -480,3 +480,10 @@
 	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
 
+/obj/item/organ/eyes/robotic/wooden
+	name = "wooden eyeball"
+	desc = "This is just a wooden ball."
+	icon_state = "weyeball"
+	eye_color = "#663702"
+	tint = INFINITY
+	sight_flags = BLIND

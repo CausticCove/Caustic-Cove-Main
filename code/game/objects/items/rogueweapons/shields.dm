@@ -118,6 +118,12 @@
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	max_integrity = 200
 
+/obj/item/rogueweapon/shield/tower/spidershield
+	name = "spider shield"
+	desc = "A bulky shield of spike-like lengths molten together. The motifs evoke anything but safety and protection."
+	icon_state = "spidershield"
+	coverage = 55
+
 /obj/item/rogueweapon/shield/tower/getonmobprop(tag)
 	. = ..()
 	if(tag)
