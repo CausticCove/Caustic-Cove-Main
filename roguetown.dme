@@ -3654,9 +3654,6 @@
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\rogue_corpse.dm"
 #include "modular_hearthstone\code\modules\reagents\reagent_containers\lux.dm"
 #include "modular_hearthstone\code\modules\spells\roguetown\wizard.dm"
-<<<<<<< HEAD
-=======
 #include "modular_hearthstone\code\modules\spells\roguetown\spells5e\cantrips5e.dm"
 #include "modular_hearthstone\code\modules\spells\roguetown\spells5e\spellscrolls.dm"
->>>>>>> 12d5ca440498629b6b28c9fa84eab0c04e1bf335
 // END_INCLUDE

@@ -49,7 +49,7 @@
 
 /obj/item/undies/loincloth
 	name = "loincloth"
-	icon_state = "briefs"
+	icon_state = "loincloth"
 	covers_breasts = TRUE
 	covers_rear = FALSE
 	desc = "An absolute necessity. Slightly less effective."
