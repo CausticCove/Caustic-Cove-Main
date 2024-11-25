@@ -66,7 +66,7 @@
 /datum/status_effect/buff/shrinked
 	id = "shrink"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/shrinked
-	effectedstats = list("speed" = 3, "strength" = -3)
+	effectedstats = list("speed" = 3, "strength" = -6, "fortune" = -3)
 	var/removable = FALSE
 
 /datum/status_effect/buff/shrinked/on_apply()
@@ -89,7 +89,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/shrinked
 	name = "Shrinked"
-	desc = "I've been shrinked! (After 30 seconds, you can press this button to return to your original size)."
+	desc = "I've been shrinked! (After 30 seconds, you can press this button to return to your original size.)"
 	icon_state = "debuff"
 	/datum/status_effect/buff/shrinked
 
@@ -108,7 +108,7 @@
 /datum/status_effect/buff/growth
 	id = "growth"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/growth
-	effectedstats = list("speed" = -3, "strength" = 3)
+	effectedstats = list("speed" = -6, "strength" = 3)
 	var/removable = FALSE
 
 /datum/status_effect/buff/growth/on_apply()
@@ -131,7 +131,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/growth
 	name = "Growth"
-	desc = "I've became bigger! (After 30 seconds, you can press this button to return to your original size)."
+	desc = "I've became bigger! (After 30 seconds, you can press this button to return to your original size.)"
 	icon_state = "debuff"
 	/datum/status_effect/buff/growth
 
