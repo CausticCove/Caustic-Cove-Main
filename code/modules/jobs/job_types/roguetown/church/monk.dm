@@ -22,7 +22,7 @@
 	name = "Acolyte"
 	jobtype = /datum/job/roguetown/monk
 
-	allowed_patrons = list(/datum/patron/divine/pestra, /datum/patron/divine/astrata, /datum/patron/divine/eora, /datum/patron/divine/noc, /datum/patron/divine/necra) //Eora content from Stonekeep
+	allowed_patrons = list(/datum/patron/divine/pestra, /datum/patron/divine/astrata, /datum/patron/divine/eora, /datum/patron/divine/noc, /datum/patron/divine/necra, /datum/patron/divine/malum) //Eora content from Stonekeep
 
 
 /datum/outfit/job/roguetown/monk/pre_equip(mob/living/carbon/human/H)
