@@ -187,8 +187,9 @@
 			S.AOE_flash(user, range = 8)
 		testing("curerot2")
 		if(was_zombie)
-			if(was_zombie.become_rotman && prob(5)) //5% chance to NOT become a rotman
-				was_zombie.become_rotman = FALSE
+			//if(was_zombie.become_rotman && prob(5)) //5% chance to NOT become a rotman
+			//	was_zombie.become_rotman = FALSE
+			// CC Update: Removing chance for players to become rotmen
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
 			target.Unconscious(20 SECONDS)
 			target.emote("breathgasp")
