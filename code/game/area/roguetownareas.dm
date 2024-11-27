@@ -7,6 +7,11 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	icon_state = "rogue"
 	has_gravity = STANDARD_GRAVITY
 	ambientsounds = null
+	//Only for testing. If this slips through please scream at me - Lynx
+	ambientdrone = AMB_FOREST_LOOP_DAY
+	ambientdronedawn = AMB_FOREST_LOOP_DAWN
+	ambientdronenight = AMB_FOREST_LOOP_NIGHT
+	ambientdronedusk = AMB_FOREST_LOOP_DUSK
 	always_unpowered = TRUE
 	poweralm = FALSE
 	power_environ = TRUE

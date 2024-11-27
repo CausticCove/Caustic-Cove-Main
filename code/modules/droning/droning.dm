@@ -214,6 +214,9 @@ SUBSYSTEM_DEF(droning)
 	if(dreamer?.prefs.ambientvol <= 0)
 		return
 
+	if(GLOB.forecast == "rain")
+		return
+
 	var/ambientloopsounds = null
 	if(area_entered.we_looping_here)
 		if(GLOB.tod == "night")

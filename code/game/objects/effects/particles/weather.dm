@@ -38,13 +38,6 @@
 	MA.pixel_x = 480
 	add_overlay(MA)
 
-	var/matrix/M = matrix()
 	M.Translate(-480,0)
 	animate(src, transform = M, time = 300, loop = -1)
 	animate(transform = null, time = 0)
-
-//	animate(MA, transform = null, time = 100, loop = -1)
-//	animate(transform = MT, time = 0)
-//	add_overlay(MA)
-
-//	animate(transform = matrix(), time = 30)
