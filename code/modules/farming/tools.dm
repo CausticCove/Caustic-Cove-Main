@@ -105,7 +105,7 @@
 	force_wielded = 12
 	name = "stone hoe"
 	desc = "A makeshift hoe made out of stone, brittle."
-	icon_state = "stonehoe"
+	icon_state = "hoe"
 	//dropshrink = 0.8
 	smeltresult = null
 	anvilrepair = null
