@@ -4,6 +4,7 @@
 		death(TRUE)
 	if(client)
 		SSdroning.kill_droning(client)
+		SSdroning.kill_ambient_loop(client)
 	playsound(src.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 
 	if(!prev_lying)
@@ -83,6 +84,7 @@
 	SSdroning.kill_rain(src.client)
 	SSdroning.kill_loop(src.client)
 	SSdroning.kill_droning(src.client)
+	SSdroning.kill_ambient_loop(src.client)
 	src.playsound_local(src, 'sound/misc/deth.ogg', 100)
 
 	set_drugginess(0)

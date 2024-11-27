@@ -17,9 +17,9 @@ SUBSYSTEM_DEF(droning)
 		return
 */
 	var/list/last_droning = list()
-	last_droning |= entering.last_droning_sound
+	last_droning |= entering.last_ambient_droning_sound
 	var/list/new_droning = list()
-	new_droning |= area_entered.droning_sound_current
+	new_droning |= area_entered.ambient_droning_sound_current
 
 	if(HAS_TRAIT(entering.mob, TRAIT_SCHIZO_AMBIENCE))
 		new_droning = list('sound/music/dreamer_is_still_asleep.ogg')
@@ -93,6 +93,7 @@ SUBSYSTEM_DEF(droning)
 
 	//kill the previous droning sound
 	kill_droning(dreamer)
+	kill_ambient_loop(dreamer)
 	var/sound/combat_music = sound(pick(music), repeat = TRUE, wait = 0, channel = CHANNEL_BUZZ, volume = (dreamer?.prefs.musicvol)*1.2)
 	SEND_SOUND(dreamer, combat_music)
 	dreamer.droning_sound = combat_music
@@ -202,3 +203,55 @@ SUBSYSTEM_DEF(droning)
 	var/sound/loop_sound = sound(pick(rainsounds), repeat = TRUE, wait = 0, channel = CHANNEL_RAIN, volume = dreamer?.prefs.musicvol)
 	SEND_SOUND(dreamer, loop_sound)
 	dreamer.rain_sound = TRUE
+
+//Droning ambience. Similar to normal, but lasts longer for better soundscapes.
+/datum/controller/subsystem/droning/proc/play_ambient_loop(area/area_entered, client/dreamer)
+	if(!area_entered || !dreamer)
+		return
+	//kill the previous looping
+	kill_ambient_loop(dreamer)
+
+	if(dreamer?.prefs.ambientvol <= 0)
+		return
+
+	var/ambientloopsounds = null
+	if(area_entered.we_looping_here)
+		if(GLOB.tod == "night")
+			if(area_entered.ambientdronenight)
+				ambientloopsounds = area_entered.ambientdronenight
+		if(GLOB.tod == "dusk")
+			if(area_entered.ambientdronedusk)
+				ambientloopsounds = area_entered.ambientdronedusk
+		if(GLOB.tod == "dawn")
+			if(area_entered.ambientdronedawn)
+				ambientloopsounds = area_entered.ambientdronedawn
+		if(GLOB.tod == "day")
+			if(area_entered.ambientdrone)
+				ambientloopsounds = area_entered.ambientdrone
+		else
+			if(!ambientloopsounds)
+				log_admin("No droning ambient audio was found within [area_entered].")
+				return
+	var/sound/ambient_loop_sound = sound(pick(ambientloopsounds), repeat = TRUE, wait = 0, channel = CHANNEL_MUSIC, volume = dreamer?.prefs.ambientvol)
+	SEND_SOUND(dreamer, ambient_loop_sound)
+	dreamer.ambient_loop_sound = TRUE 
+
+/datum/controller/subsystem/droning/proc/kill_ambient_loop(client/victim)
+	if(!victim?.ambient_loop_sound)
+		return
+	victim?.mob.stop_sound_channel(CHANNEL_DRONING_AMBIENCE)
+	victim?.ambient_loop_sound = FALSE
+
+/datum/controller/subsystem/droning/proc/area_droning_entered(area/area_entered, client/entering)
+	if(!area_entered || !entering)
+		return
+
+	var/list/last_ambient_droning = list()
+	last_ambient_droning |= entering.last_ambient_droning_sound
+	var/list/new_ambient_droning = list()
+	new_ambient_droning |= area_entered.ambient_droning_sound_current
+
+	//Same ambience, don't bother
+	if(last_ambient_droning ~= new_ambient_droning)
+		return
+	play_area_sound(new_ambient_droning, entering)

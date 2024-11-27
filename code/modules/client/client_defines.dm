@@ -140,9 +140,12 @@
 	var/list/open_popups = list()
 
 	var/loop_sound = FALSE
+	var/ambient_loop_sound = FALSE
 	var/rain_sound = FALSE
 	var/last_droning_sound
+	var/last_ambient_droning_sound
 	var/sound/droning_sound
+	var/sound/ambient_sound
 
 /client/proc/update_weather(force)
 	if(!mob)

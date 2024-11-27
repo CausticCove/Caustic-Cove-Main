@@ -92,6 +92,21 @@
 		prefs.save_preferences()
 
 		mob.update_channel_volume(CHANNEL_AMBIENCE, prefs.mastervol)
+
+/client/verb/change_ambient_vol()
+	set category = "Options"
+	set name = "ChangeAmbientPower"
+
+	if(prefs)
+		var/vol = input(usr, "Current volume power: [prefs.ambientvol]",, 100) as null|num
+		if(!vol)
+			if(vol != 0)
+				return
+		vol = min(vol, 100)
+		prefs.ambientvol = vol
+		prefs.save_preferences()
+
+		mob.update_channel_volume(CHANNEL_DRONING_AMBIENCE, prefs.ambientvol)
 /*
 /client/verb/help_rpguide()
 	set category = "Options"

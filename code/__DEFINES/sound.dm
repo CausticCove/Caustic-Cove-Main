@@ -6,22 +6,23 @@
 #define CHANNEL_JUSTICAR_ARK 1020
 #define CHANNEL_HEARTBEAT 1019 //sound channel for heartbeats
 #define CHANNEL_AMBIENCE 1018
-#define CHANNEL_BUZZ 1017
-#define CHANNEL_BICYCLE 1016
-#define CHANNEL_RAIN 1015
-#define CHANNEL_MUSIC 1014
-#define CHANNEL_CMUSIC 1013
-#define CHANNEL_IMSICK 1012
+#define CHANNEL_DRONING_AMBIENCE 1017
+#define CHANNEL_BUZZ 1016
+#define CHANNEL_BICYCLE 1015
+#define CHANNEL_RAIN 1014
+#define CHANNEL_MUSIC 1013
+#define CHANNEL_CMUSIC 1012
+#define CHANNEL_IMSICK 1011
 
 //CIT CHANNELS - TRY NOT TO REGRESS
-#define CHANNEL_PRED 1011
-#define CHANNEL_DIGEST 1010
-#define CHANNEL_PREYLOOP 1009
+#define CHANNEL_PRED 1010
+#define CHANNEL_DIGEST 109
+#define CHANNEL_PREYLOOP 1008
 
 //THIS SHOULD ALWAYS BE THE LOWEST ONE!
 //KEEP IT UPDATED
 
-#define CHANNEL_HIGHEST_AVAILABLE 1008
+#define CHANNEL_HIGHEST_AVAILABLE 1007
 
 
 #define SOUND_MINIMUM_PRESSURE 10
@@ -186,6 +187,16 @@
 						'sound/ambience/noises/birds (5).ogg',\
 						'sound/ambience/noises/birds (6).ogg',\
 						'sound/ambience/noises/birds (7).ogg')
+
+//Ambient loops are subtle and long, more can easily be added/changed to an area.
+
+#define AMB_FOREST_LOOP_DAY list('modular_causticcove/sound/ambient/forest_ambience_day.ogg')
+
+#define AMB_FOREST_LOOP_DAWN list('modular_causticcove/sound/ambient/forest_ambience_dawn.ogg')
+
+#define AMB_FOREST_LOOP_DUSK list('modular_causticcove/sound/ambient/forest_ambience_dusk.ogg')
+
+#define AMB_FOREST_LOOP_NIGHT list('modular_causticcove/sound/ambient/forest_ambience_night.ogg')
 
 
 #define INTERACTION_SOUND_RANGE_MODIFIER 0
