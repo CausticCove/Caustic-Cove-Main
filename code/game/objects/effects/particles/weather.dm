@@ -1,17 +1,16 @@
 /particles/rain
 		icon = 'icons/roguetown/misc/particles.dmi'
-		icon_state	= list("rain"=5, "rain2"=5, "drop"=1)
-//		icon_state	= list("rain1"=5, "rain2"=6, "rain3"=5)
+		icon_state	= list("rain"=5, "rain2"=5, "rainold"=3, "drop"=1)
 		width 		= 928
 		height 		= 928
-		count 		= 400
-		spawning 	= 400
-		lifespan 	= 10
+		count 		= 2500
+		spawning 	= 666
+		lifespan 	= 15
 		fade 		= 0
 //		fadein		= 0
 		position 	= generator("box", list(-928,-928,0), list(928,928,0))
 //		gravity 	= list(-1, -200)
-		velocity = list(0, -200)
+		velocity = list(0, -144)
 
 /obj/emitters
 //	appearance_flags	= PIXEL_SCALE
@@ -22,22 +21,23 @@
 
 /obj/emitters/weather/rain
 	particles 	= new/particles/rain
-//	alpha = 190
+	alpha = 255
 
 /atom/movable/screen/weather/fog
-	alpha = 180
+	alpha = 255
 	icon = 'icons/mob/screen_full.dmi'
-	icon_state	= "phog1"
+	icon_state	= "fog_smok"
 	screen_loc = "1,1"
 	mouse_opacity = 0
 	plane = WEATHER_PLANE
 
 /atom/movable/screen/weather/fog/New(client/C)
 	. = ..()
-	var/mutable_appearance/MA = mutable_appearance(icon, "phog2")
-	MA.pixel_x = 480
+	var/mutable_appearance/MA = mutable_appearance(icon, "impairedoverlay1")
 	add_overlay(MA)
 
-	M.Translate(-480,0)
-	animate(src, transform = M, time = 300, loop = -1)
-	animate(transform = null, time = 0)
+//	animate(MA, transform = null, time = 100, loop = -1)
+//	animate(transform = MT, time = 0)
+//	add_overlay(MA)
+
+//	animate(transform = matrix(), time = 30)

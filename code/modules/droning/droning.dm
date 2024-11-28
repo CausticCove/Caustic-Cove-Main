@@ -214,8 +214,9 @@ SUBSYSTEM_DEF(droning)
 	if(dreamer?.prefs.ambientvol <= 0)
 		return
 
-	if(GLOB.forecast == "rain")
-		return
+	if(GLOB.forecast == "rain") //The sound of rain drowns out everything else.
+		if(!istype(area_entered, /area/rogue/under))//These locations should have localized ambience or none to begin with.
+			return
 
 	var/ambientloopsounds = null
 	if(area_entered.we_looping_here)
@@ -229,9 +230,10 @@ SUBSYSTEM_DEF(droning)
 			if(area_entered.ambientdronedawn)
 				ambientloopsounds = area_entered.ambientdronedawn
 		if(GLOB.tod == "day")
-			if(area_entered.ambientdrone)
-				ambientloopsounds = area_entered.ambientdrone
-		else
+			if(area_entered.ambientdroneday)
+				ambientloopsounds = area_entered.ambientdroneday
+		else //just in case
+			ambientloopsounds = area_entered.ambientdrone
 			if(!ambientloopsounds)
 				log_admin("No droning ambient audio was found within [area_entered].")
 				return

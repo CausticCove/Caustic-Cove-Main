@@ -7,11 +7,10 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	icon_state = "rogue"
 	has_gravity = STANDARD_GRAVITY
 	ambientsounds = null
-	//Only for testing. If this slips through please scream at me - Lynx
-	ambientdrone = AMB_FOREST_LOOP_DAY
-	ambientdronedawn = AMB_FOREST_LOOP_DAWN
-	ambientdronenight = AMB_FOREST_LOOP_NIGHT
-	ambientdronedusk = AMB_FOREST_LOOP_DUSK
+	ambientdroneday = null
+	ambientdronedawn = null
+	ambientdronenight = null
+	ambientdronedusk = null
 	always_unpowered = TRUE
 	poweralm = FALSE
 	power_environ = TRUE
@@ -31,6 +30,10 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 /area/rogue/indoors
 	name = "indoors rt"
 	icon_state = "indoors"
+	ambientdroneday = AMB_INDOORS_FOREST_LOOP_DAY
+	ambientdronedawn = AMB_INDOORS_FOREST_LOOP_DAWN
+	ambientdronenight = AMB_INDOORS_FOREST_LOOP_NIGHT
+	ambientdronedusk = AMB_INDOORS_FOREST_LOOP_DUSK
 	ambientrain = RAIN_IN
 	ambientsounds = AMB_INGEN
 	ambientnight = AMB_INGEN
@@ -41,6 +44,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	soundenv = 2
 	plane = INDOOR_PLANE
+	render_target = "*rainzone"
 	converted_type = /area/rogue/outdoors
 
 
@@ -68,8 +72,11 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	name = "outdoors roguetown"
 	icon_state = "outdoors"
 	outdoors = TRUE
+	ambientdroneday = AMB_FOREST_LOOP_DAY
+	ambientdronedawn = AMB_FOREST_LOOP_DAWN
+	ambientdronenight = AMB_FOREST_LOOP_NIGHT
+	ambientdronedusk = AMB_FOREST_LOOP_DUSK
 	ambientrain = RAIN_OUT
-//	ambientsounds = list('sound/ambience/wamb.ogg')
 	ambientsounds = AMB_TOWNDAY
 	ambientnight = AMB_TOWNNIGHT
 	spookysounds = SPOOKY_CROWS
@@ -132,6 +139,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	first_time_text = "MOUNT DECAPITATION"
 	ambush_times = list("night","dawn","dusk","day")
 	converted_type = /area/rogue/indoors/shelter/mountains/decap
+
 /area/rogue/indoors/shelter/mountains/decap
 	icon_state = "decap"
 	droning_sound = 'sound/music/area/decap.ogg'
@@ -150,10 +158,12 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 30,
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 50)
 	first_time_text = "AZURE BASIN"
+	ambientdroneday = AMB_TOWN_LOOP_DAY
 	droning_sound = 'sound/music/area/field.ogg'
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	converted_type = /area/rogue/indoors/shelter/rtfield
+
 /area/rogue/indoors/shelter/rtfield
 	icon_state = "rtfield"
 	droning_sound = 'sound/music/area/field.ogg'
@@ -279,6 +289,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	soundenv = 8
 	plane = INDOOR_PLANE
+	render_target = "*rainzone"
 	converted_type = /area/rogue/outdoors/exposed
 /area/rogue/outdoors/exposed
 	icon_state = "exposed"

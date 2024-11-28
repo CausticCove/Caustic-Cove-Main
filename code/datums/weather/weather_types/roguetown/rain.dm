@@ -12,7 +12,7 @@
 	weather_duration_lower = 5 MINUTES
 	weather_duration_upper = 12 MINUTES
 	weather_sound = 'sound/blank.ogg'
-	weather_alpha = 200
+	weather_alpha = 255
 
 	probability = 3
 
@@ -88,28 +88,30 @@
 		update_sight()
 
 /datum/weather/rain/process()
+	. = ..()
 #ifndef TESTSERVER
 	if(GLOB.forecast != "rain")
 		wind_down()
 		return
 #endif
+
+/datum/weather/rain/unprotected_weather_act()
 	if(world.time < lastlightning + 66 SECONDS)
 		return
 	lastlightning = world.time
 	for(var/mob/living/carbon/M in GLOB.player_list)
-		var/area/A = get_area(M)
-		if(istype(A, /area/rogue/outdoors))
-			M.playsound_local(M, pick('sound/ambience/noises/thunout (1).ogg','sound/ambience/noises/thunout (2).ogg','sound/ambience/noises/thunout (3).ogg','sound/ambience/noises/thunout (4).ogg'), 100, FALSE)
-			M.lightning_flashing = TRUE
-			M.update_sight()
-			addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living/carbon, reset_lightning)), 1)
-			continue
-		if(istype(A, /area/rogue/indoors))
-			M.playsound_local(M, pick('sound/ambience/noises/thunin (1).ogg','sound/ambience/noises/thunin (2).ogg','sound/ambience/noises/thunin (3).ogg','sound/ambience/noises/thunin (4).ogg'), 100, FALSE)
-			continue
-//	testing("dolightingflash")
-//	for(var/obj/machinery/light/sun/L in GLOB.machines)
-//		L.lightningflash()
+		M.playsound_local(M, pick('sound/ambience/noises/thunout (1).ogg','sound/ambience/noises/thunout (2).ogg','sound/ambience/noises/thunout (3).ogg','sound/ambience/noises/thunout (4).ogg'), 100, FALSE)
+		M.lightning_flashing = TRUE
+		M.update_sight()
+		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living/carbon, reset_lightning)), 1)
+
+/datum/weather/rain/protected_weather_act()
+	if(world.time < lastlightning + 66 SECONDS)
+		return
+	lastlightning = world.time
+	for(var/mob/living/carbon/M in GLOB.player_list)
+		M.playsound_local(M, pick('sound/ambience/noises/thunin (1).ogg','sound/ambience/noises/thunin (2).ogg','sound/ambience/noises/thunin (3).ogg','sound/ambience/noises/thunin (4).ogg'), 100, FALSE)
+
 
 /datum/weather/rain/start()
 	. = ..()

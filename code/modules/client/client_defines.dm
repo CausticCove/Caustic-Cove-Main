@@ -157,14 +157,6 @@
 			if(length(last_lighting_update & list(mob.x, mob.y, mob.z)) == 3)
 				return
 	last_lighting_update = list(mob.x, mob.y, mob.z)
-	var/area/A = get_area(mob)
-	var/obj/PMW = locate(/atom/movable/screen/plane_master/weather) in screen
-	if(PMW && A)
-		if(A.outdoors)
-			PMW.filters = list()
-		else
-			if(!PMW.filters || !islist(PMW.filters) || !PMW.filters.len)
-				PMW.filters = filter(type="alpha", render_source = "*rainzone", flags = MASK_INVERSE)
 
 	for(var/W in current_weathers)
 		var/found = FALSE

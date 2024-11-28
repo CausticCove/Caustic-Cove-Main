@@ -68,7 +68,8 @@
 	var/list/ambientsounds = GENERIC
 	var/list/ambientrain = null
 	var/list/ambientnight = null
-	var/list/ambientdrone = null
+	var/list/ambientdrone = list('sound/blank.ogg') //Just in case we really don't have something.
+	var/list/ambientdroneday = null
 	var/list/ambientdronenight = null
 	var/list/ambientdronedusk = null
 	var/list/ambientdronedawn = null

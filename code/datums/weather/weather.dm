@@ -130,6 +130,12 @@
 				SEND_SOUND(M, sound(weather_sound))
 	addtimer(CALLBACK(src, PROC_REF(wind_down)), weather_duration)
 
+	//Reduce visibility during weather.
+	for(var/obj/structure/roguewindow/win in world)
+		win.opacity = 1
+	for(var/obj/structure/window/win2 in world)
+		win2.opacity = 1
+
 /datum/weather/proc/wind_down()
 	if(stage >= WIND_DOWN_STAGE)
 		return
@@ -145,6 +151,13 @@
 				to_chat(M, end_message)
 			if(end_sound)
 				SEND_SOUND(M, sound(end_sound))
+
+	//Set everything to normal.
+	for(var/obj/structure/roguewindow/win in world)
+		win.opacity = 0
+	for(var/obj/structure/window/win2 in world)
+		win2.opacity = 0
+
 	addtimer(CALLBACK(src, PROC_REF(end)), end_duration)
 
 /datum/weather/proc/end()
@@ -215,3 +228,25 @@
 			return end_overlay
 	return ""*/ //thsi bugs out when rain falls then u set off a bomb
 	return weather_overlay
+
+/datum/weather/process()
+	var/datum/weather/W = SSweather.curweathers[1]
+	for(var/mob/living/carbon/M in GLOB.player_list)
+		var/area/A = get_area(M)
+		var/image/PMW = locate(/atom/movable/screen/plane_master/weather) in M.client.screen
+		//If within a protected area, clear particles setting alpha to 0. I wish I knew how filters work.
+		if(!istype(A, area_type))
+			protected_weather_act(M)
+			if(PMW.alpha > 0)
+				animate(PMW, 30, 0, alpha = 0)
+		//Otherwise, set alpha back to normal and layer to normal. Please figure out how to make this based to filters, anyone?
+		else
+			unprotected_weather_act(M)
+			if(PMW.alpha < 255)
+				animate(PMW, 30, 0, alpha = W.weather_alpha, layer = WEATHER_PLANE)
+
+/datum/weather/proc/protected_weather_act(mob/living/carbon/M)
+	return
+
+/datum/weather/proc/unprotected_weather_act(mob/living/carbon/M)
+	return

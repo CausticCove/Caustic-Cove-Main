@@ -191,13 +191,22 @@
 //Ambient loops are subtle and long, more can easily be added/changed to an area.
 
 #define AMB_FOREST_LOOP_DAY list('modular_causticcove/sound/ambient/forest_ambience_day.ogg')
+#define AMB_INDOORS_FOREST_LOOP_DAY list('modular_causticcove/sound/ambient/indoor/forest_indoor_ambience_day.ogg')
 
 #define AMB_FOREST_LOOP_DAWN list('modular_causticcove/sound/ambient/forest_ambience_dawn.ogg')
+#define AMB_INDOORS_FOREST_LOOP_DAWN list('modular_causticcove/sound/ambient/indoor/forest_indoor_ambience_dawn.ogg')
 
 #define AMB_FOREST_LOOP_DUSK list('modular_causticcove/sound/ambient/forest_ambience_dusk.ogg')
+#define AMB_INDOORS_FOREST_LOOP_DUSK list('modular_causticcove/sound/ambient/indoor/forest_indoor_ambience_dusk.ogg')
 
 #define AMB_FOREST_LOOP_NIGHT list('modular_causticcove/sound/ambient/forest_ambience_night.ogg')
+#define AMB_INDOORS_FOREST_LOOP_NIGHT list('modular_causticcove/sound/ambient/indoor/forest_indoor_ambience_night.ogg')
 
+#define AMB_TOWN_LOOP_DAY list('modular_causticcove/sound/ambient/town_ambience_day.ogg')
+#define AMB_INDOOR_TOWN_LOOP_DAY list('modular_causticcove/sound/ambient/indoor/town_indoor_ambience_day.ogg')
+
+#define AMB_TOWN_LOOP_NIGHT list('modular_causticcove/sound/ambient/town_ambience_night.ogg')
+#define AMB_INDOOR_TOWN_LOOP_NIGHT list('modular_causticcove/sound/ambient/indoor/town_indoor_ambience_night.ogg')
 
 #define INTERACTION_SOUND_RANGE_MODIFIER 0
 #define EQUIP_SOUND_VOLUME 100
