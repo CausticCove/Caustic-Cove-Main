@@ -413,7 +413,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound = 'sound/music/area/decap.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
-	amientdrone = AMB_CAVE_LOOP_EVIL_OUTDOOR
+	ambientdrone = AMB_CAVE_LOOP_EVIL_OUTDOOR
 
 /area/rogue/under/lake
 	name = "underground lake"
@@ -484,16 +484,16 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	converted_type = /area/rogue/outdoors/exposed/town
 	town_area = TRUE
-	ambdroneday = AMB_INDOOR_TOWN_LOOP_DAY
-	ambdronenight = AMB_INDOOR_TOWN_LOOP_NIGHT
+	ambientdroneday = AMB_INDOOR_TOWN_LOOP_DAY
+	ambientdronenight = AMB_INDOOR_TOWN_LOOP_NIGHT
 
 /area/rogue/outdoors/exposed/town
 	icon_state = "town"
 	droning_sound = 'sound/music/area/towngen.ogg'
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
-	ambdroneday = AMB_TOWN_LOOP_DAY
-	ambdronenight = AMB_TOWN_LOOP_NIGHT
+	ambientdroneday = AMB_TOWN_LOOP_DAY
+	ambientdronenight = AMB_TOWN_LOOP_NIGHT
 
 /area/rogue/indoors/town/manor
 	name = "Manor"
@@ -503,7 +503,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/exposed/manorgarri
 	first_time_text = "THE KEEP OF AZURE PEAK"
-	ambientdroneday = MANOR_AMBIENCE_LOOP
+	ambientdroneday = AMB_MANOR_LOOP_DAY
 	ambientdronenight = AMB_QUIET_LOOP
 
 /area/rogue/outdoors/exposed/manorgarri
