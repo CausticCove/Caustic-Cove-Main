@@ -107,16 +107,11 @@
 			switch(threshold)
 				if(0) //No coverage
 					M.apply_status_effect(/datum/status_effect/buff/wetness/drenched)
-					M.is_drying = FALSE
 				if(2)
 					M.apply_status_effect(/datum/status_effect/buff/wetness/wet)
-					M.is_drying = FALSE
 				if(4)
 					M.apply_status_effect(/datum/status_effect/buff/wetness/damp)
-					M.is_drying = FALSE
 				if(6)
-					M.is_wet = FALSE 
-					M.is_drying = FALSE
 					
 	if(world.time < lastlightning + 66 SECONDS)
 		return
