@@ -105,11 +105,11 @@
 			if(!istype(get_area(M), area_type)) //If in doors then don't wet again
 				return
 			switch(threshold)
-				if(0) //No coverage
+				if(0 || 1) //No coverage/Basically none
 					M.apply_status_effect(/datum/status_effect/buff/wetness/drenched)
-				if(2)
+				if(2 || 3)
 					M.apply_status_effect(/datum/status_effect/buff/wetness/wet)
-				if(4)
+				if(4 || 5)
 					M.apply_status_effect(/datum/status_effect/buff/wetness/damp)
 				if(6)
 					
