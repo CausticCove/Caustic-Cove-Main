@@ -104,13 +104,13 @@
 		if(!istype(get_area(M), area_type)) //If in doors then don't wet again
 			spawn(rand(60, 80) * threshold)
 				switch(threshold)
-					if(0 || 1) //No coverage/Basically none
+					if(0, 1) //No coverage/Basically none
 						M.apply_status_effect(/datum/status_effect/buff/wetness/drenched)
-					if(2 || 3)
+					if(2, 3)
 						M.apply_status_effect(/datum/status_effect/buff/wetness/wet)
-					if(4 || 5)
+					if(4, 5)
 						M.apply_status_effect(/datum/status_effect/buff/wetness/damp)
-					if(6)
+					//if 6 or more you're good!
 					
 	if(world.time < lastlightning + 66 SECONDS)
 		return
@@ -128,7 +128,7 @@
 		M.is_drying = TRUE //Anti loop spam and drying check
 		spawn(1800 / (threshold / 10)) //Stay protected for 3 minutes. Weather Threshold makes this faster.
 			if(!istype(get_area(M), area_type) && M.is_drying)
-			//Remove them ALL just in case.
+				//Remove them ALL just in case.
 				M.remove_status_effect(/datum/status_effect/buff/wetness/damp)
 				M.remove_status_effect(/datum/status_effect/buff/wetness/wet)
 				M.remove_status_effect(/datum/status_effect/buff/wetness/drenched)
