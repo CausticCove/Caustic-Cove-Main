@@ -175,13 +175,13 @@
 	var/weapon_choice = input(H,"Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	switch(weapon_choice)
 		if("Bastard Sword")
-			H.put_in_hands(new /obj/item/rogueweapon/sword/long, TRUE)
+			r_hand = /obj/item/rogueweapon/sword/long
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		if("Flail")
-			H.put_in_hands(new /obj/item/rogueweapon/flail, TRUE)
+			r_hand = /obj/item/rogueweapon/flail
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 		if("Mace")
-			H.put_in_hands(new /obj/item/rogueweapon/mace, TRUE)
+			r_hand = /obj/item/rogueweapon/mace
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 
 
