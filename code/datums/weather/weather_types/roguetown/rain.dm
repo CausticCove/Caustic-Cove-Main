@@ -101,17 +101,16 @@
 	if(!M.is_wet)
 		M.is_drying = FALSE
 		M.is_wet = TRUE
-		spawn(rand(60, 80) * threshold)
-			if(!istype(get_area(M), area_type)) //If in doors then don't wet again
-				return
-			switch(threshold)
-				if(0 || 1) //No coverage/Basically none
-					M.apply_status_effect(/datum/status_effect/buff/wetness/drenched)
-				if(2 || 3)
-					M.apply_status_effect(/datum/status_effect/buff/wetness/wet)
-				if(4 || 5)
-					M.apply_status_effect(/datum/status_effect/buff/wetness/damp)
-				if(6)
+		if(!istype(get_area(M), area_type)) //If in doors then don't wet again
+			spawn(rand(60, 80) * threshold)
+				switch(threshold)
+					if(0 || 1) //No coverage/Basically none
+						M.apply_status_effect(/datum/status_effect/buff/wetness/drenched)
+					if(2 || 3)
+						M.apply_status_effect(/datum/status_effect/buff/wetness/wet)
+					if(4 || 5)
+						M.apply_status_effect(/datum/status_effect/buff/wetness/damp)
+					if(6)
 					
 	if(world.time < lastlightning + 66 SECONDS)
 		return
