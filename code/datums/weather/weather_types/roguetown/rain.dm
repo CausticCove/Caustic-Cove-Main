@@ -95,23 +95,60 @@
 		return
 #endif
 
-/datum/weather/rain/unprotected_weather_act()
+/datum/weather/rain/unprotected_weather_act(mob/living/carbon/M)
+	//Wetness mechanics
+	var/threshold = M.get_covered_limbs()
+	if(!M.is_wet)
+		M.is_drying = FALSE
+		M.is_wet = TRUE
+		spawn(rand(60, 80) * threshold)
+			if(!istype(get_area(M), area_type)) //If in doors then don't wet again
+				return
+			switch(threshold)
+				if(0) //No coverage
+					M.apply_status_effect(/datum/status_effect/buff/wetness/drenched)
+					M.is_drying = FALSE
+				if(2)
+					M.apply_status_effect(/datum/status_effect/buff/wetness/wet)
+					M.is_drying = FALSE
+				if(4)
+					M.apply_status_effect(/datum/status_effect/buff/wetness/damp)
+					M.is_drying = FALSE
+				if(6)
+					M.is_wet = FALSE 
+					M.is_drying = FALSE
+					
 	if(world.time < lastlightning + 66 SECONDS)
 		return
 	lastlightning = world.time
-	for(var/mob/living/carbon/M in GLOB.player_list)
+	for(M in GLOB.player_list)
 		M.playsound_local(M, pick('sound/ambience/noises/thunout (1).ogg','sound/ambience/noises/thunout (2).ogg','sound/ambience/noises/thunout (3).ogg','sound/ambience/noises/thunout (4).ogg'), 100, FALSE)
 		M.lightning_flashing = TRUE
 		M.update_sight()
 		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living/carbon, reset_lightning)), 1)
 
-/datum/weather/rain/protected_weather_act()
+/datum/weather/rain/protected_weather_act(mob/living/carbon/M)
+	//Weather drying
+	var/threshold = M.get_covered_limbs()
+	if(M.is_wet && !M.is_drying)
+		M.is_drying = TRUE //Anti loop spam and drying check
+		spawn(1800 / (threshold / 10)) //Stay protected for 3 minutes. Weather Threshold makes this faster.
+			if(!istype(get_area(M), area_type) && M.is_drying)
+			//Remove them ALL just in case.
+				M.remove_status_effect(/datum/status_effect/buff/wetness/damp)
+				M.remove_status_effect(/datum/status_effect/buff/wetness/wet)
+				M.remove_status_effect(/datum/status_effect/buff/wetness/drenched)
+				to_chat(M, "I feel dry again.")
+				M.is_wet = FALSE
+				M.is_drying = FALSE
+			else
+				M.is_drying = FALSE
+
 	if(world.time < lastlightning + 66 SECONDS)
 		return
 	lastlightning = world.time
-	for(var/mob/living/carbon/M in GLOB.player_list)
+	for(M in GLOB.player_list)
 		M.playsound_local(M, pick('sound/ambience/noises/thunin (1).ogg','sound/ambience/noises/thunin (2).ogg','sound/ambience/noises/thunin (3).ogg','sound/ambience/noises/thunin (4).ogg'), 100, FALSE)
-
 
 /datum/weather/rain/start()
 	. = ..()
@@ -128,3 +165,9 @@
 			var/mob/living/L = M
 			if(L.client)
 				SSdroning.kill_rain(L.client)
+		if(iscarbon(M)) //Dry us off.
+			var/mob/living/carbon/L = M
+			spawn(rand(30, 50))
+				L.remove_status_effect(/datum/status_effect/buff/wetness/damp)
+				L.remove_status_effect(/datum/status_effect/buff/wetness/wet)
+				L.remove_status_effect(/datum/status_effect/buff/wetness/drenched)
