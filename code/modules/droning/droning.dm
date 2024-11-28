@@ -233,10 +233,10 @@ SUBSYSTEM_DEF(droning)
 			if(area_entered.ambientdroneday)
 				ambientloopsounds = area_entered.ambientdroneday
 		else //just in case
-			ambientloopsounds = area_entered.ambientdrone
 			if(!ambientloopsounds)
-				log_admin("No droning ambient audio was found within [area_entered].")
-				return
+				ambientloopsounds = area_entered.ambientdrone
+				//log_admin("No droning ambient audio was found within [area_entered].")
+
 	var/sound/ambient_loop_sound = sound(pick(ambientloopsounds), repeat = TRUE, wait = 0, channel = CHANNEL_MUSIC, volume = dreamer?.prefs.ambientvol)
 	SEND_SOUND(dreamer, ambient_loop_sound)
 	dreamer.ambient_loop_sound = TRUE 

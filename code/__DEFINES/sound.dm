@@ -208,6 +208,22 @@
 #define AMB_TOWN_LOOP_NIGHT list('modular_causticcove/sound/ambient/town_ambience_night.ogg')
 #define AMB_INDOOR_TOWN_LOOP_NIGHT list('modular_causticcove/sound/ambient/indoor/town_indoor_ambience_night.ogg')
 
+#define AMB_QUIET_LOOP list('modular_causticcove/sound/ambient/quiet_ambience.ogg') //A quiet place. Primarily for church/manor
+
+#define AMB_CAVE_LOOP list('modular_causticcove/sound/ambient/cave_ambience_normal.ogg')
+#define AMB_CAVE_LOOP_OUTDOOR list('modular_causticcove/sound/ambient/outdoor/cave_ambience_outdoor.ogg') //Less reverb cuz outdoors
+#define AMB_CAVE_LOOP_EVIL list('modular_causticcove/sound/ambient/cave_ambience_evil.ogg') //Mt. Decap type locations specifically
+#define AMB_CAVE_LOOP_EVIL_OUTDOOR list('modular_causticcove/sound/ambient/outdoor/cave_ambience_evil_outdoor.ogg') //Mt. Decap type locations specifically
+
+//Used for locations with no specific audio, basements, some dungeons even, just... Under!
+#define AMB_GENERAL_UNDER_LOOP list('modular_causticcove/sound/ambient/underground_general_ambience_loop.ogg') 
+
+#define AMB_LAKE_LOOP list('modular_causticcove/sound/ambient/lake_ambience_loop.ogg')
+
+#define AMB_MANOR_LOOP_DAY list('modular_causticcove/sound/ambient/manor_ambience_loop.ogg')
+
+#define AMB_ARCANE_LOOP list('modular_causticcove/sound/ambient/arcane_ambience_loop.ogg') //For magical places and the likes.
+
 #define INTERACTION_SOUND_RANGE_MODIFIER 0
 #define EQUIP_SOUND_VOLUME 100
 #define PICKUP_SOUND_VOLUME 100

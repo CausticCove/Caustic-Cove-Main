@@ -39,28 +39,28 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 //		testing("set [tod]")
 	if(GLOB.todoverride)
 		GLOB.tod = GLOB.todoverride
-	if((GLOB.tod != oldtod) && GLOB.todoverride && (GLOB.dayspassed >= 0)) //weather check on tod changes
+	if((GLOB.tod != oldtod) && !GLOB.todoverride && (GLOB.dayspassed >= 0)) //weather check on tod changes
 		if(!GLOB.forecast)
 			switch(GLOB.tod)
 				if("dawn")
-					if(prob(100))
+					if(prob(18))
 						GLOB.forecast = "fog"
-					if(prob(25))
+					if(prob(9))
 						GLOB.forecast = "rain"
 				if("day")
-					if(prob(100))
+					if(prob(4))
 						GLOB.forecast = "fog"
-					if(prob(25))
+					if(prob(6))
 						GLOB.forecast = "rain"
 				if("dusk")
-					if(prob(100))
+					if(prob(6))
 						GLOB.forecast = "fog"
-					if(prob(25))
+					if(prob(4))
 						GLOB.forecast = "rain"
 				if("night")
-					if(prob(100))
+					if(prob(9))
 						GLOB.forecast = "fog"
-					if(prob(25))
+					if(prob(18))
 						GLOB.forecast = "rain"
 			if(GLOB.forecast == "rain")
 				var/foundnd
