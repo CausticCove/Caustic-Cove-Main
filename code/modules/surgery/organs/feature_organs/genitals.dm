@@ -45,6 +45,11 @@
 	penis_type = PENIS_TYPE_EQUINE
 	sheath_type = SHEATH_TYPE_NORMAL
 
+/obj/item/organ/penis/thick
+	name = "thick penis"
+	penis_type = PENIS_TYPE_THICK
+	sheath_type = SHEATH_TYPE_SLIT
+
 /obj/item/organ/penis/tapered_mammal
 	name = "tapered penis"
 	penis_type = PENIS_TYPE_TAPERED
