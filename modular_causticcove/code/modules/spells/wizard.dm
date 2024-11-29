@@ -115,6 +115,7 @@
 	. = ..()
 	var/mob/living/target = owner
 	target.transform = target.transform.Scale(2, 2)
+	target.transform = target.transform.Translate(0, (1 * 16))
 	target.update_transform()
 	target.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=4, movetypes=GROUND)
 	spawn(300) //is that how it work? i remember there being a better wait timer but i forgor, so i'm using this one
@@ -125,6 +126,7 @@
 /datum/status_effect/buff/growth/on_remove()
 	var/mob/living/target = owner
 	target.transform = target.transform.Scale(0.5, 0.5)
+	target.transform = target.transform.Translate(0, -(1 * 16))
 	target.update_transform()
 	target.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
 	. = ..()
