@@ -61,6 +61,7 @@
 		/datum/customizer_choice/organ/penis/barbed,
 		/datum/customizer_choice/organ/penis/barbed_knotted,
 		/datum/customizer_choice/organ/penis/tentacle,
+		/datum/customizer_choice/organ/penis/thick,
 		)
 
 /datum/customizer/organ/penis/canine
@@ -82,6 +83,7 @@
 		/datum/customizer_choice/organ/penis/tapered,
 		/datum/customizer_choice/organ/penis/tapered_double,
 		/datum/customizer_choice/organ/penis/tapered_double_knot,
+		/datum/customizer_choice/organ/penis/thick,
 		)
 
 /datum/customizer/organ/penis/equine
@@ -112,6 +114,14 @@
 	organ_type = /obj/item/organ/penis/equine
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/flared,
+		)
+
+
+/datum/customizer_choice/organ/penis/thick
+	name = "Thick Penis"
+	organ_type = /obj/item/organ/penis/thick
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/thick,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_mammal
