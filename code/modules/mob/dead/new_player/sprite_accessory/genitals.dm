@@ -2,7 +2,7 @@
 	icon = 'icons/mob/sprite_accessory/genitals/penis.dmi'
 	color_keys = 2
 	color_key_names = list("Member", "Skin")
-	relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_THIRD_LAYER)
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_SECOND_LAYER)
 
 /datum/sprite_accessory/penis/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_BELT, OFFSET_BELT_F)
@@ -21,18 +21,17 @@
 					return "slit_1"
 				else
 					return "slit_2"
-	else
-		pp.sheath_type = "blank"
+					
 	if(pp.erect_state == ERECT_STATE_HARD)
-		return "penis_[icon_state]_[min(5, pp.penis_size+1)]_1" //Ex. penis_human_5_1_FRONT_1 -> human penis that is GIANT and erect using front layering
-	if(pp.erect_state == ERECT_STATE_PARTIAL)
-		return "penis_[icon_state]_[min(5, pp.penis_size+1)]_0" //Ex. penis_knotted_2_0_BEHIND_1 -> knotted penis that is average and flaccid using behind layering
-	
-	//Normal penis check for those without a sheathe, just hang flaccid.
-	else if(!pp.sheath_type) 
-		return "penis_[icon_state]_[min(5, pp.penis_size+1)]_0"
-		
-	//Penis should no longer be aroused, and is hidden, transitions with sheathe states as well.
+		return "penis_[icon_state]_[max(1, min(5, pp.penis_size))]_1"
+	if(pp.erect_state == ERECT_STATE_STIFF)
+		return "penis_[icon_state]_[max(1, min(5, pp.penis_size-1))]_1" 
+
+	//Normal penis check for those without a sheath, just hang flaccid with -1 size.
+	else if(pp.sheath_type == SHEATH_TYPE_NONE && pp.erect_state == ERECT_STATE_NONE) 
+		return "penis_[icon_state]_[max(1, min(5, pp.penis_size-1))]_0"
+
+	//Penis should no longer be aroused, and is hidden, transitions with sheath states as well.
 	else
 		return "blank"
 
