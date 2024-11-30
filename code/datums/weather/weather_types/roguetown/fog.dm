@@ -32,3 +32,7 @@
 		wind_down()
 		return
 #endif 
+
+/datum/weather/fog/New(z_levels)
+	impacted_z_levels = GLOB.sky_z.Copy()
+	. = ..()
