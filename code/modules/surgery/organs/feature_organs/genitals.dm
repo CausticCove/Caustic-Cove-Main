@@ -19,11 +19,13 @@
 	var/new_state = ERECT_STATE_NONE
 	if(owner)
 		var/mob/living/carbon/human/human = owner
-		if(human.sexcon.arousal > 20)
+		if(human.sexcon.arousal >= 20)
 			new_state = ERECT_STATE_HARD
-		else if(human.sexcon.arousal > 10)
+		else if(human.sexcon.arousal >= 10 && human.sexcon.arousal <= 20)
 			new_state = ERECT_STATE_PARTIAL
-		else
+		else if(human.sexcon.arousal > 0 && human.sexcon.arousal <= 10) //Shows the sheathe sprites below this threshold.
+			new_state = ERECT_STATE_STIFF
+		else if(human.sexcon.arousal == 0)
 			new_state = ERECT_STATE_NONE
 
 	erect_state = new_state
@@ -42,6 +44,11 @@
 	name = "equine penis"
 	penis_type = PENIS_TYPE_EQUINE
 	sheath_type = SHEATH_TYPE_NORMAL
+
+/obj/item/organ/penis/thick
+	name = "thick penis"
+	penis_type = PENIS_TYPE_THICK
+	sheath_type = SHEATH_TYPE_SLIT
 
 /obj/item/organ/penis/tapered_mammal
 	name = "tapered penis"

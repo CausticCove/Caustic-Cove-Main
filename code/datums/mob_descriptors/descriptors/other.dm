@@ -65,7 +65,7 @@
 	if(penis.erect_state != ERECT_STATE_HARD && penis.sheath_type != SHEATH_TYPE_NONE)
 		switch(penis.sheath_type)
 			if(SHEATH_TYPE_NORMAL)
-				if(penis.penis_size == 3)
+				if(penis.penis_size >= 3)
 					used_name = "a fat sheath"
 				else
 					used_name = "a sheath"
