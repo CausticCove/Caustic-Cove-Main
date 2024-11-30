@@ -17,9 +17,9 @@ SUBSYSTEM_DEF(droning)
 		return
 */
 	var/list/last_droning = list()
-	last_droning |= entering.last_ambient_droning_sound
+	last_droning |= entering.last_droning_sound
 	var/list/new_droning = list()
-	new_droning |= area_entered.ambient_droning_sound_current
+	new_droning |= area_entered.droning_sound_current
 
 	if(HAS_TRAIT(entering.mob, TRAIT_SCHIZO_AMBIENCE))
 		new_droning = list('sound/music/dreamer_is_still_asleep.ogg')
@@ -246,17 +246,3 @@ SUBSYSTEM_DEF(droning)
 		return
 	victim?.mob.stop_sound_channel(CHANNEL_DRONING_AMBIENCE)
 	victim?.ambient_loop_sound = FALSE
-
-/datum/controller/subsystem/droning/proc/area_droning_entered(area/area_entered, client/entering)
-	if(!area_entered || !entering)
-		return
-
-	var/list/last_ambient_droning = list()
-	last_ambient_droning |= entering.last_ambient_droning_sound
-	var/list/new_ambient_droning = list()
-	new_ambient_droning |= area_entered.ambient_droning_sound_current
-
-	//Same ambience, don't bother
-	if(last_ambient_droning ~= new_ambient_droning)
-		return
-	play_area_sound(new_ambient_droning, entering)

@@ -230,7 +230,6 @@
 	return weather_overlay
 
 /datum/weather/process()
-	var/datum/weather/W = SSweather.curweathers[1]
 	for(var/mob/living/carbon/M in GLOB.player_list)
 		var/area/A = get_area(M)
 		if(!istype(A, area_type))
