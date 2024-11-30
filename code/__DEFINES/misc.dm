@@ -57,11 +57,11 @@
 #define HANDS_LAYER				11
 #define HANDCUFF_LAYER			10
 #define LEGCUFF_LAYER			9
-#define BODY_FRONT_LAYER		8
-#define BODY_FRONT_FRONT_LAYER	7
-#define BODY_FRONT_FRONT_FRONT_LAYER	6
-#define BODY_FFFFRONT_LAYER	5
-#define BODY_FFFFFRONT_LAYER	4
+#define BODY_FRONT_LAYER		8		//I hate genital code and .dmi bullshittery. 5 layers to accomodate for such.
+#define BODY_FRONT_SECOND_LAYER	7
+#define BODY_FRONT_THIRD_LAYER	6
+#define BODY_FRONT_FOURTH_LAYER	5
+#define BODY_FRONT_FIFTH_LAYER	4
 #define HALO_LAYER				3		//blood cult ascended halo, because there's currently no better solution for adding/removing
 #define FIRE_LAYER				2		//If you're on fire
 #define TURF_LAYER				1		//If you're on fire
