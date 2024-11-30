@@ -28,7 +28,7 @@
 	var/impacted_z_levels = list() // The list of z-levels that this weather is actively affecting
 
 	var/overlay_layer = AREA_LAYER //Since it's above everything else, this is the layer used by default. TURF_LAYER is below mobs and walls if you need to use that.
-	var/overlay_plane = BLACKNESS_PLANE
+	var/overlay_plane = WEATHER_PLANE
 	var/aesthetic = FALSE //If the weather has no purpose other than looks
 	var/immunity_type = "storm" //Used by mobs to prevent them from being affected by the weather
 
@@ -233,17 +233,10 @@
 	var/datum/weather/W = SSweather.curweathers[1]
 	for(var/mob/living/carbon/M in GLOB.player_list)
 		var/area/A = get_area(M)
-		var/image/PMW = locate(/atom/movable/screen/plane_master/weather) in M.client.screen
-		//If within a protected area, clear particles setting alpha to 0. I wish I knew how filters work.
 		if(!istype(A, area_type))
 			protected_weather_act(M)
-			if(PMW.alpha > 0)
-				animate(PMW, 30, 0, alpha = 0)
-		//Otherwise, set alpha back to normal and layer to normal. Please figure out how to make this based to filters, anyone?
 		else
 			unprotected_weather_act(M)
-			if(PMW.alpha < 255)
-				animate(PMW, 30, 0, alpha = W.weather_alpha, layer = WEATHER_PLANE)
 
 /datum/weather/proc/protected_weather_act(mob/living/carbon/M)
 	return

@@ -44,7 +44,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	soundenv = 2
 	plane = INDOOR_PLANE
-	render_target = "*rainzone"
 	converted_type = /area/rogue/outdoors
 
 
@@ -293,7 +292,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	soundenv = 8
 	plane = INDOOR_PLANE
-	render_target = "*rainzone"
 	converted_type = /area/rogue/outdoors/exposed
 	ambientdrone = AMB_GENERAL_UNDER_LOOP
 
