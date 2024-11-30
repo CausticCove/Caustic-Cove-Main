@@ -22,3 +22,11 @@
 #define STATUS_EFFECT_WETNESS_2 /datum/status_effect/buff/wetness/wet
 
 #define STATUS_EFFECT_WETNESS_3 /datum/status_effect/buff/wetness/drenched
+
+=======
+/*************************************************************
+***********************  MOBS  *******************************
+*************************************************************/
+
+#define STATUS_EFFECT_INDUCED_INSANITY /datum/status_effect/buff/induced_insanity //Momentarily experiencing maniac levels of insanity.
+

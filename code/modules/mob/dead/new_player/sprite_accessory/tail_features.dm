@@ -80,7 +80,7 @@
 //TAUR BULLSHIT MARKINGS AAAAAAAAAAAA
 
 /datum/sprite_accessory/tail_feature/taur
-	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_FRONT_LAYER, BODY_ADJ_LAYER)
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_SECOND_LAYER, BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/tail_feature/taur/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
     generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_TAUR, OFFSET_TAUR_F)

@@ -171,23 +171,24 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	
+	var/weapons = list("Bastard Sword","Flail","Mace")
+	var/weapon_choice = input(H,"Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	switch(weapon_choice)
+		if("Bastard Sword")
+			r_hand = /obj/item/rogueweapon/sword/long
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		if("Flail")
+			r_hand = /obj/item/rogueweapon/flail
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+		if("Mace")
+			r_hand = /obj/item/rogueweapon/mace
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+
+
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_templar(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
-/datum/outfit/job/roguetown/templar/crusader/choose_loadout(mob/living/carbon/human/H)
-	. = ..()
-	var/weapons = list("Bastard Sword","Flail","Mace")
-	var/weapon_choice = input(H,"Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-	switch(weapon_choice)
-		if("Bastard Sword")
-			H.put_in_hands(new /obj/item/rogueweapon/sword/long(H), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		if("Flail")
-			H.put_in_hands(new /obj/item/rogueweapon/flail(H), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-		if("Mace")
-			H.put_in_hands(new /obj/item/rogueweapon/mace(H), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+
 

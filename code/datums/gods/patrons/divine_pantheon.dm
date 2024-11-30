@@ -24,7 +24,8 @@
 	worshippers = "Wizards and Scholars"
 	mob_traits = list(TRAIT_NOCSIGHT)
 	t1 = /obj/effect/proc_holder/spell/invoked/blindness
-	t2 = /obj/effect/proc_holder/spell/invoked/invisibility
+	t2 = /obj/effect/proc_holder/spell/targeted/touch/Nocdarkvision
+	t3 = /obj/effect/proc_holder/spell/invoked/invisibility
 	confess_lines = list(
 		"NOC IS NIGHT!",
 		"NOC SEES ALL!",
@@ -64,7 +65,7 @@
 	domain = "God of Justice, Glory, Battle"
 	desc = "Stalwart warrior, glorious justicier; legends say he came down to the Basin to repel the vile hordes of demons with his own hands, and that he seeks warriors for his divine army among mortals."
 	worshippers = "Warriors, Sellswords & those who seek Justice"
-	t1 = /obj/effect/proc_holder/spell/invoked/burden
+	t1 = list(/obj/effect/proc_holder/spell/invoked/burden)
 	confess_lines = list(
 		"RAVOX IS JUSTICE!",
 		"THROUGH STRIFE, GRACE!",
@@ -78,7 +79,7 @@
 	worshippers = "The Dead, Mourners, Gravekeepers"
 	mob_traits = list(TRAIT_SOUL_EXAMINE)
 	t1 = /obj/effect/proc_holder/spell/invoked/avert
-	t2 = /obj/effect/proc_holder/spell/targeted/abrogation
+	t2 = /obj/effect/proc_holder/spell/targeted/churn
 	t3 = /obj/effect/proc_holder/spell/targeted/soulspeak
 	confess_lines = list(
 		"ALL SOULS FIND THEIR WAY TO NECRA!",

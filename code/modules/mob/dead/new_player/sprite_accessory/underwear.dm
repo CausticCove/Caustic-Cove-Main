@@ -48,3 +48,8 @@
 	if(owner.gender == MALE)
 		return "male_leotard"
 	return "female_leotard"
+
+/datum/sprite_accessory/underwear/loincloth
+	name = "Loincloth"
+	icon_state = "loincloth"
+	underwear_type = /obj/item/undies/loincloth
