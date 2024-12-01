@@ -3631,6 +3631,7 @@
 #include "modular_causticcove\code\modules\roguetown\roguecrafting\alchemy.dm"
 #include "modular_causticcove\code\modules\roguetown\roguejobs\alchemist\containers.dm"
 #include "modular_causticcove\code\modules\roguetown\roguejobs\alchemist\reagent.dm"
+#include "modular_causticcove\code\modules\spells\wizard.dm"
 #include "modular_causticcove\code\modules\spells\pantheon\Divine\noc.dm"
 #include "modular_causticcove\code\modules\vore\persistence.dm"
 #include "modular_causticcove\code\modules\vore\SSbellies.dm"

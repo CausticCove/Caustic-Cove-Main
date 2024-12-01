@@ -20,12 +20,10 @@
 		weapon = parent
 		weapon.name += " of the [patronchoice]"
 		weapon.desc += " It is enchanted to use arcane skill rather than its regular skill. Right click with an empty hand to change this weapon's form."
-		weapon.force *= 1.2
 		weapon.max_blade_int *= 1.2
 		weapon.blade_int = weapon.max_blade_int
 		weapon.max_integrity *= 1.2
 		weapon.obj_integrity = weapon.max_integrity
-		weapon.minstr = 1
 		weapon.associated_skill = /datum/skill/magic/arcane
 		//var/mutable_appearance/magic_overlay = mutable_appearance('icons/effects/effects.dmi', "electricity")
 		//item.add_overlay(magic_overlay)

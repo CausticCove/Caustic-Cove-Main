@@ -226,7 +226,8 @@
 		/obj/effect/proc_holder/spell/invoked/magicstone5e,
 		/obj/effect/proc_holder/spell/invoked/mending5e,
 		/obj/effect/proc_holder/spell/self/primalsavagery5e,
-		/obj/effect/proc_holder/spell/invoked/projectile/rayoffrost5e
+		/obj/effect/proc_holder/spell/invoked/projectile/rayoffrost5e,
+		/obj/effect/proc_holder/spell/targeted/touch/sizespell
 	)
 	for(var/i = 1, i <= spell_choices.len, i++)
 		choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]

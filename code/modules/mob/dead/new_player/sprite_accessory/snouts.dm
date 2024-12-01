@@ -458,3 +458,7 @@
 /datum/sprite_accessory/snout/cownose
 	name = "Cow Nose"
 	icon_state = "cownose"
+
+/datum/sprite_accessory/snout/front/cownose
+	name = "Cow Nose(Top)"
+	icon_state = "cownose"

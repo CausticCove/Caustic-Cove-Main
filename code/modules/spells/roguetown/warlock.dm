@@ -183,30 +183,27 @@
 
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
-
 	var/mob/living/fam
 
 /obj/effect/proc_holder/spell/self/findfamiliar/cast(mob/user = usr)
 	..()
-
 	var/familiars = list(
-		/mob/living/carbon/human/species/goblin/hell, //imp
-		/mob/living/simple_animal/hostile/retaliate/rogue/mossback, //psuedodragon
-		/mob/living/carbon/human/species/skeleton, //quasit(skeleton?)
-		/mob/living/simple_animal/shade //sprite
-		)
-	var/familiarchoice = input("Choose your familiar", "Available familiars") as anything in familiars
-
-	to_chat(user, span_notice("Trying to find familiar..."))
-	var/list/L = pollCandidatesForMob(
-		Question = "Do you want to play as [span_notice("[span_danger("[user.real_name]'s")] familiar")]?",
-		jobbanType = ROLE_PAI,
-		poll_time = 20 SECONDS,
-		ignore_category = POLL_IGNORE_SENTIENCE_POTION,
+		"Imp" = /mob/living/carbon/human/species/goblin/hell,
+		"Crab" = /mob/living/simple_animal/hostile/retaliate/rogue/mossback,
+		"Skeleton" = /mob/living/carbon/human/species/skeleton,
+		"Sprite" = /mob/living/simple_animal/shade,
+		"Wolf" = /mob/living/simple_animal/hostile/retaliate/rogue/wolf,
+		"Mutated Spider" = /mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+		"Buck" = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck
 	)
-	if(L.len > 0)
+	var/familiarchoice = input("Choose your familiar", "Available familiars") as anything in familiars
+	var/familiar_type = familiars[familiarchoice]
+	to_chat(user, span_notice("Trying to find familiar..."))
+	var/list/L = pollGhostCandidates("Do you want to play as [span_notice("[span_danger("[user.real_name]'s")] familiar")]?", ROLE_PAI)
+
+	if(LAZYLEN(L))
 		var/mob/chosen_one =  pick(L)
-		fam = new familiarchoice(user.loc)
+		fam = new familiar_type(user.loc)
 		fam.key = chosen_one.key
 		to_chat(user, span_notice("Your familiar appears..."))
 		chosen_one.mind.transfer_to(fam)

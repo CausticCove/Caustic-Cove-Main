@@ -93,40 +93,43 @@
 
 
 /datum/intent/whip/lash
-	name = "lash"
-	blade_class = BCLASS_BLUNT
-	attack_verb = list("lashes", "cracks")
-	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
-	chargetime = 5
-	recovery = 7
-	penfactor = 10
-	reach = 2
-	icon_state = "inlash"
-	item_d_type = "slash"
+    name = "lash"
+    blade_class = BCLASS_BLUNT
+    attack_verb = list("lashes", "cracks")
+    hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
+    chargetime = 5
+    recovery = 7
+    penfactor = 10
+    damfactor = 1.1
+    reach = 1
+    icon_state = "inlash"
+    item_d_type = "blunt"
 
 /datum/intent/whip/crack
-	name = "crack"
-	blade_class = BCLASS_CUT
-	attack_verb = list("cracks", "strikes") //something something dwarf fotresss
-	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
-	chargetime = 0
-	recovery = 10
-	penfactor = 40
-	reach = 1
-	icon_state = "incrack"
-	item_d_type = "slash"
+    name = "crack"
+    blade_class = BCLASS_CUT
+    attack_verb = list("cracks", "strikes") //something something dwarf fotresss
+    hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
+    chargetime = 0
+    recovery = 10
+    penfactor = 40
+    reach = 2
+    icon_state = "incrack"
+    item_d_type = "slash"
 
 /datum/intent/whip/punish
-	name = "punish"
-	blade_class = BCLASS_BLUNT
-	attack_verb = list("lashes")
-	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
-	chargetime = 0
-	recovery = 10
-	penfactor = 0
-	reach = 2
-	icon_state = "inpunish"
-	item_d_type = "blunt"
+    name = "punish"
+    blade_class = BCLASS_CUT
+    attack_verb = list("lashes")
+    hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
+    chargetime = 5
+    swingdelay = 6
+    recovery = 10
+    penfactor = 0
+    damfactor = 0.9
+    reach = 3
+    icon_state = "inpunish"
+    item_d_type = "slash"
 
 /obj/item/rogueweapon/whip
 	force = 21
