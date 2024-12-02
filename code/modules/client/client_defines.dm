@@ -162,7 +162,12 @@
 	if(PMW && A)
 		if(A.outdoors)
 			PMW.filters = list()
+			for(var/W in current_weathers)
+				for(var/datum/weather/WE in SSweather.curweathers)
+					if(WE.type == W)
+						PMW.alpha = WE.weather_alpha
 		else
+			PMW.alpha = 255
 			if(!PMW.filters || !islist(PMW.filters) || !PMW.filters.len)
 				PMW.filters = filter(type="alpha", render_source = "*rainzone", flags = MASK_INVERSE)
 
