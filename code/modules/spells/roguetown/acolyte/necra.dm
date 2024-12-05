@@ -55,8 +55,8 @@
 	for(var/mob/living/L in targets)
 		var/isvampire = FALSE
 		var/iszombie = FALSE
-		if(L.stat == DEAD)
-			continue
+//		if(L.stat == DEAD) //I do not know exactly why this check is here, but this prevents simplemob undead from being churned. Begon, Caustic change
+//			continue
 		if(L.mind)
 			var/datum/antagonist/vampirelord/lesser/V = L.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
 			if(V)

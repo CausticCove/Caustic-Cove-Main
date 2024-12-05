@@ -26,7 +26,7 @@
 	/// Reload time, in SECONDS
 	var/reload_time = 10
 	//weapon_embed_chance = 100 //this was here to make a weaker version of the gun, didn't do it, still keeping this here to be used
-	var/damfactor = 5
+	var/damfactor = 2
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/runelock/getonmobprop(tag)
 	. = ..()
@@ -81,6 +81,9 @@
 		explosion(src, light_impact_range = 2, heavy_impact_range = 1, smoke = TRUE, soundin = 'sound/misc/explode/bomb.ogg')
 		qdel(src)
 		return
+	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
+		var/obj/projectile/BB = CB.BB
+		BB.damage = BB.damage * damfactor
 	cocked = FALSE
 	icon_state = initial(icon_state)
 	var/dir = get_dir(src, target)

@@ -65,7 +65,7 @@
 	domain = "God of Justice, Glory, Battle"
 	desc = "Stalwart warrior, glorious justicier; legends say he came down to the Basin to repel the vile hordes of demons with his own hands, and that he seeks warriors for his divine army among mortals."
 	worshippers = "Warriors, Sellswords & those who seek Justice"
-	t1 = list(/obj/effect/proc_holder/spell/invoked/burden)
+	t1 = /obj/effect/proc_holder/spell/invoked/burden
 	confess_lines = list(
 		"RAVOX IS JUSTICE!",
 		"THROUGH STRIFE, GRACE!",
