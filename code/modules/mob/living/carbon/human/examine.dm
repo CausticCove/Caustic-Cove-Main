@@ -86,10 +86,7 @@
 				. += span_love("It's my spouse.")
 
 		if(name in GLOB.excommunicated_players)
-			. += span_userdanger("EXCOMMUNICATED!")
-
-		if(name in GLOB.heretical_players)
-			. += span_userdanger("HERETIC'S BRAND! SHAME!")
+			. += span_userdanger("HERETIC! SHAME!")
 
 		if(name in GLOB.outlawed_players)
 			. += span_userdanger("OUTLAW!")
