@@ -307,7 +307,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	flags_inv = HIDECROTCH|HIDEBOOB
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 	var/picked
 
 /obj/item/clothing/cloak/stabard/attack_right(mob/user)
@@ -591,6 +591,7 @@
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	detail_tag = "_det"
 	detail_color = CLOTHING_AZURE
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/cloak/lordcloak/update_icon()
 	cut_overlays()
@@ -768,6 +769,7 @@
 	inhand_mod = TRUE
 	hoodtype = /obj/item/clothing/head/hooded/rainhood
 	toggle_icon_state = FALSE
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/wash_act(clean)
 	. = ..()
@@ -936,6 +938,7 @@
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	nodismemsleeves = TRUE
+	flags_inv = HIDECROTCH|HIDEBOOB|HIDEBUTT
 
 
 /obj/item/clothing/cloak/stole
@@ -978,6 +981,7 @@
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	sellprice = 50
 	nodismemsleeves = TRUE
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/cloak/half
 	name = "halfcloak"
@@ -996,7 +1000,7 @@
 	toggle_icon_state = FALSE
 	color = CLOTHING_BLACK
 	allowed_sex = list(MALE, FEMALE)
-	flags_inv = null
+	flags_inv = HIDEBOOB // Put this here, since the covered boob otherwise clips through
 
 /obj/item/clothing/cloak/half/ComponentInitialize()
 	. = ..()
@@ -1042,6 +1046,7 @@
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	inhand_mod = FALSE
+	flags_inv = null
 
 /obj/item/clothing/cloak/half/vet/Initialize()
 	. = ..()
@@ -1328,6 +1333,7 @@
 	detail_color = CLOTHING_WHITE
 	icon_state = "guard_hood"
 	body_parts_covered = CHEST
+	flags_inv = HIDEBOOB
 
 /obj/item/clothing/cloak/stabard/guardhood/attack_right(mob/user)
 	if(picked)
