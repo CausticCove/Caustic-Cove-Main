@@ -290,6 +290,10 @@
 	GLOB.lordcolor -= src
 	return ..()
 
+/obj/item/clothing/cloak/tabard/musketeer
+	detail_tag = "_psy"
+	color = CLOTHING_BLUE
+	detail_color = CLOTHING_WHITE
 
 //////////////////////////
 /// SOLDIER TABARD

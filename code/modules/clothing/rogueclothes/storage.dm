@@ -213,7 +213,6 @@
 		CP.rmb_show(user)
 		return TRUE
 
-
 /obj/item/storage/backpack/rogue/backpack
 	name = "backpack"
 	desc = ""
@@ -244,4 +243,4 @@
 	new /obj/item/ammo_casing/caseless/lead(src)
 	new /obj/item/ammo_casing/caseless/runelock(src)
 	new /obj/item/ammo_casing/caseless/runelock(src)
-	new /obj/item/ammo_casing/caseless/runelock(src)	
+	new /obj/item/ammo_casing/caseless/runelock(src)
