@@ -244,3 +244,7 @@
 	new /obj/item/ammo_casing/caseless/runelock(src)
 	new /obj/item/ammo_casing/caseless/runelock(src)
 	new /obj/item/ammo_casing/caseless/runelock(src)
+
+/obj/item/storage/backpack/rogue/satchel/musketeer/PopulateContents()
+	new /obj/item/powderflask(src)
+	new /obj/item/storage/belt/rogue/pouch/coins/mid(src)
