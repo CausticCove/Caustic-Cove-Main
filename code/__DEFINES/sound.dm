@@ -6,22 +6,23 @@
 #define CHANNEL_JUSTICAR_ARK 1020
 #define CHANNEL_HEARTBEAT 1019 //sound channel for heartbeats
 #define CHANNEL_AMBIENCE 1018
-#define CHANNEL_BUZZ 1017
-#define CHANNEL_BICYCLE 1016
-#define CHANNEL_RAIN 1015
-#define CHANNEL_MUSIC 1014
-#define CHANNEL_CMUSIC 1013
-#define CHANNEL_IMSICK 1012
+#define CHANNEL_DRONING_AMBIENCE 1017
+#define CHANNEL_BUZZ 1016
+#define CHANNEL_BICYCLE 1015
+#define CHANNEL_RAIN 1014
+#define CHANNEL_MUSIC 1013
+#define CHANNEL_CMUSIC 1012
+#define CHANNEL_IMSICK 1011
 
 //CIT CHANNELS - TRY NOT TO REGRESS
-#define CHANNEL_PRED 1011
-#define CHANNEL_DIGEST 1010
-#define CHANNEL_PREYLOOP 1009
+#define CHANNEL_PRED 1010
+#define CHANNEL_DIGEST 109
+#define CHANNEL_PREYLOOP 1008
 
 //THIS SHOULD ALWAYS BE THE LOWEST ONE!
 //KEEP IT UPDATED
 
-#define CHANNEL_HIGHEST_AVAILABLE 1008
+#define CHANNEL_HIGHEST_AVAILABLE 1007
 
 
 #define SOUND_MINIMUM_PRESSURE 10
@@ -187,6 +188,41 @@
 						'sound/ambience/noises/birds (6).ogg',\
 						'sound/ambience/noises/birds (7).ogg')
 
+//Ambient loops are subtle and long, more can easily be added/changed to an area.
+
+#define AMB_FOREST_LOOP_DAY list('modular_causticcove/sound/ambient/forest_ambience_day.ogg')
+#define AMB_INDOORS_FOREST_LOOP_DAY list('modular_causticcove/sound/ambient/indoor/forest_indoor_ambience_day.ogg')
+
+#define AMB_FOREST_LOOP_DAWN list('modular_causticcove/sound/ambient/forest_ambience_dawn.ogg')
+#define AMB_INDOORS_FOREST_LOOP_DAWN list('modular_causticcove/sound/ambient/indoor/forest_indoor_ambience_dawn.ogg')
+
+#define AMB_FOREST_LOOP_DUSK list('modular_causticcove/sound/ambient/forest_ambience_dusk.ogg')
+#define AMB_INDOORS_FOREST_LOOP_DUSK list('modular_causticcove/sound/ambient/indoor/forest_indoor_ambience_dusk.ogg')
+
+#define AMB_FOREST_LOOP_NIGHT list('modular_causticcove/sound/ambient/forest_ambience_night.ogg')
+#define AMB_INDOORS_FOREST_LOOP_NIGHT list('modular_causticcove/sound/ambient/indoor/forest_indoor_ambience_night.ogg')
+
+#define AMB_TOWN_LOOP_DAY list('modular_causticcove/sound/ambient/town_ambience_day.ogg')
+#define AMB_INDOOR_TOWN_LOOP_DAY list('modular_causticcove/sound/ambient/indoor/town_indoor_ambience_day.ogg')
+
+#define AMB_TOWN_LOOP_NIGHT list('modular_causticcove/sound/ambient/town_ambience_night.ogg')
+#define AMB_INDOOR_TOWN_LOOP_NIGHT list('modular_causticcove/sound/ambient/indoor/town_indoor_ambience_night.ogg')
+
+#define AMB_QUIET_LOOP list('modular_causticcove/sound/ambient/quiet_ambience.ogg') //A quiet place. Primarily for church/manor
+
+#define AMB_CAVE_LOOP list('modular_causticcove/sound/ambient/cave_ambience_normal.ogg')
+#define AMB_CAVE_LOOP_OUTDOOR list('modular_causticcove/sound/ambient/outdoor/cave_ambience_outdoor.ogg') //Less reverb cuz outdoors
+#define AMB_CAVE_LOOP_EVIL list('modular_causticcove/sound/ambient/cave_ambience_evil.ogg') //Mt. Decap type locations specifically
+#define AMB_CAVE_LOOP_EVIL_OUTDOOR list('modular_causticcove/sound/ambient/outdoor/cave_ambience_evil_outdoor.ogg') //Mt. Decap type locations specifically
+
+//Used for locations with no specific audio, basements, some dungeons even, just... Under!
+#define AMB_GENERAL_UNDER_LOOP list('modular_causticcove/sound/ambient/underground_general_ambience_loop.ogg') 
+
+#define AMB_LAKE_LOOP list('modular_causticcove/sound/ambient/lake_ambience_loop.ogg')
+
+#define AMB_MANOR_LOOP_DAY list('modular_causticcove/sound/ambient/manor_ambience_loop.ogg')
+
+#define AMB_ARCANE_LOOP list('modular_causticcove/sound/ambient/arcane_ambience_loop.ogg') //For magical places and the likes.
 
 #define INTERACTION_SOUND_RANGE_MODIFIER 0
 #define EQUIP_SOUND_VOLUME 100

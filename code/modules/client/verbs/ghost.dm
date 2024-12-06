@@ -44,6 +44,7 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 	SSdroning.kill_rain(src.client)
 	SSdroning.kill_loop(src.client)
 	SSdroning.kill_droning(src.client)
+	SSdroning.kill_ambient_loop(src.client)
 	remove_client_colour(/datum/client_colour/monochrome)
 	if(!client)
 		log_game("[key_name(usr)] AM failed due to disconnect.")

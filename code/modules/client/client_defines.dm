@@ -140,9 +140,12 @@
 	var/list/open_popups = list()
 
 	var/loop_sound = FALSE
+	var/ambient_loop_sound = FALSE
 	var/rain_sound = FALSE
 	var/last_droning_sound
+	var/last_ambient_droning_sound
 	var/sound/droning_sound
+	var/sound/ambient_sound
 
 /client/proc/update_weather(force)
 	if(!mob)
@@ -159,7 +162,12 @@
 	if(PMW && A)
 		if(A.outdoors)
 			PMW.filters = list()
+			for(var/W in current_weathers)
+				for(var/datum/weather/WE in SSweather.curweathers)
+					if(WE.type == W)
+						PMW.alpha = WE.weather_alpha
 		else
+			PMW.alpha = 255
 			if(!PMW.filters || !islist(PMW.filters) || !PMW.filters.len)
 				PMW.filters = filter(type="alpha", render_source = "*rainzone", flags = MASK_INVERSE)
 
