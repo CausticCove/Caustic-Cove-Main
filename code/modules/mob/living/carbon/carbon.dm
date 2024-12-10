@@ -824,6 +824,18 @@
 	protection *= INVERSE(target_zones.len)
 	return protection
 
+//Returns a total count of covered limbs.
+/mob/living/carbon/get_covered_limbs(list/target_zones = list(HANDS,CHEST,GROIN,LEGS,FEET,ARMS,HEAD))
+	var/list/tally = list()
+	for(var/obj/item/I in get_equipped_items())
+		for(var/zone in target_zones)
+			if(I.body_parts_covered & zone)
+				tally["[zone]"] = max(1, target_zones["[zone]"])
+	var/protection = 0
+	for(var/key in tally)
+		protection += tally[key]
+	return protection
+
 /mob/living
 	var/succumb_timer = 0
 

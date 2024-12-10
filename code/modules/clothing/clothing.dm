@@ -59,6 +59,10 @@
 
 	sellprice = 1
 
+
+	// These are related to weather conditions.
+	var/is_wet = FALSE
+
 /obj/item
 	var/blocking_behavior
 	var/wetness = 0

@@ -28,7 +28,7 @@
 	var/impacted_z_levels = list() // The list of z-levels that this weather is actively affecting
 
 	var/overlay_layer = AREA_LAYER //Since it's above everything else, this is the layer used by default. TURF_LAYER is below mobs and walls if you need to use that.
-	var/overlay_plane = BLACKNESS_PLANE
+	var/overlay_plane = WEATHER_PLANE
 	var/aesthetic = FALSE //If the weather has no purpose other than looks
 	var/immunity_type = "storm" //Used by mobs to prevent them from being affected by the weather
 
@@ -130,6 +130,7 @@
 				SEND_SOUND(M, sound(weather_sound))
 	addtimer(CALLBACK(src, PROC_REF(wind_down)), weather_duration)
 
+
 /datum/weather/proc/wind_down()
 	if(stage >= WIND_DOWN_STAGE)
 		return
@@ -145,6 +146,7 @@
 				to_chat(M, end_message)
 			if(end_sound)
 				SEND_SOUND(M, sound(end_sound))
+
 	addtimer(CALLBACK(src, PROC_REF(end)), end_duration)
 
 /datum/weather/proc/end()
@@ -215,3 +217,17 @@
 			return end_overlay
 	return ""*/ //thsi bugs out when rain falls then u set off a bomb
 	return weather_overlay
+
+/datum/weather/process()
+	for(var/mob/living/carbon/M in GLOB.player_list)
+		var/area/A = get_area(M)
+		if(!istype(A, area_type))
+			protected_weather_act(M)
+		else
+			unprotected_weather_act(M)
+
+/datum/weather/proc/protected_weather_act(mob/living/carbon/M)
+	return
+
+/datum/weather/proc/unprotected_weather_act(mob/living/carbon/M)
+	return

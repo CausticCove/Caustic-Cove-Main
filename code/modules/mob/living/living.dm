@@ -1379,6 +1379,10 @@
 /mob/living/proc/get_permeability_protection(list/target_zones)
 	return 0
 
+//Finds how many limbs are covered.
+/mob/living/proc/get_covered_limbs(list/target_zones)
+	return 0
+
 /mob/living/proc/harvest(mob/living/user) //used for extra objects etc. in butchering
 	return
 
