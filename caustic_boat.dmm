@@ -269,6 +269,13 @@
 "pp" = (
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
+"pG" = (
+/obj/item/rope,
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue)
 "qv" = (
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -613,6 +620,11 @@
 "II" = (
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
 /area/rogue)
+"Jt" = (
+/obj/structure/fluff/railing/wood,
+/obj/structure/fluff/railing/border,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue)
 "JI" = (
 /obj/structure/rack/rogue,
 /obj/machinery/light/rogue/wallfire/candle/l,
@@ -859,6 +871,10 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue)
+"UZ" = (
+/obj/item/rope,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue)
 "Vd" = (
 /turf/open/transparent/openspace,
 /area/rogue)
@@ -872,6 +888,13 @@
 	icon_state = "border"
 	},
 /turf/open/transparent/openspace,
+/area/rogue)
+"Vl" = (
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "VD" = (
 /obj/structure/mineral_door/wood/window{
@@ -959,6 +982,12 @@
 "Zy" = (
 /obj/machinery/light/rogue/oven/east,
 /turf/open/floor/rogue/cobble,
+/area/rogue)
+"ZE" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 
 (1,1,1) = {"
@@ -34794,7 +34823,7 @@ Tx
 Tx
 Tx
 Tx
-Vd
+Ze
 Vd
 Vd
 Vd
@@ -34951,7 +34980,7 @@ Ze
 Tx
 Tx
 Tx
-Vd
+Ze
 Vd
 Vd
 Vd
@@ -35108,7 +35137,7 @@ Tx
 Tx
 Tx
 Tx
-Vd
+Ze
 Vd
 Vd
 Vd
@@ -35265,7 +35294,7 @@ Tx
 Tx
 Tx
 Tx
-Vd
+Ze
 Vd
 Vd
 Vd
@@ -37458,7 +37487,7 @@ Tx
 Tx
 Tx
 Tx
-Tx
+XI
 Tx
 KS
 Zu
@@ -37929,7 +37958,7 @@ Tx
 Tx
 Tx
 Tx
-Tx
+XI
 Tx
 KS
 Zu
@@ -38086,7 +38115,7 @@ Tx
 Tx
 Tx
 Tx
-Tx
+XI
 Tx
 Tx
 DA
@@ -59751,8 +59780,8 @@ VU
 VU
 VU
 VU
-VU
-VU
+ZE
+UZ
 VU
 VU
 VU
@@ -59907,9 +59936,9 @@ VU
 VU
 VU
 VU
-VU
-VU
-VU
+Jt
+Ze
+Vl
 VU
 VU
 VU
@@ -60063,9 +60092,9 @@ VU
 VU
 VU
 VU
+Cg
 VU
-VU
-VU
+gq
 VU
 VU
 VU
@@ -60850,7 +60879,7 @@ VU
 VU
 VU
 VU
-VU
+pG
 VU
 RX
 Vd
@@ -61006,9 +61035,9 @@ VU
 VU
 VU
 VU
-VU
-VU
-VU
+RX
+Ze
+Vl
 pn
 gq
 gq
@@ -61164,7 +61193,7 @@ VU
 VU
 VU
 VU
-VU
+gq
 VU
 VU
 VU
@@ -61949,7 +61978,7 @@ VU
 VU
 VU
 VU
-VU
+ZE
 VU
 VU
 VU
@@ -62105,16 +62134,16 @@ VU
 VU
 VU
 VU
+RX
+Ze
+Vl
 VU
 VU
 VU
 VU
 VU
 VU
-VU
-VU
-VU
-Vd
+Ze
 Vd
 Vd
 Vd
@@ -62263,6 +62292,7 @@ VU
 VU
 VU
 VU
+gq
 VU
 VU
 VU
@@ -62270,8 +62300,7 @@ VU
 VU
 VU
 VU
-VU
-Vd
+Ze
 Vd
 Vd
 Vd
@@ -62428,7 +62457,7 @@ VU
 VU
 VU
 VU
-Vd
+Ze
 Vd
 Vd
 Vd
@@ -62585,7 +62614,7 @@ VU
 VU
 VU
 VU
-Vd
+Ze
 Vd
 Vd
 Vd
@@ -67910,7 +67939,7 @@ Vd
 Vd
 Vd
 Vd
-Vd
+Ze
 Vd
 Vd
 Vd
