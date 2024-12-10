@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/roguetown/armor/egypt
-  name = "foreign dress"
+	name = "foreign dress"
 	desc = "Exotic foreign dress from a faraway land. Barely covers anything."
 	body_parts_covered = CHEST|GROIN
 	mob_overlay_icon = 'modular_causticcove/icons/roguetown/clothing/onmob/armor.dmi'
