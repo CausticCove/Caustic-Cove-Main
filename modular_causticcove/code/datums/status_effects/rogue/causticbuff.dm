@@ -128,3 +128,40 @@
 	name = "Burning Fervor"
 	desc = ""
 	icon_state = "fire"
+
+/////////////////
+//WEATHER BUFFS//
+/////////////////
+
+/datum/status_effect/buff/wetness/damp
+	id = "wetness1"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/wetness/damp
+	effectedstats = list("speed" = -1) 
+	duration = INFINITY //Removed manually.
+
+/atom/movable/screen/alert/status_effect/buff/wetness/damp
+	name = "Damp"
+	desc = "I should dry off."
+	icon_state = "damp"
+
+/datum/status_effect/buff/wetness/wet
+	id = "wetness2"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/wetness/wet
+	effectedstats = list("endurance" = -1, "speed" = -2) 
+	duration = INFINITY //Removed manually.
+
+/atom/movable/screen/alert/status_effect/buff/wetness/wet
+	name = "Wet"
+	desc = "My clothes stick to me."
+	icon_state = "wet"
+
+/datum/status_effect/buff/wetness/drenched
+	id = "wetness3"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/wetness/drenched
+	effectedstats = list("strength" = -1, "endurance" = -1, "speed" = -3) 
+	duration = INFINITY //Removed manually.
+
+/atom/movable/screen/alert/status_effect/buff/wetness/drenched
+	name = "Drenched"
+	desc = "I'm weighed down by all this water!"
+	icon_state = "drenched"

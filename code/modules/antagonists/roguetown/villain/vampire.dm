@@ -391,6 +391,7 @@
 		SSdroning.kill_rain(client)
 		SSdroning.kill_loop(client)
 		SSdroning.kill_droning(client)
+		SSdroning.kill_ambient_loop(client)
 		client.move_delay = initial(client.move_delay)
 		var/atom/movable/screen/gameover/hog/H = new()
 		H.layer = SPLASHSCREEN_LAYER+0.1

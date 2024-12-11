@@ -124,6 +124,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/musicvol = 50
 	var/mastervol = 50
+	var/ambientvol = 33
 
 	var/anonymize = TRUE
 

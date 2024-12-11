@@ -86,6 +86,7 @@
 		SSdroning.kill_droning(owner.client)
 		SSdroning.kill_loop(owner.client)
 		SSdroning.kill_rain(owner.client)
+		SSdroning.kill_ambient_loop(owner.client)
 		owner.set_typing_indicator(FALSE)
 		if(iscarbon(owner)) //to avoid repeated istypes
 			carbon_owner = owner
@@ -96,6 +97,7 @@
 	if(human_owner && human_owner.client)
 		SSdroning.play_area_sound(get_area(src), human_owner.client)
 		SSdroning.play_loop(get_area(src), human_owner.client)
+		SSdroning.play_ambient_loop(get_area(src), human_owner.client)
 	. = ..()
 
 /datum/status_effect/incapacitating/sleeping/Destroy()

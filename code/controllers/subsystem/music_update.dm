@@ -10,6 +10,11 @@ SUBSYSTEM_DEF(ambience)
 	///Cache for sanic speed :D
 	var/list/currentrun = list()
 
+	//Same as above but for droning ambience that lasts much longer
+	var/list/ambience_droning_listening_clients = list()
+
+	var/list/currentdronerun = list()
+
 /datum/controller/subsystem/ambience/fire(resumed)
 	if(!resumed)
 		currentrun = ambience_listening_clients.Copy()
