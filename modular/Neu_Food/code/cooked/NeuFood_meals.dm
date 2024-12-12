@@ -261,6 +261,7 @@
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "carpcooked_plated"
 	item_state = "plate_food"
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
@@ -273,6 +274,7 @@
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "clownfishcooked_plated"
 	item_state = "plate_food"
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
@@ -285,6 +287,7 @@
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "anglercooked_plated"
 	item_state = "plate_food"
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
@@ -297,6 +300,7 @@
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "eelcooked_plated"
 	item_state = "plate_food"
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
@@ -342,7 +346,10 @@
 				return FALSE
 
 			mill.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
-			new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced(loc)
+			if(istype(src, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated))
+				new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/plated(loc)
+			else 
+				new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced(loc)
 			qdel(src)
 		else
 			mill.icon_state = "peppermill"
@@ -367,6 +374,17 @@
 	trash = /obj/item/cooking/platter
 	rotprocess = SHELFLIFE_LONG
 
+/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/plated
+	icon_state = "roastchicken_plated"
+	item_state = "plate_food"
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	color = "#ffc0c0"
+	experimental_inhand = FALSE
+	w_class = WEIGHT_CLASS_BULKY
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	trash = /obj/item/cooking/platter
+	rotprocess = SHELFLIFE_LONG
 
 /*	.................   Cooked rat   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/friedrat/plated
