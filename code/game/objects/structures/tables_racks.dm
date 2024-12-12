@@ -659,6 +659,15 @@
 	dir = SOUTH
 	pixel_y = 32
 
+/obj/structure/rack/rogue/shelf/noplayerbump
+	icon = 'icons/roguetown/misc/structure.dmi'
+	icon_state = "shelf"
+	density = FALSE
+	climbable = FALSE
+	climb_offset = 0
+	dir = SOUTH
+	pixel_y = 32
+
 /obj/structure/rack/rogue/shelf/big
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "shelf_big"

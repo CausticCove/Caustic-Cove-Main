@@ -127,6 +127,16 @@
 	dir = SOUTH
 	pixel_y = 16
 
+/obj/structure/closet/crate/drawer/inn/wall
+	name = "drawer"
+	desc = "A wooden drawer."
+	icon = 'icons/roguetown/misc/structure.dmi'
+	icon_state = "drawer5"
+	base_icon_state = "drawer5"
+	wall_mounted = TRUE
+	dir = SOUTH
+	pixel_y = 16
+
 //Stonekeep port
 /obj/structure/closet/crate/chest/crate
 	name = "crate"
