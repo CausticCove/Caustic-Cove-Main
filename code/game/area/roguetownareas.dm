@@ -788,7 +788,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	first_time_text = "Waist Deck"
 
 /area/rogue/ship/nobledeck
-	name = "upperdeck"
+	name = "nobledeck"
 	icon_state = "manor"
 	ambientsounds = AMB_BOAT
 	ambientnight = AMB_BOAT
@@ -797,7 +797,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = null
 
 /area/rogue/ship/shipbrig
-	name = "upperdeck"
+	name = "shipbrig"
 	icon_state = "cell"
 	ambientsounds = AMB_BOAT
 	ambientnight = AMB_BOAT
