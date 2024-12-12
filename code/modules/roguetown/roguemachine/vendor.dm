@@ -135,7 +135,7 @@
 			if(newprice)
 				if(findtext(num2text(newprice), "."))
 					return attack_hand(usr)
-				held_items[O]["PRICE"] = newprice
+				held_items[O]["PRICE"] = CLAMP(newprice, 0 , 9999)
 	return attack_hand(usr)
 
 /obj/structure/roguemachine/vendor/attack_hand(mob/living/user)
