@@ -92,3 +92,6 @@
 /// Amount of remaining vitae that can be drained from this mob
 	var/vitae_bank = 9000
 
+	//For weather related things.
+	var/is_wet = FALSE
+	var/is_drying = FALSE
