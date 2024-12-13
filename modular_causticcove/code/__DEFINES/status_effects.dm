@@ -15,8 +15,18 @@
 
 #define STATUS_EFFECT_ABYSSORS_BREW /datum/status_effect/buff/abyssorbrew // Free water movement at cost of speed, and strength, and untouched stam drain over water
 
+#define STATUS_EFFECT_WETNESS /datum/staus_effect/buff/wetness //Groups them all up for weather system
+
+#define STATUS_EFFECT_WETNESS_1 /datum/status_effect/buff/wetness/damp
+
+#define STATUS_EFFECT_WETNESS_2 /datum/status_effect/buff/wetness/wet
+
+#define STATUS_EFFECT_WETNESS_3 /datum/status_effect/buff/wetness/drenched
+
+
 /*************************************************************
 ***********************  MOBS  *******************************
 *************************************************************/
 
 #define STATUS_EFFECT_INDUCED_INSANITY /datum/status_effect/buff/induced_insanity //Momentarily experiencing maniac levels of insanity.
+

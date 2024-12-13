@@ -39,24 +39,28 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 //		testing("set [tod]")
 	if(GLOB.todoverride)
 		GLOB.tod = GLOB.todoverride
-	if((GLOB.tod != oldtod) && !GLOB.todoverride && (GLOB.dayspassed>1)) //weather check on tod changes
+	if((GLOB.tod != oldtod) && !GLOB.todoverride && (GLOB.dayspassed >= 0)) //weather check on tod changes
 		if(!GLOB.forecast)
 			switch(GLOB.tod)
 				if("dawn")
-					if(prob(12))
+					if(prob(18))
 						GLOB.forecast = "fog"
-					if(prob(13))
+					if(prob(9))
 						GLOB.forecast = "rain"
 				if("day")
-					if(prob(5))
+					if(prob(4))
+						GLOB.forecast = "fog"
+					if(prob(6))
 						GLOB.forecast = "rain"
 				if("dusk")
-					if(prob(13))
+					if(prob(6))
+						GLOB.forecast = "fog"
+					if(prob(4))
 						GLOB.forecast = "rain"
 				if("night")
-					if(prob(5))
+					if(prob(9))
 						GLOB.forecast = "fog"
-					if(prob(21))
+					if(prob(18))
 						GLOB.forecast = "rain"
 			if(GLOB.forecast == "rain")
 				var/foundnd
@@ -64,12 +68,12 @@ GLOBAL_VAR_INIT(dayspassed, FALSE)
 					foundnd = TRUE
 				if(!foundnd)
 					SSweather.run_weather(/datum/weather/rain, 1)
-		/*	if(GLOB.forecast == "fog")
+			if(GLOB.forecast == "fog")
 				var/foundnd
 				for(var/datum/weather/fog/R in SSweather.curweathers)
 					foundnd = TRUE
 				if(!foundnd)
-					SSweather.run_weather(/datum/weather/fog, 1) */
+					SSweather.run_weather(/datum/weather/fog, 1) 
 		else
 			switch(GLOB.forecast) //end the weather now
 				if("rain")

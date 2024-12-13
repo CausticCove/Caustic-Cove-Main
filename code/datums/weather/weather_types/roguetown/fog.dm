@@ -1,4 +1,4 @@
-/* /datum/weather/fog
+/datum/weather/fog
 	name = "fog"
 	desc = ""
 
@@ -6,11 +6,10 @@
 	telegraph_message = span_warning("The fog is coming.")
 	telegraph_sound = 'sound/blank.ogg'
 	weather_message = ""
-	weather_overlay = "rain1"
 	weather_duration_lower = 5 MINUTES
 	weather_duration_upper = 15 MINUTES
 	weather_sound = 'sound/blank.ogg'
-	weather_alpha = 200
+	weather_alpha = 155
 
 	probability = 3
 
@@ -27,8 +26,13 @@
 
 
 /datum/weather/fog/process()
+	. = ..()
 #ifndef TESTSERVER
 	if(GLOB.forecast != "fog")
 		wind_down()
 		return
-#endif */
+#endif 
+
+/datum/weather/fog/New(z_levels)
+	impacted_z_levels = GLOB.sky_z.Copy()
+	. = ..()

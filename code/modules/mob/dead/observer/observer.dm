@@ -370,6 +370,7 @@ Works together with spawning an observer, noted above.
 		SSdroning.kill_rain(client)
 		SSdroning.kill_loop(client)
 		SSdroning.kill_droning(client)
+		SSdroning.kill_ambient_loop(client)
 //		var/S = sound('sound/ambience/creepywind.ogg', repeat = 1, wait = 0, volume = client.prefs.musicvol, channel = CHANNEL_MUSIC)
 //		play_priomusic(S)
 	var/mob/dead/observer/ghost	// Transfer safety to observer spawning proc.
@@ -404,6 +405,7 @@ Works together with spawning an observer, noted above.
 			SSdroning.kill_rain(client)
 			SSdroning.kill_loop(client)
 			SSdroning.kill_droning(client)
+			SSdroning.kill_ambient_loop(client)
 		var/mob/dead/observer/screye/ghost = new(src)	// Transfer safety to observer spawning proc.
 		ghost.ghostize_time = world.time
 		SStgui.on_transfer(src, ghost) // Transfer NanoUIs.
@@ -483,6 +485,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	SSdroning.kill_rain(src.client)
 	SSdroning.kill_loop(src.client)
 	SSdroning.kill_droning(src.client)
+	SSdroning.kill_ambient_loop(client)
 	remove_client_colour(/datum/client_colour/monochrome)
 	client.change_view(CONFIG_GET(string/default_view))
 	client?.verbs -= GLOB.ghost_verbs
@@ -523,6 +526,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	SSdroning.kill_rain(src.client)
 	SSdroning.kill_loop(src.client)
 	SSdroning.kill_droning(src.client)
+	SSdroning.kill_ambient_loop(client)
 	remove_client_colour(/datum/client_colour/monochrome)
 	if(!client)
 		log_game("[key_name(src)] AM failed due to disconnect.")
