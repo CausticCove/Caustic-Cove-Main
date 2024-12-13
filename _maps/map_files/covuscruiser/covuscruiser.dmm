@@ -338,10 +338,10 @@
 /area/rogue/ship/middeck)
 "dd" = (
 /obj/structure/bed/rogue/inn/hay,
-/obj/structure/roguetent{
-	layer = 4.1
-	},
 /obj/item/bedsheet/rogue/cloth,
+/obj/structure/roguetent{
+	layer = 8
+	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/ship/middeck)
 "de" = (
@@ -440,6 +440,14 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
+"dA" = (
+/obj/structure/mineral_door/wood{
+	locked = 1;
+	lockid = "roomv";
+	name = "ROOM V"
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/ship/middeck)
 "dE" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -581,6 +589,17 @@
 "eQ" = (
 /obj/machinery/light/rogue/torchholder/c,
 /obj/effect/landmark/start/mercenary,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/ship/middeck)
+"eR" = (
+/obj/structure/bed/rogue/inn/wool,
+/obj/structure/roguetent{
+	layer = 8
+	},
+/obj/structure/rack/rogue/shelf/noplayerbump{
+	pixel_y = 0;
+	pixel_x = 32
+	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/ship/middeck)
 "eU" = (
@@ -1266,9 +1285,11 @@
 /area/rogue/ship/middeck)
 "lA" = (
 /obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable"
+	dir = 6;
+	icon_state = "largetable"
 	},
+/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/rogueweapon/huntingknife/chefknife,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/ship/middeck)
 "lE" = (
@@ -1822,12 +1843,19 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "rF" = (
-/obj/structure/table/wood{
-	icon_state = "longtable"
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
-/obj/item/rogueweapon/huntingknife/chefknife,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/obj/structure/closet/crate/coffin,
+/turf/open/floor/rogue/rooftop{
+	dir = 4;
+	icon_state = "roofg"
+	},
 /area/rogue/ship/middeck)
 "rG" = (
 /turf/open/floor/rogue/carpet/lord/right{
@@ -2464,7 +2492,7 @@
 "xi" = (
 /obj/structure/bed/rogue/inn/hay,
 /obj/structure/roguetent{
-	layer = 4.1
+	layer = 8
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/ship/middeck)
@@ -3063,19 +3091,12 @@
 /area/rogue/ship/middeck)
 "CI" = (
 /obj/structure/bed/rogue/inn/wool,
-/obj/effect/decal/cobbleedge{
-	dir = 1;
-	icon_state = "borderfall"
-	},
 /obj/item/bedsheet/rogue/cloth,
-/obj/structure/roguetent{
-	layer = 4.1
-	},
 /obj/structure/rack/rogue/shelf/noplayerbump,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
+/obj/structure/roguetent{
+	layer = 8
 	},
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/ship/middeck)
 "CJ" = (
 /obj/structure/chair/wood/rogue,
@@ -3479,11 +3500,11 @@
 /area/rogue/ship/nobledeck)
 "Gh" = (
 /obj/structure/bed/rogue/inn/hay,
-/obj/structure/roguetent{
-	layer = 4.1
-	},
 /obj/structure/rack/rogue/shelf/noplayerbump{
 	pixel_y = -32
+	},
+/obj/structure/roguetent{
+	layer = 8
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/ship/middeck)
@@ -3643,12 +3664,12 @@
 /area/rogue/ship/topdeck)
 "HO" = (
 /obj/structure/bed/rogue/inn/hay,
-/obj/structure/roguetent{
-	layer = 4.1
-	},
 /obj/item/bedsheet/rogue/cloth,
 /obj/structure/rack/rogue/shelf/noplayerbump{
 	pixel_y = -32
+	},
+/obj/structure/roguetent{
+	layer = 8
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/ship/middeck)
@@ -4099,6 +4120,9 @@
 	pixel_y = 0;
 	pixel_x = 32
 	},
+/obj/structure/roguetent{
+	layer = 8
+	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "wooden_floor2";
 	dir = 1
@@ -4197,10 +4221,10 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
-/obj/structure/roguetent{
-	layer = 4.1
-	},
 /obj/structure/rack/rogue/shelf/noplayerbump,
+/obj/structure/roguetent{
+	layer = 8
+	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "wooden_floor2";
 	dir = 1
@@ -4629,11 +4653,11 @@
 /area/rogue/ship/topdeck)
 "QK" = (
 /obj/structure/bed/rogue/inn/wool,
-/obj/structure/roguetent{
-	layer = 4.1
-	},
 /obj/item/bedsheet/rogue/cloth,
 /obj/structure/rack/rogue/shelf/noplayerbump,
+/obj/structure/roguetent{
+	layer = 8
+	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "wooden_floor2";
 	dir = 1
@@ -4701,6 +4725,10 @@
 /obj/structure/fluff/walldeco/chains,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/ship/shipbrig)
+"Ri" = (
+/obj/machinery/light/rogue/wallfire/candle/r,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/ship/middeck)
 "Rk" = (
 /obj/structure/stairs{
 	dir = 8
@@ -5093,6 +5121,12 @@
 /obj/structure/fluff/wallclock,
 /turf/open/floor/carpet/stellar,
 /area/rogue/ship/nobledeck)
+"UI" = (
+/obj/structure/roguetent{
+	layer = 8
+	},
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/ship/middeck)
 "UM" = (
 /obj/structure/fluff/statue/small,
 /turf/open/floor/rogue/ruinedwood/platform,
@@ -5654,11 +5688,11 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
-/obj/structure/roguetent{
-	layer = 4.1
-	},
 /obj/item/bedsheet/rogue/cloth,
 /obj/structure/rack/rogue/shelf/noplayerbump,
+/obj/structure/roguetent{
+	layer = 8
+	},
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "wooden_floor2";
 	dir = 1
@@ -16584,7 +16618,7 @@ Ze
 Ze
 Ze
 Ze
-ne
+kh
 Ze
 ip
 uw
@@ -16740,7 +16774,7 @@ ne
 Ze
 OF
 Ze
-sq
+CI
 kh
 Ze
 wU
@@ -16897,7 +16931,7 @@ ne
 Ck
 Mq
 Ze
-kh
+UI
 kh
 Ze
 wq
@@ -17054,7 +17088,7 @@ zf
 Ze
 Yx
 Ze
-kh
+CI
 kh
 Ze
 fN
@@ -17212,7 +17246,7 @@ Ze
 Ze
 Ze
 Ze
-ne
+kh
 Ze
 qb
 ne
@@ -17366,7 +17400,7 @@ Da
 lq
 ne
 ne
-oV
+ne
 gv
 zf
 ne
@@ -17679,7 +17713,7 @@ Ze
 Ia
 lq
 ne
-kh
+uk
 kh
 kh
 ne
@@ -17994,7 +18028,7 @@ fR
 Yw
 xy
 xy
-uk
+xy
 dc
 lK
 ne
@@ -18149,13 +18183,13 @@ Li
 Ze
 IM
 yA
-ne
+xy
 Ze
 Kk
 Ze
+gf
 ne
-ne
-ne
+oV
 Ze
 sq
 Ze
@@ -18306,11 +18340,11 @@ Li
 Ze
 sU
 Yw
-ne
-gf
-xy
-xy
-ne
+Ze
+Ze
+dA
+Ze
+Ze
 ne
 ne
 Ze
@@ -18464,18 +18498,18 @@ Ze
 oO
 yA
 Ze
+eR
+Ri
+eR
 Ze
-Ze
-Ze
-Ze
-LX
+ne
 ne
 Ze
 Ze
 Ze
 Cg
 vU
-gE
+Cl
 Ze
 Li
 Li
@@ -18621,17 +18655,17 @@ Ze
 NB
 yj
 Ze
-Gt
-ne
-VK
 Ze
-ne
+Ze
+Ze
+Ze
+LX
 CS
 Ze
 Su
 Ze
 Ze
-vU
+rF
 Cl
 Ze
 Li
@@ -18778,10 +18812,10 @@ Ze
 Fu
 yj
 Ze
-rF
-ne
-ne
-dp
+Ze
+Gt
+VK
+Ze
 CS
 Kw
 Ze
@@ -18938,7 +18972,7 @@ Ze
 lA
 ne
 ne
-Ze
+dp
 CS
 Ze
 Ze
@@ -43268,7 +43302,7 @@ TN
 TN
 TN
 Ze
-CI
+ZQ
 XI
 sA
 Tx
