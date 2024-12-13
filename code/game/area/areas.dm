@@ -68,6 +68,11 @@
 	var/list/ambientsounds = GENERIC
 	var/list/ambientrain = null
 	var/list/ambientnight = null
+	var/list/ambientdrone = list('sound/blank.ogg') //Just in case we really don't have something.
+	var/list/ambientdroneday = null
+	var/list/ambientdronenight = null
+	var/list/ambientdronedusk = null
+	var/list/ambientdronedawn = null
 
 	var/min_ambience_cooldown = 70 SECONDS
 	var/max_ambience_cooldown = 120 SECONDS
@@ -76,6 +81,7 @@
 	var/we_looping_here = TRUE
 
 	var/droning_sound_current = null
+	var/ambient_droning_sound_current = null
 	var/droning_sound_dawn = null
 	var/droning_sound = null
 	var/droning_sound_dusk = null
@@ -85,6 +91,7 @@
 	var/droning_wait = 0
 	var/droning_volume = 100
 	var/droning_channel = CHANNEL_BUZZ
+	var/ambient_channel = CHANNEL_DRONING_AMBIENCE
 	var/droning_frequency = 0
 
 	var/list/spookysounds = null
@@ -636,6 +643,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		//Ambience if combat mode is off
 		SSdroning.area_entered(src, living_arrived.client)
 		SSdroning.play_loop(src, living_arrived.client)
+		SSdroning.play_ambient_loop(src, living_arrived.client)
 		var/found = FALSE
 		for(var/datum/weather/rain/R in SSweather.curweathers)
 			found = TRUE
@@ -772,6 +780,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		SSdroning.area_entered(src, boarder.client)
 		boarder.client.update_ambience_pref()
 		SSdroning.play_loop(src, boarder.client)
+		SSdroning.play_ambient_loop(src, boarder.client)
 		var/found = FALSE
 		for(var/datum/weather/rain/R in SSweather.curweathers)
 			found = TRUE
@@ -783,6 +792,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if(istype(boarder) && boarder.client)
 		SSdroning.area_entered(src, boarder.client)
 		SSdroning.play_loop(src, boarder.client)
+		SSdroning.play_ambient_loop(src, boarder.client)
 		var/found = FALSE
 		for(var/datum/weather/rain/R in SSweather.curweathers)
 			found = TRUE

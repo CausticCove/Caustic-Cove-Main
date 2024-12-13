@@ -1121,6 +1121,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	SSdroning.kill_rain(client)
 	SSdroning.kill_loop(client)
 	SSdroning.kill_droning(client)
+	SSdroning.kill_ambient_loop(client)
 	stop_sound_channel(CHANNEL_HEARTBEAT) //Stop heartbeat sounds because You Are A Ghost Now
 	var/mob/dead/observer/rogue/arcaneeye/eye = new(src)	// Transfer safety to observer spawning proc.
 	SStgui.on_transfer(src, eye) // Transfer NanoUIs.
