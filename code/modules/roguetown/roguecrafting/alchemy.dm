@@ -200,19 +200,6 @@
 
 /datum/crafting_recipe/roguetown/alchemy/powderflask
 	name = "Powder Flask"
-	req_table = FALSE
-	verbage_simple = "mix"
 	result = list(/obj/item/powderflask)
 	reqs = list(/obj/item/ash = 2, /obj/item/rogueore/coal = 2, /obj/item/natural/hide = 1)
-	skillcraft = /datum/skill/misc/alchemy
-	craftdiff = 2
-
-
-/datum/crafting_recipe/roguetown/alchemy/powderflaskEngineering
-	name = "Powder Flask"
-	req_table = FALSE
-	verbage_simple = "mix"
-	result = list(/obj/item/powderflask)
-	reqs = list(/obj/item/ash = 2, /obj/item/rogueore/coal = 2, /obj/item/natural/hide = 1)
-	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 2
