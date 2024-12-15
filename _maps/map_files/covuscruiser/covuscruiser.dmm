@@ -1395,6 +1395,7 @@
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/grown/log/tree/small,
 /obj/item/grown/log/tree/small,
+/obj/item/rogueweapon/stoneaxe/woodcut,
 /turf/open/floor/rogue/hay,
 /area/rogue/ship/middeck)
 "lM" = (
@@ -2707,6 +2708,7 @@
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/grown/log/tree/small,
 /obj/item/grown/log/tree/small,
+/obj/item/rogueweapon/stoneaxe/woodcut,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/ship/middeck)
 "wb" = (
