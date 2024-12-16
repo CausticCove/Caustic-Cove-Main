@@ -150,7 +150,7 @@
 	//I feel bad they have full hands round-start but this is the price you have for being given a satchel.
 	l_hand = /obj/item/rogueweapon/shield/tower
 	r_hand = /obj/item/rogueweapon/sword/short
-	beltr = /obj/item/quiver/bolts
+	beltr = /obj/item/ammo_holder/quiver/bolts
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)

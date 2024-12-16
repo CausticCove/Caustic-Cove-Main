@@ -5930,7 +5930,7 @@
 /area/rogue/outdoors/town)
 "fZy" = (
 /obj/structure/closet/crate/chest,
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /obj/item/flashlight/flare/torch/lantern,
 /obj/item/rope/chain,
 /turf/open/floor/rogue/wood,
@@ -10283,7 +10283,7 @@
 /area/rogue/indoors)
 "kCo" = (
 /obj/structure/rack/rogue,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
@@ -13047,7 +13047,7 @@
 "njH" = (
 /obj/machinery/light/rogue/torchholder/r,
 /obj/structure/rack/rogue,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "njK" = (
@@ -15554,13 +15554,13 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
 "pDE" = (
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /obj/structure/closet/crate/roguecloset,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "pEc" = (
@@ -18908,11 +18908,11 @@
 	},
 /area/rogue/under/cave)
 "sRU" = (
-/obj/item/quiver/bolts,
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /obj/structure/closet/crate/roguecloset,
-/obj/item/quiver/bolts,
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "sRV" = (

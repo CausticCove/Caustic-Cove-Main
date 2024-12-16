@@ -18,7 +18,7 @@
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	beltr = /obj/item/rogueweapon/whip
-	beltl= /obj/item/quiver/arrows
+	beltl= /obj/item/ammo_holder/quiver/arrows
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor

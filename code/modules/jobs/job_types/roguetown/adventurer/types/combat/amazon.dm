@@ -30,7 +30,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/rogueweapon/huntingknife
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backr = /obj/item/javelinquiver
+	//backr = /obj/item/javelinquiver Commented out due to being out of scope of the quiver fix PR
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots

@@ -547,10 +547,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/town/basement)
-"es" = (
-/obj/machinery/light/rogue/firebowl/stump,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/shelter/mountains)
 "ew" = (
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/woods)
@@ -1084,7 +1080,7 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/shelter/mountains)
+/area/rogue/outdoors/mountains)
 "jj" = (
 /turf/open/water/sewer,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
@@ -1164,9 +1160,6 @@
 "jK" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/under/town/basement)
-"jM" = (
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/shelter/mountains)
 "jQ" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /turf/open/floor/rogue/hexstone,
@@ -1267,10 +1260,6 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors)
-"kt" = (
-/obj/structure/fluff/railing/wood,
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors/shelter/mountains)
 "ku" = (
 /obj/effect/spawner/lootdrop/roguetown/dungeon/tools,
 /turf/open/floor/rogue/greenstone,
@@ -1905,12 +1894,6 @@
 /obj/structure/fermenting_barrel/random/beer,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-"pH" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1
-	},
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors/shelter/mountains)
 "pL" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt/road,
@@ -2048,8 +2031,8 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cavewet/bogcaves)
 "qV" = (
-/obj/item/quiver/arrows,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /obj/structure/table/wood/bar{
 	icon_state = "longtable";
 	dir = 1
@@ -3256,7 +3239,7 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/shelter/mountains)
+/area/rogue/outdoors/mountains)
 "AY" = (
 /obj/structure/stairs/stone{
 	dir = 1;
@@ -3746,7 +3729,7 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/shelter/mountains)
+/area/rogue/outdoors/mountains)
 "Fl" = (
 /turf/closed/wall/mineral/rogue/tent{
 	dir = 1
@@ -3818,7 +3801,7 @@
 "FM" = (
 /obj/structure/far_travel,
 /turf/open/floor/rogue/cobblerock,
-/area/rogue/indoors/shelter/mountains)
+/area/rogue/outdoors/mountains)
 "FO" = (
 /turf/closed/wall/mineral/rogue/wooddark/end,
 /area/rogue/indoors)
@@ -3843,9 +3826,6 @@
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
-"Gh" = (
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/indoors/shelter/mountains)
 "Gi" = (
 /turf/open/transparent/openspace,
 /area/rogue/under/town/basement)
@@ -3912,9 +3892,6 @@
 /obj/structure/fluff/alch,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/basement)
-"GO" = (
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/indoors/shelter/mountains)
 "GR" = (
 /obj/item/grown/log/tree/small,
 /obj/item/grown/log/tree/stick,
@@ -4717,9 +4694,6 @@
 "Nb" = (
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/woods)
-"Nc" = (
-/turf/open/floor/rogue/grass,
-/area/rogue/indoors/shelter/mountains)
 "Ne" = (
 /turf/open/water/cleanshallow,
 /area/rogue/under/cave)
@@ -5152,12 +5126,6 @@
 /obj/item/grown/log/tree/small,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
-"RA" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1
-	},
-/turf/open/floor/rogue/grass,
-/area/rogue/indoors/shelter/mountains)
 "RB" = (
 /obj/structure/flora/newtree,
 /obj/structure/flora/newtree,
@@ -5751,9 +5719,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/mudcrab,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/woods)
-"Wh" = (
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors/shelter/mountains)
 "Wk" = (
 /obj/structure/fluff/railing/fence{
 	dir = 1
@@ -6126,7 +6091,7 @@
 	name = "AZURE PEAK - EAST"
 	},
 /turf/open/floor/rogue/grass,
-/area/rogue/indoors/shelter/mountains)
+/area/rogue/outdoors/mountains)
 "ZM" = (
 /obj/item/grown/log/tree,
 /obj/item/grown/log/tree/stick,
@@ -81672,8 +81637,8 @@ rj
 GH
 GH
 GH
-Nc
-Gh
+zu
+HO
 gU
 gU
 gU
@@ -81826,10 +81791,10 @@ rj
 rj
 rj
 rj
-Wh
+Ug
 GH
-Nc
-jM
+zu
+Jx
 Fk
 gU
 gU
@@ -81983,10 +81948,10 @@ rj
 rj
 rj
 rj
-GO
-jM
-jM
-jM
+dP
+Jx
+Jx
+Jx
 AX
 FM
 gU
@@ -82139,11 +82104,11 @@ rj
 rj
 rj
 rj
-kt
-jM
-jM
-jM
-jM
+eH
+Jx
+Jx
+Jx
+Jx
 jg
 FM
 gU
@@ -82296,11 +82261,11 @@ rj
 rj
 rj
 rj
-kt
-jM
-jM
-jM
-jM
+eH
+Jx
+Jx
+Jx
+Jx
 AX
 FM
 gU
@@ -82453,11 +82418,11 @@ rj
 rj
 rj
 rj
-kt
+eH
 ZL
-jM
-jM
-Gh
+Jx
+Jx
+HO
 Fk
 gU
 gU
@@ -82611,11 +82576,11 @@ rj
 rj
 rj
 rj
-GO
-jM
-Nc
-jM
-Gh
+dP
+Jx
+zu
+Jx
+HO
 gU
 gU
 gU
@@ -82767,12 +82732,12 @@ rj
 rj
 rj
 rj
-Nc
-RA
-jM
-es
-Nc
-Gh
+zu
+Jr
+Jx
+pL
+zu
+HO
 gU
 gU
 gU
@@ -82924,10 +82889,10 @@ rj
 rj
 rj
 rj
-Wh
-RA
-jM
-Wh
+Ug
+Jr
+Jx
+Ug
 GH
 GH
 GH
@@ -83081,10 +83046,10 @@ rj
 rj
 rj
 rj
-GO
-pH
-jM
-GO
+dP
+EB
+Jx
+dP
 GH
 GH
 GH
@@ -83239,10 +83204,10 @@ rj
 rj
 rj
 rj
-pH
-jM
-jM
-Nc
+EB
+Jx
+Jx
+zu
 GH
 GH
 gU
@@ -83397,9 +83362,9 @@ rj
 rj
 rj
 Ug
-Nc
-jM
-Nc
+zu
+Jx
+zu
 GH
 GH
 gU
@@ -83555,8 +83520,8 @@ rj
 rj
 rj
 dP
-jM
-jM
+Jx
+Jx
 GH
 GH
 gU
@@ -83713,8 +83678,8 @@ rj
 rj
 Ug
 Jr
-jM
-Nc
+Jx
+zu
 GH
 gU
 gU
@@ -83870,8 +83835,8 @@ rj
 rj
 rj
 EB
-jM
-jM
+Jx
+Jx
 GH
 gU
 gU
@@ -84028,7 +83993,7 @@ rj
 rj
 EB
 zu
-jM
+Jx
 GH
 gU
 gU
@@ -84185,7 +84150,7 @@ rj
 rj
 Ug
 zu
-jM
+Jx
 GH
 gU
 gU
