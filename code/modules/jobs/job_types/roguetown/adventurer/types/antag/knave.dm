@@ -53,7 +53,7 @@
 	switch(weapon_choice)
 		if("Crossbow & Dagger") //Rogue
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow //we really need to make this not a grenade launcher subtype
-			beltr = /obj/item/quiver/bolts
+			beltr = /obj/item/ammo_holder/quiver/bolts
 			cloak = /obj/item/clothing/cloak/raincloak/mortus //cool cloak
 			beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
 			backr = /obj/item/storage/backpack/rogue/satchel
@@ -62,7 +62,7 @@
 		if("Bow & Sword") //Poacher
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			beltl = /obj/item/rogueweapon/sword/short
-			beltr = /obj/item/quiver/arrows
+			beltr = /obj/item/ammo_holder/quiver/arrows
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm //cool hat
 			backr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps

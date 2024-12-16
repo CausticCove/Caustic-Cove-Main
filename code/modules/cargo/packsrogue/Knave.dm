@@ -86,18 +86,18 @@
 /datum/supply_pack/rogue/Knave/quiver
 	name = "Empty Quiver"
 	cost = 5
-	contains = list(/obj/item/quiver)
+	contains = list(/obj/item/ammo_holder/quiver)
 
 
 /datum/supply_pack/rogue/Knave/quivers/arrows
 	name = "Quiver of Arrows"
 	cost = 10
-	contains = list(/obj/item/quiver/arrows)
+	contains = list(/obj/item/ammo_holder/quiver/arrows)
 
 /datum/supply_pack/rogue/Knave/quivers/bolts
 	name = "Quiver of Bolts"
 	cost = 20
-	contains = list(/obj/item/quiver/bolts)
+	contains = list(/obj/item/ammo_holder/quiver/bolts)
 
 
 
