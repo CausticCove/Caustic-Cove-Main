@@ -14,7 +14,6 @@ Format:
 endmap
 
 map dun_manor
-	default
 	votable
 map covuscruiser
 	votable
