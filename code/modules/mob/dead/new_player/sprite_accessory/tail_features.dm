@@ -115,3 +115,8 @@
 	name = "stupid wolftaur markings"
 	icon = 'icons/mob/sprite_accessory/tail_features/wolf_markings.dmi'
 	icon_state = "wolf_markings"
+
+/datum/sprite_accessory/tail_feature/taur/drake
+	name = "draketaur markings"
+	icon = 'modular_causticcove/icons/mob/sprite_accessory/tail_features/drake_markings.dmi'
+	icon_state = "drake_markings"

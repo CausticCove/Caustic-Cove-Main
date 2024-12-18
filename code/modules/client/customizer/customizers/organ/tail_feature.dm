@@ -28,6 +28,7 @@
 		/datum/sprite_accessory/tail_feature/taur/fatnaga,
 		/datum/sprite_accessory/tail_feature/taur/feline,
 		/datum/sprite_accessory/tail_feature/taur/wolf,
+		/datum/sprite_accessory/tail_feature/taur/drake,
 		)
 
 /datum/customizer/organ/tail_feature/vox_markings

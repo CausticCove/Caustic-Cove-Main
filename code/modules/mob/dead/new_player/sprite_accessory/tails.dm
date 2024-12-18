@@ -395,6 +395,10 @@
 	icon = 'icons/mob/sprite_accessory/tails/orca.dmi'
 	icon_state = "orcamermaid_s"
 
+/datum/sprite_accessory/tail/taur/drake
+	name = "Drake Taur"
+	icon = 'modular_causticcove/icons/mob/sprite_accessory/tails/draketaur.dmi'
+	icon_state = "drake_s"
 
 /datum/sprite_accessory/tail/taur/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
     generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_TAUR, OFFSET_TAUR_F)
