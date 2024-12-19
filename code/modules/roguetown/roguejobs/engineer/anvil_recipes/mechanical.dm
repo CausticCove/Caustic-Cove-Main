@@ -66,7 +66,7 @@
 	name = "Handgonne"
 	req_bar = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/roguegear, /obj/item/ingot/bronze, /obj/item/ingot/bronze, /obj/item/grown/log/tree/small)
-	created_item = /obj/item/gun/ballistic/arquebus
+	created_item = /obj/item/gun/ballistic/handgonne
 	craftdiff = 5
 
 /datum/anvil_recipe/engineering/bronze/guns/runelockgem
