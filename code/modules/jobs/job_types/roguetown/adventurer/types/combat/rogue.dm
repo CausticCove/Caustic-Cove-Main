@@ -1,4 +1,4 @@
-/datum/advclass/rogue
+datum/advclass/rogue
 	name = "Rogue"
 	tutorial = "Rogues are men of shadows, and commonly associated with banditry. Most are usually akin to criminals, \
 	and those who aren't are usually treated as such anyway. \

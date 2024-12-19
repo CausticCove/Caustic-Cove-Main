@@ -228,7 +228,7 @@
 /datum/sprite_accessory/butt
 	icon = 'icons/mob/sprite_accessory/genitals/butt.dmi'
 	color_key_name = "Butt"
-	relevant_layers = list(BODY_FRONT_LAYER)
+	relevant_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/butt/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	if(!isdwarf(owner) && !isgoblinp(owner) && !iskobold(owner) && !isvermin(owner))
@@ -245,7 +245,7 @@
 		return FALSE
 	if(!buttie.visible_organ)
 		return FALSE
-	return is_human_part_visible(owner, HIDEJUMPSUIT|HIDECROTCH|HIDEBUTT)
+	return is_human_part_visible(owner, HIDEJUMPSUIT|HIDEBUTT)
 
 /datum/sprite_accessory/butt/pair
 	name = "Pair"
