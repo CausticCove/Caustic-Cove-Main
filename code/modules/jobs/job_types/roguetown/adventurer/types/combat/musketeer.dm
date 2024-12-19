@@ -21,7 +21,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel/musketeer
 	backr = /obj/item/gun/ballistic/arquebus
 	beltr = /obj/item/rogueweapon/sword/rapier
-	beltl = /obj/item/ammo_holder/bullet/lead
+	beltl = /obj/item/bulletpouch/bullet
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)

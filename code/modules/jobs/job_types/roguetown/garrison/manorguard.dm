@@ -166,7 +166,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/firearms, 1, TRUE)
 			r_hand = /obj/item/gun/ballistic/arquebus
 			beltr = /obj/item/powderflask
-			backl = /obj/item/ammo_holder/bullet/lead
+			backl = /obj/item/bulletpouch/bullet
 
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
