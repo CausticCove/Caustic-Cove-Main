@@ -339,18 +339,19 @@
 	dir = 10;
 	icon_state = "tablewood2"
 	},
-/obj/structure/disposalpipe/trunk/multiz/down{
-	dir = 8;
-	layer = 5.6;
-	color = "#403f3b";
-	name = "cannon barrel";
-	level = 2
-	},
 /obj/structure/fluff/railing/wood{
 	layer = 5.7
 	},
 /obj/structure/fluff/railing/wood{
 	dir = 1
+	},
+/obj/structure/bars/pipe{
+	layer = 5.8;
+	icon = 'icons/obj/atmospherics/pipes/disposal.dmi';
+	icon_state = "pipe-down";
+	color = "#403f3b";
+	name = "cannon barrel";
+	dir = 8
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/outdoors/beach)
@@ -792,17 +793,18 @@
 	dir = 10;
 	icon_state = "tablewood2"
 	},
-/obj/structure/disposalpipe/segment{
-	layer = 5.5;
-	color = "#403f3b";
-	name = "cannon barrel";
-	dir = 4
-	},
 /obj/structure/fluff/railing/wood{
 	layer = 5.7
 	},
 /obj/structure/fluff/railing/wood{
 	dir = 1
+	},
+/obj/structure/bars/pipe{
+	layer = 5.8;
+	icon = 'icons/obj/atmospherics/pipes/disposal.dmi';
+	color = "#403f3b";
+	name = "cannon barrel";
+	dir = 8
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/outdoors/beach)
