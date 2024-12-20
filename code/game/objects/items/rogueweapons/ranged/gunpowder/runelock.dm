@@ -55,7 +55,7 @@
 				var/skill = user.mind.get_skill_level(/datum/skill/craft/engineering)
 				if(skill)
 					skill_reload_time = reload_time / skill
-			if(move_after(user, reload_time SECONDS, target = user))
+			if(move_after(user, skill_reload_time SECONDS, target = user))
 				playsound(user, 'sound/foley/musketcock.ogg', 100, FALSE)
 				cocked = TRUE
 				if(icon_state_ready)
