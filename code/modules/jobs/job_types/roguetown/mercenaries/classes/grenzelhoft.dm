@@ -81,7 +81,7 @@
 			H.change_stat("perception", 2)
 			r_hand = /obj/item/gun/ballistic/handgonne
 			beltl = /obj/item/powderflask
-			backl = /obj/item/bulletpouch/bullet
+			backl = /obj/item/ammo_holder/bullet/lead
 
 	//General gear regardless of class.
 	wrists = /obj/item/clothing/wrists/roguetown/bracers

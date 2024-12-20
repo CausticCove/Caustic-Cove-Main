@@ -151,23 +151,24 @@
 	//I feel bad they have full hands round-start but this is the price you have for being given a satchel.
 	l_hand = /obj/item/rogueweapon/shield/tower
 	r_hand = /obj/item/rogueweapon/sword/short
+	beltr = /obj/item/ammo_holder/quiver/bolts
+	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	var/weapons = list("Crossbow","Bow", "Arquebus")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	switch(weapon_choice)
 		if("Crossbow")
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)	
-			beltr = /obj/item/quiver/bolts
+			beltr = /obj/item/ammo_holder/quiver/bolts
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 		if("Bow")
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-			beltr = /obj/item/quiver/arrows
+			beltr = /obj/item/ammo_holder/quiver/arrows
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 		if("Arquebus")
 			H.mind.adjust_skillrank(/datum/skill/combat/firearms, 1, TRUE)
 			r_hand = /obj/item/gun/ballistic/arquebus
 			beltr = /obj/item/powderflask
-			backl = /obj/item/bulletpouch/bullet
-
+			backl = /obj/item/ammo_holder/bullet/lead
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 	H.verbs |= /mob/proc/haltyell

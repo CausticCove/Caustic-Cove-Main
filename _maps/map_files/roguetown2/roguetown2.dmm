@@ -5978,7 +5978,7 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -6254,7 +6254,7 @@
 /area/rogue/outdoors/town/roofs)
 "Av" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "Aw" = (
@@ -6313,7 +6313,7 @@
 /area/rogue/outdoors/town/roofs)
 "AH" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "AI" = (
@@ -7759,7 +7759,7 @@
 /area/rogue/indoors/town/garrison)
 "FW" = (
 /obj/structure/closet/crate/chest,
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /obj/item/rogueweapon/flail/sflail,
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 /turf/open/floor/rogue/tile,
@@ -8658,7 +8658,7 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 /obj/item/natural/saddle,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/mountains)
 "Jq" = (

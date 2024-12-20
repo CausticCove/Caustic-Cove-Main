@@ -47,7 +47,7 @@
 	pants = /obj/item/clothing/under/roguetown/tights/sailor
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/storage/keyring/merchant
-	beltr = /obj/item/bulletpouch
+	beltr = /obj/item/ammo_holder/bullet/lead
 	id = /obj/item/clothing/ring/gold
 	r_hand = /obj/item/gun/ballistic/arquebus_pistol
 	l_hand = /obj/item/powderflask

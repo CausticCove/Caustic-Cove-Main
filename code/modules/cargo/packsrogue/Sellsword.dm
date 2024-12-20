@@ -164,7 +164,7 @@
 /datum/supply_pack/rogue/weapons/Sellsword/bolts
 	name = "Quiver of Bolts"
 	cost = 20
-	contains = list(/obj/item/quiver/bolts)
+	contains = list(/obj/item/ammo_holder/quiver/bolts)
 
 
 /datum/supply_pack/rogue/Sellsword/crossbow
