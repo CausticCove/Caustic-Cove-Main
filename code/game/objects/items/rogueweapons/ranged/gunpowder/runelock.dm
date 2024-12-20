@@ -45,6 +45,7 @@
 		update_icon()
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/runelock/attack_self(mob/living/user)
+	var/skill_reload_time = 0
 	if(chambered)
 		..()
 	else
@@ -53,7 +54,7 @@
 			if(user.mind)
 				var/skill = user.mind.get_skill_level(/datum/skill/craft/engineering)
 				if(skill)
-					reload_time = reload_time / skill
+					skill_reload_time = reload_time / skill
 			if(move_after(user, reload_time SECONDS, target = user))
 				playsound(user, 'sound/foley/musketcock.ogg', 100, FALSE)
 				cocked = TRUE
