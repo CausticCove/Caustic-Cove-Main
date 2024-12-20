@@ -25,7 +25,6 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			belt = /obj/item/storage/belt/rogue/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-			cloak = /obj/item/clothing/cloak/raincloak/brown
 			cloak = /obj/item/clothing/cloak/raincloak/green
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			backl = /obj/item/storage/backpack/rogue/satchel

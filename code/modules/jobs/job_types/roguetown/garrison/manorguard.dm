@@ -106,7 +106,7 @@
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 	H.verbs |= /mob/proc/haltyell
 
-// Shield + Swords + Crossbow/Bow	-	Lighter armor, but ranged + sword skill in exchange for it.
+// Shield + Swords + Crossbow/Bow/Gun	-	Lighter armor, but ranged + sword skill in exchange for it.
 /datum/advclass/manorguard/boltman
 	name = "Men-at-Arms Boltman"
 	tutorial = "You are a professional soldier of the realm, specializing in ranged implements. You sport a keen eye, looking for your enemies weaknesses."
@@ -123,8 +123,9 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 5, TRUE)		//Only effects draw and reload time.
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 5, TRUE)			//Only effects draw times.
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)		//Only effects draw and reload time.
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)			//Only effects draw times.
+	H.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
 
 	//Normal shared skill section.
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
@@ -152,6 +153,22 @@
 	r_hand = /obj/item/rogueweapon/sword/short
 	beltr = /obj/item/ammo_holder/quiver/bolts
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+	var/weapons = list("Crossbow","Bow", "Arquebus")
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	switch(weapon_choice)
+		if("Crossbow")
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)	
+			beltr = /obj/item/ammo_holder/quiver/bolts
+			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+		if("Bow")
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+			beltr = /obj/item/ammo_holder/quiver/arrows
+			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
+		if("Arquebus")
+			H.mind.adjust_skillrank(/datum/skill/combat/firearms, 1, TRUE)
+			r_hand = /obj/item/ammo_holder/bullets/lead
+			beltr = /obj/item/powderflask
+			backl = /obj/item/bulletpouch/bullet
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 	H.verbs |= /mob/proc/haltyell

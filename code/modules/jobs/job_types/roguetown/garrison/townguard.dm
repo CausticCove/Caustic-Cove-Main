@@ -97,17 +97,18 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rope/chain = 1)
 	H.verbs |= /mob/proc/haltyell
 
-/datum/advclass/watchman/archer
-	name = "Watch Archer"
-	tutorial = "You are an archer of the Town Watch. Once a hunter, now a man-hunter for your lord. Rooftops, bows, and daggers are your best friend."
-	outfit = /datum/outfit/job/roguetown/guardsman/archer
+/datum/advclass/watchman/ranger
+	name = "Watch Ranger"
+	tutorial = "You are an ranger of the Town Watch. Once a hunter, now a man-hunter for your lord. Rooftops, ranged weapons, and daggers are your best friend."
+	outfit = /datum/outfit/job/roguetown/guardsman/ranger
 
 	category_tags = list(CTAG_WATCH)
 
-/datum/outfit/job/roguetown/guardsman/archer/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/guardsman/ranger/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 5, TRUE)		//Why master? Because all it does is effect draw time, which is strength x skill / 1.2. (Bow is just skill / 1.0). You get poor bonus strength, so you get skill to offset.
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/firearms, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)	//Why master? Because all it does is effect draw time, which is strength x skill / 1.2. (Bow is just skill / 1.0). You get poor bonus strength, so you get skill to offset.
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
@@ -141,6 +142,24 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/rope/chain = 1)
 	H.verbs |= /mob/proc/haltyell
+	var/weapons = list("Crossbow","Bow", "Arquebus")
+	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Crossbow")
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)	
+			beltr = /obj/item/ammo_holder/quiver/bolts
+			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+		if("Bow")
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+			beltr = /obj/item/ammo_holder/quiver/arrows
+			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
+		if("Arquebus")
+			H.mind.adjust_skillrank(/datum/skill/combat/firearms, 1, TRUE)
+			r_hand = /obj/item/gun/ballistic/arquebus
+			beltr = /obj/item/powderflask
+			backl = /item/ammo_holder/bullet/lead
+
 
 // Added to baliff under assumption townguard.dm will not be enabled.
 // /mob/proc/haltyell()

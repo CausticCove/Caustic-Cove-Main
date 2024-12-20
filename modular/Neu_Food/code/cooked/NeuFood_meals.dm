@@ -259,9 +259,9 @@
 /*	.................   Plated fryfish   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/plated
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
-	icon = 'modular/Neu_Food/icons/food.dmi'
 	icon_state = "carpcooked_plated"
 	item_state = "plate_food"
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
@@ -272,9 +272,9 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/plated
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
-	icon = 'modular/Neu_Food/icons/food.dmi'
 	icon_state = "clownfishcooked_plated"
 	item_state = "plate_food"
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
@@ -285,9 +285,9 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/plated
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
-	icon = 'modular/Neu_Food/icons/food.dmi'
 	icon_state = "anglercooked_plated"
 	item_state = "plate_food"
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
@@ -298,9 +298,9 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/plated
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
-	icon = 'modular/Neu_Food/icons/food.dmi'
 	icon_state = "eelcooked_plated"
 	item_state = "plate_food"
+	icon = 'modular/Neu_Food/icons/food.dmi'
 	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
 	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
 	experimental_inhand = FALSE
@@ -385,7 +385,6 @@
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	trash = /obj/item/cooking/platter
 	rotprocess = SHELFLIFE_LONG
-
 
 /*	.................   Cooked rat   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/friedrat/plated

@@ -818,4 +818,43 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 	first_time_text = "The Forest of Repentence"
-	ambientdrone = AMB_CAVE_LOOP_EVIL
+
+//CC Shipmap
+/area/rogue/ship/topdeck
+	name = "upperdeck"
+	icon_state = "roofs"
+	ambientsounds = AMB_BOAT
+	ambientnight = AMB_BOAT
+	droning_sound = 'sound/music/area/topdeckdrone.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	first_time_text = "The Covus Cruiser"
+
+/area/rogue/ship/middeck
+	name = "middeck"
+	icon_state = "indoors"
+	ambientsounds = AMB_BOAT
+	ambientnight = AMB_BOAT
+	droning_sound = 'sound/music/area/middeckdrone.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	first_time_text = "Waist Deck"
+
+/area/rogue/ship/nobledeck
+	name = "nobledeck"
+	icon_state = "manor"
+	ambientsounds = AMB_BOAT
+	ambientnight = AMB_BOAT
+	droning_sound = 'sound/music/area/nobledeckdrone.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+
+/area/rogue/ship/shipbrig
+	name = "shipbrig"
+	icon_state = "cell"
+	ambientsounds = AMB_BOAT
+	ambientnight = AMB_BOAT
+	droning_sound = 'sound/music/area/shipbrig.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	first_time_text = "The Brig"

@@ -466,8 +466,6 @@
 					new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/plated(loc)
 				else
 					new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated(loc)
-				qdel(I)
-				qdel(src)
 		else
 			to_chat(user, span_warning("You need to put [src] on a table to work on it."))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/peppersteak))
