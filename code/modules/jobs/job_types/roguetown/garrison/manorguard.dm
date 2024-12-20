@@ -166,9 +166,9 @@
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 		if("Arquebus")
 			H.mind.adjust_skillrank(/datum/skill/combat/firearms, 1, TRUE)
-			r_hand = /obj/item/ammo_holder/bullets/lead
+			r_hand = /obj/item/gun/ballistic/arquebus
 			beltr = /obj/item/powderflask
-			backl = /obj/item/bulletpouch/bullet
+			backl = /obj/item/ammo_holder/bullet/lead
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 	H.verbs |= /mob/proc/haltyell

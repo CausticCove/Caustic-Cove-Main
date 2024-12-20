@@ -158,7 +158,7 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 			H.mind.adjust_skillrank(/datum/skill/combat/firearms, 1, TRUE)
 			r_hand = /obj/item/gun/ballistic/arquebus
 			beltr = /obj/item/powderflask
-			backl = /item/ammo_holder/bullet/lead
+			backl = /obj/item/ammo_holder/bullet/lead
 
 
 // Added to baliff under assumption townguard.dm will not be enabled.
