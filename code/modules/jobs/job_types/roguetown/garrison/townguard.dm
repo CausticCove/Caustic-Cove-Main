@@ -108,7 +108,7 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 	..()
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/firearms, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)	//Why master? Because all it does is effect draw time, which is strength x skill / 1.2. (Bow is just skill / 1.0). You get poor bonus strength, so you get skill to offset.
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)	//Why master? Because all it does is effect draw time, which is strength x skill / 1.2. (Bow is just skill / 1.0). You get poor bonus strength, so you get skill to offset. / Why not make the strongest ranged weapon even better? :^) Nerfed bonus to skill to 1, heck you
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
@@ -134,6 +134,8 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 
 	head = /obj/item/clothing/head/roguetown/roguehood/red		//To-do: Make a guard hood come in kingdom's colors.
 	armor = /obj/item/clothing/suit/roguetown/armor/leather		//So they get default-dodge expert usage.
+	beltr = /obj/item/ammo_holder/quiver/bolts
+	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	beltl = /obj/item/storage/keyring/guardcastle
 	belt = /obj/item/storage/belt/rogue/leather/black
@@ -145,18 +147,18 @@ Archer is basically a 'bounty-catcher' in function, less specialized at close-qu
 	H.set_blindness(0)
 	switch(weapon_choice)
 		if("Crossbow")
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)	
-			beltr = /obj/item/quiver/bolts
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)	
+			beltr = /obj/item/ammo_holder/quiver/bolts
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 		if("Bow")
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-			beltr = /obj/item/quiver/arrows
+			beltr = /obj/item/ammo_holder/quiver/arrows
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 		if("Arquebus")
 			H.mind.adjust_skillrank(/datum/skill/combat/firearms, 1, TRUE)
 			r_hand = /obj/item/gun/ballistic/arquebus
 			beltr = /obj/item/powderflask
-			backl = /obj/item/bulletpouch/bullet
+			l_hand = /obj/item/ammo_holder/bullet/lead
 
 
 // Added to baliff under assumption townguard.dm will not be enabled.

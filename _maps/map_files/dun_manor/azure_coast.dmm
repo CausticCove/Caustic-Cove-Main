@@ -5643,7 +5643,7 @@
 /obj/structure/closet/crate/chest/old_crate,
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
 "Uh" = (

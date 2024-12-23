@@ -46,14 +46,14 @@
 
 /datum/crafting_recipe/roguetown/leather/quiver
 	name = "quiver"
-	result = /obj/item/quiver
+	result = /obj/item/ammo_holder/quiver
 	reqs = list(/obj/item/natural/hide = 2,
 				/obj/item/natural/fibers = 2)
 	sellprice = 30
 
 /datum/crafting_recipe/roguetown/leather/bulletpouch
 	name = "bullet pouch"
-	result = /obj/item/bulletpouch
+	result = /obj/item/ammo_holder/bullet
 	reqs = list(/obj/item/natural/hide = 2,
 				/obj/item/natural/fibers = 2)
 	sellprice = 30

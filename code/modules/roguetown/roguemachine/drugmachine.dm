@@ -240,7 +240,7 @@
 	held_items[/obj/item/clothing/gloves/roguetown/fingerless] = list("PRICE" = rand(16,31),"NAME" = "gloves with 6 holes")
 	held_items[/obj/item/clothing/head/roguetown/roguehood/black] = list("PRICE" = rand(43,45),"NAME" = "black hood")
 	held_items[/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow] = list("PRICE" = rand(58,88),"NAME" = "crossed bow")
-	held_items[/obj/item/quiver/bolts] = list("PRICE" = rand(33,57),"NAME" = "quiver w/ bolts")*/
+	held_items[/obj/item/ammo_holder/quiver/bolts] = list("PRICE" = rand(33,57),"NAME" = "quiver w/ bolts")*/
 
 #undef DRUGRADE_MONEYA
 #undef DRUGRADE_MONEYB

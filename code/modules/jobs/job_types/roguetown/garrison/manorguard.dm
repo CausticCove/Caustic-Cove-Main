@@ -123,9 +123,9 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)		//Only effects draw and reload time.
-	H.mind.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)			//Only effects draw times.
-	H.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)		//Only effects draw and reload time.
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)			//Only effects draw times.
+	H.mind.adjust_skillrank(/datum/skill/combat/firearms, 3, TRUE)
 
 	//Normal shared skill section.
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
@@ -156,18 +156,17 @@
 	switch(weapon_choice)
 		if("Crossbow")
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)	
-			beltr = /obj/item/quiver/bolts
+			beltr = /obj/item/ammo_holder/quiver/bolts
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 		if("Bow")
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-			beltr = /obj/item/quiver/arrows
+			beltr = /obj/item/ammo_holder/quiver/arrows
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 		if("Arquebus")
 			H.mind.adjust_skillrank(/datum/skill/combat/firearms, 1, TRUE)
 			r_hand = /obj/item/gun/ballistic/arquebus
 			beltr = /obj/item/powderflask
-			backl = /obj/item/bulletpouch/bullet
-
+			l_hand = /obj/item/ammo_holder/bullet/lead
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1)
 	H.verbs |= /mob/proc/haltyell
