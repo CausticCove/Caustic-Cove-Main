@@ -268,10 +268,6 @@
 	pixel_y = 40;
 	infinite = 1
 	},
-/obj/effect/landmark/start/bogguardsman{
-	name = "Warden";
-	jobspawn_override = list("Bog Master","Bog Guard","Warden")
-	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/beach)
 "bI" = (
@@ -3448,11 +3444,6 @@
 /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick{
 	pixel_y = -32
 	},
-/obj/effect/landmark/start/bogguardsman{
-	name = "Warden";
-	jobspawn_override = list("Bog Master","Bog Guard","Warden");
-	dir = 1
-	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/beach)
 "ve" = (
@@ -5671,10 +5662,6 @@
 /obj/structure/rack/rogue/shelf/noplayerbump,
 /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick{
 	pixel_y = 32
-	},
-/obj/effect/landmark/start/bogguardsman{
-	name = "Warden";
-	jobspawn_override = list("Bog Master","Bog Guard","Warden")
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/beach)
