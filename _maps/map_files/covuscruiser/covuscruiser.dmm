@@ -425,6 +425,13 @@
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/ship/middeck)
+"cG" = (
+/obj/effect/landmark/mapGenerator/rogue/cave{
+	endTurfX = 155;
+	endTurfY = 155
+	},
+/turf/open/water/ocean/deep,
+/area/rogue/outdoors/beach)
 "cH" = (
 /obj/structure/fluff/railing/border{
 	dir = 5;
@@ -595,16 +602,16 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/disposalpipe/trunk/multiz/down{
-	dir = 2;
-	layer = 5.6;
-	color = "#403f3b";
-	name = "cannon barrel";
-	level = 2
-	},
 /obj/structure/table/wood{
 	dir = 10;
 	icon_state = "tablewood2"
+	},
+/obj/structure/bars/pipe{
+	layer = 5.8;
+	icon = 'icons/obj/atmospherics/pipes/disposal.dmi';
+	icon_state = "pipe-down";
+	color = "#403f3b";
+	name = "cannon barrel"
 	},
 /turf/open/floor/rogue/hay,
 /area/rogue/ship/topdeck)
@@ -1901,6 +1908,10 @@
 /obj/item/rogueweapon/huntingknife/chefknife,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/ship/middeck)
+"lC" = (
+/obj/structure/closet/dirthole/closed/loot,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/beach)
 "lE" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -2291,12 +2302,8 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/beach)
 "on" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/item/reagent_containers/glass/bucket/wooden{
-	pixel_y = 15
-	},
-/obj/structure/bars/grille,
-/turf/open/transparent/openspace,
+/obj/structure/closet/dirthole/closed/loot,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/beach)
 "oo" = (
 /obj/item/flashlight/flare/torch/lantern,
@@ -6280,7 +6287,10 @@
 	},
 /area/rogue/ship/middeck)
 "Ni" = (
-/obj/machinery/light/rogue/lanternpost,
+/obj/effect/landmark/mapGenerator/rogue/mountain{
+	endTurfX = 155;
+	endTurfY = 155
+	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
 "Nl" = (
@@ -6426,6 +6436,13 @@
 	},
 /turf/open/floor/rogue/wood/herringbone,
 /area/rogue/ship/middeck)
+"NW" = (
+/obj/effect/landmark/mapGenerator/rogue/forest{
+	endTurfX = 155;
+	endTurfY = 155
+	},
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/beach)
 "Ob" = (
 /obj/structure/chair/wood/rogue/throne,
 /obj/structure/fluff/walldeco/customflag{
@@ -6826,16 +6843,16 @@
 /obj/structure/fluff/railing/wood{
 	dir = 8
 	},
-/obj/structure/disposalpipe/trunk/multiz/down{
-	dir = 2;
-	layer = 5.6;
-	color = "#403f3b";
-	name = "cannon barrel";
-	level = 2
-	},
 /obj/structure/table/wood{
 	dir = 10;
 	icon_state = "tablewood2"
+	},
+/obj/structure/bars/pipe{
+	layer = 5.8;
+	icon = 'icons/obj/atmospherics/pipes/disposal.dmi';
+	icon_state = "pipe-down";
+	color = "#403f3b";
+	name = "cannon barrel"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
@@ -8276,7 +8293,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/wood/herringbone,
 /area/rogue/outdoors/beach)
 "YQ" = (
 /obj/effect/decal/cobbleedge{
@@ -8602,7 +8619,7 @@ Li
 Li
 Li
 Li
-Li
+cG
 "}
 (2,1,1) = {"
 yx
@@ -27557,7 +27574,7 @@ xg
 xg
 xg
 xg
-xg
+OZ
 oO
 oO
 oO
@@ -27714,8 +27731,8 @@ xg
 xg
 xg
 xg
-xg
-xg
+OZ
+OZ
 oO
 oO
 oO
@@ -27870,8 +27887,8 @@ Sp
 xg
 xg
 xg
-xg
-xg
+OZ
+OZ
 oO
 oO
 oO
@@ -28027,8 +28044,8 @@ Sp
 xg
 xg
 xg
-xg
-xg
+on
+OZ
 oO
 oO
 oO
@@ -28184,8 +28201,8 @@ Sp
 xg
 xg
 xg
-xg
-xg
+OZ
+OZ
 oO
 oO
 oO
@@ -28342,7 +28359,7 @@ Sp
 xg
 xg
 xg
-xg
+OZ
 oO
 oO
 oO
@@ -32938,7 +32955,7 @@ TN
 TN
 TN
 TN
-TN
+NW
 "}
 (2,1,2) = {"
 yx
@@ -39178,7 +39195,7 @@ oO
 oO
 OZ
 OZ
-OZ
+on
 Fi
 dz
 dz
@@ -39334,7 +39351,7 @@ oO
 oO
 OZ
 OZ
-OZ
+vk
 OZ
 OZ
 OZ
@@ -46997,7 +47014,7 @@ TN
 TN
 Ch
 wC
-on
+Ad
 TN
 Ad
 wC
@@ -47360,7 +47377,7 @@ Co
 Co
 Fk
 xe
-xe
+lC
 xe
 xe
 xe
@@ -57274,7 +57291,7 @@ TN
 TN
 TN
 TN
-TN
+Ni
 "}
 (2,1,3) = {"
 yx
@@ -69920,7 +69937,7 @@ TN
 TN
 TN
 TN
-Ni
+TN
 TN
 TN
 TN
@@ -71336,7 +71353,7 @@ YN
 Os
 Os
 Os
-TN
+Os
 TN
 TN
 TN
@@ -78281,7 +78298,7 @@ TN
 TN
 TN
 xe
-xe
+lC
 xe
 Co
 xe
@@ -81610,7 +81627,7 @@ TN
 TN
 TN
 TN
-Vd
+Ni
 "}
 (2,1,4) = {"
 yx
@@ -81767,7 +81784,7 @@ TN
 TN
 TN
 TN
-TN
+Vd
 "}
 (3,1,4) = {"
 yx
