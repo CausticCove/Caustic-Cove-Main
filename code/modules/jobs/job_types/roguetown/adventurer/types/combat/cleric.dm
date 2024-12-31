@@ -7,6 +7,7 @@
 	vampcompat = FALSE
 	outfit = /datum/outfit/job/roguetown/adventurer/cleric
 	category_tags = list(CTAG_ADVENTURER)
+	cmode_music = 'sound/music/combat_church.ogg'
 
 /datum/outfit/job/roguetown/adventurer/cleric
 	allowed_patrons = ALL_PATRONS
