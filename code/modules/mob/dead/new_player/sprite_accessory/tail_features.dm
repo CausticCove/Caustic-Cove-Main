@@ -71,10 +71,11 @@
 	icon_state = "stripe"
 
 //Caustic Tail Markings
-/datum/sprite_accessory/tail_feature/
-	name = "Mermaid Orca Markings"
+/datum/sprite_accessory/tail_feature/dragonmarking
+	name = "Dragon Markings"
 	icon = 'icons/mob/sprite_accessory/tail_features/dragon_tail_marking.dmi'
 	icon_state = "big_liz_mark"
+
 
 
 //TAUR BULLSHIT MARKINGS AAAAAAAAAAAA
