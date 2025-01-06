@@ -29,6 +29,7 @@
 		/datum/sprite_accessory/tail_feature/taur/feline,
 		/datum/sprite_accessory/tail_feature/taur/wolf,
 		/datum/sprite_accessory/tail_feature/taur/drake,
+		/datum/sprite_accessory/tail_feature/dragonmarking,
 		)
 
 /datum/customizer/organ/tail_feature/vox_markings

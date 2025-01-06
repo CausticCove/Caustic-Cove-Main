@@ -155,6 +155,8 @@
 		/datum/sprite_accessory/tail/taur/spider,
 		/datum/sprite_accessory/tail/taur/sect,
 		/datum/sprite_accessory/tail/taur/drake,
+		/datum/sprite_accessory/tail/largedragon,
+		/datum/sprite_accessory/tail/bigsnaketail,
 		)
 
 /datum/customizer/organ/tail/anthro
@@ -227,4 +229,6 @@
 		/datum/sprite_accessory/tail/taur/spider,
 		/datum/sprite_accessory/tail/taur/sect,
 		/datum/sprite_accessory/tail/taur/drake,
+		/datum/sprite_accessory/tail/largedragon,
+		/datum/sprite_accessory/tail/bigsnaketail,
 		)

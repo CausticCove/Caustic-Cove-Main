@@ -346,10 +346,18 @@
 
 /datum/sprite_accessory/tail/largedragon
 	name = "Large Dragon"
-	icon = 'icons/mob/sprite_accessory/tails/dragon_tail.dmi'
+	icon = 'icons/mob/sprite_accessory/tails/large_dragon.dmi'
 	icon_state = "big_liz"
 	color_key_defaults = list(KEY_SKIN_COLOR)
 	can_wag = TRUE
+
+/datum/sprite_accessory/tail/bigsnaketail
+	name = "Big Snake"
+	icon = 'icons/mob/sprite_accessory/tails/snaketail.dmi'
+	icon_state = "snaketail"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+	can_wag = TRUE
+
 
 //TAUR BULLSHIT HELP
 /datum/sprite_accessory/tail/taur
