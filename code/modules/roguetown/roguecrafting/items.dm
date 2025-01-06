@@ -169,6 +169,15 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/breakdowntorch
+	name = "undo torch"
+	result = /obj/item/natural/fibers
+	reqs = list(/obj/item/flashlight/flare/torch = 1)
+	skillcraft = null
+	verbage_simple = "pick apart"
+	verbage = "picks apart"
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/candle
 	name = "candle (x3)"
 	result = list(/obj/item/candle/yellow,
