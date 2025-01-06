@@ -16,7 +16,7 @@
 	spawn_positions = 3
 	advclass_cat_rolls = list(CTAG_TEMPLAR = 20)
 	display_order = JDO_TEMPLAR
-	
+	cmode_music = 'sound/music/combat_church.ogg'
 	give_bank_account = TRUE
 
 /datum/outfit/job/roguetown/templar

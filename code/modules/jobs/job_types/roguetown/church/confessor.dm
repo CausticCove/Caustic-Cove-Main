@@ -17,6 +17,7 @@
 	give_bank_account = 3
 	min_pq = 0
 	max_pq = null
+	cmode_music = 'sound/music/combat_church.ogg'
 
 /datum/outfit/job/roguetown/shepherd
 	name = "Confessor"

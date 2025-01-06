@@ -4,7 +4,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/crusader
 	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_MEDIUMARMOR)
-
+	cmode_music = 'sound/music/combat_church.ogg'
 	maximum_possible_slots = 1 // Disabled Role
 
 	tutorial = "The crusaders... Knights who have pledged \
