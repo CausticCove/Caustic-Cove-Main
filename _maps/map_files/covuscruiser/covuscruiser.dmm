@@ -54,7 +54,8 @@
 	dir = 4
 	},
 /obj/structure/fluff/traveltile{
-	aportalid = "covuslateship"
+	aportalid = "covuslateship";
+	aportalgoesto = ""
 	},
 /turf/open/floor/rogue/rooftop{
 	dir = 4;
@@ -1528,7 +1529,8 @@
 	dir = 4
 	},
 /obj/structure/fluff/traveltile{
-	aportalid = "covuslateship2"
+	aportalid = "covuslateship2";
+	aportalgoesto = ""
 	},
 /turf/open/floor/rogue/rooftop{
 	dir = 4;
@@ -2075,6 +2077,13 @@
 /obj/effect/landmark/start/mercenary,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/ship/middeck)
+"mP" = (
+/obj/structure/fluff/traveltile{
+	aportalgoesto = "covusdungeon1-2";
+	aportalid = "covusdungeon1-1"
+	},
+/turf/open/floor/rogue/churchrough,
+/area/rogue/outdoors/beach)
 "mQ" = (
 /turf/open/floor/rogue/hay,
 /area/rogue/ship/topdeck)
@@ -3741,6 +3750,12 @@
 /obj/item/bedsheet/rogue/wool,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/ship/middeck)
+"wV" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/beach)
 "wZ" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
@@ -8118,6 +8133,12 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
+"Xs" = (
+/turf/closed/wall/mineral/rogue/craftstone{
+	icon = 'icons/roguetown/misc/doors.dmi';
+	icon_state = "stone"
+	},
+/area/rogue/outdoors/beach)
 "Xu" = (
 /obj/structure/mineral_door/wood/window{
 	lockid = "physician"
@@ -9387,8 +9408,8 @@ Li
 Li
 Li
 Li
-Li
-Li
+oO
+oO
 Li
 Li
 Li
@@ -9544,10 +9565,10 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
 Li
 Li
 Li
@@ -9701,12 +9722,12 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
+oO
+oO
 Li
 Li
 Li
@@ -9859,11 +9880,11 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
+oO
 Li
 Li
 Li
@@ -10018,10 +10039,10 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
 Li
 Li
 Li
@@ -10175,10 +10196,10 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
 Li
 Li
 Li
@@ -10333,9 +10354,9 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 Li
 Li
 Li
@@ -10656,8 +10677,8 @@ Li
 Li
 Li
 Li
-Li
-Li
+oO
+oO
 Li
 Li
 Li
@@ -10813,9 +10834,9 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 Li
 Li
 "}
@@ -10969,10 +10990,10 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
 Li
 Li
 "}
@@ -11125,10 +11146,10 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
 Li
 Li
 Li
@@ -11281,11 +11302,11 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
+oO
 Li
 Li
 Li
@@ -11437,13 +11458,13 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
+oO
+oO
+oO
 Li
 Li
 "}
@@ -11594,13 +11615,13 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
+oO
+oO
+oO
 Li
 Li
 "}
@@ -11751,13 +11772,13 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
+oO
+oO
+oO
 Li
 Li
 "}
@@ -11909,11 +11930,11 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
+oO
 Li
 Li
 Li
@@ -12067,13 +12088,13 @@ Li
 Li
 Li
 Li
+oO
+oO
+oO
 Li
 Li
-Li
-Li
-Li
-Li
-Li
+oO
+oO
 "}
 (24,1,1) = {"
 yx
@@ -12228,9 +12249,9 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (25,1,1) = {"
 yx
@@ -12384,10 +12405,10 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
 "}
 (26,1,1) = {"
 yx
@@ -12542,9 +12563,9 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (27,1,1) = {"
 yx
@@ -12700,8 +12721,8 @@ Li
 Li
 Li
 Li
-Li
-Li
+oO
+oO
 "}
 (28,1,1) = {"
 yx
@@ -12857,8 +12878,8 @@ Li
 Li
 Li
 Li
-Li
-Li
+oO
+oO
 "}
 (29,1,1) = {"
 yx
@@ -13013,9 +13034,9 @@ Li
 AB
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (30,1,1) = {"
 yx
@@ -13170,9 +13191,9 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (31,1,1) = {"
 yx
@@ -13326,10 +13347,10 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
 "}
 (32,1,1) = {"
 yx
@@ -13483,10 +13504,10 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
 "}
 (33,1,1) = {"
 yx
@@ -13640,10 +13661,10 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
-Li
+oO
+oO
+oO
+oO
 "}
 (34,1,1) = {"
 yx
@@ -13798,9 +13819,9 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (35,1,1) = {"
 yx
@@ -13955,9 +13976,9 @@ Li
 Li
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (36,1,1) = {"
 yx
@@ -14113,8 +14134,8 @@ Li
 Li
 Li
 Li
-Li
-Li
+oO
+oO
 "}
 (37,1,1) = {"
 yx
@@ -15056,7 +15077,7 @@ Li
 Li
 Li
 Li
-Li
+oO
 "}
 (43,1,1) = {"
 yx
@@ -15212,8 +15233,8 @@ Li
 Li
 Li
 Li
-Li
-Li
+oO
+oO
 "}
 (44,1,1) = {"
 yx
@@ -15369,8 +15390,8 @@ Li
 Li
 Li
 Li
-Li
-Li
+oO
+oO
 "}
 (45,1,1) = {"
 yx
@@ -15526,8 +15547,8 @@ Li
 Li
 Li
 Li
-Li
-Li
+oO
+oO
 "}
 (46,1,1) = {"
 yx
@@ -15682,9 +15703,9 @@ Sp
 Sp
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (47,1,1) = {"
 yx
@@ -15839,9 +15860,9 @@ Sp
 Sp
 Sp
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (48,1,1) = {"
 oO
@@ -15996,9 +16017,9 @@ Sp
 Sp
 Sp
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (49,1,1) = {"
 oO
@@ -16153,9 +16174,9 @@ Sp
 Sp
 Sp
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (50,1,1) = {"
 Sp
@@ -16310,9 +16331,9 @@ cH
 Sp
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (51,1,1) = {"
 Sp
@@ -16467,9 +16488,9 @@ ra
 Sp
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (52,1,1) = {"
 oO
@@ -16624,9 +16645,9 @@ Sp
 Sp
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (53,1,1) = {"
 oO
@@ -16781,9 +16802,9 @@ Sp
 Li
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (54,1,1) = {"
 oO
@@ -16938,9 +16959,9 @@ Sp
 Li
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (55,1,1) = {"
 oO
@@ -17095,9 +17116,9 @@ Sp
 Li
 Li
 Li
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (56,1,1) = {"
 Sp
@@ -17253,8 +17274,8 @@ Sp
 Li
 Li
 Li
-Li
-Li
+oO
+oO
 "}
 (57,1,1) = {"
 Sp
@@ -17410,8 +17431,8 @@ Sp
 Sp
 Li
 Li
-Li
-Li
+oO
+oO
 "}
 (58,1,1) = {"
 Li
@@ -17567,8 +17588,8 @@ Sp
 Sp
 Li
 Li
-Li
-Li
+oO
+oO
 "}
 (59,1,1) = {"
 Li
@@ -17724,8 +17745,8 @@ Sp
 Sp
 Sp
 Li
-Li
-Li
+oO
+oO
 "}
 (60,1,1) = {"
 Li
@@ -17881,8 +17902,8 @@ Sp
 Sp
 Sp
 Li
-Li
-Li
+oO
+oO
 "}
 (61,1,1) = {"
 Li
@@ -18038,8 +18059,8 @@ Sp
 Sp
 Li
 Li
-Li
-Li
+oO
+oO
 "}
 (62,1,1) = {"
 Li
@@ -18194,9 +18215,9 @@ xg
 Sp
 Sp
 Sp
-Li
-Li
-Li
+oO
+oO
+oO
 "}
 (63,1,1) = {"
 Li
@@ -18350,10 +18371,10 @@ xg
 xg
 Sp
 Sp
-Sp
-Li
-Li
-Li
+oO
+oO
+oO
+oO
 "}
 (64,1,1) = {"
 Li
@@ -18507,10 +18528,10 @@ xg
 xg
 Sp
 Sp
-Sp
-Sp
-Li
-Li
+oO
+oO
+oO
+oO
 "}
 (65,1,1) = {"
 Li
@@ -18664,10 +18685,10 @@ yx
 yx
 Sp
 Sp
-Sp
-Sp
-Sp
-Li
+oO
+oO
+oO
+oO
 "}
 (66,1,1) = {"
 Li
@@ -18820,11 +18841,11 @@ yx
 yx
 yx
 yx
-Sp
-Sp
-Sp
-Sp
-Sp
+oO
+oO
+oO
+oO
+oO
 "}
 (67,1,1) = {"
 Li
@@ -18980,8 +19001,8 @@ yx
 yx
 yx
 yx
-Sp
-Sp
+oO
+oO
 "}
 (68,1,1) = {"
 Li
@@ -19138,7 +19159,7 @@ yx
 yx
 yx
 yx
-Sp
+oO
 "}
 (69,1,1) = {"
 Li
@@ -30415,13 +30436,13 @@ JU
 xg
 xg
 oO
+xg
 oO
-oO
-oO
-oO
-oO
-oO
-oO
+yx
+yx
+yx
+yx
+yx
 oO
 oO
 JU
@@ -30571,14 +30592,14 @@ Sp
 Sp
 Sp
 xg
-oO
-oO
-oO
-oO
-oO
-oO
-oO
-oO
+xg
+xg
+wV
+wV
+wV
+mP
+Xs
+yx
 oO
 oO
 oO
@@ -30728,14 +30749,14 @@ Sp
 Sp
 Sp
 xg
-oO
-oO
-oO
-oO
-oO
-oO
-oO
-oO
+xg
+OZ
+wV
+wV
+wV
+mP
+Xs
+yx
 oO
 oO
 oO
@@ -30886,13 +30907,13 @@ Sp
 JU
 oO
 oO
+OZ
 oO
-oO
-oO
-oO
-oO
-oO
-oO
+yx
+yx
+yx
+yx
+yx
 oO
 oO
 oO
@@ -33723,8 +33744,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 TN
 TN
 TN
@@ -33880,10 +33901,10 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
 TN
 TN
 TN
@@ -34037,12 +34058,12 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
+oO
+oO
 TN
 TN
 TN
@@ -34195,11 +34216,11 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
+oO
 TN
 TN
 TN
@@ -34354,10 +34375,10 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
 TN
 TN
 TN
@@ -34511,10 +34532,10 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
 TN
 TN
 TN
@@ -34669,9 +34690,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 TN
 TN
 TN
@@ -34992,8 +35013,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 TN
 TN
 TN
@@ -35149,9 +35170,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 TN
 TN
 "}
@@ -35305,10 +35326,10 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
 TN
 TN
 "}
@@ -35461,10 +35482,10 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
 TN
 TN
 TN
@@ -35617,11 +35638,11 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
+oO
 TN
 TN
 TN
@@ -35773,13 +35794,13 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
+oO
+oO
+oO
 TN
 TN
 "}
@@ -35930,13 +35951,13 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
+oO
+oO
+oO
 TN
 TN
 "}
@@ -36087,13 +36108,13 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
+oO
+oO
+oO
 TN
 TN
 "}
@@ -36245,11 +36266,11 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
+oO
 TN
 TN
 TN
@@ -36403,13 +36424,13 @@ TN
 TN
 TN
 TN
+oO
+oO
+oO
 TN
 TN
-TN
-TN
-TN
-TN
-TN
+oO
+oO
 "}
 (24,1,2) = {"
 yx
@@ -36564,9 +36585,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (25,1,2) = {"
 yx
@@ -36720,10 +36741,10 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
 "}
 (26,1,2) = {"
 yx
@@ -36878,9 +36899,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (27,1,2) = {"
 yx
@@ -37036,8 +37057,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 "}
 (28,1,2) = {"
 yx
@@ -37193,8 +37214,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 "}
 (29,1,2) = {"
 yx
@@ -37349,9 +37370,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (30,1,2) = {"
 yx
@@ -37506,9 +37527,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (31,1,2) = {"
 yx
@@ -37662,10 +37683,10 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
 "}
 (32,1,2) = {"
 yx
@@ -37819,10 +37840,10 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
 "}
 (33,1,2) = {"
 yx
@@ -37976,10 +37997,10 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
 "}
 (34,1,2) = {"
 yx
@@ -38134,9 +38155,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (35,1,2) = {"
 yx
@@ -38291,9 +38312,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (36,1,2) = {"
 yx
@@ -38449,8 +38470,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 "}
 (37,1,2) = {"
 yx
@@ -39392,7 +39413,7 @@ TN
 TN
 TN
 TN
-TN
+oO
 "}
 (43,1,2) = {"
 yx
@@ -39548,8 +39569,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 "}
 (44,1,2) = {"
 yx
@@ -39705,8 +39726,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 "}
 (45,1,2) = {"
 yx
@@ -39862,8 +39883,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 "}
 (46,1,2) = {"
 yx
@@ -40018,9 +40039,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (47,1,2) = {"
 yx
@@ -40175,9 +40196,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (48,1,2) = {"
 oO
@@ -40332,9 +40353,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (49,1,2) = {"
 oO
@@ -40489,9 +40510,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (50,1,2) = {"
 TN
@@ -40646,9 +40667,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (51,1,2) = {"
 TN
@@ -40803,9 +40824,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (52,1,2) = {"
 oO
@@ -40960,9 +40981,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (53,1,2) = {"
 oO
@@ -41117,9 +41138,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (54,1,2) = {"
 oO
@@ -41274,9 +41295,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (55,1,2) = {"
 oO
@@ -41431,9 +41452,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (56,1,2) = {"
 TN
@@ -41589,8 +41610,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 "}
 (57,1,2) = {"
 TN
@@ -41746,8 +41767,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 "}
 (58,1,2) = {"
 TN
@@ -41903,8 +41924,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 "}
 (59,1,2) = {"
 TN
@@ -42060,8 +42081,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 "}
 (60,1,2) = {"
 TN
@@ -42217,8 +42238,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 "}
 (61,1,2) = {"
 TN
@@ -42374,8 +42395,8 @@ TN
 TN
 TN
 TN
-TN
-TN
+oO
+oO
 "}
 (62,1,2) = {"
 TN
@@ -42530,9 +42551,9 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
+oO
+oO
+oO
 "}
 (63,1,2) = {"
 TN
@@ -42686,10 +42707,10 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
 "}
 (64,1,2) = {"
 TN
@@ -42843,10 +42864,10 @@ TN
 TN
 TN
 TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
 "}
 (65,1,2) = {"
 TN
@@ -43000,10 +43021,10 @@ yx
 yx
 TN
 TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
 "}
 (66,1,2) = {"
 TN
@@ -43156,11 +43177,11 @@ yx
 yx
 yx
 yx
-TN
-TN
-TN
-TN
-TN
+oO
+oO
+oO
+oO
+oO
 "}
 (67,1,2) = {"
 TN
@@ -43316,8 +43337,8 @@ yx
 yx
 yx
 yx
-TN
-TN
+oO
+oO
 "}
 (68,1,2) = {"
 TN
@@ -43474,7 +43495,7 @@ yx
 yx
 yx
 yx
-TN
+oO
 "}
 (69,1,2) = {"
 TN
@@ -47554,7 +47575,7 @@ xe
 Co
 TN
 TN
-yx
+OZ
 yx
 yx
 "}
@@ -47709,11 +47730,11 @@ OZ
 xe
 xe
 xe
-TN
-TN
-yx
-yx
-yx
+xe
+OZ
+OZ
+OZ
+OZ
 "}
 (96,1,2) = {"
 TN
@@ -47866,11 +47887,11 @@ xe
 OZ
 Co
 xe
-TN
-TN
-yx
-yx
-yx
+OZ
+OZ
+OZ
+OZ
+OZ
 "}
 (97,1,2) = {"
 TN
@@ -48025,7 +48046,7 @@ xe
 TN
 TN
 TN
-yx
+OZ
 yx
 yx
 "}

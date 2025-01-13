@@ -230,6 +230,11 @@
 /obj/structure/spacevine,
 /turf/open/floor/rogue/grassred,
 /area/rogue/outdoors/beach/forest)
+"nk" = (
+/obj/structure/closet/crate/chest/neu,
+/obj/item/clothing/neck/roguetown/psicross/ravox,
+/turf/open/floor/rogue/wood,
+/area/rogue/outdoors/beach)
 "nE" = (
 /turf/open/floor/rogue/grassred,
 /area/rogue/outdoors/beach/forest)
@@ -4971,7 +4976,7 @@ ZA
 ZA
 ZA
 na
-MF
+nk
 fV
 xg
 gF
