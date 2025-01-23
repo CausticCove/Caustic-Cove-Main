@@ -835,9 +835,9 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	icon_state = "indoors"
 	ambientsounds = AMB_BOAT
 	ambientnight = AMB_BOAT
-	droning_sound = 'sound/music/area/middeckdrone.ogg'
+	droning_sound = null //avast! ye be no partyin durin the day
 	droning_sound_dusk = null
-	droning_sound_night = null
+	droning_sound_night = 'sound/music/area/middeckdrone.ogg' 
 	first_time_text = "Waist Deck"
 
 /area/rogue/ship/nobledeck
@@ -858,3 +858,37 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 	first_time_text = "The Brig"
+
+/area/rogue/island
+	name = "island coast"
+	icon_state = "forest"
+	ambientdroneday = AMB_JUNGLEDAY
+	ambientdronenight = AMB_JUNGLENIGHT
+	droning_sound = 'sound/music/area/townstreets.ogg'
+	droning_sound_dusk = 'sound/music/area/septimus.ogg'
+	droning_sound_night = 'sound/music/area/sleeping.ogg'
+	first_time_text = "ZELGUT ISLAND"
+
+/area/rogue/island/jungle
+	name = "jungle"
+	icon_state = "forest"
+	ambientdroneday = AMB_JUNGLEDAY
+	ambientdronenight = AMB_JUNGLENIGHT
+	droning_sound = 'sound/music/area/junglebeat.ogg'
+	droning_sound_dusk = 'sound/music/area/junglebeat.ogg'
+	droning_sound_night = null
+	first_time_text = "DEEP JUNGLE"
+
+//Dungeon specific areas
+/area/rogue/island/ravox
+	name = "ravoxdungeon"
+	icon_state = "sewer"
+	ambientsounds = AMB_CAVEWATER
+	ambientnight = AMB_CAVEWATER
+	spookysounds = SPOOKY_RATS
+	spookynight = SPOOKY_RATS
+	droning_sound = 'sound/music/area/sewers.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	ambientrain = RAIN_SEWER
+	soundenv = 21
