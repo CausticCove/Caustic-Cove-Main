@@ -3,12 +3,12 @@
     "map_path": "map_files/covuscruiser",
 	"map_file": [
 	"covuscruiser.dmm",
-	"covusspawn.dmm",
-	"covusdungeon.dmm"
+	"covusdungeon.dmm",
+	"covusspawn.dmm"
 	],
 	"traits": [{"Name": "The Sea", "Up": 1}, {"Up": 1, "Down": -1}, {"Up": 1, "Down": -1}, {"Down": -1},
-	{"Name": "The Coast", "Up": 1}, {"Down": -1},
-	{"Name": "Dungeon", "Up": 1}, {"Up": 1, "Down": -1}, {"Down": -1}],
+	{"Name": "Dungeon", "Up": 1}, {"Up": 1, "Down": -1}, {"Down": -1},
+	{"Name": "The Coast", "Up": 1}, {"Down": -1}],
 	"minetype": null,
 	"space_empty_levels": 0,
 	"space_ruin_levels": 0,
