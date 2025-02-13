@@ -714,8 +714,8 @@
 /area/rogue/island/ravox)
 "Cw" = (
 /obj/structure/fluff/traveltile{
-	aportalgoesto = "covusdungeon1-1";
-	aportalid = "covusdungeon1-2"
+	aportalgoesto = "covusdungeon01";
+	aportalid = "covusdungeon02"
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/island/ravox)

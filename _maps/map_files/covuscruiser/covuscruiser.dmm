@@ -2079,8 +2079,8 @@
 /area/rogue/ship/middeck)
 "mP" = (
 /obj/structure/fluff/traveltile{
-	aportalgoesto = "covusdungeon1-2";
-	aportalid = "covusdungeon1-1"
+	aportalgoesto = "covusdungeon02";
+	aportalid = "covusdungeon01"
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/outdoors/beach)
