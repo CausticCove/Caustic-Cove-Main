@@ -3991,6 +3991,16 @@
 	icon_state = "chess"
 	},
 /area/rogue/indoors/town/garrison)
+"dXK" = (
+/obj/machinery/light/rogue/torchholder/r,
+/obj/structure/closet/crate/roguecloset,
+/obj/item/storage/belt/rogue/pouch/ammo,
+/obj/item/storage/belt/rogue/pouch/ammo,
+/obj/item/storage/belt/rogue/pouch/ammo,
+/obj/item/storage/belt/rogue/pouch/ammo,
+/obj/item/storage/belt/rogue/pouch/ammo,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "dXO" = (
 /obj/structure/closet/crate/chest/neu_fancy,
 /obj/item/roguecoin/silver/pile,
@@ -40493,8 +40503,8 @@ dIf
 dIf
 iza
 sRU
+dXK
 xjJ
-onk
 qfQ
 lSB
 tiT
