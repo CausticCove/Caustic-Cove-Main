@@ -290,7 +290,7 @@
 						continue
 					LAZYADD(hearing_mobs, H)
 					last_hearcheck = world.time
-		owner.visible_message("<font color='green'><b>[owner] reforms [M] from their [lowertext(name)]!</b></font>")
+		owner.visible_message("<font color='green'><b>[owner] has digested [M] from their [lowertext(name)]!</b></font>")
 	M.x = 1
 	M.y = 1
 	M.alpha = 0
