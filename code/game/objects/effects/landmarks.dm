@@ -90,6 +90,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Skeleton", "Pilgrim", "Adventurer", "Migrant")
 	delete_after_roundstart = FALSE
 
+//Reform Code BS
+/obj/effect/landmark/start/reformed
+	name = "Reformed"
+	icon_state = "arrow"
+	jobspawn_override = list("Reformed")
+	delete_after_roundstart = FALSE
+
 /obj/effect/landmark/start/banditlate
 	name = "Bandit"
 	icon_state = "arrow"
@@ -386,6 +393,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/adventurer
 	name = "Adventurer"
 	icon_state = "arrow"
+
 
 //yrf
 

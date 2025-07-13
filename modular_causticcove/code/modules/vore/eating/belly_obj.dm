@@ -252,6 +252,54 @@
 
 	return count
 
+//Silent release for post digestion reforming
+/obj/belly/proc/release_specific_contents_digest(var/atom/movable/M, var/silent = FALSE)
+	if (!(M in contents))
+		return FALSE // They weren't in this belly anyway
+
+	M.forceMove(drop_location())  // Move the belly contents into the same location as belly's owner.
+	items_preserved -= M
+
+
+	if(istype(M,/mob/living))
+		var/mob/living/ML = M
+		var/mob/living/OW = owner
+		if(ML.client)
+			ML.stop_sound_channel(CHANNEL_PREYLOOP) //Stop the internal loop, it'll restart if the isbelly check on next tick anyway
+
+		if(CHECK_BITFIELD(ML.vore_flags,ABSORBED))
+			DISABLE_BITFIELD(ML.vore_flags,ABSORBED)
+			if(ishuman(M) && ishuman(OW))
+				var/mob/living/carbon/human/Prey = M
+				var/mob/living/carbon/human/Pred = OW
+				var/absorbed_count = 2 //Prey that we were, plus the pred gets a portion
+				for(var/mob/living/P in contents)
+					if(CHECK_BITFIELD(P.vore_flags,ABSORBED))
+						absorbed_count++
+				Pred.reagents.trans_to(Prey, Pred.reagents.total_volume / absorbed_count)
+
+	//Clean up our own business
+	owner.update_icons()
+
+	if(!silent)
+		if(release_sound && !recent_sound)
+			if((world.time + NORMIE_HEARCHECK) > last_hearcheck)
+				LAZYCLEARLIST(hearing_mobs)
+				for(var/mob/living/H in get_hearers_in_view(3, owner))
+					if(!H.client || !(H.client.prefs.cit_toggles & EATING_NOISES))
+						continue
+					LAZYADD(hearing_mobs, H)
+					last_hearcheck = world.time
+		owner.visible_message("<font color='green'><b>[owner] reforms [M] from their [lowertext(name)]!</b></font>")
+	M.x = 1
+	M.y = 1
+	M.alpha = 0
+
+
+
+
+
+
 // Release a specific atom from the contents of this belly into the owning mob's location.
 // If that location is another mob, the atom is transferred into whichever of its bellies the owning mob is in.
 // Returns the number of atoms so released.
@@ -462,7 +510,7 @@
 	M.stop_sound_channel(CHANNEL_PREYLOOP)
 
 	// Delete the digested mob
-	qdel(M)
+	release_specific_contents_digest(M)
 
 	//Update owner
 	owner.updateVRPanel()
