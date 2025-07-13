@@ -13907,6 +13907,13 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/physician)
+"nYy" = (
+/obj/effect/decal/cobbleedge{
+	dir = 8
+	},
+/obj/structure/respawn_portal,
+/turf/open/floor/rogue/grassyel,
+/area/rogue/indoors/town)
 "nYY" = (
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 4;
@@ -54764,7 +54771,7 @@ xAg
 cKC
 dxQ
 qzC
-qzC
+nYy
 qzC
 wof
 wof
