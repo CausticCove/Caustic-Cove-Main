@@ -116,7 +116,7 @@
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
 	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
-	head = /obj/item/clothing/head/roguetown/helmet/leather
+	head = /obj/item/clothing/head/roguetown/helmet/tricorn/skull
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 
 	H.STASTR = rand(14,16)
@@ -163,3 +163,27 @@
 
 /mob/living/carbon/human/species/skeleton/no_equipment
     skel_outfit = null
+
+/mob/living/carbon/human/species/skeleton/obboss
+	skel_fragile = FALSE
+	skel_outfit = /datum/outfit/job/roguetown/npc/skeleton/obboss
+
+/datum/outfit/job/roguetown/npc/skeleton/obboss/pre_equip(mob/living/carbon/human/H)
+	name = "Guildmaster Ole Bones"
+
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+	head = /obj/item/clothing/head/roguetown/helmet/leather
+	shoes = /obj/item/clothing/shoes/roguetown/boots
+	r_hand = /obj/item/rogueweapon/sword/sabre/dec
+	l_hand = /obj/item/rogueweapon/shield/buckler
+
+	H.STASTR = 18
+	H.STASPD = 15
+	H.STACON = 12
+	H.STAEND = 14
+	H.STAINT = 8
+
+	ADD_TRAIT(src, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
